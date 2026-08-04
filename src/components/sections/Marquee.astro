@@ -12,15 +12,15 @@ const marqueeItems = [
 ---
 
 <div
-	class='w-full bg-dark-bg border-y border-stroke flex items-center overflow-hidden select-none text-accent-2 hover:text-text hover:bg-accent-2 transition-colors duration-300'>
-	<div class='inline-flex w-max flex-nowrap animate-marquee gap-12 h-22.75'>
+	class='flex items-center bg-dark-bg border-stroke border-y w-full overflow-hidden hover:text-text transition-colors duration-300 text-accent-2 hover:bg-accent-2 select-none'>
+	<div class='inline-flex flex-nowrap gap-12 w-max h-22.75 animate-marquee'>
 		<!-- Loop 1 -->
 		<div class='flex items-center gap-12 shrink-0'>
 			{
 				marqueeItems.map((item) => (
 					<a
 						href='#services'
-						class='flex items-center gap-4 text-marquee font-black font-title  tracking-wide hover:opacity-90 transition-opacity whitespace-nowrap '>
+						class='flex items-center gap-4 hover:opacity-90 font-title font-black text-marquee tracking-wide whitespace-nowrap transition-opacity'>
 						<span>{item}</span>
 						<svg
 							class='w-4.5 h-4.5 text-innherit shrink-0'
@@ -42,7 +42,7 @@ const marqueeItems = [
 				marqueeItems.map((item) => (
 					<a
 						href='#services'
-						class='flex items-center gap-4 text-marquee font-black font-title text-accent-2 tracking-wide hover:opacity-90 transition-opacity whitespace-nowrap'>
+						class='flex items-center gap-4 hover:opacity-90 font-title font-black text-marquee tracking-wide whitespace-nowrap transition-opacity text-accent-2'>
 						<span>{item}</span>
 						<svg
 							class='w-4.5 h-4.5 text-accent-2 shrink-0'
