@@ -1,0 +1,62 @@
+---
+import Pill from './Pill.astro';
+
+interface Props {
+  pillText?: string;
+  eyebrow?: string;
+  kicker?: string;
+  title: string;
+  description?: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+  centered?: boolean;
+  dark?: boolean;
+  class?: string;
+}
+
+const {
+  pillText,
+  eyebrow,
+  kicker,
+  title,
+  description,
+  subtitle,
+  align,
+  centered = true,
+  dark = false,
+  class: className = '',
+} = Astro.props;
+
+const badgeText = pillText || eyebrow || kicker;
+const bodyText = description || subtitle;
+const isCentered = align ? align === 'center' : centered;
+const alignmentClasses = isCentered ? 'text-center mx-auto max-w-3xl' : 'text-left max-w-2xl';
+---
+
+<div class:list={['space-y-4 mb-12', alignmentClasses, className]}>
+  {badgeText && (
+    <Pill variant={dark ? 'dark' : 'accent'}>
+      {badgeText}
+    </Pill>
+  )}
+  <h2
+    class:list={[
+      'text-3xl sm:text-4xl lg:text-5xl font-black font-title tracking-tight leading-tight',
+      dark ? 'text-white' : 'text-text',
+    ]}
+  >
+    {title}
+  </h2>
+  {
+    bodyText && (
+      <p
+        class:list={[
+          'text-base sm:text-lg leading-relaxed font-normal',
+          dark ? 'text-white/80' : 'text-muted',
+        ]}
+      >
+        {bodyText}
+      </p>
+    )
+  }
+</div>

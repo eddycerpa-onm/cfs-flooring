@@ -1,0 +1,32 @@
+---
+interface Props {
+  active?: boolean;
+  href?: string;
+  class?: string;
+}
+
+const { active = false, href, class: className = '' } = Astro.props;
+
+const baseClasses =
+  'inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-200 border cursor-pointer select-none whitespace-nowrap font-title';
+
+const stateClasses = active
+  ? 'bg-accent text-white border-accent shadow-sm font-bold'
+  : 'bg-bg text-text border-stroke hover:border-accent/40 hover:bg-panel hover:text-accent';
+
+const combinedClasses = `${baseClasses} ${stateClasses} ${className}`.trim();
+---
+
+{
+  href ? (
+    <a href={href} class={combinedClasses}>
+      <span class="w-2 h-2 rounded-full bg-accent shrink-0" />
+      <slot />
+    </a>
+  ) : (
+    <span class={combinedClasses}>
+      <span class="w-2 h-2 rounded-full bg-accent shrink-0" />
+      <slot />
+    </span>
+  )
+}

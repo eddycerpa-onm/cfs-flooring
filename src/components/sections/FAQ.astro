@@ -1,0 +1,73 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import FAQItem from './FAQItem.astro';
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs?: FAQ[];
+  title?: string;
+  description?: string;
+  pillText?: string;
+}
+
+const defaultFaqs: FAQ[] = [
+  {
+    question: 'What cities in the Portland metro & SW Washington area do you serve?',
+    answer:
+      'We primarily serve Lake Oswego, West Linn, Wilsonville, Tualatin, Tigard, Beaverton, Portland, and Vancouver WA (including Camas and Ridgefield). If your job site is nearby, contact us to verify scheduling.',
+  },
+  {
+    question: 'How long does a typical hardwood or LVP flooring installation take?',
+    answer:
+      'Most residential projects (1,000 – 2,000 sq ft) take between 2 to 4 business days, including subfloor preparation and baseboard trim installation. Custom tile work or large commercial VCT jobs are scheduled according to exact scope.',
+  },
+  {
+    question: 'Is your hardwood sand & finish system really dust-controlled?',
+    answer:
+      'Yes! We utilize commercial HEPA-filtered dust extraction equipment that captures up to 99% of airborne wood dust during sanding, keeping your HVAC system and home clean.',
+  },
+  {
+    question: 'Do you offer free on-site consultations and estimates?',
+    answer:
+      'Absolutely. We provide 100% free, no-obligation on-site measurements and estimates. We bring sample materials directly to your home or office in Lake Oswego, West Linn, or Vancouver WA.',
+  },
+  {
+    question: 'Are you licensed, bonded, and insured in both Oregon and Washington?',
+    answer:
+      'Yes. CFS Flooring (Custom Flooring Solutions LLC) holds Oregon CCB #234819 and Washington License #CFSFL*812K3 with full general liability and worker compensation insurance.',
+  },
+];
+
+const {
+  faqs = defaultFaqs,
+  title = 'Frequently Asked Questions',
+  description = 'Got questions about materials, timelines, or our installation process in the Pacific Northwest? Find answers below.',
+  pillText = 'Got Questions?',
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24 bg-white relative">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeader
+      title={title}
+      description={description}
+      pillText={pillText}
+    />
+
+    <div class="space-y-4">
+      {
+        faqs.map((faq, idx) => (
+          <FAQItem
+            question={faq.question}
+            answer={faq.answer}
+            index={idx}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

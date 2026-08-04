@@ -1,0 +1,34 @@
+---
+import { company } from '../../data/company';
+
+interface Props {
+  name: string;
+  description: string;
+  slug?: string;
+  url?: string;
+}
+
+const { name, description, slug, url } = Astro.props;
+const targetUrl = url || `https://cfsflooring.com/services/${slug || ''}`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: name,
+  name: name,
+  description: description,
+  url: targetUrl,
+  provider: {
+    '@type': 'HomeAndConstructionBusiness',
+    name: company.name,
+    telephone: company.phoneRaw,
+    url: 'https://cfsflooring.com',
+  },
+  areaServed: company.serviceAreas.map((a) => ({
+    '@type': 'City',
+    name: `${a.city}, ${a.state}`,
+  })),
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />

@@ -1,0 +1,155 @@
+---
+import { company } from '../../data/company';
+import { navigationData } from '../../data/navigation';
+import Button from '../ui/Button.astro';
+
+const services = navigationData.servicesNav;
+---
+
+<div
+  x-data="{ submitted: false, loading: false }"
+  class="p-8 sm:p-10 rounded-3xl bg-white border border-stroke shadow-xl relative overflow-hidden font-body"
+>
+  <!-- Success overlay -->
+  <div
+    x-show="submitted"
+    class="py-12 text-center space-y-4"
+    x-cloak
+  >
+    <div class="w-16 h-16 rounded-full bg-accent/10 text-accent flex items-center justify-center mx-auto text-2xl font-black">
+      ✓
+    </div>
+    <h3 class="text-2xl font-black font-title text-text">Estimate Request Received!</h3>
+    <p class="text-base text-muted max-w-md mx-auto leading-relaxed">
+      Thank you for reaching out to CFS Flooring. Jose or our senior estimator will review your details and call you shortly to schedule an on-site consultation.
+    </p>
+    <div class="pt-4">
+      <Button variant="outline" size="md" @click="submitted = false">
+        Send Another Message
+      </Button>
+    </div>
+  </div>
+
+  <!-- Form content -->
+  <form
+    x-show="!submitted"
+    @submit.prevent="loading = true; setTimeout(() => { loading = false; submitted = true; }, 800)"
+    class="space-y-6"
+  >
+    <div class="border-b border-stroke pb-4">
+      <h3 class="text-2xl font-black font-title text-text">Get Your Free Estimate</h3>
+      <p class="text-sm text-muted mt-1">
+        Fill out the form below or call us directly at <a href={`tel:${company.phoneRaw}`} class="font-bold text-accent hover:underline">{company.phone}</a>.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <label for="contact-name" class="block text-xs font-bold text-text uppercase tracking-wider font-title mb-2">
+          Full Name <span class="text-accent">*</span>
+        </label>
+        <input
+          type="text"
+          id="contact-name"
+          name="name"
+          required
+          placeholder="John Smith"
+          class="w-full px-4 py-3.5 rounded-xl border border-stroke bg-panel text-text focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm transition-colors"
+        />
+      </div>
+
+      <div>
+        <label for="contact-phone" class="block text-xs font-bold text-text uppercase tracking-wider font-title mb-2">
+          Phone Number <span class="text-accent">*</span>
+        </label>
+        <input
+          type="tel"
+          id="contact-phone"
+          name="phone"
+          required
+          placeholder="(503) 555-0123"
+          class="w-full px-4 py-3.5 rounded-xl border border-stroke bg-panel text-text focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm transition-colors"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <label for="contact-email" class="block text-xs font-bold text-text uppercase tracking-wider font-title mb-2">
+          Email Address <span class="text-accent">*</span>
+        </label>
+        <input
+          type="email"
+          id="contact-email"
+          name="email"
+          required
+          placeholder="john@example.com"
+          class="w-full px-4 py-3.5 rounded-xl border border-stroke bg-panel text-text focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm transition-colors"
+        />
+      </div>
+
+      <div>
+        <label for="contact-location" class="block text-xs font-bold text-text uppercase tracking-wider font-title mb-2">
+          City / Zip Code <span class="text-accent">*</span>
+        </label>
+        <input
+          type="text"
+          id="contact-location"
+          name="location"
+          required
+          placeholder="West Linn, OR 97068"
+          class="w-full px-4 py-3.5 rounded-xl border border-stroke bg-panel text-text focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm transition-colors"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label for="contact-service" class="block text-xs font-bold text-text uppercase tracking-wider font-title mb-2">
+        Service Needed <span class="text-accent">*</span>
+      </label>
+      <select
+        id="contact-service"
+        name="service"
+        required
+        class="w-full px-4 py-3.5 rounded-xl border border-stroke bg-panel text-text focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm transition-colors"
+      >
+        <option value="" disabled selected>Select flooring service...</option>
+        {
+          services.map((s) => (
+            <option value={s.slug}>{s.title}</option>
+          ))
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="contact-message" class="block text-xs font-bold text-text uppercase tracking-wider font-title mb-2">
+        Project Notes & Estimated Sq Footage
+      </label>
+      <textarea
+        id="contact-message"
+        name="message"
+        rows="4"
+        placeholder="Please describe your flooring needs, room layout, desired materials or timeline..."
+        class="w-full px-4 py-3.5 rounded-xl border border-stroke bg-panel text-text focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm resize-none transition-colors"
+      ></textarea>
+    </div>
+
+    <div class="pt-2">
+      <Button
+        type="submit"
+        variant="primary"
+        size="lg"
+        class="w-full"
+        ::disabled="loading"
+      >
+        <span x-show="!loading">Send Free Estimate Request &rarr;</span>
+        <span x-show="loading" x-cloak>Submitting Details...</span>
+      </Button>
+    </div>
+
+    <p class="text-xs text-center text-muted">
+      By submitting, you agree to receive follow-up contact regarding your estimate. We never sell your data.
+    </p>
+  </form>
+</div>

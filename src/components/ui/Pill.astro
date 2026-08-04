@@ -1,0 +1,27 @@
+---
+interface Props {
+  variant?: 'accent' | 'muted' | 'outline' | 'dark' | 'light' | string;
+  class?: string;
+  [key: string]: any;
+}
+
+const { variant = 'accent', class: className = '' } = Astro.props;
+
+const baseClasses =
+  'inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase font-title transition-colors';
+
+const variantClasses: Record<string, string> = {
+  accent: 'bg-accent/10 text-accent border border-accent/20',
+  muted: 'bg-panel text-muted border border-stroke',
+  outline: 'border border-accent text-accent bg-transparent',
+  dark: 'bg-dark-bg text-white border border-white/10',
+  light: 'bg-white text-text shadow-sm border border-stroke',
+};
+
+const activeVariant = variantClasses[variant] || variantClasses.accent;
+const combinedClasses = `${baseClasses} ${activeVariant} ${className}`.trim();
+---
+
+<span class={combinedClasses}>
+  <slot />
+</span>

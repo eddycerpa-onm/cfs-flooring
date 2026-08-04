@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ContactForm from '@/components/sections/ContactForm.astro';
+import LocalBusiness from '@/components/seo/LocalBusiness.astro';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://cfsflooring.com' },
+  { name: 'Contact Us', url: 'https://cfsflooring.com/contact-us' },
+];
+---
+
+<BaseLayout
+  title="Contact CFS Flooring | Schedule Free Estimate in Lake Oswego"
+  description="Contact Jose at CFS Flooring to schedule a free estimate for hardwood, LVP, carpet, or tile installation in Lake Oswego, West Linn, Wilsonville, and Vancouver."
+>
+  <LocalBusiness />
+  <BreadcrumbSchema items={breadcrumbs} />
+  <ContactForm />
+</BaseLayout>

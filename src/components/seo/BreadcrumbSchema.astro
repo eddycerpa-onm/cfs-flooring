@@ -1,0 +1,31 @@
+---
+interface BreadcrumbItem {
+  name: string;
+  item?: string;
+  url?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((crumb, index) => {
+    const rawTarget = crumb.item || crumb.url || '';
+    const targetUrl = rawTarget.startsWith('http') ? rawTarget : `https://cfsflooring.com${rawTarget}`;
+
+    return {
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: targetUrl,
+    };
+  }),
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />

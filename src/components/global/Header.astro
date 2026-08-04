@@ -1,0 +1,128 @@
+---
+import { company } from '@/data/company';
+import { navLinks, serviceSublinks } from '@/data/navigation';
+import { socialLinks } from '@/data/social';
+---
+
+<header class="sticky top-0 z-50 w-full h-[90px] bg-[var(--bg)] border-b border-[var(--stroke)]">
+  <div class="w-full h-full px-8 xl:px-12 flex items-center justify-between gap-4">
+    
+    <!-- Brand Logo -->
+    <a href="/" class="flex-shrink-0 flex items-center">
+      <img src="/src/assets/logo.svg" alt={company.name} class="h-16 w-auto object-contain" />
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="hidden md:flex items-center gap-2" x-data="{ servicesOpen: false }">
+      <a
+        href="/"
+        class="px-4.5 py-3.5 rounded-2xl text-base font-bold text-[var(--text)] hover:bg-[var(--panel)] transition-colors font-[var(--font-body)]"
+      >
+        Home
+      </a>
+
+      <a
+        href="/about-us"
+        class="px-4.5 py-3.5 rounded-2xl text-base font-bold text-[var(--text)] hover:bg-[var(--panel)] transition-colors font-[var(--font-body)]"
+      >
+        About
+      </a>
+
+      <!-- Services Dropdown -->
+      <div class="relative" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
+        <a
+          href="/our-services"
+          class="inline-flex items-center gap-1.5 px-4.5 py-3.5 rounded-2xl text-base font-bold text-[var(--text)] hover:bg-[var(--panel)] transition-colors font-[var(--font-body)]"
+        >
+          <span>Services</span>
+          <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': servicesOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+
+        <!-- Dropdown Menu -->
+        <div
+          x-show="servicesOpen"
+          x-cloak
+          x-transition:enter="transition ease-out duration-150"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          x-transition:leave="transition ease-in duration-100"
+          x-transition:leave-start="opacity-100 translate-y-0"
+          x-transition:leave-end="opacity-0 translate-y-1"
+          class="absolute left-0 top-full mt-1 w-64 p-3 rounded-2xl bg-[var(--bg)] border border-[var(--stroke)] shadow-xl flex flex-col gap-1 z-50"
+        >
+          {serviceSublinks.map((s) => (
+            <a
+              href={s.href}
+              class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-[var(--text)] hover:bg-[var(--panel)] hover:text-[var(--accent)] transition-colors"
+            >
+              {s.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <a
+        href="/contact-us"
+        class="px-4.5 py-3.5 rounded-2xl text-base font-bold text-[var(--text)] hover:bg-[var(--panel)] transition-colors font-[var(--font-body)]"
+      >
+        Contact Us
+      </a>
+    </nav>
+
+    <!-- Header Actions (Social Circles + Call Button) -->
+    <div class="hidden lg:flex items-center gap-3">
+      <!-- Facebook Icon -->
+      <a
+        href="https://www.facebook.com/people/CFS-Flooring/61558449837319/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-[38px] h-[38px] rounded-[14px] bg-[var(--panel)] border border-[var(--stroke)] text-[var(--text)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition-all"
+        aria-label="Facebook"
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M13.5 22v-8h2.7l.8-3h-3.5V9.1c0-.9.3-1.6 1.7-1.6H17V4.8c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.6-4.6 4.6V11H7v3h2.7v8h3.8Z"></path>
+        </svg>
+      </a>
+
+      <!-- Instagram Icon -->
+      <a
+        href="https://www.instagram.com/cfsflooring/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-[38px] h-[38px] rounded-[14px] bg-[var(--panel)] border border-[var(--stroke)] text-[var(--text)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition-all"
+        aria-label="Instagram"
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M7.75 2h8.5C19.43 2 22 4.57 22 7.75v8.5C22 19.43 19.43 22 16.25 22h-8.5C4.57 22 2 19.43 2 16.25v-8.5C2 4.57 4.57 2 7.75 2Zm0 2C5.68 4 4 5.68 4 7.75v8.5C4 18.32 5.68 20 7.75 20h8.5c2.07 0 3.75-1.68 3.75-3.75v-8.5C20 5.68 18.32 4 16.25 4h-8.5Zm9.75 2.25a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"></path>
+        </svg>
+      </a>
+
+      <!-- Location / Google Business Icon -->
+      <a
+        href="https://www.google.com/search?q=CFS+Flooring"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-[38px] h-[38px] rounded-[14px] bg-[var(--panel)] border border-[var(--stroke)] text-[var(--text)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition-all"
+        aria-label="Google Business Location"
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"></path>
+        </svg>
+      </a>
+
+      <!-- Call Us Now Button -->
+      <a
+        href={`tel:${company.phoneRaw}`}
+        class="inline-flex items-center gap-2 px-[20px] py-[14px] rounded-[16px] bg-[var(--accent-2)] text-[var(--dark-bg)] font-extrabold text-[15px] shadow-sm hover:bg-[var(--accent)] hover:text-white transition-all"
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.37c1.17.39 2.42.6 3.72.6A1.35 1.35 0 0 1 22 16.8V21a1 1 0 0 1-1 1C10.5 22 2 13.5 2 3a1 1 0 0 1 1-1h4.2a1.35 1.35 0 0 1 1.35 1.35c0 1.3.21 2.55.6 3.72a1.5 1.5 0 0 1-.37 1.5l-2.18 2.23Z"></path>
+        </svg>
+        <span>Call Us Now</span>
+      </a>
+    </div>
+
+  </div>
+</header>

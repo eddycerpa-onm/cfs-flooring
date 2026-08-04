@@ -1,0 +1,79 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Pill from '@/components/ui/Pill.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
+import LocalBusiness from '@/components/seo/LocalBusiness.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, author, category, metaTitle, metaDescription } = post.data;
+const { Content } = await post.render();
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://cfsflooring.com' },
+  { name: 'Blog', url: 'https://cfsflooring.com/blog' },
+  { name: title, url: `https://cfsflooring.com/blog/${post.slug}` },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": author
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CFS Flooring LLC",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cfsflooring.com/og-image.jpg"
+    }
+  },
+  "datePublished": pubDate.toISOString(),
+  "mainEntityOfPage": `https://cfsflooring.com/blog/${post.slug}`
+};
+---
+
+<BaseLayout title={metaTitle} description={metaDescription} type="article">
+  <LocalBusiness />
+  <BreadcrumbSchema items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <article class="py-16 bg-[var(--bg)] border-b border-[var(--stroke)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Article Header -->
+      <div class="flex flex-col gap-4 mb-10 text-center items-center">
+        <Pill>{category}</Pill>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-[var(--font-title)] text-[var(--text)] tracking-tight leading-tight">
+          {title}
+        </h1>
+        <div class="flex items-center gap-4 text-sm text-[var(--muted)] pt-2">
+          <span>By <strong>{author}</strong></span>
+          <span>•</span>
+          <span>{new Date(pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+        </div>
+      </div>
+
+      <!-- Article Body Content -->
+      <div class="prose prose-lg max-w-none text-[var(--muted)] leading-relaxed font-[var(--font-body)] p-8 rounded-3xl bg-[var(--panel)] border border-[var(--stroke)] shadow-sm">
+        <Content />
+      </div>
+
+    </div>
+  </article>
+
+  <CTABanner title="Need Professional Flooring Help?" subtitle="Talk to Jose and get an honest, free estimate for your home or business." />
+</BaseLayout>

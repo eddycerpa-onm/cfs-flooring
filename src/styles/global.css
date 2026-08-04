@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@import "@fontsource/lexend-deca/400.css";
+@import "@fontsource/lexend-deca/700.css";
+@import "@fontsource/lexend-deca/800.css";
+@import "@fontsource/lexend-deca/900.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/dm-sans/700.css";
+@import "@fontsource/dm-sans/800.css";
+
+@theme {
+  --color-bg: #ffffff;
+  --color-panel: #f9f6f2;
+  --color-text: #221416;
+  --color-muted: rgba(34, 20, 22, 0.72);
+  --color-stroke: rgba(34, 20, 22, 0.14);
+  --color-accent: #b07f49;
+  --color-accent-2: #f7d133;
+  --color-dark-bg: #221416;
+  
+  --font-title: "Lexend Deca", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  /* Resoluciones de Contenedor Exactas */
+  --width-hero: 1380px;
+  --width-base: 1280px;
+  --width-proc: 980px;
+
+  /* Tipografía Exacta H1 */
+  --text-h1: 88px;
+  --text-h1--line-height: 86.24px;
+  --text-h1--letter-spacing: -1.8px;
+
+  /* Tipografía Exacta H2 About */
+  --text-h2-about: 50px;
+  --text-h2-about--line-height: 52.5px;
+  --text-h2-about--letter-spacing: -0.8px;
+
+  /* Tipografía Exacta H2 Process */
+  --text-h2-proc: 52px;
+  --text-h2-proc--line-height: 55.12px;
+  --text-h2-proc--letter-spacing: -0.8px;
+
+  /* Tipografía Exacta H2 Services */
+  --text-h2-service: 48px;
+  --text-h2-service--line-height: 50.88px;
+  --text-h2-service--letter-spacing: -0.8px;
+
+  /* Tipografía Exacta CTA */
+  --text-h2-cta: 46px;
+  --text-h2-cta--line-height: 48.76px;
+  --text-h2-cta--letter-spacing: -0.6px;
+
+  --shadow-custom: 0 18px 45px rgba(34, 20, 22, 0.12);
+}
+
+:root {
+  --bg: #ffffff;
+  --panel: #f9f6f2;
+  --text: #221416;
+  --muted: rgba(34, 20, 22, 0.72);
+  --stroke: rgba(34, 20, 22, 0.14);
+  --accent: #b07f49;
+  --accent-2: #f7d133;
+  --dark-bg: #221416;
+  --shadow: 0 18px 45px rgba(34, 20, 22, 0.12);
+  --font-title: "Lexend Deca", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+html, body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+}
+
+[x-cloak] {
+  display: none !important;
+}

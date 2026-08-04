@@ -1,0 +1,52 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroHome from '@/components/sections/HeroHome.astro';
+import ServicesMarquee from '@/components/sections/ServicesMarquee.astro';
+import AboutSection from '@/components/sections/AboutSection.astro';
+import ServicesGrid from '@/components/sections/ServicesGrid.astro';
+import ProcessSection from '@/components/sections/ProcessSection.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+import BlogPreview from '@/components/sections/BlogPreview.astro';
+import LocalBusiness from '@/components/seo/LocalBusiness.astro';
+import { getCollection } from 'astro:content';
+
+import imgHardwood from '@/assets/services/hardwood-lvp.webp';
+import imgCarpet from '@/assets/services/carpet.webp';
+import imgSandFinish from '@/assets/services/sand-finish.webp';
+import imgTile from '@/assets/services/ceramic-tile.webp';
+import imgSheetVinyl from '@/assets/services/sheet-vinyl.webp';
+import imgVCT from '@/assets/services/vct.webp';
+import imgRemoval from '@/assets/services/flooring-removal.webp';
+import imgCounters from '@/assets/services/counters-decks.webp';
+
+const imagesMap: Record<string, any> = {
+  'hardwood-laminate-and-lvp': imgHardwood,
+  'carpet-installation': imgCarpet,
+  'sand-and-finish': imgSandFinish,
+  'ceramic-tile': imgTile,
+  'sheet-vinyl': imgSheetVinyl,
+  'vct-flooring': imgVCT,
+  'flooring-removal': imgRemoval,
+  'counters-and-decks': imgCounters,
+};
+
+const allServices = await getCollection('services');
+const allBlogPosts = await getCollection('blog');
+const recentPosts = allBlogPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
+---
+
+<BaseLayout
+  title="CFS Flooring | Professional Flooring Installation in Lake Oswego & West Linn"
+  description="Over 10 years of experience in hardwood, LVP, carpet, ceramic tile, sand & finish, and flooring removal in Lake Oswego, West Linn, Wilsonville & Vancouver."
+>
+  <LocalBusiness />
+  <HeroHome />
+  <ServicesMarquee />
+  <AboutSection />
+  <ServicesGrid services={allServices} imagesMap={imagesMap} />
+  <ProcessSection />
+  <Testimonials />
+  <CTABanner />
+  {recentPosts.length > 0 && <BlogPreview posts={recentPosts} />}
+</BaseLayout>

@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Pill from '../ui/Pill.astro';
+
+interface Props {
+  limit?: number;
+  title?: string;
+  description?: string;
+  pillText?: string;
+  posts?: any[];
+}
+
+const {
+  limit = 3,
+  title = 'Latest Flooring Guides & News',
+  description = 'Expert advice on choosing materials, hardwood maintenance, local Portland metro installation trends, and commercial flooring tips.',
+  pillText = 'From Our Blog',
+  posts: customPosts,
+} = Astro.props;
+
+let blogPosts = customPosts;
+
+if (!blogPosts) {
+  const collectionPosts = await getCollection('blog');
+  blogPosts = collectionPosts.sort(
+    (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+  );
+}
+
+const displayPosts = blogPosts.slice(0, limit);
+---
+
+<section class="py-16 md:py-24 bg-panel border-t border-stroke relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeader
+      title={title}
+      description={description}
+      pillText={pillText}
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        displayPosts.map((post: any) => {
+          const pData = post.data || post;
+          const pSlug = post.slug || pData.slug;
+          const pubDate = pData.pubDate ? new Date(pData.pubDate) : new Date();
+
+          return (
+            <article class="p-6 rounded-2xl bg-white border border-stroke shadow-xs hover:shadow-custom hover:border-accent/40 transition-all duration-300 flex flex-col justify-between h-full group">
+              <div class="space-y-4">
+                <!-- Meta Row -->
+                <div class="flex items-center justify-between">
+                  <Pill variant="accent">
+                    {pData.category || 'Guide'}
+                  </Pill>
+                  <time datetime={pubDate.toISOString()} class="text-xs text-muted font-medium">
+                    {pubDate.toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    })}
+                  </time>
+                </div>
+
+                <!-- Title -->
+                <h3 class="text-xl font-bold font-title text-text group-hover:text-accent transition-colors leading-snug">
+                  <a href={`/blog/${pSlug}`} class="focus:outline-none focus:underline">
+                    {pData.title}
+                  </a>
+                </h3>
+
+                <!-- Excerpt -->
+                <p class="text-sm text-muted leading-relaxed line-clamp-3">
+                  {pData.description}
+                </p>
+              </div>
+
+              <!-- Author & Link -->
+              <div class="pt-6 border-t border-stroke/60 mt-6 flex items-center justify-between text-xs">
+                <span class="text-muted font-medium">By {pData.author || 'CFS Flooring Team'}</span>
+                <a
+                  href={`/blog/${pSlug}`}
+                  class="font-bold font-title text-accent group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
+                >
+                  Read Article &rarr;
+                </a>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroPage from '@/components/sections/HeroPage.astro';
+import ServicesGrid from '@/components/sections/ServicesGrid.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+import LocalBusiness from '@/components/seo/LocalBusiness.astro';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
+import { getCollection } from 'astro:content';
+
+import slide1 from '@/assets/services/slide-1.webp';
+import imgHardwood from '@/assets/services/hardwood-lvp.webp';
+import imgCarpet from '@/assets/services/carpet.webp';
+import imgSandFinish from '@/assets/services/sand-finish.webp';
+import imgTile from '@/assets/services/ceramic-tile.webp';
+import imgSheetVinyl from '@/assets/services/sheet-vinyl.webp';
+import imgVCT from '@/assets/services/vct.webp';
+import imgRemoval from '@/assets/services/flooring-removal.webp';
+import imgCounters from '@/assets/services/counters-decks.webp';
+
+const imagesMap: Record<string, any> = {
+  'hardwood-laminate-and-lvp': imgHardwood,
+  'carpet-installation': imgCarpet,
+  'sand-and-finish': imgSandFinish,
+  'ceramic-tile': imgTile,
+  'sheet-vinyl': imgSheetVinyl,
+  'vct-flooring': imgVCT,
+  'flooring-removal': imgRemoval,
+  'counters-and-decks': imgCounters,
+};
+
+const allServices = await getCollection('services');
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://cfsflooring.com' },
+  { name: 'Services', url: 'https://cfsflooring.com/our-services' },
+];
+---
+
+<BaseLayout
+  title="Our Flooring Services | CFS Flooring Lake Oswego & West Linn"
+  description="Explore comprehensive flooring installation, refinishing, tile, carpet, vinyl and removal services for residential and commercial projects."
+>
+  <LocalBusiness />
+  <BreadcrumbSchema items={breadcrumbs} />
+
+  <HeroPage
+    eyebrow="Our Services"
+    title="Flooring Solutions Built Around Your Space"
+    subtitle="Explore flooring solutions for homes and businesses with expert guidance, quality installation, and a clean finished result designed for the way your space is used every day."
+    image={slide1}
+  />
+
+  <ServicesGrid services={allServices} imagesMap={imagesMap} />
+  <CTABanner />
+</BaseLayout>

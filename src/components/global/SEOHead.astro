@@ -1,0 +1,68 @@
+---
+import { SEO } from 'astro-seo';
+import { company } from '../../data/company';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const {
+  title = `${company.name} | Premium Flooring Installation in Lake Oswego, West Linn & Vancouver`,
+  description = company.description,
+  image = '/hero-poster.webp',
+  canonical = Astro.url.href,
+  type = 'website',
+  noindex = false,
+} = Astro.props;
+
+const siteName = company.name;
+const fullImageUrl = new URL(image, Astro.site || 'https://cfsflooring.com').href;
+---
+
+<SEO
+  title={title}
+  description={description}
+  canonical={canonical}
+  noindex={noindex}
+  openGraph={{
+    basic: {
+      title,
+      type,
+      image: fullImageUrl,
+      url: canonical,
+    },
+    optional: {
+      siteName,
+      description,
+      locale: 'en_US',
+    },
+    image: {
+      alt: title,
+      type: 'image/webp',
+      width: 1200,
+      height: 630,
+    },
+  }}
+  twitter={{
+    card: 'summary_large_image',
+    site: '@cfsflooring',
+    title,
+    description,
+    image: fullImageUrl,
+    imageAlt: title,
+  }}
+/>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Preconnects -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

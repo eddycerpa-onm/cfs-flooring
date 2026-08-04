@@ -1,0 +1,73 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
+import LocalBusiness from '@/components/seo/LocalBusiness.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://cfsflooring.com' },
+  { name: 'Blog', url: 'https://cfsflooring.com/blog' },
+];
+---
+
+<BaseLayout
+  title="Flooring Blog & Guides | CFS Flooring Lake Oswego"
+  description="Read expert articles on hardwood, LVP, carpet, tile installation, and floor refinishing in Lake Oswego, West Linn, Wilsonville, and Vancouver."
+>
+  <LocalBusiness />
+  <BreadcrumbSchema items={breadcrumbs} />
+
+  <section class="py-16 bg-gradient-to-b from-[var(--bg)] to-[var(--panel)] border-b border-[var(--stroke)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        kicker="Blog & Guides"
+        title="Flooring Insights for Homeowners & Commercial Clients"
+        subtitle="Learn how to choose, install, and care for hardwood, LVP, carpet, and tile floors in the Portland metro area."
+        centered={true}
+        class="mb-14"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <article class="flex flex-col justify-between p-8 rounded-3xl bg-[var(--bg)] border border-[var(--stroke)] shadow-md hover:shadow-xl transition-all group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full bg-[var(--panel)] border border-[var(--stroke)] text-xs font-bold text-[var(--accent)]">
+                  {post.data.category}
+                </span>
+                <span class="text-xs text-[var(--muted)]">
+                  {new Date(post.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
+              </div>
+
+              <h2 class="text-2xl font-bold font-[var(--font-title)] text-[var(--text)] group-hover:text-[var(--accent)] transition-colors mb-3">
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h2>
+
+              <p class="text-base text-[var(--muted)] line-clamp-3 leading-relaxed mb-6 font-[var(--font-body)]">
+                {post.data.description}
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-[var(--stroke)] flex items-center justify-between text-sm">
+              <span class="text-xs font-bold text-[var(--muted)]">By {post.data.author}</span>
+              <a href={`/blog/${post.slug}`} class="font-extrabold text-[var(--accent)] hover:underline flex items-center gap-1">
+                <span>Read guide</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</BaseLayout>

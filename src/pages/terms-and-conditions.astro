@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
+import { company } from '@/data/company';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://cfsflooring.com' },
+  { name: 'Terms & Conditions', url: 'https://cfsflooring.com/terms-and-conditions' },
+];
+---
+
+<BaseLayout
+  title="Terms & Conditions | CFS Flooring LLC"
+  description="Terms and Conditions for CFS Flooring LLC website and flooring installation services."
+>
+  <BreadcrumbSchema items={breadcrumbs} />
+
+  <section class="py-16 bg-[var(--bg)] border-b border-[var(--stroke)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        kicker="Legal"
+        title="Terms & Conditions"
+        subtitle="Last updated: January 2026"
+        class="mb-10"
+      />
+
+      <div class="prose prose-lg max-w-none text-[var(--muted)] leading-relaxed flex flex-col gap-6 font-[var(--font-body)]">
+        <p>
+          Welcome to CFS Flooring LLC. By accessing this website (cfsflooring.com) or requesting an estimate for our flooring services, you agree to comply with and be bound by the following terms and conditions.
+        </p>
+
+        <h3 class="text-xl font-bold font-[var(--font-title)] text-[var(--text)] mt-4">Estimates & Quotes</h3>
+        <p>
+          All estimates provided through our website form or on-site consultations are valid for 30 days unless specified otherwise in writing. Material prices and labor scope are detailed in formal project contracts prior to work commencement.
+        </p>
+
+        <h3 class="text-xl font-bold font-[var(--font-title)] text-[var(--text)] mt-4">Licensing & Insurance</h3>
+        <p>
+          CFS Flooring LLC is fully licensed and bonded in Oregon ({company.licenses.oregonCCB}) and Washington state ({company.licenses.washingtonLic}). All installation work is performed according to industry standard guidelines.
+        </p>
+
+        <h3 class="text-xl font-bold font-[var(--font-title)] text-[var(--text)] mt-4">Contact Information</h3>
+        <p>
+          For any questions regarding these Terms & Conditions, please contact us at {company.phone}.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

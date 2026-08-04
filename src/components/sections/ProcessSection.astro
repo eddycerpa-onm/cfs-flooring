@@ -1,0 +1,68 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Consultation & Material Guidance',
+    desc: 'We start by understanding your space, goals, budget, and timeline. Then we help you choose the right flooring option, whether that means hardwood, laminate, LVP, carpet, tile, or sheet vinyl.',
+  },
+  {
+    num: '02',
+    title: 'Honest Quote & Clear Plan',
+    desc: 'You get a straightforward quote and realistic expectations before work begins. We explain what makes sense for your project, including when a simpler option is the smarter investment.',
+  },
+  {
+    num: '03',
+    title: 'Installation, Sanding, or Removal',
+    desc: 'Once approved, we complete the work with attention to labor quality and clean execution. That includes new flooring installation, hardwood sand and finish, tile work, or flooring removal.',
+  },
+  {
+    num: '04',
+    title: 'Final Walkthrough & Local Support',
+    desc: 'We finish with a walkthrough to make sure the details are right and the result matches the plan. CFS Flooring proudly serves Lake Oswego, West Linn, and Wilsonville with responsive, local service.',
+  },
+];
+---
+
+<section id="process" class="pt-[92px] pb-[180px] bg-[var(--bg)] border-b border-[var(--stroke)]">
+  <div class="max-w-base mx-auto px-6">
+    
+    <div class="max-w-proc mb-[58px]">
+      <div class="flex items-center gap-2 text-[var(--accent)] font-black text-xs uppercase tracking-widest mb-3 font-[var(--font-title)]">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
+        </svg>
+        <span>Our Process</span>
+      </div>
+      <h2 class="text-h2-proc font-black font-[var(--font-title)] text-[var(--text)] mb-[25px]">
+        A straightforward flooring process for Lake Oswego, West Linn, Wilsonville and Vancouver.
+      </h2>
+      <p class="max-w-[820px] text-[18px] text-[var(--muted)] leading-[32.4px] font-[var(--font-body)] m-0">
+        From the first consultation to the final walkthrough, CFS Flooring keeps the process personal, honest, and focused on the right solution for your home or business.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {steps.map((step) => (
+        <div class="relative p-8 rounded-2xl bg-[var(--bg)] border border-[var(--stroke)] shadow-md flex flex-col gap-4 text-center items-center">
+          <div class="relative w-20 h-20 rounded-2xl bg-[var(--panel)] border border-[var(--stroke)] flex items-center justify-center text-[var(--accent)] mb-2">
+            <span class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-[var(--accent-2)] text-[var(--dark-bg)] font-black text-xs flex items-center justify-center shadow-md border-2 border-[var(--bg)]">
+              {step.num}
+            </span>
+            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+
+          <h3 class="text-xl font-bold font-[var(--font-title)] text-[var(--text)]">
+            {step.title}
+          </h3>
+
+          <p class="text-sm text-[var(--muted)] leading-relaxed font-[var(--font-body)]">
+            {step.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

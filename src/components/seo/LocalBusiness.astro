@@ -1,0 +1,57 @@
+---
+import { company } from '../../data/company';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  '@id': 'https://cfsflooring.com/#localbusiness',
+  name: company.name,
+  legalName: company.legalName,
+  url: 'https://cfsflooring.com',
+  logo: 'https://cfsflooring.com/hero-poster.webp',
+  image: 'https://cfsflooring.com/hero-poster.webp',
+  telephone: company.phoneRaw,
+  email: company.email,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: company.address.street,
+    addressLocality: company.address.city,
+    addressRegion: company.address.state,
+    postalCode: company.address.zip,
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 45.4124,
+    longitude: -122.7234,
+  },
+  areaServed: company.serviceAreas.map((area) => ({
+    '@type': 'City',
+    name: `${area.city}, ${area.state}`,
+  })),
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday'],
+      opens: '08:00',
+      closes: '14:00',
+    },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: company.stats.fiveStarReviews.toString(),
+    bestRating: '5',
+    worstRating: '1',
+  },
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />

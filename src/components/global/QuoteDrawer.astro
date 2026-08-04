@@ -1,0 +1,224 @@
+---
+import { company } from '../../data/company';
+import { navigationData } from '../../data/navigation';
+import Button from '../ui/Button.astro';
+
+const services = navigationData.servicesNav;
+---
+
+<div
+  x-data="{ open: false, submitted: false, loading: false, service: '' }"
+  @open-drawer.window="open = true"
+  @keydown.escape.window="open = false"
+  class="relative z-50"
+>
+  <!-- Backdrop -->
+  <div
+    x-show="open"
+    x-transition:enter="transition-opacity ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition-opacity ease-in duration-200"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 bg-dark-bg/60 backdrop-blur-xs"
+    @click="open = false"
+    x-cloak
+  ></div>
+
+  <!-- Drawer Slide-over Panel -->
+  <div
+    x-show="open"
+    x-transition:enter="transition ease-out duration-300 transform"
+    x-transition:enter-start="translate-x-full"
+    x-transition:enter-end="translate-x-0"
+    x-transition:leave="transition ease-in duration-200 transform"
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="translate-x-full"
+    class="fixed inset-y-0 right-0 w-full max-w-lg bg-white shadow-2xl flex flex-col justify-between overflow-y-auto"
+    x-cloak
+  >
+    <!-- Drawer Header -->
+    <div class="p-6 bg-dark-bg text-white border-b border-white/10 flex items-start justify-between">
+      <div>
+        <div class="text-xs font-bold text-accent-2 uppercase tracking-wider font-title mb-1">
+          Instant Free Estimate
+        </div>
+        <h2 class="text-2xl font-black font-title tracking-tight text-white">
+          Request Your Quote
+        </h2>
+        <p class="text-xs text-white/70 mt-1">
+          Direct consultation for Lake Oswego, West Linn, Wilsonville & Vancouver.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        @click="open = false"
+        class="p-2 rounded-xl text-white/70 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
+        aria-label="Close quote drawer"
+      >
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer Body / Form -->
+    <div class="p-6 flex-1 overflow-y-auto space-y-6">
+      
+      <!-- Direct Call Banner inside Drawer -->
+      <div class="p-4 rounded-2xl bg-panel border border-stroke flex items-center justify-between">
+        <div>
+          <div class="text-xs text-muted font-medium">Prefer to speak right now?</div>
+          <a href={`tel:${company.phoneRaw}`} class="text-base font-bold font-title text-accent hover:underline">
+            Call {company.phone}
+          </a>
+        </div>
+        <span class="px-2.5 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold font-title">
+          Mon-Fri 7-6
+        </span>
+      </div>
+
+      <!-- Success message -->
+      <div
+        x-show="submitted"
+        class="p-6 rounded-2xl bg-accent/10 border border-accent text-text space-y-3 text-center"
+        x-cloak
+      >
+        <div class="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center mx-auto text-xl font-bold">
+          ✓
+        </div>
+        <h3 class="text-xl font-bold font-title text-accent">Thank You!</h3>
+        <p class="text-sm text-muted">
+          Your quotation request has been successfully submitted. Jose or a team specialist will contact you within 24 hours.
+        </p>
+        <Button variant="outline" size="sm" @click="submitted = false; open = false">
+          Close Window
+        </Button>
+      </div>
+
+      <!-- Quotation Form -->
+      <form
+        x-show="!submitted"
+        @submit.prevent="loading = true; setTimeout(() => { loading = false; submitted = true; }, 800)"
+        class="space-y-4 font-body"
+      >
+        <div>
+          <label for="drawer-name" class="block text-xs font-bold text-text mb-1 uppercase tracking-wider font-title">
+            Full Name <span class="text-accent">*</span>
+          </label>
+          <input
+            type="text"
+            id="drawer-name"
+            name="name"
+            required
+            placeholder="e.g. Sarah Jenkins"
+            class="w-full px-4 py-3 rounded-xl border border-stroke bg-white text-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="drawer-phone" class="block text-xs font-bold text-text mb-1 uppercase tracking-wider font-title">
+              Phone Number <span class="text-accent">*</span>
+            </label>
+            <input
+              type="tel"
+              id="drawer-phone"
+              name="phone"
+              required
+              placeholder="(503) 555-0199"
+              class="w-full px-4 py-3 rounded-xl border border-stroke bg-white text-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm"
+            />
+          </div>
+
+          <div>
+            <label for="drawer-email" class="block text-xs font-bold text-text mb-1 uppercase tracking-wider font-title">
+              Email Address <span class="text-accent">*</span>
+            </label>
+            <input
+              type="email"
+              id="drawer-email"
+              name="email"
+              required
+              placeholder="sarah@example.com"
+              class="w-full px-4 py-3 rounded-xl border border-stroke bg-white text-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="drawer-service" class="block text-xs font-bold text-text mb-1 uppercase tracking-wider font-title">
+              Flooring Service <span class="text-accent">*</span>
+            </label>
+            <select
+              id="drawer-service"
+              name="service"
+              x-model="service"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-stroke bg-white text-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm"
+            >
+              <option value="" disabled selected>Select a service...</option>
+              {
+                services.map((s) => (
+                  <option value={s.slug}>{s.title}</option>
+                ))
+              }
+            </select>
+          </div>
+
+          <div>
+            <label for="drawer-zip" class="block text-xs font-bold text-text mb-1 uppercase tracking-wider font-title">
+              City / Zip Code <span class="text-accent">*</span>
+            </label>
+            <input
+              type="text"
+              id="drawer-zip"
+              name="cityZip"
+              required
+              placeholder="Lake Oswego, 97035"
+              class="w-full px-4 py-3 rounded-xl border border-stroke bg-white text-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="drawer-details" class="block text-xs font-bold text-text mb-1 uppercase tracking-wider font-title">
+            Project Details & Sq Ft (Optional)
+          </label>
+          <textarea
+            id="drawer-details"
+            name="details"
+            rows="3"
+            placeholder="Tell us about your room sizes, timeline, or special requirements..."
+            class="w-full px-4 py-3 rounded-xl border border-stroke bg-white text-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-sm resize-none"
+          ></textarea>
+        </div>
+
+        <div class="pt-2">
+          <Button
+            type="submit"
+            variant="accent"
+            size="lg"
+            class="w-full"
+            ::disabled="loading"
+          >
+            <span x-show="!loading">Submit Quote Request &rarr;</span>
+            <span x-show="loading" x-cloak>Processing...</span>
+          </Button>
+        </div>
+
+        <p class="text-xs text-center text-muted pt-1">
+          We respect your privacy. Zero spam guarantee.
+        </p>
+      </form>
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="p-4 bg-panel border-t border-stroke text-center text-xs text-muted">
+      CFS Flooring &bull; Serving Lake Oswego, West Linn, Wilsonville & Vancouver WA
+    </div>
+  </div>
+</div>
