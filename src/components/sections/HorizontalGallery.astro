@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+import img1 from '@/assets/gallery/gallery-1.webp';
+import img2 from '@/assets/gallery/gallery-2.webp';
+import img3 from '@/assets/gallery/gallery-3.webp';
+import img4 from '@/assets/gallery/gallery-4.webp';
+import img5 from '@/assets/gallery/gallery-5.webp';
+import img6 from '@/assets/gallery/gallery-6.webp';
+
+const gallery = [
+  { img: img1, alt: 'Flooring work preview 1' },
+  { img: img2, alt: 'Flooring work preview 2' },
+  { img: img3, alt: 'Flooring work preview 3' },
+  { img: img4, alt: 'Flooring work preview 4' },
+  { img: img5, alt: 'Flooring work preview 5' },
+  { img: img6, alt: 'Flooring work preview 6' },
+];
+---
+
+<div class="dest-scroll-wrapper relative w-full overflow-hidden">
+  <div class="dest-scroll-section sticky top-0 h-screen w-full overflow-hidden bg-bg">
+    <div class="dest-scroll-track flex flex-nowrap items-start will-change-transform">
+      {gallery.map((item) => (
+        <div class="dest-card relative shrink-0 w-[clamp(520px,56vw,760px)] aspect-square overflow-hidden">
+          <Image src={item.img} alt={item.alt} class="w-full h-full object-cover block" width={760} height={760} />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+.dest-scroll-wrapper {
+  height: 150vh;
+}
+</style>
+
+<script>
+  function initDestSlider() {
+    const wrappers = document.querySelectorAll('.dest-scroll-wrapper');
+    wrappers.forEach((wrapper) => {
+      const track = wrapper.querySelector('.dest-scroll-track') as HTMLElement;
+      if (!track) return;
+
+      let currentX = 0;
+      let targetX = 0;
+      let rafId: number | null = null;
+
+      function getProgress() {
+        const rect = wrapper.getBoundingClientRect();
+        const maxScroll = Math.max((wrapper as HTMLElement).offsetHeight - window.innerHeight, 1);
+        const scrollY = Math.min(Math.max(-rect.top, 0), maxScroll);
+        return scrollY / maxScroll;
+      }
+
+      function getMaxTranslateX() {
+        return Math.max(track.scrollWidth - window.innerWidth, 0);
+      }
+
+      function animate() {
+        currentX += (targetX - currentX) * 0.12;
+
+        if (Math.abs(targetX - currentX) < 0.08) {
+          currentX = targetX;
+        }
+
+        track.style.transform = `translate3d(${-currentX}px, 0, 0)`;
+
+        if (currentX !== targetX) {
+          rafId = requestAnimationFrame(animate);
+        } else {
+          rafId = null;
+        }
+      }
+
+      function updateTarget() {
+        targetX = getProgress() * getMaxTranslateX();
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(animate);
+        }
+      }
+
+      function refresh() {
+        targetX = getProgress() * getMaxTranslateX();
+        currentX = targetX;
+        track.style.transform = `translate3d(${-currentX}px, 0, 0)`;
+      }
+
+      window.addEventListener('scroll', updateTarget, { passive: true });
+      window.addEventListener('resize', refresh);
+      refresh();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDestSlider);
+  } else {
+    initDestSlider();
+  }
+</script>

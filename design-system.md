@@ -24,3 +24,4 @@
 ## Rule Enforcement
 - Strictly ZERO arbitrary Tailwind values (no `w-[350px]` or `bg-[#b07f49]`).
 - Use default classes (`w-full`, `max-w-7xl`, `p-6`) and design system CSS variables for project tokens.
+- **Tailwind Directives Standard**: Todo CSS personalizado debe organizarse usando la directiva adecuada: `@utility`, `@variant`, `@source`, `@plugin`, `@apply`, `@layer`, `@theme`. Queda prohibido escribir CSS libre sin estructurar.

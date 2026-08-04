@@ -1,13 +1,69 @@
-@import "tailwindcss";
+/* Direct Local Fonts in public/fonts/ */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/lexend-deca-latin-400-normal.woff2') format('woff2');
+}
 
-@import "@fontsource/lexend-deca/400.css";
-@import "@fontsource/lexend-deca/700.css";
-@import "@fontsource/lexend-deca/800.css";
-@import "@fontsource/lexend-deca/900.css";
-@import "@fontsource/dm-sans/400.css";
-@import "@fontsource/dm-sans/500.css";
-@import "@fontsource/dm-sans/700.css";
-@import "@fontsource/dm-sans/800.css";
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/lexend-deca-latin-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/lexend-deca-latin-800-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/lexend-deca-latin-900-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-500-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-800-normal.woff2') format('woff2');
+}
+
+@import "tailwindcss";
 
 @theme {
   --color-bg: #ffffff;
@@ -19,18 +75,108 @@
   --color-accent-2: #f7d133;
   --color-dark-bg: #221416;
   
+  --font-sans: "DM Sans", sans-serif;
   --font-title: "Lexend Deca", sans-serif;
   --font-body: "DM Sans", sans-serif;
 
-  /* Resoluciones de Contenedor Exactas */
+  /* Resoluciones de Contenedor y Anchos Exactos */
   --width-hero: 1380px;
   --width-base: 1280px;
   --width-proc: 980px;
+  --width-cta-content: 842px;
+  --width-cta-desc: 676px;
+  --width-hero-copy: 662px;
+  --width-hero-desc: 620px;
+  --width-hero-video: 620px;
+  --width-dropdown: 300px;
 
-  /* Tipografía Exacta H1 */
+  /* Alturas Exactas */
+  --height-header: 118px;
+  --height-logo: 82px;
+  --height-hero-video: 620px;
+  --height-hero-min: 860px;
+  --height-testimonial-card: 240px;
+
+  /* Radios de Borde Exactos */
+  --radius-nav: 14px;
+  --radius-dropdown: 18px;
+  --radius-overlap: 16px;
+  --radius-hero-video: 28px;
+
+  /* Espaciados y Paddings Exactos */
+  --spacing-header-px: 22px;
+  --spacing-header-py: 18px;
+  --spacing-header-gap: 10px;
+  --spacing-nav-px: 18px;
+  --spacing-nav-pt: 14px;
+  --spacing-nav-pb: 18px;
+  --spacing-hero-pt: 110px;
+  --spacing-hero-pb: 84px;
+  --spacing-hero-px: 28px;
+  --spacing-hero-video-right: 28px;
+  --spacing-eyebrow-px: 14px;
+  --spacing-eyebrow-py: 8px;
+  --spacing-overlap-px: 14px;
+  --spacing-overlap-pt: 10px;
+  --spacing-overlap-pb: 12px;
+  --spacing-chip-px: 12px;
+  --spacing-chip-py: 8px;
+  --spacing-cta-py: 160px;
+  --spacing-cta-title-mb: 12px;
+  --spacing-cta-desc-mb: 18px;
+  --spacing-proc-head-mb: 58px;
+
+  /* Letter Spacing Exacto */
+  --tracking-nav: -0.16px;
+  --tracking-eyebrow: 1.68px;
+  --tracking-hero-desc: -0.4px;
+  --tracking-overlap: -1.6px;
+
+  --width-services-title: 1043px;
+  --width-services-desc: 740px;
+  --width-about-desc: 634px;
+  --width-proc-desc: 820px;
+
+  --spacing-about-pt: 96px;
+  --spacing-about-pb: 180px;
+  --spacing-about-desc-mb: 28px;
+  --spacing-services-pt: 10px;
+  --spacing-services-pb: 72px;
+  --spacing-services-title-mb: 10px;
+
+  --spacing-proc-pt: 92px;
+  --spacing-proc-pb: 180px;
+  --spacing-proc-title-mb: 25px;
+
+  --text-about-desc: 19px;
+  --text-about-desc--line-height: 36.1px;
+  --text-services-desc: 18px;
+  --text-services-desc--line-height: 31.5px;
+  --text-proc-desc: 18px;
+  --text-proc-desc--line-height: 32.4px;
+
+  --height-about-frame-min: 480px;
+  --height-about-frame-sm-min: 560px;
+  --height-testimonial-card: 220px;
+
+  --text-marquee: 26px;
+
+  /* Tipografía Exacta H1 y Overlap */
   --text-h1: 88px;
   --text-h1--line-height: 86.24px;
   --text-h1--letter-spacing: -1.8px;
+
+  --text-overlap: 54px;
+  --text-overlap--line-height: 54px;
+  --text-overlap--letter-spacing: -1.6px;
+
+  --text-cta-desc: 19px;
+  --text-cta-desc--line-height: 32.3px;
+
+  --text-hero-desc: 16px;
+  --text-hero-desc--line-height: 27.2px;
+
+  --text-chip: 13px;
 
   /* Tipografía Exacta H2 About */
   --text-h2-about: 50px;
@@ -55,6 +201,187 @@
   --shadow-custom: 0 18px 45px rgba(34, 20, 22, 0.12);
 }
 
+/* Header Sticky con Sombra y Borde exactos */
+@utility site-header-shadow {
+  box-shadow: 0 18px 45px rgba(34, 20, 22, 0.12);
+}
+
+/* Animación de subrayado en los enlaces de navegación */
+@utility nav-link-anim {
+  position: relative;
+  transition: color 0.35s ease, background-color 0.35s ease, transform 0.25s ease;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 8px;
+    height: 2px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s ease;
+  }
+  &:hover {
+    color: var(--accent);
+    background-color: var(--panel);
+    transform: translateY(-1px);
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* Variante Botón 1: Amarillo -> Negro (usado en Header "Call Us Now") */
+@utility btn-yellow-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: var(--font-body);
+  background-color: var(--accent-2);
+  color: var(--dark-bg);
+  border: 1px solid var(--accent-2);
+  transition: transform 0.25s ease, background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-2px);
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    border-color: var(--dark-bg);
+    box-shadow: 0 18px 45px rgba(34, 20, 22, 0.12);
+  }
+}
+
+/* Variante Botón 2: Amarillo -> Cafecito (#b07f49) (usado en Hero / "Get a Quote") */
+@utility btn-yellow-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: var(--font-body);
+  background-color: var(--accent-2);
+  color: var(--dark-bg);
+  border: 1px solid var(--accent-2);
+  box-shadow: 0 18px 45px rgba(34, 20, 22, 0.12);
+  transition: transform 0.25s ease, background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-1px);
+    background-color: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+  }
+}
+
+/* Contenedor Hero 1380px y Wrapper */
+@utility cfs-base-container {
+  max-width: 1380px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 28px;
+  padding-right: 28px;
+  position: relative;
+  z-index: 10;
+}
+
+@utility cfs-banner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  min-height: 620px;
+}
+
+/* Columna Izquierda Copy (Exactamente 662px de ancho) */
+@utility cfs-banner-left {
+  width: 662px;
+  flex-shrink: 0;
+  padding-right: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Marco de Video Derecho (Posición Absoluta a la Derecha del Contenedor Base) */
+@utility cfs-media-frame {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 620px;
+  height: 620px;
+  flex-shrink: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  background-color: var(--panel);
+  box-shadow: 0 18px 45px rgba(34, 20, 22, 0.12);
+  z-index: 10;
+}
+
+/* H1 Titulo 88px */
+@utility cfs-hero-h1 {
+  width: 638px;
+  font-size: 88px;
+  line-height: 86.24px;
+  letter-spacing: -1.8px;
+  font-weight: 800;
+  font-family: var(--font-title);
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+/* Overlap Text 54px */
+@utility cfs-overlap-text-h1 {
+  display: block;
+  width: 638px;
+  font-size: 54px;
+  line-height: 54px;
+  letter-spacing: -1.6px;
+  font-weight: 900;
+  color: #ffffff;
+  background-color: var(--dark-bg);
+  padding: 10px 14px 12px;
+  border-radius: 16px;
+  margin-top: 14px;
+  box-shadow: 0 18px 45px rgba(34, 20, 22, 0.12);
+  font-family: var(--font-title);
+  box-sizing: border-box;
+}
+
+/* Botones Redes Sociales Header Hover */
+@utility social-link-header {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px solid var(--stroke);
+  background-color: var(--panel);
+  color: var(--text);
+  transition: transform 0.25s ease, background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  &:hover {
+    transform: translateY(-2px);
+    background-color: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+    box-shadow: 0 18px 45px rgba(34, 20, 22, 0.12);
+  }
+}
+
 :root {
   --bg: #ffffff;
   --panel: #f9f6f2;
@@ -67,6 +394,18 @@
   --shadow: 0 18px 45px rgba(34, 20, 22, 0.12);
   --font-title: "Lexend Deca", sans-serif;
   --font-body: "DM Sans", sans-serif;
+
+  /* Medidas de Layout y Componentes */
+  --width-cta-content: 842px;
+  --width-hero-copy: 662px;
+  --height-header: 118px;
+  --height-logo: 82px;
+  --height-testimonial-card: 240px;
+  --spacing-header-px: 22px;
+  --spacing-header-py: 18px;
+  --spacing-header-gap: 10px;
+  --spacing-hero-px: 28px;
+  --spacing-proc-head-mb: 58px;
 }
 
 html, body {
@@ -86,3 +425,4 @@ h1, h2, h3, h4, h5, h6 {
 [x-cloak] {
   display: none !important;
 }
+

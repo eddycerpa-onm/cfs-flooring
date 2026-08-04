@@ -18,33 +18,33 @@ const { services, imagesMap } = Astro.props;
 const sortedServices = [...services].sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section id="services" class="pt-[10px] pb-[72px] bg-[var(--bg)] border-b border-[var(--stroke)]">
+<section id="services" class="pt-services-pt pb-services-pb bg-bg border-b border-stroke">
   <div class="max-w-base mx-auto px-6">
     
     <!-- Section Header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
       <div class="max-w-3xl">
-        <div class="flex items-center gap-2 text-[var(--accent)] font-black text-xs uppercase tracking-widest mb-3 font-[var(--font-title)]">
+        <div class="flex items-center gap-2 text-accent font-black text-xs uppercase tracking-widest mb-3 font-title">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
             <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
           </svg>
           <span>Services</span>
         </div>
 
-        <h2 class="max-w-[1043px] text-h2-service font-black font-[var(--font-title)] text-[var(--text)] mb-[10px]">
+        <h2 class="max-w-services-title text-h2-service font-black font-title text-text mb-services-title-mb">
           Flooring services built for homes, businesses, and long-term value.
         </h2>
 
-        <p class="max-w-[740px] text-[18px] text-[var(--muted)] leading-[31.5px] font-[var(--font-body)] m-0">
+        <p class="max-w-services-desc text-services-desc text-muted font-body m-0">
           CFS Flooring provides professional flooring installation, restoration, and replacement services with a quality-first approach across Lake Oswego, West Linn, Wilsonville and Vancouver.
         </p>
       </div>
 
-      <div class="flex-shrink-0">
+      <div class="shrink-0">
         <button
           type="button"
           @click="$dispatch('open-drawer')"
-          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[var(--accent-2)] text-[var(--dark-bg)] font-extrabold text-base border border-[var(--accent-2)] shadow-md hover:bg-[var(--accent)] hover:border-[var(--accent)] hover:text-white transition-all cursor-pointer"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-accent-2 text-dark-bg font-extrabold text-base border border-accent-2 shadow-md hover:bg-accent hover:border-accent hover:text-white transition-all cursor-pointer"
         >
           <span>Get a Quote</span>
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

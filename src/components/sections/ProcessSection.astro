@@ -23,29 +23,29 @@ const steps = [
 ];
 ---
 
-<section id="process" class="pt-[92px] pb-[180px] bg-[var(--bg)] border-b border-[var(--stroke)]">
-  <div class="max-w-base mx-auto px-6">
+<section id="process" class="pt-proc-pt pb-proc-pb bg-bg border-b border-stroke">
+  <div class="cfs-base-container">
     
-    <div class="max-w-proc mb-[58px]">
-      <div class="flex items-center gap-2 text-[var(--accent)] font-black text-xs uppercase tracking-widest mb-3 font-[var(--font-title)]">
+    <div class="max-w-proc mb-8">
+      <div class="flex items-center gap-2 text-accent font-black text-xs uppercase tracking-widest mb-3 font-title">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
           <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
         </svg>
         <span>Our Process</span>
       </div>
-      <h2 class="text-h2-proc font-black font-[var(--font-title)] text-[var(--text)] mb-[25px]">
+      <h2 class="text-h2-proc font-black font-title text-text mb-proc-title-mb">
         A straightforward flooring process for Lake Oswego, West Linn, Wilsonville and Vancouver.
       </h2>
-      <p class="max-w-[820px] text-[18px] text-[var(--muted)] leading-[32.4px] font-[var(--font-body)] m-0">
+      <p class="max-w-proc-desc text-proc-desc text-muted font-body m-0">
         From the first consultation to the final walkthrough, CFS Flooring keeps the process personal, honest, and focused on the right solution for your home or business.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {steps.map((step) => (
-        <div class="relative p-8 rounded-2xl bg-[var(--bg)] border border-[var(--stroke)] shadow-md flex flex-col gap-4 text-center items-center">
-          <div class="relative w-20 h-20 rounded-2xl bg-[var(--panel)] border border-[var(--stroke)] flex items-center justify-center text-[var(--accent)] mb-2">
-            <span class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-[var(--accent-2)] text-[var(--dark-bg)] font-black text-xs flex items-center justify-center shadow-md border-2 border-[var(--bg)]">
+        <div class="relative p-8 rounded-2xl bg-bg border border-stroke shadow-md flex flex-col gap-4 text-center items-center">
+          <div class="relative w-20 h-20 rounded-2xl bg-panel border border-stroke flex items-center justify-center text-accent mb-2">
+            <span class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-accent-2 text-dark-bg font-black text-xs flex items-center justify-center shadow-md border-2 border-bg">
               {step.num}
             </span>
             <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -53,11 +53,11 @@ const steps = [
             </svg>
           </div>
 
-          <h3 class="text-xl font-bold font-[var(--font-title)] text-[var(--text)]">
+          <h3 class="text-xl font-bold font-title text-text">
             {step.title}
           </h3>
 
-          <p class="text-sm text-[var(--muted)] leading-relaxed font-[var(--font-body)]">
+          <p class="text-sm text-muted leading-relaxed font-body">
             {step.desc}
           </p>
         </div>

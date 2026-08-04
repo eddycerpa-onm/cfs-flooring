@@ -1,0 +1,75 @@
+---
+const marqueeItems = [
+	'Hardwood, Laminate & LVP',
+	'Carpet Installation',
+	'Sand & Finish',
+	'Ceramic Tile',
+	'Sheet Vinyl',
+	'VCT Flooring',
+	'Flooring Removal',
+	'Residential & Commercial Flooring',
+];
+---
+
+<div
+	class='w-full bg-dark-bg border-y border-stroke flex items-center overflow-hidden select-none text-accent-2 hover:text-text hover:bg-accent-2 transition-colors duration-300'>
+	<div class='inline-flex w-max flex-nowrap animate-marquee gap-12 h-22.75'>
+		<!-- Loop 1 -->
+		<div class='flex items-center gap-12 shrink-0'>
+			{
+				marqueeItems.map((item) => (
+					<a
+						href='#services'
+						class='flex items-center gap-4 text-marquee font-black font-title  tracking-wide hover:opacity-90 transition-opacity whitespace-nowrap '>
+						<span>{item}</span>
+						<svg
+							class='w-4.5 h-4.5 text-innherit shrink-0'
+							fill='currentColor'
+							viewBox='0 0 16 16'
+							aria-hidden='true'>
+							<path d='M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334' />
+						</svg>
+					</a>
+				))
+			}
+		</div>
+
+		<!-- Loop 2 -->
+		<div
+			class='flex items-center gap-12 shrink-0'
+			aria-hidden='true'>
+			{
+				marqueeItems.map((item) => (
+					<a
+						href='#services'
+						class='flex items-center gap-4 text-marquee font-black font-title text-accent-2 tracking-wide hover:opacity-90 transition-opacity whitespace-nowrap'>
+						<span>{item}</span>
+						<svg
+							class='w-4.5 h-4.5 text-accent-2 shrink-0'
+							fill='currentColor'
+							viewBox='0 0 16 16'>
+							<path d='M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334' />
+						</svg>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</div>
+
+<style>
+	@keyframes marquee {
+		0% {
+			transform: translateX(0%);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+	.animate-marquee {
+		animation: marquee 35s linear infinite;
+	}
+	.animate-marquee:hover {
+		animation-play-state: paused;
+	}
+</style>

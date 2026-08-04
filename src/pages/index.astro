@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import HeroHome from '@/components/sections/HeroHome.astro';
-import ServicesMarquee from '@/components/sections/ServicesMarquee.astro';
+import Marquee from '@/components/sections/Marquee.astro';
+import HorizontalGallery from '@/components/sections/HorizontalGallery.astro';
 import AboutSection from '@/components/sections/AboutSection.astro';
 import ServicesGrid from '@/components/sections/ServicesGrid.astro';
 import ProcessSection from '@/components/sections/ProcessSection.astro';
@@ -21,32 +22,38 @@ import imgRemoval from '@/assets/services/flooring-removal.webp';
 import imgCounters from '@/assets/services/counters-decks.webp';
 
 const imagesMap: Record<string, any> = {
-  'hardwood-laminate-and-lvp': imgHardwood,
-  'carpet-installation': imgCarpet,
-  'sand-and-finish': imgSandFinish,
-  'ceramic-tile': imgTile,
-  'sheet-vinyl': imgSheetVinyl,
-  'vct-flooring': imgVCT,
-  'flooring-removal': imgRemoval,
-  'counters-and-decks': imgCounters,
+	'hardwood-laminate-and-lvp': imgHardwood,
+	'carpet-installation': imgCarpet,
+	'sand-and-finish': imgSandFinish,
+	'ceramic-tile': imgTile,
+	'sheet-vinyl': imgSheetVinyl,
+	'vct-flooring': imgVCT,
+	'flooring-removal': imgRemoval,
+	'counters-and-decks': imgCounters,
 };
 
 const allServices = await getCollection('services');
 const allBlogPosts = await getCollection('blog');
-const recentPosts = allBlogPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
+const recentPosts = allBlogPosts
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 ---
 
 <BaseLayout
-  title="CFS Flooring | Professional Flooring Installation in Lake Oswego & West Linn"
-  description="Over 10 years of experience in hardwood, LVP, carpet, ceramic tile, sand & finish, and flooring removal in Lake Oswego, West Linn, Wilsonville & Vancouver."
->
-  <LocalBusiness />
-  <HeroHome />
-  <ServicesMarquee />
-  <AboutSection />
-  <ServicesGrid services={allServices} imagesMap={imagesMap} />
-  <ProcessSection />
-  <Testimonials />
-  <CTABanner />
-  {recentPosts.length > 0 && <BlogPreview posts={recentPosts} />}
+	title='CFS Flooring | Professional Flooring Installation in Lake Oswego & West Linn'
+	description='Over 10 years of experience in hardwood, LVP, carpet, ceramic tile, sand & finish, and flooring removal in Lake Oswego, West Linn, Wilsonville & Vancouver.'>
+	<LocalBusiness />
+	<HeroHome />
+	<Marquee />
+	<AboutSection />
+	<HorizontalGallery />
+	<ServicesGrid
+		services={allServices}
+		imagesMap={imagesMap}
+	/>
+	<ProcessSection />
+	<Testimonials />
+	<CTABanner />
+	{recentPosts.length > 0 && <BlogPreview posts={recentPosts} />}
+	<Marquee />
 </BaseLayout>

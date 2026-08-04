@@ -1,23 +1,50 @@
 ---
-import { company } from '@/data/company';
 import { Image } from 'astro:assets';
+import slide1 from '@/assets/about/slide-1.webp';
+import slide2 from '@/assets/about/slide-2.webp';
+import slide3 from '@/assets/about/slide-3.webp';
 
-import slide1 from '@/assets/services/hardwood-lvp.webp';
-import slide2 from '@/assets/services/carpet.webp';
-import slide3 from '@/assets/services/sand-finish.webp';
+const slides = [
+  { img: slide1, alt: 'Modern interior with premium hardwood flooring', badge: 'Hardwood, Laminate & LVP' },
+  { img: slide2, alt: 'Clean residential flooring installation', badge: 'Carpet & Residential Installation' },
+  { img: slide3, alt: 'Detailed floor finishing and tile work', badge: 'Sand & Finish' }
+];
 ---
 
-<section id="about" class="py-[96px] pb-[180px] bg-gradient-to-b from-[var(--bg)] to-[var(--panel)] border-b border-[var(--stroke)]">
-  <div class="max-w-base mx-auto px-6">
+<section id="about" class="py-about-pt pb-about-pb bg-gradient-to-b from-bg to-panel border-b border-stroke">
+  <div class="cfs-base-container">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
-      <!-- Col 1: Media Slider Frame -->
-      <div class="lg:col-span-6 relative">
-        <div class="relative min-h-[480px] sm:min-h-[560px] rounded-3xl overflow-hidden bg-[var(--panel)] border border-[var(--stroke)] shadow-2xl">
-          <Image src={slide1} alt="Modern interior with premium hardwood flooring" class="w-full h-full object-cover" width={600} height={580} />
-          
-          <div class="absolute bottom-5 left-5 z-10 px-4 py-2.5 rounded-full bg-[var(--accent-2)] text-[var(--dark-bg)] text-sm font-black shadow-lg font-[var(--font-body)]">
-            Hardwood, Laminate & LVP
+      <!-- Col 1: Media Slider Frame with Alpine.js -->
+      <div class="lg:col-span-6 relative" x-data="{ activeSlide: 0 }">
+        <div class="relative min-h-about-frame-min sm:min-h-about-frame-sm-min rounded-3xl overflow-hidden bg-panel border border-stroke shadow-2xl">
+          {slides.map((slide, idx) => (
+            <div
+              x-show={`activeSlide === ${idx}`}
+              x-transition:enter="transition ease-out duration-500"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="absolute inset-0 w-full h-full"
+            >
+              <Image src={slide.img} alt={slide.alt} class="w-full h-full object-cover" width={600} height={580} />
+              
+              <div class="absolute bottom-5 left-5 z-10 px-4 py-2.5 rounded-full bg-accent-2 text-dark-bg text-sm font-black shadow-lg font-body">
+                {slide.badge}
+              </div>
+            </div>
+          ))}
+
+          <!-- Slider Dots Navigation -->
+          <div class="absolute bottom-5 right-5 z-20 flex items-center gap-2 bg-dark-bg/60 backdrop-blur-md px-3 py-1.5 rounded-full">
+            {slides.map((_, idx) => (
+              <button
+                type="button"
+                @click={`activeSlide = ${idx}`}
+                class="w-2.5 h-2.5 rounded-full transition-all"
+                :class={`activeSlide === ${idx} ? 'bg-accent-2 w-6' : 'bg-white/50 hover:bg-white'`}
+                aria-label={`Slide ${idx + 1}`}
+              ></button>
+            ))}
           </div>
         </div>
       </div>
@@ -25,32 +52,32 @@ import slide3 from '@/assets/services/sand-finish.webp';
       <!-- Col 2: Copy & List -->
       <div class="lg:col-span-6 flex flex-col justify-center">
         
-        <div class="flex items-center gap-2 text-[var(--accent)] font-black text-xs uppercase tracking-widest mb-4 font-[var(--font-title)]">
+        <div class="flex items-center gap-2 text-accent font-black text-xs uppercase tracking-widest mb-4 font-title">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
             <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
           </svg>
           <span>About CFS Flooring</span>
         </div>
 
-        <h2 class="text-h2-about font-black font-[var(--font-title)] text-[var(--text)] mb-6">
+        <h2 class="text-h2-about font-black font-title text-text mb-6">
           Flooring work built around quality, honesty, and the right fit for your space.
         </h2>
 
-        <p class="max-w-[634px] text-[19px] text-[var(--muted)] leading-[36.1px] font-[var(--font-body)] mb-[28px]">
+        <p class="max-w-about-desc text-about-desc text-muted font-body mb-about-desc-mb">
           CFS Flooring brings over 10 years of hands-on experience serving homes and businesses with a quality-first approach. We focus on helping clients choose the right material for their goals, timeline, and budget—whether that means hardwood, laminate, LVP, carpet, tile, sand and finish, or flooring removal.
         </p>
 
         <ul class="flex flex-col gap-4 mb-8 list-none p-0">
-          <li class="flex items-start gap-3 text-base font-bold text-[var(--text)]">
-            <span class="w-2.5 h-2.5 rounded-full bg-[var(--accent-2)] mt-2 flex-shrink-0"></span>
+          <li class="flex items-start gap-3 text-base font-bold text-text">
+            <span class="w-2.5 h-2.5 rounded-full bg-accent-2 mt-2 shrink-0"></span>
             <span>Personal guidance with honest recommendations based on your project goals</span>
           </li>
-          <li class="flex items-start gap-3 text-base font-bold text-[var(--text)]">
-            <span class="w-2.5 h-2.5 rounded-full bg-[var(--accent-2)] mt-2 flex-shrink-0"></span>
+          <li class="flex items-start gap-3 text-base font-bold text-text">
+            <span class="w-2.5 h-2.5 rounded-full bg-accent-2 mt-2 shrink-0"></span>
             <span>Residential and commercial flooring solutions with attention to labor quality</span>
           </li>
-          <li class="flex items-start gap-3 text-base font-bold text-[var(--text)]">
-            <span class="w-2.5 h-2.5 rounded-full bg-[var(--accent-2)] mt-2 flex-shrink-0"></span>
+          <li class="flex items-start gap-3 text-base font-bold text-text">
+            <span class="w-2.5 h-2.5 rounded-full bg-accent-2 mt-2 shrink-0"></span>
             <span>Trusted service in Lake Oswego, West Linn, and Wilsonville</span>
           </li>
         </ul>
@@ -58,7 +85,7 @@ import slide3 from '@/assets/services/sand-finish.webp';
         <div class="flex flex-wrap items-center gap-4">
           <a
             href="/about-us"
-            class="px-6 py-3.5 rounded-2xl border border-[var(--stroke)] bg-transparent text-[var(--text)] font-extrabold text-base hover:bg-[var(--panel)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
+            class="px-6 py-3.5 rounded-2xl border border-stroke bg-transparent text-text font-extrabold text-base hover:bg-panel hover:border-accent hover:text-accent transition-all"
           >
             Learn More
           </a>
@@ -66,7 +93,7 @@ import slide3 from '@/assets/services/sand-finish.webp';
           <button
             type="button"
             @click="$dispatch('open-drawer')"
-            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[var(--accent-2)] text-[var(--dark-bg)] font-extrabold text-base shadow-md hover:bg-[var(--accent)] hover:text-white transition-all"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-accent-2 text-dark-bg font-extrabold text-base shadow-md hover:bg-accent hover:text-white transition-all"
           >
             <span>Get a Quote</span>
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,25 +108,25 @@ import slide3 from '@/assets/services/sand-finish.webp';
 
     <!-- Stats Row Below -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-20">
-      <div class="p-8 rounded-2xl bg-[var(--bg)] border border-[var(--stroke)] shadow-md text-center">
-        <div class="text-4xl sm:text-5xl font-black font-[var(--font-title)] text-[var(--accent)]">
-          10<span class="text-[var(--accent-2)]">+</span>
+      <div class="p-8 rounded-2xl bg-bg border border-stroke shadow-md text-center">
+        <div class="text-4xl sm:text-5xl font-black font-title text-accent">
+          10<span class="text-accent-2">+</span>
         </div>
-        <div class="text-sm font-extrabold text-[var(--muted)] mt-2">Years Experience</div>
+        <div class="text-sm font-extrabold text-muted mt-2">Years Experience</div>
       </div>
 
-      <div class="p-8 rounded-2xl bg-[var(--bg)] border border-[var(--stroke)] shadow-md text-center">
-        <div class="text-4xl sm:text-5xl font-black font-[var(--font-title)] text-[var(--accent)]">
+      <div class="p-8 rounded-2xl bg-bg border border-stroke shadow-md text-center">
+        <div class="text-4xl sm:text-5xl font-black font-title text-accent">
           8
         </div>
-        <div class="text-sm font-extrabold text-[var(--muted)] mt-2">Core Flooring Services</div>
+        <div class="text-sm font-extrabold text-muted mt-2">Core Flooring Services</div>
       </div>
 
-      <div class="p-8 rounded-2xl bg-[var(--bg)] border border-[var(--stroke)] shadow-md text-center">
-        <div class="text-4xl sm:text-5xl font-black font-[var(--font-title)] text-[var(--accent)]">
+      <div class="p-8 rounded-2xl bg-bg border border-stroke shadow-md text-center">
+        <div class="text-4xl sm:text-5xl font-black font-title text-accent">
           4
         </div>
-        <div class="text-sm font-extrabold text-[var(--muted)] mt-2">Primary Service Areas</div>
+        <div class="text-sm font-extrabold text-muted mt-2">Primary Service Areas</div>
       </div>
     </div>
 
