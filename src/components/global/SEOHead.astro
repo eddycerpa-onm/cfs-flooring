@@ -63,6 +63,7 @@ const fullImageUrl = new URL(image, Astro.site || 'https://cfsflooring.com').hre
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<!-- Preconnects -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- Font Preloads to prevent Flash of Unstyled Text / Layout shifts -->
+<link rel="preload" href="/fonts/lexend-deca-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/lexend-deca-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />

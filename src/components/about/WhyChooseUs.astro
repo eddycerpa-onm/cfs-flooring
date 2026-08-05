@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import slide1 from '@/assets/about/slide-1.webp';
-import slide2 from '@/assets/about/slide-2.webp';
+import whyA from '@/assets/about/why-a.webp';
+import whyB from '@/assets/about/why-b.webp';
 
 interface Props {
   class?: string;
@@ -58,78 +58,91 @@ const serviceChips = [
 ];
 ---
 
-<section id="cfsWhyChooseUs" class:list={['py-16 lg:py-24 bg-bg border-b border-stroke relative overflow-hidden', className]} aria-label="Why Choose CFS Flooring">
-  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+<section id="why-choose-us" class:list={['why-section', className]} aria-label="Why Choose CFS Flooring">
+  <div class="why-wrap">
     
-    <!-- Main Content Grid 1:1 with Reference Image -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-      
-      <!-- Left Column: Overlapping Portrait Images Showcase (1:1 with input_file_0.png) -->
-      <div class="lg:col-span-5 relative py-4">
-        <!-- Background/Top-Right Image Card -->
-        <div class="w-[82%] ml-auto relative rounded-[28px] overflow-hidden bg-panel border border-stroke shadow-xl aspect-[3/4]">
-          <Image
-            src={slide1}
-            alt="CFS Flooring project quality craftsmanship"
-            class="w-full h-full object-cover"
-            width={500}
-            height={667}
-            loading="lazy"
-          />
-        </div>
+    <!-- Section Header -->
+    <div class="why-head">
+      <div class="why-kicker">
+        <svg class="why-hammer-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
+        </svg>
+        <span>WHY CHOOSE US</span>
+      </div>
 
-        <!-- Foreground/Bottom-Left Overlapping Image Card -->
-        <div class="w-[82%] -mt-36 lg:-mt-44 relative z-10 rounded-[28px] overflow-hidden bg-panel border border-stroke shadow-2xl aspect-[3/4]">
-          <Image
-            src={slide2}
-            alt="CFS Flooring installation and subfloor preparation"
-            class="w-full h-full object-cover"
-            width={500}
-            height={667}
-            loading="lazy"
-          />
+      <h2 class="why-title">
+        Why homeowners and businesses choose <span class="accent-text">CFS Flooring</span>
+      </h2>
+
+      <p class="why-desc">
+        CFS Flooring combines hands-on experience, honest guidance, and quality workmanship to help clients upgrade, restore, and protect their floors with confidence. From the first conversation to the final walkthrough, we focus on practical recommendations, dependable service, and results built to last.
+      </p>
+
+      <div class="why-cta">
+        <button class="btn-primary" type="button" @click="$dispatch('open-drawer')">
+          <span>Get a Quote</span>
+          <span class="btn-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+              <path d="M14 3H7a2 2 0 0 0-2 2v14l4-2 4 2 4-2 4 2V9l-7-6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Grid: 2 Columns (1fr 1.05fr) -->
+    <div class="why-grid">
+      
+      <!-- Left Column: Overlapping Original Images Stack -->
+      <div class="why-media">
+        <div class="why-stack">
+          <div class="why-img why-img-a">
+            <Image
+              src={whyA}
+              alt="CFS Flooring project quality craftsmanship"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="why-img why-img-b">
+            <Image
+              src={whyB}
+              alt="CFS Flooring installation and subfloor preparation"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
 
-      <!-- Right Column: 6 Cards + Local Solutions Sub-box (1:1 with input_file_0.png) -->
-      <div class="lg:col-span-7 flex flex-col gap-5">
-        <!-- 6 Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <!-- Right Column: 6 Cards + Local Solutions Sub-box -->
+      <div class="why-content-col">
+        <div class="why-cards">
           {highlights.map((item) => (
-            <article class="p-5 rounded-2xl bg-panel/70 border border-stroke/70 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between gap-3 mb-3">
-                  <span class="px-3 py-1 rounded-full bg-white border border-stroke/60 text-text font-bold text-xs font-body">
-                    {item.tag}
-                  </span>
-                  <div class="w-9 h-9 rounded-full bg-accent-2/20 border border-accent-2/40 text-accent flex items-center justify-center shrink-0">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" set:html={item.icon} />
-                  </div>
+            <article class="why-card">
+              <div class="why-card-top">
+                <span class="why-card-tag">{item.tag}</span>
+                <div class="why-card-icon">
+                  <svg viewBox="0 0 24 24" set:html={item.icon} />
                 </div>
-                <h3 class="text-base font-bold font-title text-text mb-2 leading-snug">
-                  {item.title}
-                </h3>
-                <p class="text-xs sm:text-sm text-muted font-body leading-relaxed">
-                  {item.desc}
-                </p>
               </div>
+              <h3 class="why-card-title">{item.title}</h3>
+              <p class="why-card-text">{item.desc}</p>
             </article>
           ))}
         </div>
 
         <!-- Local Solutions Sub-box -->
-        <div class="p-6 rounded-2xl bg-panel/70 border border-stroke/70 shadow-2xs flex flex-col gap-3">
-          <h3 class="text-lg font-bold font-title text-text">
-            Flooring solutions built around your space
-          </h3>
-          <p class="text-xs sm:text-sm text-muted font-body leading-relaxed">
+        <div class="why-local-box">
+          <h3 class="why-local-title">Flooring solutions built around your space</h3>
+          <p class="why-local-text">
             CFS Flooring provides trusted flooring installation and related services for homes and businesses in Washington and Oregon. Whether you are updating one room or planning a larger project, our team is here to guide you through the options and deliver quality results with care.
           </p>
 
-          <div class="flex flex-wrap items-center gap-2 pt-1" aria-label="Service highlights">
+          <div class="why-local-chips" aria-label="Service highlights">
             {serviceChips.map((chip) => (
-              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stroke/60 text-text font-bold text-[11px] uppercase tracking-wider font-body shadow-2xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+              <span class="why-local-chip">
+                <span class="why-chip-dot"></span>
                 {chip}
               </span>
             ))}
@@ -141,3 +154,371 @@ const serviceChips = [
 
   </div>
 </section>
+
+<style>
+  .why-section {
+    font-family: var(--font-body);
+    background: linear-gradient(180deg, var(--color-bg), var(--color-panel));
+    color: var(--color-text);
+    padding: clamp(64px, 6.4vw, 104px) 0;
+    border-bottom: 1px solid var(--color-stroke);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .why-section * {
+    box-sizing: border-box;
+  }
+
+  /* Exact 1520px max-width from reference */
+  .why-wrap {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0 22px;
+    display: grid;
+    gap: 34px;
+  }
+
+  .why-head {
+    max-width: 1280px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .why-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: var(--color-panel);
+    border: 1px solid var(--color-stroke);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    color: var(--color-accent);
+    font-family: var(--font-body);
+  }
+
+  .why-hammer-icon {
+    display: inline-grid;
+    place-items: center;
+    color: var(--color-accent);
+    width: 16px;
+    height: 16px;
+  }
+
+  .why-title {
+    margin: 0;
+    font-family: var(--font-title);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: clamp(30px, 3.6vw, 54px);
+    color: var(--color-text);
+    max-width: 20ch;
+  }
+
+  .why-title .accent-text {
+    color: var(--color-accent);
+  }
+
+  /* Exact max-width: 1020px to allow line 1 to end at upgrade, and line 2 at we focus on */
+  .why-desc {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.75;
+    font-weight: 650;
+    font-size: clamp(15px, 1.15vw, 18px);
+    max-width: 1020px;
+    font-family: var(--font-body);
+  }
+
+  .why-cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+  }
+
+  .why-section .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 16px;
+    padding: 14px 18px;
+    transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+    border: 1px solid var(--color-accent-2);
+    white-space: nowrap;
+    font-family: var(--font-body);
+    background: var(--color-accent-2);
+    color: var(--color-dark-bg);
+    box-shadow: 0 4px 12px rgba(247, 209, 51, 0.25);
+    cursor: pointer;
+  }
+
+  .why-section .btn-primary:hover {
+    transform: translateY(-1px);
+    background: var(--color-accent);
+    color: #ffffff;
+    border-color: var(--color-accent);
+  }
+
+  .why-section .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 42px;
+    align-items: stretch;
+  }
+
+  .why-media {
+    position: relative;
+    min-height: 620px;
+    display: grid;
+    align-items: stretch;
+  }
+
+  .why-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 620px;
+    isolation: isolate;
+  }
+
+  .why-img {
+    position: absolute;
+    inset: auto;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(34, 20, 22, 0.12);
+    border: 1px solid var(--color-stroke);
+    background: transparent;
+  }
+
+  .why-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.01);
+  }
+
+  .why-img-a {
+    left: 0;
+    top: 0;
+    width: 76%;
+    height: 72%;
+  }
+
+  .why-img-b {
+    right: 0;
+    bottom: 0;
+    width: 68%;
+    height: 60%;
+  }
+
+  .why-cards {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(12, 1fr);
+    align-content: start;
+  }
+
+  .why-card {
+    grid-column: span 6;
+    border-radius: 22px;
+    border: 1px solid var(--color-stroke);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+    padding: 18px 18px 16px;
+    position: relative;
+    overflow: hidden;
+    min-height: 190px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.22s ease;
+  }
+
+  .why-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-accent-2);
+  }
+
+  .why-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .why-card-tag {
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--color-stroke);
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .why-card-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--color-accent-2);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.10);
+    flex: 0 0 auto;
+    color: var(--color-accent);
+  }
+
+  .why-card-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+  }
+
+  .why-card-title {
+    margin: 6px 0 0;
+    font-family: var(--font-title);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    font-size: 16px;
+    color: var(--color-text);
+  }
+
+  .why-card-text {
+    margin: 10px 0 0;
+    color: var(--color-muted);
+    line-height: 1.78;
+    font-weight: 650;
+    font-size: 15px;
+  }
+
+  .why-local-box {
+    margin-top: 6px;
+    border-radius: 22px;
+    border: 1px solid var(--color-stroke);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+    padding: 18px;
+    display: grid;
+    gap: 10px;
+  }
+
+  .why-local-title {
+    margin: 0;
+    font-family: var(--font-title);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    font-size: 18px;
+    color: var(--color-text);
+  }
+
+  .why-local-text {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.9;
+    font-weight: 650;
+    font-size: 14px;
+  }
+
+  .why-local-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 2px;
+  }
+
+  .why-local-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--color-stroke);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--color-text);
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .why-chip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 980px) {
+    .why-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .why-media,
+    .why-stack {
+      min-height: 360px;
+    }
+
+    .why-img-a {
+      width: 78%;
+      height: 72%;
+    }
+
+    .why-img-b {
+      width: 70%;
+      height: 58%;
+    }
+
+    .why-card {
+      grid-column: span 12;
+      min-height: auto;
+    }
+
+    .why-title {
+      max-width: 18ch;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .why-wrap {
+      padding: 0 16px;
+    }
+
+    .why-cta .btn-primary {
+      width: 100%;
+    }
+
+    .why-local-chip {
+      font-size: 11px;
+    }
+
+    .why-title {
+      max-width: 100%;
+    }
+  }
+</style>
