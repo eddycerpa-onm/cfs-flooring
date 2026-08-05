@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { company } from '../../data/company';
 import Button from '../ui/Button.astro';
 import Pill from '../ui/Pill.astro';
@@ -11,7 +12,7 @@ interface Props {
   image?: any;
 }
 
-const { title, description, features = [], slug = 'hardwood-laminate-and-lvp', image } = Astro.props;
+const { title, description, features = [], image } = Astro.props;
 ---
 
 <section class="bg-dark-bg text-white py-16 lg:py-24 border-b border-white/10 relative overflow-hidden">
@@ -81,7 +82,7 @@ const { title, description, features = [], slug = 'hardwood-laminate-and-lvp', i
         <div class="p-6 rounded-3xl bg-white/5 border border-white/10 shadow-2xl backdrop-blur-md space-y-6">
           {image && (
             <div class="rounded-2xl overflow-hidden mb-4 border border-white/10">
-              <img src={typeof image === 'string' ? image : image.src} alt={title} class="w-full h-48 object-cover" />
+              <Image src={image} alt={title} width={600} height={400} class="w-full h-48 object-cover" />
             </div>
           )}
           <div class="space-y-2 border-b border-white/10 pb-4">

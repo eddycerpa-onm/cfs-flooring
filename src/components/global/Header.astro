@@ -1,14 +1,16 @@
 ---
+import { Image } from 'astro:assets';
 import { company } from '@/data/company';
 import { serviceSublinks } from '@/data/navigation';
+import logo from '@/assets/logo.svg';
 ---
 
-<header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 w-full bg-bg border-b border-stroke site-header-shadow transition-transform duration-300 ease-in-out">
+<header id="siteHeader" class="sticky top-0 z-50 w-full bg-bg border-b border-stroke site-header-shadow transition-transform duration-300 ease-in-out">
   <div class="cfs-base-container h-header flex items-center justify-between">
     
-    <!-- Brand Logo (Exact 82px height) -->
-    <a href="/" class="shrink-0 flex items-center pl-2">
-      <img src="/src/assets/logo.svg" alt={company.name} class="h-logo w-auto object-contain" />
+    <!-- Brand Logo (Responsive 54px mobile -> 58px tablet -> 82px desktop) -->
+    <a href="/" class="shrink-0 flex items-center pl-1 sm:pl-2">
+      <Image src={logo} alt={company.name} class="h-[54px] sm:h-[58px] lg:h-[82px] w-auto object-contain transition-all duration-300" />
     </a>
 
     <!-- Desktop Nav Links (Font: Lexend Deca 700, 16px, Animated underline) -->

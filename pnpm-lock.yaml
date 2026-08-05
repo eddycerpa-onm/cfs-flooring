@@ -38,9 +38,6 @@ importers:
       astro-seo:
         specifier: ^1.0.1
         version: 1.1.0(prettier@3.9.6)(typescript@5.9.3)
-      sharp:
-        specifier: ^0.35.3
-        version: 0.35.3(@types/node@22.20.1)
       tailwindcss:
         specifier: ^4.0.0
         version: 4.3.3
@@ -2939,7 +2936,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@img/colour@1.1.0': {}
+  '@img/colour@1.1.0':
+    optional: true
 
   '@img/sharp-darwin-arm64@0.35.3':
     optionalDependencies:
@@ -5008,6 +5006,7 @@ snapshots:
       '@img/sharp-win32-ia32': 0.35.3
       '@img/sharp-win32-x64': 0.35.3
       '@types/node': 22.20.1
+    optional: true
 
   shiki@4.4.1:
     dependencies:

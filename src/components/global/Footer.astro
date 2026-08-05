@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { company } from '@/data/company';
 import { navLinks, serviceSublinks, legalLinks } from '@/data/navigation';
 import { socialLinks } from '@/data/social';
+import logo from '@/assets/logo.svg';
 ---
 
 <footer class="bg-bg text-text border-t border-stroke pt-16 pb-10">
@@ -11,7 +13,7 @@ import { socialLinks } from '@/data/social';
       <!-- Col 1: Brand Logo & Desc (lg:col-span-4) -->
       <div class="lg:col-span-4 flex flex-col gap-4">
         <a href="/" class="inline-block">
-          <img src="/src/assets/logo.svg" alt={company.name} class="h-16 w-auto object-contain" />
+          <Image src={logo} alt={company.name} class="h-16 w-auto object-contain" />
         </a>
         <p class="text-sm text-muted leading-relaxed font-body max-w-md">
           Quality flooring installation with honest guidance you can trust. CFS Flooring serves homes and businesses across Lake Oswego, West Linn, and Wilsonville with a focus on craftsmanship, transparency, and clean results.
