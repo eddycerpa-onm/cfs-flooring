@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import SectionHeader from '@/components/ui/SectionHeader.astro';
+import HeroPage from '@/components/sections/HeroPage.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
 import { company } from '@/data/company';
 
@@ -8,43 +9,302 @@ const breadcrumbs = [
   { name: 'Home', url: 'https://cfsflooring.com' },
   { name: 'Privacy Policy', url: 'https://cfsflooring.com/privacy-policy' },
 ];
+
+const sections = [
+  { id: 'introduction', title: '1. Introduction & Controller Information' },
+  { id: 'information-collected', title: '2. Information We Collect' },
+  { id: 'how-we-use-information', title: '3. How We Use Your Information' },
+  { id: 'sharing-and-disclosure', title: '4. Information Sharing & Disclosure' },
+  { id: 'data-security', title: '5. Data Security & Storage' },
+  { id: 'cookies-analytics', title: '6. Cookies & Analytics' },
+  { id: 'sms-communications', title: '7. SMS & Direct Communications' },
+  { id: 'your-rights', title: '8. Your Rights & Choices' },
+  { id: 'policy-updates', title: '9. Updates to Policy' },
+  { id: 'contact-us', title: '10. Contact Us & Privacy Requests' },
+];
 ---
 
 <BaseLayout
   title="Privacy Policy | CFS Flooring LLC"
-  description="Privacy Policy for CFS Flooring LLC. Learn how we collect, use, and protect your personal information."
+  description="Privacy Policy for CFS Flooring LLC. Learn how we collect, use, protect, and manage your personal data when requesting flooring installation and remodeling services."
 >
   <BreadcrumbSchema items={breadcrumbs} />
 
-  <section class="py-16 bg-bg border-b border-stroke">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeader
-        kicker="Legal"
-        title="Privacy Policy"
-        subtitle="Last updated: January 2026"
-        class="mb-10"
-      />
+  <HeroPage
+    eyebrow="Legal Information"
+    title="Privacy Policy"
+    subtitle="Effective Date: January 1, 2026 | Last Updated: January 2026"
+    breadcrumbs={breadcrumbs}
+  />
 
-      <div class="prose prose-lg max-w-none text-muted leading-relaxed flex flex-col gap-6 font-body">
-        <p>
-          At CFS Flooring LLC, accessible from cfsflooring.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by CFS Flooring LLC and how we use it.
-        </p>
+  <section class="py-16 md:py-20 bg-bg">
+    <div class="cfs-base-container">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Sidebar Navigation (Table of Contents) -->
+        <aside class="lg:col-span-4 sticky top-28 hidden lg:block">
+          <div class="bg-panel border border-stroke rounded-2xl p-6 shadow-sm">
+            <h2 class="text-lg font-bold font-title text-text mb-4 pb-3 border-b border-stroke flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+              </svg>
+              Table of Contents
+            </h2>
+            <nav class="space-y-2 text-sm font-body">
+              {sections.map((sec) => (
+                <a
+                  href={`#${sec.id}`}
+                  class="block px-3 py-2 rounded-lg text-muted hover:text-accent hover:bg-bg transition-colors font-medium"
+                >
+                  {sec.title}
+                </a>
+              ))}
+            </nav>
 
-        <h3 class="text-xl font-bold font-title text-text mt-4">Information We Collect</h3>
-        <p>
-          When you fill out a quote request or contact form on our website, we may ask for your personal information, including your name, email address, phone number, project address, and details about your flooring project.
-        </p>
+            <div class="mt-6 pt-6 border-t border-stroke text-xs text-muted space-y-2">
+              <div class="font-bold text-text">Questions about Privacy?</div>
+              <p>Contact our support team directly:</p>
+              <a href={`tel:${company.phoneRaw}`} class="block font-bold text-accent hover:underline">
+                {company.phone}
+              </a>
+              <a href={`mailto:${company.email}`} class="block text-muted hover:text-text truncate">
+                {company.email}
+              </a>
+            </div>
+          </div>
+        </aside>
 
-        <h3 class="text-xl font-bold font-title text-text mt-4">How We Use Your Information</h3>
-        <p>
-          We use the information we collect to provide, operate, and maintain our website, respond to your inquiries, schedule on-site estimates, and communicate with you regarding your flooring project. We do not sell or rent your personal information to third parties.
-        </p>
+        <!-- Main Content Area -->
+        <main class="lg:col-span-8 space-y-12">
+          
+          <!-- Mobile Quick Index -->
+          <div class="block lg:hidden bg-panel border border-stroke rounded-2xl p-5 mb-8">
+            <details class="group">
+              <summary class="cursor-pointer font-bold font-title text-text flex items-center justify-between">
+                <span class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+                  </svg>
+                  Quick Section Jump
+                </span>
+                <svg class="w-5 h-5 text-muted transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="mt-4 pt-4 border-t border-stroke grid grid-cols-1 gap-2 text-sm">
+                {sections.map((sec) => (
+                  <a href={`#${sec.id}`} class="text-muted hover:text-accent py-1">
+                    {sec.title}
+                  </a>
+                ))}
+              </div>
+            </details>
+          </div>
 
-        <h3 class="text-xl font-bold font-title text-text mt-4">Contact Us</h3>
-        <p>
-          If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at {company.phone}.
-        </p>
+          <!-- Highlight Box -->
+          <div class="bg-panel border-l-4 border-accent border-stroke border p-6 rounded-r-2xl shadow-sm">
+            <h3 class="font-bold font-title text-text text-lg mb-2 flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              Our Privacy Commitment
+            </h3>
+            <p class="text-muted leading-relaxed text-sm sm:text-base">
+              At {company.legalName}, we respect your personal privacy. We do not sell, rent, or trade your contact details or project information to third-party marketing companies. Any information shared with us is strictly used to process project estimates, deliver professional flooring services, and communicate about your project.
+            </p>
+          </div>
+
+          <!-- Section 1 -->
+          <article id="introduction" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              1. Introduction & Controller Information
+            </h2>
+            <div class="prose prose-lg max-w-none text-muted leading-relaxed font-body space-y-4">
+              <p>
+                This Privacy Policy applies to {company.legalName} ("CFS Flooring," "we," "us," or "our"), operating the website <strong class="text-text">cfsflooring.com</strong>. It describes how we collect, use, store, and protect your personal information when you visit our website, submit a project quote request, schedule an in-home estimate, or engage our flooring installation services across Oregon and Washington.
+              </p>
+              <p>
+                By accessing our website or providing information to us, you accept the practices outlined in this Privacy Policy.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 2 -->
+          <article id="information-collected" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              2. Information We Collect
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                We collect personal information that you voluntarily provide to us, as well as technical information generated during your visit to our website.
+              </p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                <div class="bg-panel border border-stroke p-5 rounded-xl">
+                  <h4 class="font-bold text-text font-title text-base mb-2">Direct Information Provided</h4>
+                  <ul class="list-disc list-inside text-sm space-y-1 text-muted">
+                    <li>Full Name and contact details</li>
+                    <li>Email address and phone number</li>
+                    <li>Property address for site estimates</li>
+                    <li>Project scope (LVP, Hardwood, Tile, Carpet, Sand & Refinish)</li>
+                    <li>Square footage estimates & timeline</li>
+                    <li>Uploaded job photos or architectural blueprints</li>
+                  </ul>
+                </div>
+
+                <div class="bg-panel border border-stroke p-5 rounded-xl">
+                  <h4 class="font-bold text-text font-title text-base mb-2">Automated & Technical Data</h4>
+                  <ul class="list-disc list-inside text-sm space-y-1 text-muted">
+                    <li>IP address & approximate location</li>
+                    <li>Browser type & operating system</li>
+                    <li>Referring URLs & pages viewed</li>
+                    <li>Time spent on site and interaction metrics</li>
+                    <li>Device category (Mobile, Tablet, Desktop)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 3 -->
+          <article id="how-we-use-information" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              3. How We Use Your Information
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>We use your information exclusively for legitimate business purposes, including:</p>
+              <ul class="list-disc list-inside space-y-2 pl-2">
+                <li><strong class="text-text">Preparing Estimates:</strong> Calculating material costs, labor hours, and scheduling on-site flooring inspections.</li>
+                <li><strong class="text-text">Project Execution:</strong> Coordinating flooring material deliveries, installer dispatch, subfloor preparation, and job site installation.</li>
+                <li><strong class="text-text">Client Communication:</strong> Sending quote confirmations, project status updates, appointment reminders, and invoicing.</li>
+                <li><strong class="text-text">Licensing & Regulatory Records:</strong> Maintaining business and tax documentation in compliance with Oregon Construction Contractors Board ({company.licenses.oregonCCB}) and Washington Department of Revenue ({company.licenses.washingtonLic}).</li>
+                <li><strong class="text-text">Website Optimization:</strong> Improving website performance, responsiveness, and user experience.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Section 4 -->
+          <article id="sharing-and-disclosure" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              4. Information Sharing & Disclosure
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                We do <strong class="text-text">NOT</strong> sell, rent, or trade your personal data. We only share information with trusted third parties under strict confidentiality under the following circumstances:
+              </p>
+              <div class="space-y-3">
+                <div class="p-4 rounded-xl border border-stroke bg-panel">
+                  <h4 class="font-bold text-text font-title text-sm">Material Distributors & Suppliers</h4>
+                  <p class="text-xs sm:text-sm text-muted mt-1">To arrange direct job site delivery of hardwood, tile, carpet, or luxury vinyl plank products.</p>
+                </div>
+                <div class="p-4 rounded-xl border border-stroke bg-panel">
+                  <h4 class="font-bold text-text font-title text-sm">Subcontractors & Installation Crew</h4>
+                  <p class="text-xs sm:text-sm text-muted mt-1">Only project-specific details necessary to perform installation, subfloor repair, or refinishing work.</p>
+                </div>
+                <div class="p-4 rounded-xl border border-stroke bg-panel">
+                  <h4 class="font-bold text-text font-title text-sm">Legal & Regulatory Compliance</h4>
+                  <p class="text-xs sm:text-sm text-muted mt-1">When required by state laws, subpoena, court order, or to protect the safety and property of CFS Flooring LLC.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 5 -->
+          <article id="data-security" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              5. Data Security & Storage
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                We implement administrative, technical, and physical safeguards designed to protect personal data against unauthorized access, loss, alteration, or disclosure. All form transmissions are encrypted via SSL/TLS protocol.
+              </p>
+              <p>
+                We retain client project records and billing information for as long as necessary to fulfill project warranties, accounting obligations, and legal requirements.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 6 -->
+          <article id="cookies-analytics" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              6. Cookies & Analytics
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                Our website uses standard cookies and web analytics technology to evaluate traffic patterns and enhance usability. Cookies are small files stored on your browser. You can manage or disable cookies via your browser settings; however, certain site features may be affected.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 7 -->
+          <article id="sms-communications" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              7. SMS & Direct Communications
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                By providing your phone number on our quote request forms, you consent to receive text messages (SMS) or phone calls regarding estimate scheduling, project status updates, and service inquiries.
+              </p>
+              <p>
+                Message and data rates may apply. You can opt out of text messages at any time by replying "STOP" or notifying us directly at <a href={`tel:${company.phoneRaw}`} class="text-accent hover:underline font-medium">{company.phone}</a>.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 8 -->
+          <article id="your-rights" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              8. Your Rights & Choices
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>Depending on your jurisdiction, you have the following rights regarding your personal information:</p>
+              <ul class="list-disc list-inside space-y-1 pl-2">
+                <li><strong class="text-text">Access:</strong> Request a copy of personal information we hold about you.</li>
+                <li><strong class="text-text">Correction:</strong> Request updates or corrections to inaccurate records.</li>
+                <li><strong class="text-text">Deletion:</strong> Request deletion of your personal data, subject to legal and financial retention requirements.</li>
+                <li><strong class="text-text">Opt-Out:</strong> Unsubscribe from marketing communications at any time.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Section 9 -->
+          <article id="policy-updates" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              9. Updates to This Policy
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                We may update this Privacy Policy periodically to reflect changes in our service practices, technologies, or legal duties. Updates will be posted on this page with a revised "Effective Date" at the top.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 10 -->
+          <article id="contact-us" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              10. Contact Us & Privacy Requests
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                If you have questions, concerns, or requests regarding this Privacy Policy or your personal information, please reach out to us:
+              </p>
+              
+              <div class="bg-panel border border-stroke rounded-2xl p-6 space-y-3">
+                <div class="font-bold text-text text-lg font-title">{company.legalName}</div>
+                <div class="text-sm space-y-1 text-muted">
+                  <p><strong class="text-text">Address:</strong> {company.address.street}, {company.address.city}, {company.address.state} {company.address.zip}</p>
+                  <p><strong class="text-text">Phone:</strong> <a href={`tel:${company.phoneRaw}`} class="text-accent hover:underline">{company.phone}</a></p>
+                  <p><strong class="text-text">Email:</strong> <a href={`mailto:${company.email}`} class="text-accent hover:underline">{company.email}</a></p>
+                  <p><strong class="text-text">Licenses:</strong> Oregon CCB #{company.licenseOR} | Washington Lic #{company.licenseWA}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </main>
       </div>
     </div>
   </section>
+
+  <CTABanner />
 </BaseLayout>

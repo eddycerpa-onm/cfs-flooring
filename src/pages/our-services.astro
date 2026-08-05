@@ -1,55 +1,571 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeroPage from '@/components/sections/HeroPage.astro';
-import ServicesGrid from '@/components/sections/ServicesGrid.astro';
-import CTABanner from '@/components/sections/CTABanner.astro';
 import LocalBusiness from '@/components/seo/LocalBusiness.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
-import { getCollection } from 'astro:content';
+import ServiceCard from '@/components/sections/ServiceCard.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import { Image } from 'astro:assets';
 
-import slide1 from '@/assets/services/slide-1.webp';
-import imgHardwood from '@/assets/services/hardwood-lvp.webp';
+import heroSlide1 from '@/assets/services/slide-1.webp';
+import heroSlide2 from '@/assets/services/slide-2.webp';
+import heroSlide3 from '@/assets/services/slide-3.webp';
+
+import imgHardwoodLvp from '@/assets/services/hardwood-lvp.webp';
 import imgCarpet from '@/assets/services/carpet.webp';
 import imgSandFinish from '@/assets/services/sand-finish.webp';
-import imgTile from '@/assets/services/ceramic-tile.webp';
+import imgCeramicTile from '@/assets/services/ceramic-tile.webp';
 import imgSheetVinyl from '@/assets/services/sheet-vinyl.webp';
-import imgVCT from '@/assets/services/vct.webp';
-import imgRemoval from '@/assets/services/flooring-removal.webp';
-import imgCounters from '@/assets/services/counters-decks.webp';
-
-const imagesMap: Record<string, any> = {
-  'hardwood-laminate-and-lvp': imgHardwood,
-  'carpet-installation': imgCarpet,
-  'sand-and-finish': imgSandFinish,
-  'ceramic-tile': imgTile,
-  'sheet-vinyl': imgSheetVinyl,
-  'vct-flooring': imgVCT,
-  'flooring-removal': imgRemoval,
-  'counters-and-decks': imgCounters,
-};
-
-const allServices = await getCollection('services');
+import imgVct from '@/assets/services/vct.webp';
+import imgFlooringRemoval from '@/assets/services/flooring-removal.webp';
+import imgCountersDecks from '@/assets/services/counters-decks.webp';
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://cfsflooring.com' },
   { name: 'Services', url: 'https://cfsflooring.com/our-services' },
 ];
+
+const servicesList = [
+  {
+    title: 'Hardwood, Laminate & LVP',
+    slug: 'hardwood-flooring',
+    description: 'Professional installation for hardwood, laminate, and luxury vinyl plank with guidance on what works best for your lifestyle, budget, and long-term goals.',
+    image: imgHardwoodLvp,
+  },
+  {
+    title: 'Carpet Installation',
+    slug: 'carpet-installation',
+    description: 'Residential and commercial carpet installation completed with attention to fit, finish, comfort, and the performance needs of each space.',
+    image: imgCarpet,
+  },
+  {
+    title: 'Sand & Finish',
+    slug: 'flooring-repair',
+    description: 'Restore existing hardwood floors with sanding and finishing services that bring back color, character, and a cleaner overall look.',
+    image: imgSandFinish,
+  },
+  {
+    title: 'Ceramic Tile',
+    slug: 'tile-flooring',
+    description: 'Ceramic tile installation for durable, practical surfaces that work especially well in kitchens, baths, and other high-use areas.',
+    image: imgCeramicTile,
+  },
+  {
+    title: 'Sheet Vinyl',
+    slug: 'laminate-flooring',
+    description: 'Sheet vinyl flooring installed for spaces that need a resilient, cost-conscious, and low-maintenance flooring solution.',
+    image: imgSheetVinyl,
+  },
+  {
+    title: 'VCT Flooring',
+    slug: 'commercial-flooring',
+    description: 'VCT flooring solutions for commercial environments that need dependable performance, easier upkeep, and a clean finished look.',
+    image: imgVct,
+  },
+  {
+    title: 'Flooring Removal',
+    slug: 'flooring-repair',
+    description: 'Careful removal of existing flooring to prepare your space for a clean new installation and a smoother overall remodel process.',
+    image: imgFlooringRemoval,
+  },
+  {
+    title: 'Counters & Decks',
+    slug: 'maintenance',
+    description: 'Counter and deck surface solutions that help complete your space with durable materials, practical finishes, and a cleaner overall presentation.',
+    image: imgCountersDecks,
+  },
+];
 ---
 
 <BaseLayout
-  title="Our Flooring Services | CFS Flooring Lake Oswego & West Linn"
-  description="Explore comprehensive flooring installation, refinishing, tile, carpet, vinyl and removal services for residential and commercial projects."
+  title="Our Services | CFS Flooring Lake Oswego & West Linn"
+  description="Explore our full directory of 8 specialized flooring services: hardwood, laminate, LVP, tile, carpet, commercial, repair, and maintenance in Lake Oswego & Portland Metro."
 >
   <LocalBusiness />
   <BreadcrumbSchema items={breadcrumbs} />
 
-  <HeroPage
-    eyebrow="Our Services"
-    title="Flooring Solutions Built Around Your Space"
-    subtitle="Explore flooring solutions for homes and businesses with expert guidance, quality installation, and a clean finished result designed for the way your space is used every day."
-    image={slide1}
-  />
+  <!-- Hero Section with Background Slider -->
+  <section class="cfs-servicesHero" id="cfsServicesHero" aria-label="Services Hero">
+    <div class="cfs-servicesHero__slider" aria-hidden="true">
+      <div class="cfs-servicesHero__slide is-active">
+        <Image src={heroSlide1} alt="Flooring project hero slide 1" class="w-full h-full object-cover" width={1600} height={900} loading="eager" decoding="async" />
+      </div>
+      <div class="cfs-servicesHero__slide">
+        <Image src={heroSlide2} alt="Flooring project hero slide 2" class="w-full h-full object-cover" width={1600} height={900} loading="lazy" decoding="async" />
+      </div>
+      <div class="cfs-servicesHero__slide">
+        <Image src={heroSlide3} alt="Flooring project hero slide 3" class="w-full h-full object-cover" width={1600} height={900} loading="lazy" decoding="async" />
+      </div>
+    </div>
 
-  <ServicesGrid services={allServices} imagesMap={imagesMap} />
-  <CTABanner />
+    <div class="cfs-servicesHero__inner">
+      <h1 class="cfs-servicesHero__title">
+        Flooring Services Built Around Your Space
+      </h1>
+
+      <p class="cfs-servicesHero__sub">
+        Explore flooring solutions for homes and businesses with expert guidance, quality installation, and a clean finished result designed for the way your space is used every day.
+      </p>
+
+      <div class="cfs-servicesHero__chips" aria-label="Service highlights">
+        <span class="cfs-chip"><span class="cfs-chipDot" aria-hidden="true"></span>Residential & Commercial</span>
+        <span class="cfs-chip"><span class="cfs-chipDot" aria-hidden="true"></span>Installation Services</span>
+        <span class="cfs-chip"><span class="cfs-chipDot" aria-hidden="true"></span>Design Guidance</span>
+      </div>
+    </div>
+
+    <div class="cfs-servicesHero__pagination" aria-label="Hero image pagination">
+      <button class="cfs-servicesHero__dot is-active" type="button" aria-label="Show slide 1"></button>
+      <button class="cfs-servicesHero__dot" type="button" aria-label="Show slide 2"></button>
+      <button class="cfs-servicesHero__dot" type="button" aria-label="Show slide 3"></button>
+    </div>
+  </section>
+
+  <!-- Services Directory Section -->
+  <section id="services" class="rr-services rr-services--light" aria-label="Services">
+    <div class="rr-services-inner">
+      
+      <!-- Section Header -->
+      <div class="rr-services-head">
+        <div class="rr-services-kicker">
+          <span class="rr-services-kicker-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
+            </svg>
+          </span>
+          <span class="rr-services-kicker-text">Services</span>
+        </div>
+
+        <div class="rr-services-titlegrid">
+          <div class="rr-services-titleleft">
+            <h2 class="rr-services-title">Flooring services built for homes, businesses, and long-term value.</h2>
+            <p class="rr-services-sub">
+              CFS Flooring provides professional flooring installation, restoration, and replacement services with a quality-first approach. From hardwood, laminate, and LVP to carpet, tile, VCT, and flooring removal, every project is guided with honest recommendations and clean workmanship.
+            </p>
+          </div>
+
+          <div class="rr-services-titleright">
+            <button
+              type="button"
+              x-data
+              @click="$dispatch('open-drawer')"
+              class="cfs-primary-button rr-services-quote-trigger"
+            >
+              <span>Get a Quote</span>
+              <span class="cfs-btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                  <path d="M14 3H7a2 2 0 0 0-2 2v14l4-2 4 2 4-2 4 2V9l-7-6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8-Card Directory Grid -->
+      <div class="rr-svc-grid" aria-label="Service cards">
+        {servicesList.map((service) => (
+          <ServiceCard
+            title={service.title}
+            slug={service.slug}
+            description={service.description}
+            image={service.image}
+          />
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <Testimonials />
 </BaseLayout>
+
+<script>
+  function initServicesHero() {
+    const root = document.getElementById("cfsServicesHero");
+    if (!root) return;
+
+    const slides = Array.from(root.querySelectorAll(".cfs-servicesHero__slide"));
+    const dots = Array.from(root.querySelectorAll(".cfs-servicesHero__dot"));
+    if (!slides.length || slides.length !== dots.length) return;
+
+    let currentIndex = 0;
+    let autoPlay: any = null;
+    const intervalTime = 3500;
+
+    function showSlide(nextIndex: number) {
+      currentIndex = (nextIndex + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("is-active", i === currentIndex);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === currentIndex);
+      });
+    }
+
+    function stopAutoPlay() {
+      if (autoPlay) {
+        clearInterval(autoPlay);
+        autoPlay = null;
+      }
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlay = setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, intervalTime);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        showSlide(i);
+        startAutoPlay();
+      });
+    });
+
+    window.requestAnimationFrame(() => {
+      showSlide(0);
+      startAutoPlay();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopAutoPlay();
+      } else {
+        startAutoPlay();
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initServicesHero);
+  } else {
+    initServicesHero();
+  }
+</script>
+
+<style is:global>
+  #cfsServicesHero,
+  #cfsServicesHero * {
+    box-sizing: border-box;
+  }
+
+  #cfsServicesHero {
+    position: relative;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow: hidden;
+    border-bottom: 1px solid var(--stroke);
+    isolation: isolate;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.9s ease, visibility 0.9s ease;
+    transform: scale(1.02);
+    will-change: opacity;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__slide.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(34, 20, 22, 0.42), rgba(34, 20, 22, 0.78)),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.08));
+  }
+
+  #cfsServicesHero .cfs-servicesHero__slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(880px 520px at 14% 20%, rgba(176, 127, 73, 0.10), transparent 64%),
+      radial-gradient(720px 460px at 84% 76%, rgba(247, 209, 51, 0.12), transparent 68%);
+    pointer-events: none;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1480px;
+    margin: 0 auto;
+    min-height: clamp(460px, 62vw, 700px);
+    padding: clamp(82px, 9vw, 140px) 22px;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__title {
+    margin: 0;
+    max-width: 12ch;
+    font-family: var(--font-title);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    font-size: clamp(42px, 5.8vw, 80px);
+    color: #ffffff;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  }
+
+  #cfsServicesHero .cfs-servicesHero__sub {
+    margin: 0;
+    max-width: 78ch;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.8;
+    font-weight: 650;
+    font-size: clamp(16px, 1.3vw, 20px);
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  }
+
+  #cfsServicesHero .cfs-servicesHero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  #cfsServicesHero .cfs-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.10);
+    color: #ffffff;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 11px;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow, 0 18px 45px rgba(34, 20, 22, 0.12));
+  }
+
+  #cfsServicesHero .cfs-chipDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(176, 127, 73, 0.14);
+    flex: 0 0 auto;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__pagination {
+    position: absolute;
+    left: 50%;
+    bottom: 26px;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    background: rgba(247, 209, 51, 0.38);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14);
+    transition: transform 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
+    opacity: 0.9;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__dot.is-active {
+    background: var(--accent-2);
+    transform: scale(1.15);
+    box-shadow: 0 0 0 5px rgba(247, 209, 51, 0.16);
+    opacity: 1;
+  }
+
+  #cfsServicesHero .cfs-servicesHero__dot:hover {
+    background: var(--accent-2);
+  }
+
+  @media (max-width: 980px) {
+    #cfsServicesHero .cfs-servicesHero__inner {
+      min-height: 500px;
+      padding: 72px 14px 92px;
+    }
+
+    #cfsServicesHero .cfs-servicesHero__title {
+      max-width: unset;
+    }
+
+    #cfsServicesHero .cfs-servicesHero__pagination {
+      bottom: 18px;
+    }
+  }
+
+  .rr-services--light {
+    background: var(--bg);
+    color: var(--text);
+    padding: 80px 0 72px;
+  }
+
+  .rr-services-inner {
+    max-width: var(--width-base, 1280px);
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .rr-services-head {
+    margin-bottom: 34px;
+  }
+
+  .rr-services-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .rr-services-kicker-icon {
+    color: var(--accent);
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .rr-services-kicker-text {
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .rr-services-titlegrid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: end;
+  }
+
+  .rr-services-title {
+    margin: 0 0 10px;
+    font-family: var(--font-title);
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    font-size: clamp(34px, 2.9vw, 48px);
+    line-height: 1.06;
+    color: var(--text);
+    max-width: 1043px;
+  }
+
+  .rr-services-sub {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 74ch;
+  }
+
+  .rr-services .cfs-primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 16px;
+    padding: 14px 18px;
+    transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+    border: 1px solid var(--accent-2);
+    white-space: nowrap;
+    font-family: var(--font-body);
+    background: var(--accent-2);
+    color: var(--dark-bg);
+    box-shadow: var(--shadow-custom, 0 18px 45px rgba(34, 20, 22, 0.12));
+    cursor: pointer;
+  }
+
+  .rr-services .cfs-primary-button:hover {
+    transform: translateY(-1px);
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+
+  .rr-services .cfs-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .rr-svc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 1180px) {
+    .rr-svc-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 980px) {
+    .rr-services-inner {
+      padding: 0 18px;
+    }
+
+    .rr-services-titlegrid {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .rr-svc-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .rr-services-titlegrid {
+      gap: 14px;
+    }
+
+    .rr-services .cfs-primary-button {
+      width: 100%;
+    }
+  }
+</style>
+

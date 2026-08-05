@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import SectionHeader from '@/components/ui/SectionHeader.astro';
+import HeroPage from '@/components/sections/HeroPage.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
 import { company } from '@/data/company';
 
@@ -8,43 +9,301 @@ const breadcrumbs = [
   { name: 'Home', url: 'https://cfsflooring.com' },
   { name: 'Terms & Conditions', url: 'https://cfsflooring.com/terms-and-conditions' },
 ];
+
+const sections = [
+  { id: 'agreement-to-terms', title: '1. Agreement to Terms' },
+  { id: 'scope-of-services', title: '2. Scope of Flooring Services' },
+  { id: 'estimates-pricing', title: '3. Estimates, Quotes & Pricing' },
+  { id: 'licensing-permits', title: '4. Licensing, Permits & Compliance' },
+  { id: 'customer-responsibilities', title: '5. Customer Responsibilities & Site Access' },
+  { id: 'subfloor-change-orders', title: '6. Subfloor Conditions & Change Orders' },
+  { id: 'payments-deposits', title: '7. Payments, Deposits & Cancellations' },
+  { id: 'warranties-workmanship', title: '8. Workmanship & Product Warranties' },
+  { id: 'limitation-of-liability', title: '9. Limitation of Liability' },
+  { id: 'governing-law', title: '10. Governing Law & Dispute Resolution' },
+  { id: 'contact-info', title: '11. Contact Information' },
+];
 ---
 
 <BaseLayout
   title="Terms & Conditions | CFS Flooring LLC"
-  description="Terms and Conditions for CFS Flooring LLC website and flooring installation services."
+  description="Terms and Conditions governing website usage, project estimates, flooring installation agreements, and warranties for CFS Flooring LLC."
 >
   <BreadcrumbSchema items={breadcrumbs} />
 
-  <section class="py-16 bg-bg border-b border-stroke">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeader
-        kicker="Legal"
-        title="Terms & Conditions"
-        subtitle="Last updated: January 2026"
-        class="mb-10"
-      />
+  <HeroPage
+    eyebrow="Legal Information"
+    title="Terms & Conditions"
+    subtitle="Effective Date: January 1, 2026 | Last Updated: January 2026"
+    breadcrumbs={breadcrumbs}
+  />
 
-      <div class="prose prose-lg max-w-none text-muted leading-relaxed flex flex-col gap-6 font-body">
-        <p>
-          Welcome to CFS Flooring LLC. By accessing this website (cfsflooring.com) or requesting an estimate for our flooring services, you agree to comply with and be bound by the following terms and conditions.
-        </p>
+  <section class="py-16 md:py-20 bg-bg">
+    <div class="cfs-base-container">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Sidebar Navigation (Table of Contents) -->
+        <aside class="lg:col-span-4 sticky top-28 hidden lg:block">
+          <div class="bg-panel border border-stroke rounded-2xl p-6 shadow-sm">
+            <h2 class="text-lg font-bold font-title text-text mb-4 pb-3 border-b border-stroke flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Table of Contents
+            </h2>
+            <nav class="space-y-2 text-sm font-body">
+              {sections.map((sec) => (
+                <a
+                  href={`#${sec.id}`}
+                  class="block px-3 py-2 rounded-lg text-muted hover:text-accent hover:bg-bg transition-colors font-medium"
+                >
+                  {sec.title}
+                </a>
+              ))}
+            </nav>
 
-        <h3 class="text-xl font-bold font-title text-text mt-4">Estimates & Quotes</h3>
-        <p>
-          All estimates provided through our website form or on-site consultations are valid for 30 days unless specified otherwise in writing. Material prices and labor scope are detailed in formal project contracts prior to work commencement.
-        </p>
+            <div class="mt-6 pt-6 border-t border-stroke text-xs text-muted space-y-2">
+              <div class="font-bold text-text">Licensed Contracting</div>
+              <p>Oregon CCB #{company.licenseOR}</p>
+              <p>Washington Lic #{company.licenseWA}</p>
+            </div>
+          </div>
+        </aside>
 
-        <h3 class="text-xl font-bold font-title text-text mt-4">Licensing & Insurance</h3>
-        <p>
-          CFS Flooring LLC is fully licensed and bonded in Oregon ({company.licenses.oregonCCB}) and Washington state ({company.licenses.washingtonLic}). All installation work is performed according to industry standard guidelines.
-        </p>
+        <!-- Main Content Area -->
+        <main class="lg:col-span-8 space-y-12">
+          
+          <!-- Mobile Quick Index -->
+          <div class="block lg:hidden bg-panel border border-stroke rounded-2xl p-5 mb-8">
+            <details class="group">
+              <summary class="cursor-pointer font-bold font-title text-text flex items-center justify-between">
+                <span class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Quick Section Jump
+                </span>
+                <svg class="w-5 h-5 text-muted transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="mt-4 pt-4 border-t border-stroke grid grid-cols-1 gap-2 text-sm">
+                {sections.map((sec) => (
+                  <a href={`#${sec.id}`} class="text-muted hover:text-accent py-1">
+                    {sec.title}
+                  </a>
+                ))}
+              </div>
+            </details>
+          </div>
 
-        <h3 class="text-xl font-bold font-title text-text mt-4">Contact Information</h3>
-        <p>
-          For any questions regarding these Terms & Conditions, please contact us at {company.phone}.
-        </p>
+          <!-- Highlight Box: Licensing & Trust -->
+          <div class="bg-panel border-l-4 border-accent border-stroke border p-6 rounded-r-2xl shadow-sm">
+            <h3 class="font-bold font-title text-text text-lg mb-2 flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.6 15.12a2 2 0 00-1.022.547l-1.096 1.096a2 2 0 000 2.828l1.096 1.096a2 2 0 002.828 0l1.096-1.096a2 2 0 00.547-1.022l.477-2.387a6 6 0 00-.517-3.86l-.158-.318a6 6 0 01-.517-3.86L6.88 7.6a2 2 0 00-.547-1.022L5.237 5.482a2 2 0 010-2.828l1.096-1.096a2 2 0 012.828 0l1.096 1.096a2 2 0 01.547 1.022l.477 2.387a6 6 0 00.517 3.86l.318.158a6 6 0 013.86.517l2.387.477a2 2 0 001.022-.547l1.096-1.096a2 2 0 012.828 0l1.096 1.096a2 2 0 010 2.828l-1.096 1.096z" />
+              </svg>
+              Licensed, Bonded & Insured Professional Services
+            </h3>
+            <p class="text-muted leading-relaxed text-sm sm:text-base">
+              {company.legalName} is fully licensed and bonded in the State of Oregon ({company.licenses.oregonCCB}) and the State of Washington ({company.licenses.washingtonLic}). All flooring estimates and installation contracts comply with state building codes and contractor standards.
+            </p>
+          </div>
+
+          <!-- Section 1 -->
+          <article id="agreement-to-terms" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              1. Agreement to Terms
+            </h2>
+            <div class="prose prose-lg max-w-none text-muted leading-relaxed font-body space-y-4">
+              <p>
+                By visiting or using our website (<strong class="text-text">cfsflooring.com</strong>), requesting an online quote, or entering into a written agreement for flooring installation with {company.legalName}, you agree to be bound by these Terms & Conditions.
+              </p>
+              <p>
+                If you do not agree with any part of these terms, you should refrain from using our website and requesting services.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 2 -->
+          <article id="scope-of-services" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              2. Scope of Flooring Services
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                CFS Flooring LLC provides comprehensive residential and commercial flooring installation, restoration, and replacement services, including:
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+                <div class="p-3 bg-panel border border-stroke rounded-xl text-sm font-medium text-text flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span> Solid & Engineered Hardwood
+                </div>
+                <div class="p-3 bg-panel border border-stroke rounded-xl text-sm font-medium text-text flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span> Luxury Vinyl Plank (LVP / LVT)
+                </div>
+                <div class="p-3 bg-panel border border-stroke rounded-xl text-sm font-medium text-text flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span> Ceramic & Porcelain Tile
+                </div>
+                <div class="p-3 bg-panel border border-stroke rounded-xl text-sm font-medium text-text flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span> Carpet & Sheet Vinyl
+                </div>
+                <div class="p-3 bg-panel border border-stroke rounded-xl text-sm font-medium text-text flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span> Sanding & Hardwood Refinishing
+                </div>
+                <div class="p-3 bg-panel border border-stroke rounded-xl text-sm font-medium text-text flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span> Commercial VCT & Demolition
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 3 -->
+          <article id="estimates-pricing" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              3. Estimates, Quotes & Pricing
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <ul class="list-disc list-inside space-y-2 pl-2">
+                <li><strong class="text-text">Estimate Validity:</strong> Preliminary estimates provided via phone, web form, or initial site inspection are valid for 30 calendar days from issuance date.</li>
+                <li><strong class="text-text">Written Contracts:</strong> Final project scope, exact material specifications, square footage, labor costs, and delivery schedules will be detailed in a formal written contract signed by both parties.</li>
+                <li><strong class="text-text">Tax & Shipping:</strong> Material prices may be subject to applicable state taxes or freight surcharges as specified in your contract.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Section 4 -->
+          <article id="licensing-permits" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              4. Licensing, Permits & Compliance
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                CFS Flooring LLC maintains active license and bond compliance in Oregon ({company.licenses.oregonCCB}) and Washington ({company.licenses.washingtonLic}).
+              </p>
+              <p>
+                Unless explicitly agreed in writing, clients are responsible for securing HOA permissions or special municipal permits if required for multi-family or commercial construction.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 5 -->
+          <article id="customer-responsibilities" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              5. Customer Responsibilities & Site Access
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>To ensure a seamless installation, the client agrees to maintain the following site conditions:</p>
+              <div class="space-y-3">
+                <div class="p-4 rounded-xl border border-stroke bg-panel">
+                  <h4 class="font-bold text-text font-title text-sm">Site Utilities & Workspace</h4>
+                  <p class="text-xs sm:text-sm text-muted mt-1">Continuous access to functional electrical power, adequate lighting, running water, and climate control (HVAC).</p>
+                </div>
+                <div class="p-4 rounded-xl border border-stroke bg-panel">
+                  <h4 class="font-bold text-text font-title text-sm">Material Acclimation & Climate Control</h4>
+                  <p class="text-xs sm:text-sm text-muted mt-1">Hardwood and LVP materials require 48-72 hours of on-site acclimation in climate-controlled conditions (65°F – 75°F and 35-55% relative humidity) prior to installation.</p>
+                </div>
+                <div class="p-4 rounded-xl border border-stroke bg-panel">
+                  <h4 class="font-bold text-text font-title text-sm">Furniture & Room Clearing</h4>
+                  <p class="text-xs sm:text-sm text-muted mt-1">Unless furniture handling is explicitly included in your scope of work, work areas must be cleared of furniture, breakables, and personal items prior to installer arrival.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 6 -->
+          <article id="subfloor-change-orders" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              6. Subfloor Conditions & Change Orders
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                Existing subfloor conditions (such as hidden moisture rot, structural sagging, un-level joists, or legacy adhesive residue) cannot always be fully detected prior to tearing up old flooring.
+              </p>
+              <p>
+                If unforeseen subfloor defects are discovered upon removal of old materials, CFS Flooring LLC will issue a written Change Order specifying necessary repairs, leveling, or moisture barrier installation and costs before proceeding.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 7 -->
+          <article id="payments-deposits" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              7. Payments, Deposits & Cancellations
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <ul class="list-disc list-inside space-y-2 pl-2">
+                <li><strong class="text-text">Material Deposits:</strong> A material deposit is required prior to ordering special-order hardwood, tile, or vinyl products.</li>
+                <li><strong class="text-text">Final Balance:</strong> Remaining project balance is due immediately upon substantial completion and walkthrough of the installation.</li>
+                <li><strong class="text-text">Cancellations:</strong> Material cancellations for special orders are subject to manufacturer restocking fees.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Section 8 -->
+          <article id="warranties-workmanship" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              8. Workmanship & Product Warranties
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                CFS Flooring LLC guarantees all installation workmanship according to trade standards for 1 year from project completion date.
+              </p>
+              <p>
+                Flooring product warranties (e.g., LVP wear layers, hardwood finish coats, stain protection) are backed directly by the product manufacturers. CFS Flooring LLC assists clients in filing manufacturer claims when applicable.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 9 -->
+          <article id="limitation-of-liability" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              9. Limitation of Liability
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                To the maximum extent permitted by Oregon and Washington law, CFS Flooring LLC shall not be liable for indirect, incidental, or consequential damages resulting from site delay, pre-existing structural defects, or failure to maintain recommended indoor environmental humidity.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 10 -->
+          <article id="governing-law" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              10. Governing Law & Dispute Resolution
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                These Terms & Conditions are governed by the laws of the State of Oregon. Any dispute arising out of or related to our services shall be subject to the exclusive jurisdiction of the state courts in Clackamas County, Oregon, or applicable Oregon CCB arbitration procedures.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 11 -->
+          <article id="contact-info" class="scroll-mt-32 space-y-4">
+            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
+              11. Contact Information
+            </h2>
+            <div class="text-muted leading-relaxed font-body space-y-4">
+              <p>
+                For any questions regarding these Terms & Conditions or to request a written service agreement, please contact us:
+              </p>
+              
+              <div class="bg-panel border border-stroke rounded-2xl p-6 space-y-3">
+                <div class="font-bold text-text text-lg font-title">{company.legalName}</div>
+                <div class="text-sm space-y-1 text-muted">
+                  <p><strong class="text-text">Address:</strong> {company.address.street}, {company.address.city}, {company.address.state} {company.address.zip}</p>
+                  <p><strong class="text-text">Phone:</strong> <a href={`tel:${company.phoneRaw}`} class="text-accent hover:underline">{company.phone}</a></p>
+                  <p><strong class="text-text">Email:</strong> <a href={`mailto:${company.email}`} class="text-accent hover:underline">{company.email}</a></p>
+                  <p><strong class="text-text">Licenses:</strong> Oregon CCB #{company.licenseOR} | Washington Lic #{company.licenseWA}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </main>
       </div>
     </div>
   </section>
+
+  <CTABanner />
 </BaseLayout>

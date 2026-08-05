@@ -1,0 +1,128 @@
+---
+import type { ServiceFeature, ServiceSpec } from '@/data/services';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  features: string[];
+  detailedFeatures?: ServiceFeature[];
+  specifications?: ServiceSpec[];
+  applications?: string[];
+}
+
+const { title, subtitle, features, detailedFeatures = [], specifications = [], applications = [] } = Astro.props;
+---
+
+<section class="py-16 lg:py-24 bg-bg border-b border-stroke relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="max-w-3xl mb-16">
+      <span class="inline-block text-xs font-extrabold uppercase tracking-wider text-accent font-title mb-3">
+        Service Capabilities
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold font-title text-text tracking-tight leading-tight">
+        Why Choose CFS Flooring for {title}?
+      </h2>
+      {subtitle && (
+        <p class="mt-4 text-lg text-muted font-normal leading-relaxed">
+          {subtitle}
+        </p>
+      )}
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <!-- Left Column: Detailed Features -->
+      <div class="lg:col-span-7 space-y-8">
+        {detailedFeatures.length > 0 ? (
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {detailedFeatures.map((feat) => (
+              <div class="p-6 rounded-2xl bg-panel border border-stroke shadow-sm hover:border-accent transition-all duration-300">
+                <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 class="text-lg font-bold font-title text-text mb-2">{feat.title}</h3>
+                <p class="text-sm text-muted leading-relaxed">{feat.description}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {features.map((feature) => (
+              <li class="p-4 rounded-2xl bg-panel border border-stroke flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-sm font-bold text-text">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <!-- Applications -->
+        {applications.length > 0 && (
+          <div class="p-6 rounded-2xl bg-panel border border-stroke space-y-4">
+            <h3 class="text-base font-bold font-title uppercase tracking-wider text-text flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0H9" />
+              </svg>
+              Ideal Applications & Spaces
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {applications.map((app) => (
+                <span class="px-3 py-1.5 rounded-lg bg-bg border border-stroke text-xs font-semibold text-text">
+                  {app}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <!-- Right Column: Specs Card -->
+      <div class="lg:col-span-5">
+        <div class="sticky top-24 p-8 rounded-3xl bg-panel border border-stroke shadow-xl space-y-6">
+          <div class="border-b border-stroke pb-4">
+            <span class="text-xs font-bold text-accent uppercase tracking-wider font-title">Technical Specifications</span>
+            <h3 class="text-xl font-bold font-title text-text mt-1">Service Highlights</h3>
+          </div>
+
+          {specifications.length > 0 ? (
+            <dl class="space-y-4">
+              {specifications.map((spec) => (
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-2 border-b border-stroke/60 gap-1 sm:gap-4">
+                  <dt class="text-xs font-semibold text-muted uppercase tracking-wide">{spec.label}</dt>
+                  <dd class="text-sm font-bold text-text sm:text-right">{spec.value}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : (
+            <ul class="space-y-3">
+              {features.map((feat) => (
+                <li class="flex items-center gap-2 text-sm text-text font-medium">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div class="pt-4 border-t border-stroke text-center">
+            <button
+              type="button"
+              x-on:click="$dispatch('open-drawer')"
+              class="w-full py-4 px-6 rounded-xl bg-accent text-white font-bold font-title hover:bg-accent/90 transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>Schedule On-Site Consultation</span>
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+            <p class="mt-3 text-xs text-muted">Free estimates across Lake Oswego, West Linn & Vancouver</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

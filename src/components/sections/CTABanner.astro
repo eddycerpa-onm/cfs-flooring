@@ -1,5 +1,15 @@
 ---
 import ctaBg from '@/assets/cta-bg.webp';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = "Ready to upgrade your floors with honest guidance and quality workmanship?",
+  subtitle = "Whether you need hardwood, laminate, LVP, carpet, tile, sheet vinyl, sand and finish, or flooring removal, CFS Flooring is here to help you choose the right solution for your home or business."
+} = Astro.props;
 ---
 
 <!-- ============== CTA (CFS FLOORING) ============== -->
@@ -15,10 +25,10 @@ import ctaBg from '@/assets/cta-bg.webp';
         <span class="rr-cta-free-eyebrow-text">CFS Flooring LLC</span>
       </div>
 
-      <h2 class="rr-cta-free-title">Ready to upgrade your floors with honest guidance and quality workmanship?</h2>
+      <h2 class="rr-cta-free-title">{title}</h2>
 
       <p class="rr-cta-free-lead">
-        Whether you need hardwood, laminate, LVP, carpet, tile, sheet vinyl, sand and finish, or flooring removal, CFS Flooring is here to help you choose the right solution for your home or business.
+        {subtitle}
       </p>
 
       <div class="rr-cta-free-actions">

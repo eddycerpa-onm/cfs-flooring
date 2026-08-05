@@ -1,0 +1,142 @@
+---
+import { Image } from 'astro:assets';
+import aboutHeroImg from '@/assets/about/hero.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section id="cfs-about-hero" class:list={['py-12 lg:py-20 bg-gradient-to-b from-bg to-panel border-b border-stroke overflow-hidden relative', className]}>
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+      
+      <!-- Left Column: Exact White Card 1:1 with input_file_0.png -->
+      <div class="bg-white rounded-[32px] p-6 sm:p-8 lg:p-10 border border-stroke shadow-sm flex flex-col justify-between">
+        <div>
+          <!-- Eyebrow + Sub-badge -->
+          <div class="flex flex-wrap items-center gap-3 mb-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-panel border border-stroke text-accent font-black text-xs uppercase tracking-wider font-title">
+              <span>ABOUT CFS FLOORING</span>
+            </div>
+
+            <div class="inline-flex items-center gap-2 text-xs font-bold text-muted font-body">
+              <span>🔨</span>
+              <span>Residential • Commercial</span>
+            </div>
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="font-title font-black text-3xl sm:text-4xl lg:text-[48px] leading-[1.12] tracking-tight text-text mb-5">
+            Over 10 Years of Flooring Expertise You Can Count On
+          </h1>
+
+          <!-- Lead Paragraph -->
+          <p class="font-body text-base text-muted leading-relaxed mb-6">
+            At CFS Flooring, we help homeowners and property managers restore beauty, function, and durability with skilled flooring repair, replacement, refinishing, and redesign support. Our team brings hands-on experience, clear communication, and long-lasting results to every project.
+          </p>
+
+          <!-- 3 Chips / Pill Badges -->
+          <div class="flex flex-wrap items-center gap-2.5 mb-6" aria-label="Key Highlights">
+            <span class="px-4 py-2 rounded-full bg-panel border border-stroke text-xs font-bold text-text font-body shadow-2xs">
+              Trained Professionals
+            </span>
+            <span class="px-4 py-2 rounded-full bg-panel border border-stroke text-xs font-bold text-text font-body shadow-2xs">
+              Long-Lasting Results
+            </span>
+            <span class="px-4 py-2 rounded-full bg-panel border border-stroke text-xs font-bold text-text font-body shadow-2xs">
+              Quality Workmanship
+            </span>
+          </div>
+
+          <hr class="border-t border-stroke/70 my-6" />
+
+          <!-- 3 Stat Cards Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6" aria-label="Core Metrics">
+            <!-- Card 1 -->
+            <div class="bg-panel/70 border border-stroke/80 rounded-2xl p-4 flex flex-col justify-center">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-muted font-title mb-1">SERVICE AREA</span>
+              <span class="text-sm font-bold text-text font-title leading-snug">Washington & Oregon</span>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-panel/70 border border-stroke/80 rounded-2xl p-4 flex flex-col justify-center">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-muted font-title mb-1">SPECIALTY</span>
+              <span class="text-sm font-bold text-text font-title leading-snug">Repair, Replace & Restore</span>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-panel/70 border border-stroke/80 rounded-2xl p-4 flex flex-col justify-center">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-muted font-title mb-1">FOCUS</span>
+              <span class="text-sm font-bold text-text font-title leading-snug">Residential & Commercial Floors</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3.5 mb-6">
+            <button
+              type="button"
+              @click="$dispatch('open-drawer')"
+              class="px-7 py-3.5 rounded-2xl bg-accent-2 hover:bg-amber-400 text-dark-bg font-black text-sm border border-accent-2 inline-flex items-center gap-2.5 font-body shadow-sm transition-all cursor-pointer"
+            >
+              <span>Get a Quote</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3H7a2 2 0 0 0-2 2v14l4-2 4 2 4-2 4 2V9l-7-6Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9h6M9 13h6" />
+              </svg>
+            </button>
+
+            <a
+              href="/our-services"
+              class="px-7 py-3.5 rounded-2xl bg-white hover:bg-panel text-text font-bold text-sm border border-stroke inline-flex items-center gap-2.5 font-body shadow-2xs transition-all"
+            >
+              <span>View Services</span>
+              <svg class="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <hr class="border-t border-stroke/70 my-6" />
+        </div>
+
+        <!-- Footer Note -->
+        <p class="font-body text-xs text-muted leading-relaxed">
+          From repairs and partial replacements to full flooring updates, we focus on dependable service, strong craftsmanship, and a smooth process from start to finish.
+        </p>
+      </div>
+
+      <!-- Right Column: Full-Height Image with Preserved Floating Badges -->
+      <div class="relative min-h-[460px] lg:min-h-0 h-full flex flex-col">
+        <div class="relative w-full h-full min-h-[460px] rounded-[32px] overflow-hidden bg-panel border border-stroke shadow-xl flex-1">
+          <Image
+            src={aboutHeroImg}
+            alt="CFS Flooring craftsmanship and team expertise"
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+          />
+
+          <!-- Floating Badge Top Right: Experience -->
+          <div class="absolute top-6 right-6 z-10 px-4 py-2.5 rounded-2xl bg-dark-bg/90 backdrop-blur-md border border-white/15 text-white shadow-xl flex items-center gap-3">
+            <span class="text-xs uppercase tracking-wider text-white/70 font-body">Experience</span>
+            <span class="text-lg font-black text-accent-2 font-title">10+ Years</span>
+          </div>
+
+          <!-- Floating Badge Bottom: Built for lasting results -->
+          <div class="absolute bottom-6 left-6 right-6 z-10 p-4 rounded-2xl bg-dark-bg/90 backdrop-blur-md border border-white/15 text-white shadow-xl flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-accent-2 text-dark-bg font-black flex items-center justify-center text-xl font-title shrink-0">
+              10+
+            </div>
+            <div>
+              <div class="font-bold text-white text-base font-title">Built for lasting results</div>
+              <div class="text-xs text-white/70 font-body">Repairs • Replacement • Refinishing • Redesign</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

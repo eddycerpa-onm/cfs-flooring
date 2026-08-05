@@ -1,0 +1,306 @@
+---
+import { Image } from 'astro:assets';
+import slide2 from '@/assets/about/slide-2.webp';
+import slide3 from '@/assets/about/slide-3.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section id="cfs-about-details" class:list={['py-16 lg:py-24 bg-panel border-b border-stroke relative overflow-hidden', className]} x-data="{ activeTab: 'different', openAcc: 0 }">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="max-w-4xl mb-12">
+      <div class="flex flex-wrap items-center gap-3 mb-4 font-body">
+        <span class="px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent font-black text-xs uppercase tracking-widest font-title">
+          About CFS Flooring
+        </span>
+        <span class="text-xs font-bold text-muted uppercase tracking-wider">
+          Washington • Oregon • Residential & Commercial Flooring
+        </span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black font-title text-text leading-tight tracking-tight mb-4">
+        Flooring expertise built on honest guidance, quality craftsmanship, and a smoother process.
+      </h2>
+
+      <p class="text-base sm:text-lg text-muted font-body leading-relaxed mb-6">
+        CFS Flooring helps homeowners and businesses upgrade, restore, and improve their spaces with dependable flooring solutions. We focus on clear communication, practical recommendations, and quality results that look great and hold up over time.
+      </p>
+
+      <div>
+        <button
+          type="button"
+          @click="$dispatch('open-drawer')"
+          class="inline-flex items-center gap-3 px-7 py-3.5 rounded-2xl bg-accent-2 text-dark-bg font-extrabold text-sm border border-accent-2 shadow-md hover:bg-accent hover:text-white hover:border-accent transition-all transform hover:-translate-y-0.5 cursor-pointer font-body"
+        >
+          <span>Get a Quote</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3H7a2 2 0 0 0-2 2v14l4-2 4 2 4-2 4 2V9l-7-6Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9h6M9 13h6" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Grid Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column: Media Showcase Frame -->
+      <div class="lg:col-span-5 relative lg:sticky lg:top-28">
+        <div class="relative rounded-3xl overflow-hidden bg-bg border border-stroke shadow-2xl aspect-4/5">
+          <div x-show="activeTab === 'different'" class="w-full h-full">
+            <Image
+              src={slide3}
+              alt="CFS Flooring craftsmanship and quality floor detail"
+              class="w-full h-full object-cover transition-opacity duration-300"
+              width={560}
+              height={700}
+              loading="lazy"
+            />
+          </div>
+          <div x-show="activeTab === 'mission'" class="w-full h-full">
+            <Image
+              src={slide2}
+              alt="CFS Flooring installation mission"
+              class="w-full h-full object-cover transition-opacity duration-300"
+              width={560}
+              height={700}
+              loading="lazy"
+            />
+          </div>
+          <div x-show="activeTab === 'process'" class="w-full h-full">
+            <Image
+              src={slide3}
+              alt="CFS Flooring organized installation process"
+              class="w-full h-full object-cover transition-opacity duration-300"
+              width={560}
+              height={700}
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Bottom Caption Overlay -->
+          <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-dark-bg/85 backdrop-blur-md border border-white/15 text-white text-xs font-bold font-title shadow-xl">
+            Craftsmanship • Communication • Quality
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Tabs Navigation & Panels -->
+      <div class="lg:col-span-7 flex flex-col gap-6">
+        
+        <!-- Tab Bar Buttons -->
+        <div class="flex flex-wrap items-center gap-2.5 border-b border-stroke pb-4" role="tablist" aria-label="About tabs">
+          <button
+            type="button"
+            role="tab"
+            @click="activeTab = 'different'"
+            class="px-5 py-3 rounded-xl font-bold text-sm font-title transition-all cursor-pointer"
+            :class="activeTab === 'different' ? 'bg-accent text-white shadow-md' : 'bg-bg text-muted hover:text-text border border-stroke'"
+            :aria-selected="activeTab === 'different'"
+          >
+            What Makes Us Different
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            @click="activeTab = 'mission'"
+            class="px-5 py-3 rounded-xl font-bold text-sm font-title transition-all cursor-pointer"
+            :class="activeTab === 'mission' ? 'bg-accent text-white shadow-md' : 'bg-bg text-muted hover:text-text border border-stroke'"
+            :aria-selected="activeTab === 'mission'"
+          >
+            Our Mission
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            @click="activeTab = 'process'"
+            class="px-5 py-3 rounded-xl font-bold text-sm font-title transition-all cursor-pointer"
+            :class="activeTab === 'process' ? 'bg-accent text-white shadow-md' : 'bg-bg text-muted hover:text-text border border-stroke'"
+            :aria-selected="activeTab === 'process'"
+          >
+            Our Process
+          </button>
+        </div>
+
+        <!-- Panel Contents -->
+        <div class="pt-2">
+          
+          <!-- PANEL 1: What Makes Us Different -->
+          <div x-show="activeTab === 'different'" x-cloak class="flex flex-col gap-6">
+            <h3 class="text-2xl sm:text-3xl font-black font-title text-text">
+              What makes CFS Flooring different from the competition
+            </h3>
+
+            <p class="text-base text-muted font-body leading-relaxed">
+              Choosing a flooring company is about more than finding someone to install material. You need a team that communicates clearly, recommends the right solution for your space, and delivers results with care. At CFS Flooring, we focus on honest guidance, cleaner execution, and long-term value instead of rushed work or one-size-fits-all recommendations.
+            </p>
+
+            <ul class="flex flex-col gap-3 list-none p-0 my-1" aria-label="What makes us different bullets">
+              <li class="flex items-start gap-3 text-base font-bold text-text">
+                <span class="w-2.5 h-2.5 rounded-full bg-accent-2 mt-2 shrink-0"></span>
+                <span><strong>Honest recommendations</strong> based on your goals, space, and budget.</span>
+              </li>
+              <li class="flex items-start gap-3 text-base font-bold text-text">
+                <span class="w-2.5 h-2.5 rounded-full bg-accent-2 mt-2 shrink-0"></span>
+                <span><strong>Attention to prep and detail</strong> so the finished floor looks better and lasts longer.</span>
+              </li>
+              <li class="flex items-start gap-3 text-base font-bold text-text">
+                <span class="w-2.5 h-2.5 rounded-full bg-accent-2 mt-2 shrink-0"></span>
+                <span><strong>Clear communication</strong> from estimate to final walkthrough, without the guesswork.</span>
+              </li>
+            </ul>
+
+            <div class="p-6 rounded-2xl bg-accent/10 border border-accent/20">
+              <div class="text-base font-black font-title text-accent mb-1">Built for better long-term results</div>
+              <div class="text-sm text-muted font-body leading-relaxed">
+                We care about how your floors perform after the project is done, not just how they look the day we finish.
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 2: Our Mission -->
+          <div x-show="activeTab === 'mission'" x-cloak class="flex flex-col gap-6">
+            <h3 class="text-2xl sm:text-3xl font-black font-title text-text">
+              Our mission
+            </h3>
+
+            <p class="text-base text-muted font-body leading-relaxed">
+              Our mission is to help homeowners and businesses improve their spaces with flooring solutions that combine style, durability, and practical value. We believe every project should be handled with professionalism, honest guidance, and workmanship clients can feel confident in.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-2" aria-label="Mission pillars">
+              <article class="p-5 rounded-2xl bg-bg border border-stroke flex flex-col justify-between shadow-xs">
+                <div>
+                  <div class="w-9 h-9 rounded-xl bg-accent-2 text-dark-bg font-black flex items-center justify-center font-title text-sm mb-4">
+                    1
+                  </div>
+                  <h4 class="text-lg font-bold font-title text-text mb-2">Guide</h4>
+                  <p class="text-xs text-muted font-body leading-relaxed">
+                    Help you choose the right flooring option for your space, budget, and long-term goals.
+                  </p>
+                </div>
+              </article>
+
+              <article class="p-5 rounded-2xl bg-bg border border-stroke flex flex-col justify-between shadow-xs">
+                <div>
+                  <div class="w-9 h-9 rounded-xl bg-accent-2 text-dark-bg font-black flex items-center justify-center font-title text-sm mb-4">
+                    2
+                  </div>
+                  <h4 class="text-lg font-bold font-title text-text mb-2">Install</h4>
+                  <p class="text-xs text-muted font-body leading-relaxed">
+                    Complete the work with attention to detail, reliable execution, and quality craftsmanship.
+                  </p>
+                </div>
+              </article>
+
+              <article class="p-5 rounded-2xl bg-bg border border-stroke flex flex-col justify-between shadow-xs">
+                <div>
+                  <div class="w-9 h-9 rounded-xl bg-accent-2 text-dark-bg font-black flex items-center justify-center font-title text-sm mb-4">
+                    3
+                  </div>
+                  <h4 class="text-lg font-bold font-title text-text mb-2">Deliver</h4>
+                  <p class="text-xs text-muted font-body leading-relaxed">
+                    Leave you with flooring that improves the comfort, function, and appearance of your space.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- PANEL 3: Our Process Accordion -->
+          <div x-show="activeTab === 'process'" x-cloak class="flex flex-col gap-6">
+            <h3 class="text-2xl sm:text-3xl font-black font-title text-text">
+              Our process
+            </h3>
+
+            <p class="text-base text-muted font-body leading-relaxed">
+              We keep every flooring project organized so you know what to expect from the first conversation through the final walkthrough.
+            </p>
+
+            <div class="flex flex-col gap-3 my-1" aria-label="Process steps accordion">
+              <!-- Step 1 -->
+              <div class="rounded-2xl bg-bg border border-stroke overflow-hidden transition-all shadow-2xs">
+                <button
+                  type="button"
+                  @click="openAcc = (openAcc === 0 ? null : 0)"
+                  class="w-full px-6 py-4 flex items-center justify-between text-left font-bold font-title text-text hover:text-accent transition-colors cursor-pointer"
+                >
+                  <span class="text-base sm:text-lg">01) Consultation & Material Guidance</span>
+                  <span class="text-xl text-accent font-black" x-text="openAcc === 0 ? '−' : '+'">+</span>
+                </button>
+                <div x-show="openAcc === 0" x-collapse class="px-6 pb-5 pt-1 text-sm text-muted font-body leading-relaxed border-t border-stroke/50">
+                  We start by understanding your space, goals, budget, and timeline. Then we help you choose the right flooring option, whether that means hardwood, laminate, LVP, carpet, tile, or sheet vinyl.
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="rounded-2xl bg-bg border border-stroke overflow-hidden transition-all shadow-2xs">
+                <button
+                  type="button"
+                  @click="openAcc = (openAcc === 1 ? null : 1)"
+                  class="w-full px-6 py-4 flex items-center justify-between text-left font-bold font-title text-text hover:text-accent transition-colors cursor-pointer"
+                >
+                  <span class="text-base sm:text-lg">02) Honest Quote & Clear Plan</span>
+                  <span class="text-xl text-accent font-black" x-text="openAcc === 1 ? '−' : '+'">+</span>
+                </button>
+                <div x-show="openAcc === 1" x-collapse class="px-6 pb-5 pt-1 text-sm text-muted font-body leading-relaxed border-t border-stroke/50">
+                  You get a straightforward quote and realistic expectations before work begins. We explain what makes sense for your project, including when a simpler option is the smarter investment.
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="rounded-2xl bg-bg border border-stroke overflow-hidden transition-all shadow-2xs">
+                <button
+                  type="button"
+                  @click="openAcc = (openAcc === 2 ? null : 2)"
+                  class="w-full px-6 py-4 flex items-center justify-between text-left font-bold font-title text-text hover:text-accent transition-colors cursor-pointer"
+                >
+                  <span class="text-base sm:text-lg">03) Installation, Sanding, or Removal</span>
+                  <span class="text-xl text-accent font-black" x-text="openAcc === 2 ? '−' : '+'">+</span>
+                </button>
+                <div x-show="openAcc === 2" x-collapse class="px-6 pb-5 pt-1 text-sm text-muted font-body leading-relaxed border-t border-stroke/50">
+                  Once approved, we complete the work with attention to labor quality and clean execution. That includes new flooring installation, hardwood sand and finish, tile work, or flooring removal.
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="rounded-2xl bg-bg border border-stroke overflow-hidden transition-all shadow-2xs">
+                <button
+                  type="button"
+                  @click="openAcc = (openAcc === 3 ? null : 3)"
+                  class="w-full px-6 py-4 flex items-center justify-between text-left font-bold font-title text-text hover:text-accent transition-colors cursor-pointer"
+                >
+                  <span class="text-base sm:text-lg">04) Final Walkthrough & Local Support</span>
+                  <span class="text-xl text-accent font-black" x-text="openAcc === 3 ? '−' : '+'">+</span>
+                </button>
+                <div x-show="openAcc === 3" x-collapse class="px-6 pb-5 pt-1 text-sm text-muted font-body leading-relaxed border-t border-stroke/50">
+                  We finish with a walkthrough to make sure the details are right and the result matches the plan. CFS Flooring proudly serves Lake Oswego, West Linn, and Wilsonville with responsive, local service.
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-accent-2/15 border border-accent-2/30">
+              <div class="text-base font-black font-title text-text mb-1">End result</div>
+              <div class="text-sm text-muted font-body leading-relaxed">
+                A clear plan, quality workmanship, and a finished floor that fits your space and goals.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+

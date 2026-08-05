@@ -4,24 +4,27 @@ import Pill from '@/components/ui/Pill.astro';
 import CTABanner from '@/components/sections/CTABanner.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
 import LocalBusiness from '@/components/seo/LocalBusiness.astro';
-import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import { blogPosts, type BlogPost } from '@/data/blog';
 
-export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.id },
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
     props: { post },
   }));
 }
 
+interface Props {
+  post: BlogPost;
+}
+
 const { post } = Astro.props;
-const { title, description, pubDate, author, category, metaTitle, metaDescription } = post.data;
-const { Content } = await render(post);
+const { title, description, pubDate, author, category, metaTitle, metaDescription, geoTarget, readTime, image, imageAlt, content, slug } = post;
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://cfsflooring.com' },
   { name: 'Blog', url: 'https://cfsflooring.com/blog' },
-  { name: title, url: `https://cfsflooring.com/blog/${post.id}` },
+  { name: title, url: `https://cfsflooring.com/blog/${slug}` },
 ];
 
 const articleSchema = {
@@ -41,39 +44,164 @@ const articleSchema = {
       "url": "https://cfsflooring.com/og-image.jpg"
     }
   },
-  "datePublished": pubDate.toISOString(),
-  "mainEntityOfPage": `https://cfsflooring.com/blog/${post.id}`
+  "datePublished": new Date(pubDate).toISOString(),
+  "mainEntityOfPage": `https://cfsflooring.com/blog/${slug}`
 };
+
+// Filter related posts excluding current post
+const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
 ---
 
 <BaseLayout title={metaTitle} description={metaDescription} type="article">
   <LocalBusiness />
   <BreadcrumbSchema items={breadcrumbs} />
-  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} is:inline />
 
-  <article class="py-16 bg-bg border-b border-stroke">
+  <article class="py-12 md:py-16 bg-bg border-b border-stroke">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Article Header -->
-      <div class="flex flex-col gap-4 mb-10 text-center items-center">
-        <Pill>{category}</Pill>
+      <header class="flex flex-col items-center text-center gap-4 mb-8">
+        <div class="flex items-center gap-3">
+          <Pill variant="accent">{category}</Pill>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full bg-panel border border-stroke text-muted">
+            📍 {geoTarget}
+          </span>
+        </div>
+
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-title text-text tracking-tight leading-tight">
           {title}
         </h1>
-        <div class="flex items-center gap-4 text-sm text-muted pt-2">
+
+        <div class="flex items-center gap-4 text-xs sm:text-sm text-muted pt-2 font-body">
           <span>By <strong>{author}</strong></span>
           <span>•</span>
-          <span>{new Date(pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+          <time datetime={pubDate}>
+            {new Date(pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+          </time>
+          <span>•</span>
+          <span>{readTime}</span>
         </div>
+      </header>
+
+      <!-- Featured Image with Astro <Image /> -->
+      <div class="mb-12 rounded-3xl overflow-hidden shadow-lg border border-stroke bg-panel">
+        <Image
+          src={image}
+          alt={imageAlt}
+          width={1024}
+          height={576}
+          class="w-full h-auto object-cover max-h-[500px]"
+        />
       </div>
 
-      <!-- Article Body Content -->
-      <div class="prose prose-lg max-w-none text-muted leading-relaxed font-body p-8 rounded-3xl bg-panel border border-stroke shadow-sm">
-        <Content />
+      <!-- Main Content Area -->
+      <div class="space-y-8 text-text leading-relaxed font-body">
+        
+        <!-- Intro Paragraph -->
+        <div class="p-6 md:p-8 rounded-3xl bg-panel border border-stroke shadow-xs">
+          <p class="text-lg md:text-xl font-medium text-text leading-relaxed">
+            {content.intro}
+          </p>
+        </div>
+
+        <!-- Content Sections -->
+        {content.sections.map((section, idx) => (
+          <section class="space-y-4 pt-4">
+            <h2 class="text-2xl md:text-3xl font-bold font-title text-text tracking-tight flex items-center gap-3">
+              <span class="text-accent text-lg font-mono font-bold">0{idx + 1}.</span>
+              {section.heading}
+            </h2>
+            
+            <p class="text-base md:text-lg text-muted leading-relaxed">
+              {section.content}
+            </p>
+
+            {section.listItems && section.listItems.length > 0 && (
+              <ul class="my-4 space-y-3 pl-2">
+                {section.listItems.map((item) => (
+                  <li class="flex items-start gap-3 text-base text-text">
+                    <svg class="w-5 h-5 text-accent flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ))}
+
+        <!-- Article FAQ Section if Present -->
+        {content.faq && content.faq.length > 0 && (
+          <section class="mt-12 p-8 rounded-3xl bg-panel border border-stroke space-y-6">
+            <h3 class="text-2xl font-bold font-title text-text">Frequently Asked Questions</h3>
+            <div class="space-y-6">
+              {content.faq.map((item) => (
+                <div class="space-y-2">
+                  <h4 class="text-lg font-bold font-title text-text">{item.question}</h4>
+                  <p class="text-base text-muted">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Conclusion Box -->
+        <div class="p-8 rounded-3xl bg-dark-bg text-white shadow-xl space-y-4 border border-stroke mt-10">
+          <h3 class="text-2xl font-bold font-title text-accent-2">Work With Local Portland Metro Experts</h3>
+          <p class="text-base text-gray-200 leading-relaxed">
+            {content.conclusion}
+          </p>
+          <div class="pt-4 flex flex-wrap items-center gap-4">
+            <a
+              href="tel:5038392061"
+              class="px-6 py-3 rounded-xl bg-accent text-white font-bold font-title hover:bg-accent/90 transition-all shadow-md inline-flex items-center gap-2 text-sm"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call (503) 839-2061
+            </a>
+            <a
+              href="/our-services"
+              class="px-6 py-3 rounded-xl bg-white/10 text-white font-bold font-title border border-white/20 hover:bg-white/20 transition-all text-sm"
+            >
+              Explore Our Services &rarr;
+            </a>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Related Posts Section -->
+      {relatedPosts.length > 0 && (
+        <section class="mt-16 pt-12 border-t border-stroke">
+          <h3 class="text-2xl font-bold font-title text-text mb-8">Related Guides & Articles</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {relatedPosts.map((rPost) => (
+              <article class="p-6 rounded-2xl bg-panel border border-stroke hover:border-accent/40 transition-all flex flex-col justify-between group">
+                <div>
+                  <span class="text-xs font-bold text-accent">{rPost.category}</span>
+                  <h4 class="text-lg font-bold font-title text-text group-hover:text-accent transition-colors mt-2 mb-2">
+                    <a href={`/blog/${rPost.slug}`}>{rPost.title}</a>
+                  </h4>
+                  <p class="text-sm text-muted line-clamp-2">{rPost.description}</p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-stroke/60 flex items-center justify-between text-xs">
+                  <span class="text-muted">📍 {rPost.geoTarget}</span>
+                  <a href={`/blog/${rPost.slug}`} class="font-bold text-accent group-hover:translate-x-1 transition-transform">
+                    Read guide &rarr;
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
     </div>
   </article>
 
-  <CTABanner title="Need Professional Flooring Help?" subtitle="Talk to Jose and get an honest, free estimate for your home or business." />
+  <CTABanner title="Ready to Upgrade Your Floors?" subtitle="Get a free estimate for hardwood, LVP, carpet, or tile in Lake Oswego, West Linn, Wilsonville, or Portland." />
 </BaseLayout>

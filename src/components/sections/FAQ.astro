@@ -1,19 +1,27 @@
 ---
-import { faqsData } from '@/data/faqs';
+import { faqsData as defaultFaqs } from '@/data/faqs';
+import type { ServiceFAQ } from '@/data/services';
+
+interface Props {
+  faqs?: ServiceFAQ[] | typeof defaultFaqs;
+  title?: string;
+}
+
+const { faqs = defaultFaqs, title = "FAQs About CFS Flooring" } = Astro.props;
 ---
 
-<!-- CFS Flooring • FAQ (10 items, 1:1 original site specification) -->
+<!-- CFS Flooring • FAQ (1:1 original site specification) -->
 <section class="cb-faq" id="faq" aria-label="Frequently Asked Questions">
   <div class="cb-faq-inner">
     
     <!-- Header -->
     <div class="cb-faq-head">
-      <h2 class="cb-faq-title">FAQs About CFS Flooring</h2>
+      <h2 class="cb-faq-title">{title}</h2>
     </div>
 
     <!-- Accordion List -->
     <div class="cb-faq-list" x-data="{ openIdx: null }">
-      {faqsData.map((faq, idx) => (
+      {faqs.map((faq, idx) => (
         <article class="cb-faq-item" :class={`openIdx === ${idx} ? 'is-open' : ''`}>
           <h3>
             <button

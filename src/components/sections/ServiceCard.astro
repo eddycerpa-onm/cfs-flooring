@@ -3,14 +3,15 @@ import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
-  shortTitle: string;
+  shortTitle?: string;
   slug: string;
   description: string;
   image: any;
+  href?: string;
 }
 
-const { title, slug, description, image } = Astro.props;
-const href = `/services/${slug}`;
+const { title, slug, description, image, href: customHref } = Astro.props;
+const href = customHref || `/services/${slug}`;
 ---
 
 <article class="rr-svc-card" aria-label={title}>
@@ -36,6 +37,15 @@ const href = `/services/${slug}`;
       loading="lazy"
       decoding="async"
     />
+  </a>
+
+  <a class="rr-svc-mobilebtn" href={href} aria-label={`Learn more about ${title}`}>
+    Learn More
+    <span class="rr-svc-mobilebtn-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
+      </svg>
+    </span>
   </a>
 </article>
 
@@ -153,5 +163,43 @@ const href = `/services/${slug}`;
 
   .rr-svc-card:hover .rr-svc-image img {
     transform: scale(1.06);
+  }
+
+  .rr-svc-mobilebtn {
+    display: none;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 14px 18px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    border: 1px solid transparent;
+    background: var(--accent-2);
+    color: var(--dark-bg);
+    transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+    font-family: var(--font-body);
+  }
+
+  @media (max-width: 640px) {
+    .rr-svc-mobilebtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .rr-svc-mobilebtn:hover {
+    transform: translateY(-1px);
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .rr-svc-mobilebtn-icon {
+    margin-left: 10px;
+    display: inline-grid;
+    place-items: center;
+    color: currentColor;
   }
 </style>

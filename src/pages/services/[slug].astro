@@ -1,45 +1,45 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import HeroService from '@/components/sections/HeroService.astro';
+import ServiceDetails from '@/components/services/ServiceDetails.astro';
+import ServiceProcessSteps from '@/components/services/ServiceProcessSteps.astro';
+import RelatedServicesNav from '@/components/services/RelatedServicesNav.astro';
 import FAQ from '@/components/sections/FAQ.astro';
 import CTABanner from '@/components/sections/CTABanner.astro';
+import LocalBusiness from '@/components/seo/LocalBusiness.astro';
 import ServiceSchema from '@/components/seo/ServiceSchema.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
-import LocalBusiness from '@/components/seo/LocalBusiness.astro';
-import { getCollection } from 'astro:content';
-
-import imgHardwood from '@/assets/services/hardwood-lvp.webp';
-import imgCarpet from '@/assets/services/carpet.webp';
-import imgSandFinish from '@/assets/services/sand-finish.webp';
-import imgTile from '@/assets/services/ceramic-tile.webp';
-import imgSheetVinyl from '@/assets/services/sheet-vinyl.webp';
-import imgVCT from '@/assets/services/vct.webp';
-import imgRemoval from '@/assets/services/flooring-removal.webp';
-import imgCounters from '@/assets/services/counters-decks.webp';
+import FAQSchema from '@/components/seo/FAQSchema.astro';
+import { services, type ServiceItem } from '@/data/services';
 
 export async function getStaticPaths() {
-  const services = await getCollection('services');
   return services.map((service) => ({
-    params: { slug: service.data.slug },
+    params: { slug: service.slug },
     props: { service },
   }));
 }
 
+interface Props {
+  service: ServiceItem;
+}
+
 const { service } = Astro.props;
-const { title, slug, description, metaTitle, metaDescription, features, faqs } = service.data;
-
-const imagesMap: Record<string, any> = {
-  'hardwood-laminate-and-lvp': imgHardwood,
-  'carpet-installation': imgCarpet,
-  'sand-and-finish': imgSandFinish,
-  'ceramic-tile': imgTile,
-  'sheet-vinyl': imgSheetVinyl,
-  'vct-flooring': imgVCT,
-  'flooring-removal': imgRemoval,
-  'counters-and-decks': imgCounters,
-};
-
-const serviceImage = imagesMap[slug];
+const {
+  title,
+  slug,
+  subtitle,
+  description,
+  metaTitle,
+  metaDescription,
+  image,
+  heroBadge,
+  features,
+  detailedFeatures,
+  processSteps,
+  specifications,
+  applications,
+  faqs,
+} = service;
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://cfsflooring.com' },
@@ -52,34 +52,37 @@ const breadcrumbs = [
   <LocalBusiness />
   <ServiceSchema name={title} description={description} url={`https://cfsflooring.com/services/${slug}`} />
   <BreadcrumbSchema items={breadcrumbs} />
+  {faqs && faqs.length > 0 && <FAQSchema faqs={faqs} />}
 
+  <!-- Hero Section -->
   <HeroService
     title={title}
     description={description}
-    image={serviceImage}
+    image={image}
     features={features}
     slug={slug}
+    heroBadge={heroBadge}
   />
 
-  <section class="py-16 bg-bg border-b border-stroke">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-extrabold font-title text-text mb-6">
-        Why Choose CFS Flooring for {title}?
-      </h2>
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
-        {features.map((feature) => (
-          <li class="p-4 rounded-2xl bg-panel border border-stroke flex items-start gap-3">
-            <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-base font-bold text-text">{feature}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
+  <!-- Detailed Features & Specs Section -->
+  <ServiceDetails
+    title={title}
+    subtitle={subtitle}
+    features={features}
+    detailedFeatures={detailedFeatures}
+    specifications={specifications}
+    applications={applications}
+  />
 
+  <!-- Process Steps Section -->
+  <ServiceProcessSteps steps={processSteps} />
+
+  <!-- FAQs Section -->
   {faqs && faqs.length > 0 && <FAQ faqs={faqs} title={`Frequently Asked Questions: ${title}`} />}
 
+  <!-- Related Services -->
+  <RelatedServicesNav currentSlug={slug} />
+
+  <!-- Call to Action Banner -->
   <CTABanner title={`Get a Free Estimate on ${title}`} />
 </BaseLayout>

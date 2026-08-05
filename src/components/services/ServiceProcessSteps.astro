@@ -1,0 +1,53 @@
+---
+import type { ServiceProcessStep } from '@/data/services';
+
+interface Props {
+  steps?: ServiceProcessStep[];
+  title?: string;
+}
+
+const {
+  title = "Our Proven Installation & Care Process",
+  steps = [
+    { step: 1, title: "On-Site Consultation & Prep", description: "Comprehensive surface inspection and digital moisture testing." },
+    { step: 2, title: "Subfloor Preparation", description: "Leveling, smoothing, and applying certified vapor barriers." },
+    { step: 3, title: "Precision Fitting & Installation", description: "Flawless craft assembly with tight seam control." },
+    { step: 4, title: "Trim & Transition Finishing", description: "Custom baseboards, shoe moldings, and smooth threshold transitions." },
+    { step: 5, title: "Final Walkthrough & Clean Up", description: "Complete site sweep and 100% satisfaction walkthrough." }
+  ]
+} = Astro.props;
+---
+
+<section class="py-16 lg:py-24 bg-panel border-b border-stroke relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-block text-xs font-extrabold uppercase tracking-wider text-accent font-title mb-3">
+        Precision Workmanship
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold font-title text-text tracking-tight">
+        {title}
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-muted">
+        Every project follows a strict quality control checklist to deliver clean, long-lasting results.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      {steps.map((item) => (
+        <div class="relative p-6 rounded-2xl bg-bg border border-stroke flex flex-col justify-between hover:border-accent transition-all duration-300 group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-accent/10 text-accent font-black font-title text-xl flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+              0{item.step}
+            </div>
+            <h3 class="text-base font-bold font-title text-text mb-2 leading-snug">
+              {item.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,143 @@
+---
+import { Image } from 'astro:assets';
+import slide1 from '@/assets/about/slide-1.webp';
+import slide2 from '@/assets/about/slide-2.webp';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const highlights = [
+  {
+    tag: 'Experience',
+    title: 'Over 10 years of flooring experience',
+    desc: 'We bring years of hands-on knowledge to every project, helping clients make smart flooring decisions based on function, style, budget, and long-term performance.',
+    icon: `<path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm-1 14-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7z"/>`
+  },
+  {
+    tag: 'Guidance',
+    title: 'Honest recommendations you can trust',
+    desc: 'We take the time to understand your space and recommend flooring solutions that make sense for your goals instead of pushing options that are not the right fit.',
+    icon: `<path d="M3 5h18v2H3V5zm0 6h18v2H3v-2zm0 6h12v2H3v-2z"/>`
+  },
+  {
+    tag: 'Craftsmanship',
+    title: 'Quality installation and lasting results',
+    desc: 'From prep to finish, we focus on clean execution, durable materials, and attention to detail so your floors look great and hold up over time.',
+    icon: `<path d="M13 2 3 14h7l-1 8 12-14h-7l-1-6z"/>`
+  },
+  {
+    tag: 'Service',
+    title: 'Residential and commercial flooring support',
+    desc: 'Whether you need new flooring for a home, rental, office, or business space, we tailor each project to the needs of the property and the people using it every day.',
+    icon: `<path d="M12 3 2 12h3v9h6v-6h2v6h6v-9h3L12 3z"/>`
+  },
+  {
+    tag: 'Process',
+    title: 'Clear communication from start to finish',
+    desc: 'We keep the process simple with straightforward communication, reliable scheduling, and clear next steps so you always know what to expect.',
+    icon: `<path d="M6 2h9l3 3v17H6V2zm9 1.5V6h2.5L15 3.5zM8 10h8v2H8v-2zm0 4h8v2H8v-2zm0 4h6v2H8v-2z"/>`
+  },
+  {
+    tag: 'Local',
+    title: 'Serving Washington and Oregon',
+    desc: 'We proudly help clients across Washington and Oregon with flooring services designed to improve comfort, style, value, and long-term durability.',
+    icon: `<path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>`
+  }
+];
+
+const serviceChips = [
+  'HARDWOOD',
+  'LAMINATE',
+  'LVP',
+  'CARPET',
+  'SAND & FINISH',
+  'FLOORING REMOVAL'
+];
+---
+
+<section id="cfsWhyChooseUs" class:list={['py-16 lg:py-24 bg-bg border-b border-stroke relative overflow-hidden', className]} aria-label="Why Choose CFS Flooring">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Main Content Grid 1:1 with Reference Image -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      
+      <!-- Left Column: Overlapping Portrait Images Showcase (1:1 with input_file_0.png) -->
+      <div class="lg:col-span-5 relative py-4">
+        <!-- Background/Top-Right Image Card -->
+        <div class="w-[82%] ml-auto relative rounded-[28px] overflow-hidden bg-panel border border-stroke shadow-xl aspect-[3/4]">
+          <Image
+            src={slide1}
+            alt="CFS Flooring project quality craftsmanship"
+            class="w-full h-full object-cover"
+            width={500}
+            height={667}
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Foreground/Bottom-Left Overlapping Image Card -->
+        <div class="w-[82%] -mt-36 lg:-mt-44 relative z-10 rounded-[28px] overflow-hidden bg-panel border border-stroke shadow-2xl aspect-[3/4]">
+          <Image
+            src={slide2}
+            alt="CFS Flooring installation and subfloor preparation"
+            class="w-full h-full object-cover"
+            width={500}
+            height={667}
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Right Column: 6 Cards + Local Solutions Sub-box (1:1 with input_file_0.png) -->
+      <div class="lg:col-span-7 flex flex-col gap-5">
+        <!-- 6 Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {highlights.map((item) => (
+            <article class="p-5 rounded-2xl bg-panel/70 border border-stroke/70 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <span class="px-3 py-1 rounded-full bg-white border border-stroke/60 text-text font-bold text-xs font-body">
+                    {item.tag}
+                  </span>
+                  <div class="w-9 h-9 rounded-full bg-accent-2/20 border border-accent-2/40 text-accent flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" set:html={item.icon} />
+                  </div>
+                </div>
+                <h3 class="text-base font-bold font-title text-text mb-2 leading-snug">
+                  {item.title}
+                </h3>
+                <p class="text-xs sm:text-sm text-muted font-body leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Local Solutions Sub-box -->
+        <div class="p-6 rounded-2xl bg-panel/70 border border-stroke/70 shadow-2xs flex flex-col gap-3">
+          <h3 class="text-lg font-bold font-title text-text">
+            Flooring solutions built around your space
+          </h3>
+          <p class="text-xs sm:text-sm text-muted font-body leading-relaxed">
+            CFS Flooring provides trusted flooring installation and related services for homes and businesses in Washington and Oregon. Whether you are updating one room or planning a larger project, our team is here to guide you through the options and deliver quality results with care.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-2 pt-1" aria-label="Service highlights">
+            {serviceChips.map((chip) => (
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stroke/60 text-text font-bold text-[11px] uppercase tracking-wider font-body shadow-2xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                {chip}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

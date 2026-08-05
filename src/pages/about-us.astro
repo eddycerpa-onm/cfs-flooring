@@ -1,19 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeroPage from '@/components/sections/HeroPage.astro';
-import Testimonials from '@/components/sections/Testimonials.astro';
-import CTABanner from '@/components/sections/CTABanner.astro';
-import SectionHeader from '@/components/ui/SectionHeader.astro';
 import LocalBusiness from '@/components/seo/LocalBusiness.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
 
-import aboutHeroImg from '@/assets/about/hero.webp';
-
-const stats = [
-  { kicker: 'Service Area', value: 'Oregon & Washington' },
-  { kicker: 'Specialty', value: 'Repair, Replace & Restore' },
-  { kicker: 'Experience', value: '10+ Years Expertise' },
-];
+import AboutHero from '@/components/about/AboutHero.astro';
+import WhyChooseUs from '@/components/about/WhyChooseUs.astro';
+import AboutTabbed from '@/components/about/AboutTabbed.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://cfsflooring.com' },
@@ -22,41 +16,24 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="About CFS Flooring | 10+ Years Flooring Installation Expertise"
-  description="Learn more about Jose and CFS Flooring. Over 10 years serving Lake Oswego, West Linn, and Portland with expert flooring repair, replacement, refinishing, and redesign."
+  title="About CFS Flooring | 10+ Years Flooring Installation & Refinishing Expertise"
+  description="Learn more about CFS Flooring LLC. Over 10 years serving Lake Oswego, West Linn, Wilsonville, Portland, and Vancouver WA with expert flooring repair, replacement, refinishing, and redesign."
 >
   <LocalBusiness />
   <BreadcrumbSchema items={breadcrumbs} />
 
-  <HeroPage
-    eyebrow="About CFS Flooring"
-    title="Over 10 Years of Flooring Expertise You Can Count On"
-    subtitle="At CFS Flooring, we help homeowners and property managers restore beauty, function, and durability with skilled flooring repair, replacement, refinishing, and redesign support. Our team brings hands-on experience, clear communication, and long-lasting results to every project."
-    image={aboutHeroImg}
-    stats={stats}
-  />
+  <!-- 1. Hero Section -->
+  <AboutHero />
 
-  <section class="py-20 bg-bg border-b border-stroke">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeader
-        kicker="Our Mission"
-        title="Quality Workmanship with Personal Guidance"
-        subtitle="We believe every space deserves floors that look great and hold up to daily life."
-        centered={true}
-        class="mb-10"
-      />
+  <!-- 2. Why Choose Us Section -->
+  <WhyChooseUs />
 
-      <div class="prose prose-lg max-w-none text-muted leading-relaxed flex flex-col gap-6 font-body">
-        <p>
-          Founded by Jose, CFS Flooring LLC was built on a simple promise: provide top-tier flooring craftsmanship paired with honest, straightforward recommendations. Over the last decade, we have completed hundreds of residential remodels, rental unit updates, and commercial floor installations across Lake Oswego, West Linn, Wilsonville, and Vancouver, WA.
-        </p>
-        <p>
-          Whether you are replacing worn carpet with waterproof LVP, restoring original oak hardwood floors through sand & finish, or laying custom ceramic tile in a kitchen remodel, we manage subfloor preparation, precision cutting, and clean finishing so your investment lasts for decades.
-        </p>
-      </div>
-    </div>
-  </section>
+  <!-- 3. Tabbed Approach Section (Different, Mission, Process) -->
+  <AboutTabbed />
 
+  <!-- 4. Testimonials Section -->
   <Testimonials />
+
+  <!-- 5. CTA Banner Section -->
   <CTABanner />
 </BaseLayout>
