@@ -84,7 +84,7 @@ export const navigationData: NavigationConfig = {
     },
     {
       title: 'Counters & Decks',
-      shortTitle: 'Counters & Decks',
+      shortTitle: 'Countertops & Decks',
       href: '/services/counters-and-decks',
       slug: 'counters-and-decks',
       description: 'Custom quartz and granite kitchen tops plus outdoor composite and timber decking.',
