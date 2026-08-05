@@ -40,3 +40,7 @@ scratch_assets/
 AUDITORIA_CSS.md
 scripts/
 temp_extracted/
+
+scratch_*
+.system_generated/
+
