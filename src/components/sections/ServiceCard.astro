@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { title, slug, description, image, href: customHref } = Astro.props;
-const href = customHref || `/services/${slug}`;
+const href = customHref || `/${slug}`;
 ---
 
 <article class="rr-svc-card" aria-label={title}>

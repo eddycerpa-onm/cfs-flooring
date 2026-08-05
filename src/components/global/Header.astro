@@ -5,7 +5,7 @@ import { serviceSublinks } from '@/data/navigation';
 import logo from '@/assets/logo.svg';
 ---
 
-<header class="sticky top-0 z-[1000] w-full bg-bg border-b border-stroke shadow-[0_18px_45px_rgba(34,20,22,0.12)]">
+<header id="mainHeader" class="sticky top-0 z-[1000] w-full bg-bg border-b border-stroke shadow-[0_18px_45px_rgba(34,20,22,0.12)] transition-transform duration-300 ease-in-out">
   <div class="max-w-[1280px] mx-auto p-[12px] min-[521px]:px-4 min-[980px]:px-[22px] min-[980px]:py-[18px] flex items-center justify-between min-[980px]:grid min-[980px]:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-[8px] min-[980px]:gap-[24px]">
     
     <!-- Logo Brand -->
@@ -157,3 +157,31 @@ import logo from '@/assets/logo.svg';
     </div>
   </div>
 </header>
+
+<script>
+  function initHeaderScroll() {
+    const header = document.getElementById('mainHeader');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 90) {
+        // Scroll Down -> Hide Header
+        header.classList.add('-translate-y-full');
+      } else {
+        // Scroll Up -> Show Header
+        header.classList.remove('-translate-y-full');
+      }
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderScroll);
+  } else {
+    initHeaderScroll();
+  }
+</script>
+

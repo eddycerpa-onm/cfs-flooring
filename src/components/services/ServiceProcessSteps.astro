@@ -18,7 +18,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="py-16 lg:py-24 bg-panel border-b border-stroke relative">
+<section class="process-steps-section py-16 lg:py-24 bg-bg border-b border-stroke relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-16">
       <span class="inline-block text-xs font-extrabold uppercase tracking-wider text-accent font-title mb-3">
@@ -27,14 +27,14 @@ const {
       <h2 class="text-3xl sm:text-4xl font-extrabold font-title text-text tracking-tight">
         {title}
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-muted">
+      <p class="mt-4 text-base sm:text-lg text-muted font-body">
         Every project follows a strict quality control checklist to deliver clean, long-lasting results.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
       {steps.map((item) => (
-        <div class="relative p-6 rounded-2xl bg-bg border border-stroke flex flex-col justify-between hover:border-accent transition-all duration-300 group">
+        <div class="relative p-6 rounded-2xl bg-panel border border-stroke flex flex-col justify-between hover:border-accent transition-all duration-300 group shadow-sm">
           <div>
             <div class="w-12 h-12 rounded-xl bg-accent/10 text-accent font-black font-title text-xl flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
               0{item.step}
@@ -42,7 +42,7 @@ const {
             <h3 class="text-base font-bold font-title text-text mb-2 leading-snug">
               {item.title}
             </h3>
-            <p class="text-xs sm:text-sm text-muted leading-relaxed">
+            <p class="text-xs sm:text-sm text-muted font-body leading-relaxed">
               {item.description}
             </p>
           </div>
@@ -51,3 +51,22 @@ const {
     </div>
   </div>
 </section>
+
+<style>
+  .process-steps-section {
+    background-color: var(--bg, #ffffff);
+  }
+
+  .process-steps-section h2,
+  .process-steps-section h3,
+  .process-steps-section .font-title {
+    font-family: var(--font-title, 'Lexend Deca', sans-serif);
+  }
+
+  .process-steps-section p,
+  .process-steps-section span,
+  .process-steps-section .font-body {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+  }
+</style>
+

@@ -15,8 +15,10 @@ export interface ServiceFAQ {
 }
 
 export interface ServiceFeature {
+  tag?: string;
   title: string;
   description: string;
+  bullets?: string[];
 }
 
 export interface ServiceProcessStep {
@@ -48,771 +50,565 @@ export interface ServiceItem {
   specifications?: ServiceSpec[];
   applications?: string[];
   faqs: ServiceFAQ[];
+  seoTitle?: string;
+  seoText?: string;
+}
+
+export function getRelatedServices(currentSlug: string, count: number = 3): ServiceItem[] {
+  return services.filter((s) => s.slug !== currentSlug).slice(0, count);
 }
 
 export const services: ServiceItem[] = [
   {
-    slug: 'hardwood-flooring',
-    title: 'Hardwood Flooring Installation & Refinishing',
-    shortTitle: 'Hardwood Flooring',
-    subtitle: 'Premium Solid & Engineered Hardwood Crafted for Timeless Elegance',
-    description: 'Transform your home or business with solid hardwood and precision engineered wood flooring. CFS Flooring delivers expert installation, custom stain matching, and dust-controlled refinishing across Lake Oswego, West Linn, Wilsonville, and the greater Portland metro area.',
-    cardDescription: 'Solid & engineered hardwood installation, custom staining, subfloor prep, and expert dustless refinishing.',
-    metaTitle: 'Hardwood Flooring Installation & Refinishing | Lake Oswego & West Linn',
-    metaDescription: 'Professional solid & engineered hardwood flooring installation and refinishing in Lake Oswego, West Linn, and Portland metro area.',
-    image: imgHardwood,
-    heroBadge: 'Hardwood Specialist',
-    order: 1,
-    features: [
-      'Solid & Engineered Hardwood Installation',
-      'Custom Wood Stains & Polyurethane Finishes',
-      'Dust-Controlled Sanding & Refinishing',
-      'Digital Moisture Testing & Vapor Barriers',
-      'Custom Baseboard, Shoe Molding & Stair Transitions',
-      'Low-VOC, Eco-Friendly Sealants'
+    "slug": "hardwood-laminate-and-lvp",
+    "title": "Hardwood, Laminate & LVP",
+    "shortTitle": "Hardwood & LVP",
+    "subtitle": "CFS Flooring installs hardwood, laminate, and luxury vinyl plank flooring for homes and businesses that want a clean, lasting finish. Whether you are updating one room or planning a full property refresh, we help you choose flooring that fits your style, traffic level, and long-term goals without making the process feel overwhelming.",
+    "description": "Beautiful New Floors Installed Across Lake Oswego, West Linn, Wilsonville & Vancouver.",
+    "cardDescription": "Professional installation for hardwood, laminate, and luxury vinyl plank with guidance on what works best for your space.",
+    "metaTitle": "Hardwood, Laminate & LVP | CFS Flooring",
+    "metaDescription": "Hardwood, laminate, and luxury vinyl plank installation across Lake Oswego, West Linn, and Wilsonville.",
+    "image": imgHardwood,
+    "heroBadge": "Hardwood • Laminate • LVP",
+    "order": 1,
+    "features": [
+      "Hardwood, Laminate & LVP",
+      "Residential & Commercial",
+      "Design Guidance • Installation"
     ],
-    detailedFeatures: [
+    "detailedFeatures": [
       {
-        title: 'Authentic Timber Craftsmanship',
-        description: 'We work with premium red oak, white oak, maple, walnut, and hickory timbers selected for grain structure and dimensional integrity.'
+        "tag": "Selection",
+        "title": "Flooring guidance based on your space and lifestyle",
+        "description": "Choosing the right floor is about more than color alone. We help you compare hardwood, laminate, and LVP based on durability, moisture resistance, maintenance, and the overall feel you want for the space.",
+        "bullets": [
+          "Product recommendations based on traffic, pets, kids, moisture exposure, and daily use",
+          "Guidance on plank size, finish, texture, color tones, and layout direction",
+          "Clear comparisons between hardwood, laminate, and luxury vinyl plank options",
+          "Recommendations that balance style goals, performance, and budget"
+        ]
       },
       {
-        title: 'Dust-Controlled Refinishing',
-        description: 'Our advanced sanding systems capture 99% of airborne dust, keeping your indoor air clean while restoring old hardwood to mint condition.'
+        "tag": "Preparation",
+        "title": "Subfloor prep and planning that support a better finish",
+        "description": "A floor only performs as well as the surface beneath it. We evaluate the installation area carefully so the finished result feels stable, looks clean, and holds up the way it should.",
+        "bullets": [
+          "Review of existing flooring, transitions, level changes, and installation conditions",
+          "Subfloor preparation to support proper fit, alignment, and long-term performance",
+          "Planning for trim details, doorway transitions, edges, and room-to-room flow"
+        ]
       },
       {
-        title: 'Precision Color Matching',
-        description: 'Custom blend stains to match your exact interior vision—from rich classic walnuts to light, modern Nordic natural tones.'
+        "tag": "Installation",
+        "title": "Clean, professional installation for a polished finished floor",
+        "description": "Whether the project is a single room, a full home update, or a commercial space, we install with attention to consistency, detail, and overall presentation.",
+        "bullets": [
+          "Hardwood, laminate, and LVP installation with careful layout and finish alignment",
+          "Attention to transitions, trim lines, cuts, and room flow for a more polished result",
+          "Organized project completion with clear communication from start to finish"
+        ]
       },
       {
-        title: 'Moisture Vapor Barrier Protection',
-        description: 'Subfloor testing and specialized moisture membranes safeguard your wood floors against damp Pacific Northwest climate shifts.'
+        "tag": "Why CFS",
+        "title": "Why homeowners and businesses choose CFS Flooring",
+        "description": "Great flooring projects depend on the installation process as much as the material itself. Clients choose CFS Flooring for clear guidance, dependable service, and workmanship that respects the space.",
+        "bullets": [
+          "Honest recommendations based on performance, design goals, and real-world use",
+          "Organized work that keeps the project straightforward and easier to manage",
+          "Finished floors designed to look clean, feel solid, and support long-term value"
+        ]
       }
     ],
-    processSteps: [
+    "faqs": [
       {
-        step: 1,
-        title: 'Subfloor Inspection & Moisture Testing',
-        description: 'We evaluate concrete or wooden subfloors with digital moisture meters to ensure optimal surface conditions.'
-      },
-      {
-        step: 2,
-        title: 'Material Acclimation',
-        description: 'Hardwood boards are acclimated on-site for 3–7 days so moisture content matches your indoor environment.'
-      },
-      {
-        step: 3,
-        title: 'Subfloor Prep & Leveling',
-        description: 'We sand high spots, fill dips, install vapor barriers, and prepare a rock-solid foundation.'
-      },
-      {
-        step: 4,
-        title: 'Nail / Glue Down Installation',
-        description: 'Master craftsmen lay each plank with staggered joints and tight seam alignments for enduring stability.'
-      },
-      {
-        step: 5,
-        title: 'Sanding, Staining & Sealant',
-        description: 'For unfinished hardwood, we sand smooth, apply custom stains, and coat with high-durability polyurethane finish.'
+        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
+        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
       }
     ],
-    specifications: [
-      { label: 'Species Available', value: 'White Oak, Red Oak, Maple, Walnut, Hickory' },
-      { label: 'Construction', value: '3/4" Solid & Multi-ply Engineered Hardwood' },
-      { label: 'Installation Method', value: 'Nail-down, Staple, Glue-down, or Floating' },
-      { label: 'Warranty', value: '10-Year Craftsmanship Guarantee' },
-      { label: 'Downtime', value: '2 to 4 Days typical residential turnaround' }
-    ],
-    applications: [
-      'Living Rooms & Great Rooms',
-      'Master Bedrooms & Suites',
-      'Formal Dining Rooms',
-      'Executive Office Spaces',
-      'Staircases & Hallways'
-    ],
-    faqs: [
-      {
-        question: 'What is the difference between solid hardwood and engineered hardwood?',
-        answer: 'Solid hardwood is a single piece of 100% natural timber that can be sanded and refinished multiple times over decades. Engineered hardwood features a real wood veneer layer glued over cross-grain plywood layers, providing superior dimensional stability in humid or climate-variable environments.'
-      },
-      {
-        question: 'How long does wood need to acclimate before installation?',
-        answer: 'We recommend acclimating hardwood on-site for 3 to 7 days prior to installation so that moisture levels equalize with your home HVAC environment.'
-      },
-      {
-        question: 'Can hardwood flooring be installed in basements or over concrete?',
-        answer: 'Engineered hardwood with a certified vapor barrier adhesive can be safely installed over concrete slabs, whereas solid hardwood is best suited for above-grade wooden subfloors.'
-      },
-      {
-        question: 'How do I care for newly installed or refinished hardwood?',
-        answer: 'Use microfiber mops, avoid standing water or harsh abrasive chemicals, and place protective felt pads under heavy furniture legs.'
-      }
-    ]
+    "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville flooring projects",
+    "seoText": "CFS Flooring provides hardwood, laminate, and LVP flooring installation for residential and commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you want a more classic wood look, a practical upgrade for high-traffic rooms, or a floor that balances durability and style, we help define the right scope and install it with care."
   },
   {
-    slug: 'laminate-flooring',
-    title: 'Laminate Flooring Installation',
-    shortTitle: 'Laminate Flooring',
-    subtitle: 'High-Performance, Scratch-Resistant Flooring Built for Active Homes',
-    description: 'Enjoy the luxurious look of authentic hardwood with superior scratch resistance and water protection. CFS Flooring installs premium high-density laminate systems with precision underlayments for quiet, comfortable, and durable floors.',
-    cardDescription: 'Durable, scratch-resistant laminate flooring with authentic wood textures and integrated underlayment.',
-    metaTitle: 'Laminate Flooring Installation | Lake Oswego & West Linn',
-    metaDescription: 'Expert laminate flooring installation with scratch-resistant finishes and noise-reducing underlayment in Lake Oswego & West Linn.',
-    image: imgLaminate,
-    heroBadge: 'Durable & Value-Driven',
-    order: 2,
-    features: [
-      'AC4 & AC5 Commercial-Grade Scratch Resistance',
-      'Water-Resistant Core Technologies',
-      'Acoustic Underlayment & Noise Reduction',
-      'Precision Click-Lock Assembly',
-      'Stain & Fade Resistant Surface Layers',
-      'Easy Clean & Low Maintenance Care'
+    "slug": "carpet-installation",
+    "title": "Carpet Installation",
+    "shortTitle": "Carpet Installation",
+    "subtitle": "CFS Flooring provides carpet installation for homes and businesses that want comfort, warmth, and a polished finished look. Whether you are replacing worn carpet in one room or updating an entire property, we help you choose the right texture, color, and performance level for your space so the process feels simple from start to finish.",
+    "description": "Professional Carpet Installation Across Lake Oswego, West Linn, Wilsonville & Vancouver.",
+    "cardDescription": "Residential and commercial carpet installation completed with attention to fit, finish, comfort, and performance.",
+    "metaTitle": "Carpet Installation | CFS Flooring",
+    "metaDescription": "Professional carpet installation across Lake Oswego, West Linn, Wilsonville & Vancouver.",
+    "image": imgCarpet,
+    "heroBadge": "Carpet • Padding • Installation",
+    "order": 2,
+    "features": [
+      "Carpet Installation",
+      "Residential & Commercial",
+      "Design Guidance • Installation"
     ],
-    detailedFeatures: [
+    "detailedFeatures": [
       {
-        title: 'Authentic Wood Textures',
-        description: 'Advanced embossing-in-register (EIR) techniques replicate real wood grains, knots, and bevels with striking realism.'
+        "tag": "Selection",
+        "title": "Carpet guidance based on your space and lifestyle",
+        "description": "Choosing the right carpet is about more than color alone. We help you compare carpet styles, textures, and performance levels based on comfort, durability, maintenance, and the overall feel you want for the space.",
+        "bullets": [
+          "Product recommendations based on traffic, pets, kids, comfort preferences, and daily use",
+          "Guidance on carpet texture, pile height, padding options, and color tones",
+          "Clear comparisons between practical, soft-touch, and high-performance carpet options",
+          "Recommendations that balance style goals, comfort, durability, and budget"
+        ]
       },
       {
-        title: 'High-Traffic Scratch Protection',
-        description: 'AC4 and AC5 durability ratings ensure maximum resistance to pet claws, active kids, heavy boots, and dropped objects.'
+        "tag": "Preparation",
+        "title": "Subfloor prep and planning that support a better carpet finish",
+        "description": "Carpet performs best when the surface beneath it is prepared properly. We review the installation area carefully so the finished result feels smooth, secure, and ready for daily use.",
+        "bullets": [
+          "Review of existing flooring, transitions, room conditions, and installation requirements",
+          "Preparation of the installation area to support proper fit, padding, and long-term performance",
+          "Planning for edges, doorway transitions, stairs, and room-to-room flow"
+        ]
       },
       {
-        title: 'Acoustic Comfort',
-        description: 'Paired with premium high-density foam or cork underlayment to absorb impact sound and cushion every step.'
+        "tag": "Installation",
+        "title": "Clean, professional carpet installation for a polished finished floor",
+        "description": "Whether the project is a single room, a full home update, or a commercial space, we install carpet with attention to fit, detail, and overall presentation.",
+        "bullets": [
+          "Carpet installation with careful layout, stretching, and finish alignment",
+          "Attention to seams, transitions, stairs, edges, and trim details for a more polished result",
+          "Organized project completion with clear communication from start to finish"
+        ]
       },
       {
-        title: 'Spill Protection',
-        description: 'Hydrophobic bevel sealers prevent surface spills from seeping into core joints for up to 72 hours.'
+        "tag": "Why CFS",
+        "title": "Why homeowners and businesses choose CFS Flooring",
+        "description": "Great carpet projects depend on the installation process as much as the material itself. Clients choose CFS Flooring for clear guidance, dependable service, and workmanship that respects the space.",
+        "bullets": [
+          "Honest recommendations based on comfort, performance, design goals, and real-world use",
+          "Organized work that keeps the project straightforward and easier to manage",
+          "Finished carpet installation designed to look clean, feel comfortable, and support long-term value"
+        ]
       }
     ],
-    processSteps: [
+    "faqs": [
       {
-        step: 1,
-        title: 'Subfloor Prep & Leveling',
-        description: 'We inspect for flatness, grind high spots, and fill low areas to prevent bounce or hollow sounds.'
-      },
-      {
-        step: 2,
-        title: 'Acoustic Vapor Barrier Laying',
-        description: 'Roll out underlayment for thermal insulation, sound dampening, and moisture protection.'
-      },
-      {
-        step: 3,
-        title: 'Precision Click-Lock Interlocking',
-        description: 'Planks are clicked seamlessly into place with expansion gap spacers along all perimeter walls.'
-      },
-      {
-        step: 4,
-        title: 'Doorway Undercutting & Trims',
-        description: 'Undercut door jambs for custom flush fits and install matching T-moldings and baseboards.'
-      },
-      {
-        step: 5,
-        title: 'Final Quality Check',
-        description: 'Inspect joint tightness, clean the installation area, and walk the completed floor with you.'
+        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
+        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
       }
     ],
-    specifications: [
-      { label: 'Durability Rating', value: 'AC4 Heavy Residential / AC5 Commercial' },
-      { label: 'Plank Thickness', value: '8mm, 10mm, 12mm premium thickness' },
-      { label: 'Underlayment', value: 'Built-in IXPE foam or attached cork pad' },
-      { label: 'Warranty', value: '25-Year Residential / 10-Year Commercial' },
-      { label: 'Downtime', value: '1 to 2 Days fast installation' }
-    ],
-    applications: [
-      'Busy Family Living Rooms',
-      'Children Playrooms & Bedrooms',
-      'Home Offices & Den Areas',
-      'Rental Properties & Multi-family Units',
-      'High-Traffic Hallways'
-    ],
-    faqs: [
-      {
-        question: 'Is laminate flooring suitable for homes with pets and active kids?',
-        answer: 'Yes! Modern AC4 and AC5 rated laminates are engineered specifically to resist pet claws, heavy foot traffic, and impact drops better than traditional softwoods.'
-      },
-      {
-        question: 'Is laminate flooring waterproof?',
-        answer: 'Many of our premium laminate collections feature 24-hour to 72-hour surface water protection with sealed edge technologies to prevent swelling.'
-      },
-      {
-        question: 'Do I need underlayment for laminate flooring?',
-        answer: 'Yes, high-density acoustic underlayment is essential for thermal insulation, sound dampening, and smoothing minor subfloor imperfections.'
-      }
-    ]
+    "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville carpet projects",
+    "seoText": "CFS Flooring provides carpet installation for residential and commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you want a softer feel in bedrooms, a comfortable update for living areas, or a practical carpet solution for a business space, we help define the right scope and install it with care."
   },
   {
-    slug: 'lvp-flooring',
-    title: 'Luxury Vinyl Plank (LVP) Flooring',
-    shortTitle: 'LVP Flooring',
-    subtitle: '100% Waterproof Luxury Vinyl Plank & Tile Installation',
-    description: 'Get the ideal combination of 100% waterproof protection, high-end wood grain aesthetics, and incredible durability. Ideal for PNW homes, basements, kitchens, and commercial properties requiring waterproof resilience.',
-    cardDescription: '100% waterproof luxury vinyl plank (LVP) and tile (LVT) with rigid core stability and deep wood texture.',
-    metaTitle: 'Waterproof LVP & LVT Flooring Installation | Lake Oswego & West Linn',
-    metaDescription: '100% waterproof Luxury Vinyl Plank (LVP) installation with rigid core SPC & WPC technology in Lake Oswego and Portland area.',
-    image: imgLVP,
-    heroBadge: '100% Waterproof',
-    order: 3,
-    features: [
-      '100% Waterproof Rigid Core (SPC / WPC)',
-      '20mil+ Heavy-Duty Commercial Wear Layers',
-      'Real Wood Grain Embossing & Beveled Edges',
-      'Integrated Sound-Proofing Cushion',
-      'Pet-Proof & Scratch Resistant',
-      'Ideal for Kitchens, Bathrooms & Basements'
+    "slug": "sand-and-finish",
+    "title": "Sand & Finish",
+    "shortTitle": "Sand & Finish",
+    "subtitle": "CFS Flooring provides sand and finish services for hardwood floors that need to be restored, refreshed, and protected for everyday living. Whether you want to bring old wood floors back to life or update the color and sheen of your existing flooring, we help create a smooth, beautiful finish with attention to detail from preparation to final coat.",
+    "description": "Professional Sand & Finish Services Across Lake Oswego, West Linn, Wilsonville & Vancouver.",
+    "cardDescription": "Restore existing hardwood floors with sanding and finishing services that bring back color and character.",
+    "metaTitle": "Sand & Finish | CFS Flooring",
+    "metaDescription": "Dust-controlled hardwood sanding, custom stain color matching, and refinishing in Lake Oswego & West Linn.",
+    "image": imgRepair,
+    "heroBadge": "Sanding • Staining • Refinishing",
+    "order": 3,
+    "features": [
+      "Sand & Finish",
+      "Residential & Commercial",
+      "Design Guidance • Installation"
     ],
-    detailedFeatures: [
+    "detailedFeatures": [
       {
-        title: 'Stone Polymer Core (SPC)',
-        description: 'Ultra-dense rigid core prevents expansion and contraction during Pacific Northwest seasonal temperature shifts.'
+        "tag": "Evaluation",
+        "title": "Floor assessment based on condition, wood species, and finish goals",
+        "description": "Every sand and finish project starts with understanding the current condition of the floor and the look you want to achieve. We help evaluate wear, scratches, coating condition, and overall wood character so the right approach is chosen from the start.",
+        "bullets": [
+          "Assessment of floor wear, surface damage, scratches, and finish condition",
+          "Guidance on stain color, sheen level, and the finished appearance you want for the space",
+          "Recommendations based on wood type, age of the floor, and expected daily use",
+          "Clear direction that balances restoration goals, durability, and overall design style"
+        ]
       },
       {
-        title: 'Commercial Wear Layer',
-        description: '20mil to 28mil ceramic bead wear layer shields against scratches, furniture scuffs, and daily wear.'
+        "tag": "Preparation",
+        "title": "Surface prep and sanding steps that support a smooth, even finish",
+        "description": "Great results depend on proper preparation before the finish is applied. We take the time to prepare the floor correctly so the final look feels clean, consistent, and ready for years of use.",
+        "bullets": [
+          "Review of floor condition, previous coatings, transitions, and project requirements",
+          "Sanding preparation designed to create a more even surface and better finish adhesion",
+          "Planning for edges, corners, room transitions, and detail areas throughout the project"
+        ]
       },
       {
-        title: 'Built-in Acoustic Backing',
-        description: 'Attached acoustic backing absorbs impact sound, softening footfall noise across upper floor levels.'
+        "tag": "Finishing",
+        "title": "Professional sanding, staining, and finishing for a renewed hardwood floor",
+        "description": "Whether the goal is to refresh a worn floor, change the tone of the wood, or fully restore the surface, we complete sand and finish projects with close attention to detail and overall presentation.",
+        "bullets": [
+          "Sanding and finishing with attention to smoothness, consistency, and overall floor appearance",
+          "Careful detail work around edges, transitions, trim, and room-to-room flow",
+          "Organized project completion with clear communication from preparation to final coat"
+        ]
       },
       {
-        title: 'Seamless Wet Zone Performance',
-        description: 'Completely submersible—perfect for bathrooms, laundry rooms, basements, and kitchen splash zones.'
+        "tag": "Why CFS",
+        "title": "Why homeowners and businesses choose CFS Flooring",
+        "description": "Great hardwood refinishing depends on the process as much as the final product. Clients choose CFS Flooring for clear recommendations, dependable service, and workmanship that respects both the material and the space.",
+        "bullets": [
+          "Honest recommendations based on floor condition, finish goals, durability, and everyday use",
+          "Organized work that keeps the refinishing process straightforward and easier to manage",
+          "Finished hardwood floors designed to look refreshed, feel elevated, and support long-term value"
+        ]
       }
     ],
-    processSteps: [
+    "faqs": [
       {
-        step: 1,
-        title: 'Site Moisture & Subfloor Prep',
-        description: 'Ensure subfloor cleanliness and flatness, repairing cracks or loose boards.'
-      },
-      {
-        step: 2,
-        title: 'Layout & Stagger Planning',
-        description: 'Plan plank staggering and layout direction to maximize visual length and light flow.'
-      },
-      {
-        step: 3,
-        title: 'Dustless Cutting & Interlocking',
-        description: 'Click planks tightly into place, cutting custom fits around vents, walls, and doorways.'
-      },
-      {
-        step: 4,
-        title: 'Transitions & Trim Installation',
-        description: 'Install matching stair nosings, reducers, T-moldings, and baseboards.'
-      },
-      {
-        step: 5,
-        title: 'Detailed Clean Up & Inspection',
-        description: 'Vacuum and wipe down newly installed flooring and perform a final walkthrough.'
+        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
+        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
       }
     ],
-    specifications: [
-      { label: 'Core Type', value: 'SPC Rigid Core (Stone Polymer Composite)' },
-      { label: 'Wear Layer', value: '20mil to 28mil Ceramic Bead Finish' },
-      { label: 'Waterproofing', value: '100% Submersible Waterproof' },
-      { label: 'Warranty', value: '25-Year Residential / 15-Year Commercial' },
-      { label: 'Radiant Heat', value: 'Compatible with in-floor heating up to 85°F' }
-    ],
-    applications: [
-      'Kitchens & Dining Areas',
-      'Bathrooms & Powder Rooms',
-      'Finished Basements',
-      'Pet-Friendly Family Living Rooms',
-      'Retail Stores & Offices'
-    ],
-    faqs: [
-      {
-        question: 'Why is LVP so popular in Oregon and Washington homes?',
-        answer: 'Because it provides the warm visual appeal of natural hardwood while being completely immune to moisture, spills, muddy boots, and damp Pacific Northwest weather.'
-      },
-      {
-        question: 'Can LVP be installed over radiant floor heating?',
-        answer: 'Yes, most rigid-core SPC luxury vinyl planks are compatible with in-floor radiant heat systems up to 85°F.'
-      },
-      {
-        question: 'How does LVP compare to tile or laminate?',
-        answer: 'LVP is warmer and softer underfoot than ceramic tile, and significantly more waterproof than standard laminate.'
-      }
-    ]
+    "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville sand and finish projects",
+    "seoText": "CFS Flooring provides sand and finish services for residential and commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you want to restore older hardwood floors, refresh the color and sheen, or improve the overall look of your space, we help define the right scope and complete the work with care."
   },
   {
-    slug: 'tile-flooring',
-    title: 'Custom Tile & Ceramic Flooring Installation',
-    shortTitle: 'Tile Flooring',
-    subtitle: 'Precision Porcelain, Ceramic & Natural Stone Setting',
-    description: 'Elevate your spaces with custom tile, porcelain, ceramic, and natural stone installation. From kitchen floors and backsplashes to curbless tile showers, CFS Flooring ensures straight grout lines, waterproof membranes, and flawless finish work.',
-    cardDescription: 'Precision ceramic, porcelain, and stone tile installation for floors, walls, backsplashes, and custom showers.',
-    metaTitle: 'Custom Tile & Ceramic Flooring Installation | Lake Oswego & West Linn',
-    metaDescription: 'Custom porcelain, ceramic, and natural stone tile installation for residential and commercial spaces in Lake Oswego & Portland.',
-    image: imgTile,
-    heroBadge: 'Master Tile Setter',
-    order: 4,
-    features: [
-      'Porcelain, Ceramic & Natural Stone Flooring',
-      'Waterproof Membrane Systems (Schluter / RedGard)',
-      'Large Format & Mosaic Pattern Laying',
-      'Stain-Resistant Epoxy & Polymer Grouts',
-      'Heated Subfloor Tile Systems (Ditra-Heat)',
-      'Kitchen Backsplashes & Custom Showers'
+    "slug": "ceramic-tile",
+    "title": "Ceramic Tile",
+    "shortTitle": "Ceramic Tile",
+    "subtitle": "CFS Flooring provides ceramic tile installation for homes and businesses that want a clean, durable, and timeless finish. Whether you are updating a kitchen, bathroom, entryway, or a larger commercial space, we help you choose the right tile style, layout, and finish so the project feels simple from planning to installation.",
+    "description": "Professional Ceramic Tile Installation Across Lake Oswego, West Linn, Wilsonville & Vancouver, Oregon.",
+    "cardDescription": "Ceramic tile installation for durable, practical surfaces that work especially well in kitchens and baths.",
+    "metaTitle": "Ceramic Tile | CFS Flooring",
+    "metaDescription": "Precision ceramic, porcelain, and stone tile setting for floors, walls, and backsplashes.",
+    "image": imgTile,
+    "heroBadge": "Ceramic • Porcelain • Tile",
+    "order": 4,
+    "features": [
+      "Ceramic Tile",
+      "Residential & Commercial",
+      "Design Guidance • Installation"
     ],
-    detailedFeatures: [
+    "detailedFeatures": [
       {
-        title: 'Uncoupling & Waterproofing Membranes',
-        description: 'We install Schluter Ditra membranes to prevent subfloor movement from cracking tiles or grout lines.'
+        "tag": "Selection",
+        "title": "Tile guidance based on your space, style, and performance needs",
+        "description": "Choosing the right ceramic tile is about more than color alone. We help you compare formats, finishes, and styles based on durability, maintenance, slip resistance, and the overall look you want for the space.",
+        "bullets": [
+          "Product recommendations based on room use, moisture exposure, traffic level, and design preferences",
+          "Guidance on tile size, finish, grout color, pattern direction, and layout options",
+          "Clear comparisons between practical, decorative, and high-performance ceramic tile options",
+          "Recommendations that balance style goals, durability, maintenance, and budget"
+        ]
       },
       {
-        title: 'Laser-Guided Layout Precision',
-        description: 'Laser levelling tools ensure symmetrical tile placement, square corners, and perfectly crisp grout lines.'
+        "tag": "Preparation",
+        "title": "Surface prep and planning that support a better tile installation",
+        "description": "Ceramic tile performs best when the substrate and layout are prepared properly. We review the installation area carefully so the finished result feels level, secure, and built for daily use.",
+        "bullets": [
+          "Review of existing surfaces, transitions, room conditions, and installation requirements",
+          "Preparation of the installation area to support proper adhesion, alignment, and long-term performance",
+          "Planning for edges, cuts, doorway transitions, pattern alignment, and room-to-room flow"
+        ]
       },
       {
-        title: 'Stain-Proof Grouting Options',
-        description: 'Advanced polymer and epoxy grouts resist water absorption, mildew growth, and heavy discoloration.'
+        "tag": "Installation",
+        "title": "Clean, professional ceramic tile installation for a polished finished surface",
+        "description": "Whether the project is a bathroom, kitchen, entryway, full-home update, or commercial space, we install ceramic tile with attention to layout, detail, and overall presentation.",
+        "bullets": [
+          "Ceramic tile installation with careful layout, spacing, and finish alignment",
+          "Attention to grout joints, transitions, edges, corners, and trim details for a more polished result",
+          "Organized project completion with clear communication from start to finish"
+        ]
       },
       {
-        title: 'In-Floor Heating Integration',
-        description: 'Enjoy cozy warm bathroom floors with Ditra-Heat electric radiant heating cable integration.'
+        "tag": "Why CFS",
+        "title": "Why homeowners and businesses choose CFS Flooring",
+        "description": "Great tile projects depend on the installation process as much as the material itself. Clients choose CFS Flooring for clear guidance, dependable service, and workmanship that respects the space.",
+        "bullets": [
+          "Honest recommendations based on durability, design goals, maintenance, and real-world use",
+          "Organized work that keeps the project straightforward and easier to manage",
+          "Finished ceramic tile installation designed to look clean, perform well, and support long-term value"
+        ]
       }
     ],
-    processSteps: [
+    "faqs": [
       {
-        step: 1,
-        title: 'Substrate & Backer Board Prep',
-        description: 'Install cement backer board or uncoupling membrane over rigid subfloors.'
-      },
-      {
-        step: 2,
-        title: 'Laser Alignment & Dry Lay',
-        description: 'Map out grid lines and test tile layouts to eliminate unsightly narrow cuts.'
-      },
-      {
-        step: 3,
-        title: 'Mortar Setting & Lippage Control',
-        description: 'Apply modified thin-set mortar using levelling clips for smooth, flat tile surfaces.'
-      },
-      {
-        step: 4,
-        title: 'Grouting & Expansion Joints',
-        description: 'Pack grout joints tight, tool smooth, and seal perimeter expansion joints with silicone.'
-      },
-      {
-        step: 5,
-        title: 'Sealing & Final Polish',
-        description: 'Seal natural stone tiles, clean off grout haze, and inspect for perfection.'
+        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
+        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
       }
     ],
-    specifications: [
-      { label: 'Tile Materials', value: 'Porcelain, Ceramic, Marble, Travertine, Slate' },
-      { label: 'Underlayment', value: 'Cement Board, Schluter Ditra Membrane' },
-      { label: 'Grout', value: 'High-Performance Polymer & Epoxy Grout' },
-      { label: 'Warranty', value: '10-Year Craftsmanship Guarantee' },
-      { label: 'Applications', value: 'Floors, Showers, Walls, Backsplashes' }
-    ],
-    applications: [
-      'Master Bathrooms & Showers',
-      'Kitchen Floors & Backsplashes',
-      'Mudrooms & Entry Foyers',
-      'Outdoor Patios & Sunrooms',
-      'Commercial Restrooms & Lobbies'
-    ],
-    faqs: [
-      {
-        question: 'How long after tile installation can I walk on the floor?',
-        answer: 'Foot traffic should be avoided for 24 hours until the mortar sets. Grouting usually occurs on day two, followed by another 24 hours of curing before full use.'
-      },
-      {
-        question: 'Do you offer waterproof shower and bathroom tiling?',
-        answer: 'Absolutely. We use industry-certified uncoupling membranes and waterproof systems to prevent moisture penetration behind tiles.'
-      },
-      {
-        question: 'Are porcelain tiles better than ceramic tiles?',
-        answer: 'Porcelain is denser, less porous, and more durable than standard ceramic, making it ideal for high-traffic floors and wet environments.'
-      }
-    ]
+    "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville ceramic tile projects",
+    "seoText": "CFS Flooring provides ceramic tile installation for residential and commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you want a durable tile surface for kitchens and bathrooms, a clean update for entryways and living areas, or a practical tile solution for a business space, we help define the right scope and install it with care."
   },
   {
-    slug: 'carpet-installation',
-    title: 'Carpet Installation',
-    shortTitle: 'Carpet Installation',
-    subtitle: 'Luxurious Residential & Heavy-Duty Commercial Carpet Systems',
-    description: 'Add warmth, comfort, and noise insulation to bedrooms, living areas, staircases, and offices. CFS Flooring provides professional power-stretching, high-density padding, and flawless seam matching for residential plush carpet and commercial carpet tiles.',
-    cardDescription: 'Residential plush carpeting, power-stretching, stairs, and heavy-commercial carpet tile installation.',
-    metaTitle: 'Professional Carpet Installation | Lake Oswego & West Linn',
-    metaDescription: 'Expert carpet installation, power stretching, cushion padding, and commercial carpet tiles in Lake Oswego & West Linn area.',
-    image: imgCarpet,
-    heroBadge: 'Comfort & Warmth',
-    order: 5,
-    features: [
-      'Plush, Cut-Pile & Textured Loop Carpeting',
-      'High-Density Memory Foam Cushion Padding',
-      'Power-Stretching to Prevent Wrinkling & Buckling',
-      'Invisible Seam Sealing & Custom Stair Runners',
-      'Stain-Resistant Technology (SmartStrand / Solution-Dyed)',
-      'Modular Commercial Carpet Tile Installation'
+    "slug": "sheet-vinyl",
+    "title": "Sheet Vinyl",
+    "shortTitle": "Sheet Vinyl",
+    "subtitle": "CFS Flooring provides sheet vinyl installation for homes and businesses that want a practical, durable, and easy-to-maintain flooring solution. Whether you are updating a kitchen, bathroom, laundry room, or a larger commercial space, we help you choose the right style, pattern, and performance level for your space so the process feels simple from planning to installation.",
+    "description": "Professional Sheet Vinyl Installation Across Lake Oswego, West Linn, Wilsonville & Vancouver.",
+    "cardDescription": "Sheet vinyl flooring installed for spaces that need a resilient, cost-conscious, and low-maintenance solution.",
+    "metaTitle": "Sheet Vinyl | CFS Flooring",
+    "metaDescription": "Resilient, seamless sheet vinyl flooring installation across Lake Oswego, West Linn, and Wilsonville.",
+    "image": imgMaintenance,
+    "heroBadge": "Seamless • Waterproof • Sheet Vinyl",
+    "order": 5,
+    "features": [
+      "Sheet Vinyl",
+      "Residential & Commercial",
+      "Design Guidance • Installation"
     ],
-    detailedFeatures: [
+    "detailedFeatures": [
       {
-        title: 'Power-Stretched Durability',
-        description: 'We use industrial power stretchers to pull carpet drum-tight across every room, eliminating ripples and buckling forever.'
+        "tag": "Selection",
+        "title": "Sheet vinyl guidance based on room use and performance needs",
+        "description": "Choosing the right sheet vinyl is about more than picking a pattern. We help you compare styles, textures, and wear levels based on moisture exposure, comfort, maintenance, and the overall function of the space.",
+        "bullets": [
+          "Product recommendations based on bathrooms, kitchens, laundry rooms, utility spaces, and commercial areas",
+          "Guidance on sheet vinyl patterns, finishes, textures, and color tones that fit the space",
+          "Clear comparisons between practical, design-forward, and high-durability sheet vinyl options",
+          "Recommendations that balance appearance, water resistance, comfort, and budget"
+        ]
       },
       {
-        title: 'High-Density Cushion Support',
-        description: 'Premium 8lb to 10lb memory foam underpads add deep luxurious comfort underfoot and double carpet life.'
+        "tag": "Preparation",
+        "title": "Subfloor prep and layout planning that support a better vinyl finish",
+        "description": "Sheet vinyl performs best when the surface beneath it is prepared correctly. We review the installation area carefully so the finished result feels smoother, cleaner, and ready for daily wear.",
+        "bullets": [
+          "Review of existing flooring, room conditions, moisture-prone areas, and installation requirements",
+          "Preparation of the installation area to support proper adhesion, fit, and long-term performance",
+          "Planning for seams, edges, transitions, doorways, and room-to-room flow"
+        ]
       },
       {
-        title: 'Precision Seam Sealing',
-        description: 'Hot-melt seam irons and pattern matching make seams virtually invisible even across large open rooms.'
+        "tag": "Installation",
+        "title": "Clean, professional sheet vinyl installation for a polished finished floor",
+        "description": "Whether the project is a single room, a home update, or a commercial space, we install sheet vinyl with attention to fit, finish, and overall presentation.",
+        "bullets": [
+          "Sheet vinyl installation with careful layout, fitting, and finish alignment",
+          "Attention to seams, transitions, corners, edges, and trim details for a more polished result",
+          "Organized project completion with clear communication from planning to installation"
+        ]
       },
       {
-        title: 'Custom Stairwork & Runners',
-        description: 'Expert waterfall or cap-and-band stair installations for curved, open-rail, and straight staircases.'
+        "tag": "Why CFS",
+        "title": "Why homeowners and businesses choose CFS Flooring",
+        "description": "Great sheet vinyl projects depend on the installation process as much as the material itself. Clients choose CFS Flooring for clear guidance, dependable service, and workmanship that respects the finished space.",
+        "bullets": [
+          "Honest recommendations based on moisture resistance, maintenance, design goals, and daily use",
+          "Organized work that keeps the project straightforward and easier to manage",
+          "Finished sheet vinyl installation designed to look clean, perform well, and support long-term value"
+        ]
       }
     ],
-    processSteps: [
+    "faqs": [
       {
-        step: 1,
-        title: 'Tear-Out & Floor Sweep',
-        description: 'Remove old carpet and worn padding, vacuum subfloor clean, and inspect tack strips.'
-      },
-      {
-        step: 2,
-        title: 'Padding Laying & Stapling',
-        description: 'Lay high-density cushion padding, seam-tape joins, and secure to subfloor.'
-      },
-      {
-        step: 3,
-        title: 'Carpet Roll Seaming',
-        description: 'Cut carpet rolls, match pile direction and patterns, and join seams with heat tape.'
-      },
-      {
-        step: 4,
-        title: 'Power Stretching & Tucking',
-        description: 'Stretch carpet tightly over tack strips on all walls, trimming excess neatly.'
-      },
-      {
-        step: 5,
-        title: 'Vacuum & Room Clean Up',
-        description: 'Vacuum installed carpet, clean trim work, and present finished work to client.'
+        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
+        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
       }
     ],
-    specifications: [
-      { label: 'Carpet Styles', value: 'Plush Cut-Pile, Textured Loop, Pattern, Berber' },
-      { label: 'Padding', value: '8lb to 10lb High-Density Memory Foam Pad' },
-      { label: 'Installation', value: 'Power-Stretched over Tack Strips / Glue Down' },
-      { label: 'Warranty', value: '10-Year Wear & Installation Warranty' },
-      { label: 'Turnaround', value: '1 Day average room / floor turnaround' }
-    ],
-    applications: [
-      'Bedrooms & Nursery Suites',
-      'Living Rooms & Family Rooms',
-      'Staircases & Custom Runners',
-      'Home Theaters & Media Rooms',
-      'Commercial Executive Offices'
-    ],
-    faqs: [
-      {
-        question: 'Why is power-stretching carpet important?',
-        answer: 'Power stretching ensures carpet is pulled drum-tight across the room, preventing ripples, waves, and premature wear over time.'
-      },
-      {
-        question: 'What padding density do you recommend?',
-        answer: 'We recommend an 8lb to 10lb high-density cushion pad for maximum comfort, thermal insulation, and extended carpet lifespan.'
-      },
-      {
-        question: 'Can carpet tiles be installed in commercial offices?',
-        answer: 'Yes! Modular carpet tiles are extremely popular in office settings because individual stained or worn tiles can be replaced easily without replacing the entire floor.'
-      }
-    ]
+    "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville sheet vinyl projects",
+    "seoText": "CFS Flooring provides sheet vinyl installation for residential and commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you need a durable surface for kitchens and bathrooms, a practical solution for laundry and utility areas, or an easy-to-maintain floor for a business, we help define the right scope and install it with care."
   },
   {
-    slug: 'commercial-flooring',
-    title: 'Commercial Flooring & VCT Installation',
-    shortTitle: 'Commercial Flooring',
-    subtitle: 'Heavy-Duty, High-Traffic Flooring Solutions for Businesses',
-    description: 'Keep your business operating smoothly with commercial-grade flooring designed for heavy foot traffic, rolling loads, and low maintenance. CFS Flooring installs Vinyl Composition Tile (VCT), commercial sheet vinyl, rubber flooring, and heavy-duty carpet tiles for retail, medical, school, and office facilities.',
-    cardDescription: 'Heavy-duty VCT, commercial sheet vinyl, rubber tile, and low-downtime commercial installation.',
-    metaTitle: 'Commercial Flooring & VCT Installation | Lake Oswego & Portland',
-    metaDescription: 'Commercial VCT, sheet vinyl, rubber flooring, and commercial carpet installation for businesses in Lake Oswego & Portland.',
-    image: imgCommercial,
-    heroBadge: 'Commercial Grade',
-    order: 6,
-    features: [
-      'Vinyl Composition Tile (VCT) & Commercial Sheet Vinyl',
-      'Heat-Welded Hygienic Seams & Cove Base Fitting',
-      'High-Traffic Wear Layer & Chemical Resistance',
-      'Off-Hours & Weekend Low-Downtime Installation',
-      'Concrete Slab Grinding & Self-Leveling',
-      'ADA Compliant Transitions & Safety Flooring'
+    "slug": "vct-flooring",
+    "title": "VCT Flooring",
+    "shortTitle": "VCT Flooring",
+    "subtitle": "CFS Flooring provides VCT flooring installation for commercial spaces that need a durable, practical, and cost-effective surface. Whether you are updating an office, retail space, school, healthcare facility, or another high-traffic environment, we help you choose the right VCT flooring solution for performance, maintenance, and long-term value so the process feels clear from planning to installation.",
+    "description": "Professional VCT Flooring Installation Across Lake Oswego, West Linn, Wilsonville & Vancouver.",
+    "cardDescription": "VCT flooring solutions for commercial environments that need dependable performance and easier upkeep.",
+    "metaTitle": "VCT Flooring | CFS Flooring",
+    "metaDescription": "Commercial Vinyl Composition Tile (VCT) installation across Lake Oswego, West Linn, and Portland metro area.",
+    "image": imgCommercial,
+    "heroBadge": "Commercial VCT • Heavy Duty",
+    "order": 6,
+    "features": [
+      "VCT Flooring",
+      "Residential & Commercial",
+      "Design Guidance • Installation"
     ],
-    detailedFeatures: [
+    "detailedFeatures": [
       {
-        title: 'Heavy Traffic Durability',
-        description: 'Engineered for rolling loads, heavy foot traffic, inventory carts, and frequent cleaning chemicals.'
+        "tag": "Selection",
+        "title": "VCT guidance based on traffic, maintenance, and facility needs",
+        "description": "Choosing the right VCT flooring is about more than color alone. We help you compare tile options, layout choices, and performance needs based on daily traffic, maintenance routines, durability goals, and the overall function of the space.",
+        "bullets": [
+          "Product recommendations based on foot traffic, space type, maintenance expectations, and daily use",
+          "Guidance on color combinations, tile patterns, layout flow, and commercial presentation",
+          "Clear comparisons between practical, budget-conscious, and high-traffic VCT options",
+          "Recommendations that balance durability, maintenance planning, appearance, and value"
+        ]
       },
       {
-        title: 'Hygienic Heat-Welded Seams',
-        description: 'Sanitary sheet vinyl with heat-welded joints prevents bacteria, moisture, and dirt penetration in medical/food prep zones.'
+        "tag": "Preparation",
+        "title": "Subfloor prep and planning that support a better VCT installation",
+        "description": "VCT flooring performs best when the surface beneath it is prepared correctly. We review the installation area carefully so the finished result feels level, secure, and ready for heavy daily use.",
+        "bullets": [
+          "Review of existing flooring, transitions, room conditions, and commercial installation requirements",
+          "Preparation of the installation area to support proper adhesion, layout accuracy, and long-term performance",
+          "Planning for seams, borders, doorway transitions, cuts, and room-to-room flow"
+        ]
       },
       {
-        title: 'Night & Weekend Scheduling',
-        description: 'Flexible off-hours installations to ensure zero disruption to your daily business operations.'
+        "tag": "Installation",
+        "title": "Clean, professional VCT flooring installation for high-use commercial spaces",
+        "description": "Whether the project is an office, retail space, school, healthcare facility, or another commercial environment, we install VCT flooring with attention to fit, layout, and long-term function.",
+        "bullets": [
+          "VCT installation with careful layout, alignment, and finish consistency",
+          "Attention to transitions, edges, pattern flow, and trim details for a more polished result",
+          "Organized project completion with clear communication from planning to installation"
+        ]
       },
       {
-        title: 'Concrete Prep & Diamond Grinding',
-        description: 'Remove old adhesives, level uneven concrete slabs, and apply commercial moisture barriers.'
+        "tag": "Why CFS",
+        "title": "Why businesses choose CFS Flooring",
+        "description": "Great VCT projects depend on the installation process as much as the material itself. Clients choose CFS Flooring for clear guidance, dependable service, and workmanship that supports busy commercial spaces.",
+        "bullets": [
+          "Honest recommendations based on durability, maintenance, facility demands, and real-world use",
+          "Organized work that keeps commercial flooring projects straightforward and easier to manage",
+          "Finished VCT flooring designed to perform well, look clean, and support long-term value"
+        ]
       }
     ],
-    processSteps: [
+    "faqs": [
       {
-        step: 1,
-        title: 'Site Evaluation & Slab Testing',
-        description: 'Test concrete relative humidity (RH) and surface alkalinity before material spec.'
-      },
-      {
-        step: 2,
-        title: 'Mechanical Grinding & Leveling',
-        description: 'Diamond grind existing slab, repair cracks, and pour self-leveling cement.'
-      },
-      {
-        step: 3,
-        title: 'Commercial Adhesive Application',
-        description: 'Spread premium pressure-sensitive or acrylic adhesives with trowel precision.'
-      },
-      {
-        step: 4,
-        title: 'Tile / Sheet Setting & Rolling',
-        description: 'Lay VCT or sheet vinyl, rolling with a 100lb roller for complete adhesive transfer.'
-      },
-      {
-        step: 5,
-        title: 'Seam Welding & Base Finishing',
-        description: 'Heat weld seams, install vinyl cove base, and apply initial protective polish.'
+        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
+        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
       }
     ],
-    specifications: [
-      { label: 'Target Facilities', value: 'Retail Stores, Medical Clinics, Schools, Offices' },
-      { label: 'Materials Offered', value: 'VCT, Commercial Sheet Vinyl, LVT, Carpet Tile' },
-      { label: 'Safety Compliance', value: 'ADA Slip-Resistant & ASTM Fire Rated' },
-      { label: 'Schedule Flexibility', value: 'Overnight, Weekend, and Holiday Service' },
-      { label: 'Warranty', value: '15-Year Commercial Craftsmanship Warranty' }
-    ],
-    applications: [
-      'Retail Showrooms & Boutiques',
-      'Medical Offices & Healthcare Clinics',
-      'Schools, Daycares & Classrooms',
-      'Commercial Kitchens & Breakrooms',
-      'Corporate Office Buildings'
-    ],
-    faqs: [
-      {
-        question: 'Can you complete commercial flooring installation after business hours?',
-        answer: 'Yes, we offer flexible night and weekend scheduling to eliminate downtime for your business operations.'
-      },
-      {
-        question: 'What is the advantage of VCT for high-traffic spaces?',
-        answer: 'VCT is incredibly cost-effective, tough under heavy foot traffic, and easy to wax, strip, and maintain for decades.'
-      },
-      {
-        question: 'Do you handle subfloor concrete leveling for commercial jobs?',
-        answer: 'Yes, we perform mechanical diamond grinding, moisture mitigation, and self-leveling cement applications.'
-      }
-    ]
+    "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville VCT flooring projects",
+    "seoText": "CFS Flooring provides VCT flooring installation for commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you need a durable flooring solution for offices, retail spaces, schools, healthcare environments, or other high-traffic facilities, we help define the right scope and install it with care."
   },
   {
-    slug: 'flooring-repair',
-    title: 'Flooring Repair & Restoration',
-    shortTitle: 'Flooring Repair',
-    subtitle: 'Expert Repair, Patching, Demolition & Subfloor Restoration',
-    description: 'Fix damaged floors, squeaks, water damage, and uneven subfloors without replacing your entire surface. CFS Flooring offers expert plank replacement, hardwood board weave-ins, subfloor repair, and fast demolition/removal of old flooring materials.',
-    cardDescription: 'Expert hardwood repair, plank replacement, subfloor leveling, water damage fix, and floor removal.',
-    metaTitle: 'Flooring Repair & Subfloor Restoration | Lake Oswego & West Linn',
-    metaDescription: 'Fast, professional flooring repair, board replacement, subfloor leveling, and floor removal in Lake Oswego and West Linn.',
-    image: imgRepair,
-    heroBadge: 'Repair Specialist',
-    order: 7,
-    features: [
-      'Hardwood Plank Weaving & Spot Replacement',
-      'Subfloor Leveling, Joist Sistering & Squeak Repair',
-      'Water & Fire Damage Floor Restoration',
-      'LVP & Laminate Damaged Board Swap',
-      'Fast Demolition of Tile, Carpet, Hardwood & Adhesives',
-      'Diamond Grinding for Mastic & Glue Removal'
+    "slug": "flooring-removal",
+    "title": "Flooring Removal",
+    "shortTitle": "Flooring Removal",
+    "subtitle": "CFS Flooring provides flooring removal services for homes and businesses preparing for a new installation, renovation, or full space update. Whether you need old carpet, tile, vinyl, laminate, or hardwood removed, we help make the process cleaner, more organized, and easier to manage so your next flooring project starts on the right foundation.",
+    "description": "Professional Flooring Removal Services Across Lake Oswego, West Linn, Wilsonville & Vancouver.",
+    "cardDescription": "Careful removal of existing flooring to prepare your space for a clean new installation.",
+    "metaTitle": "Flooring Removal | CFS Flooring",
+    "metaDescription": "Fast, dust-controlled removal of tile, hardwood, carpet, and old adhesives in Lake Oswego & Portland area.",
+    "image": imgLaminate,
+    "heroBadge": "Demolition • Removal • Subfloor Prep",
+    "order": 7,
+    "features": [
+      "Flooring Removal",
+      "Residential & Commercial",
+      "Design Guidance • Installation"
     ],
-    detailedFeatures: [
+    "detailedFeatures": [
       {
-        title: 'Seamless Hardwood Board Weaving',
-        description: 'Remove damaged planks and interweave matching new boards so the repair blends invisibly into surrounding flooring.'
+        "tag": "Assessment",
+        "title": "Removal planning based on your existing flooring and project goals",
+        "description": "Every flooring removal project starts with understanding what is in place and what needs to happen next. We help evaluate the type of flooring, the condition of the surface below, and the best approach for a smoother transition into the next phase.",
+        "bullets": [
+          "Review of carpet, tile, vinyl, laminate, hardwood, or other existing flooring materials",
+          "Guidance based on removal scope, jobsite conditions, timelines, and what flooring comes next",
+          "Recommendations for preparation needs, subfloor condition, and project sequencing",
+          "Clear direction that helps keep the removal process organized and easier to manage"
+        ]
       },
       {
-        title: 'Squeak Elimination & Subfloor Stiffening',
-        description: 'Secure loose subfloors, shim sagging joists, and stop annoying squeaks and creaks underfoot.'
+        "tag": "Preparation",
+        "title": "Site prep and removal planning that support a cleaner project start",
+        "description": "Flooring removal works best when the space is prepared correctly before the work begins. We review the area carefully so the process is more controlled, more efficient, and ready for the next step in the project.",
+        "bullets": [
+          "Review of room conditions, transitions, access points, and project-specific removal requirements",
+          "Preparation of the work area to support safer, more organized flooring removal",
+          "Planning for edges, adhesives, base areas, doorways, and subfloor exposure after removal"
+        ]
       },
       {
-        title: 'Water Damage Restoration',
-        description: 'Address cupped, buckled, or warped flooring caused by plumbing leaks or humidity spikes.'
+        "tag": "Removal",
+        "title": "Professional flooring removal for homes, businesses, and renovation projects",
+        "description": "Whether the project involves one room, a full property update, or a commercial space, we handle flooring removal with attention to detail, clean workflow, and readiness for the next stage of work.",
+        "bullets": [
+          "Removal of existing flooring with attention to control, efficiency, and surface readiness",
+          "Careful handling around transitions, perimeter areas, trim zones, and room-to-room changes",
+          "Organized project completion with clear communication from removal through cleanup"
+        ]
       },
       {
-        title: 'Clean & Fast Floor Demolition',
-        description: 'Heavy-duty tear-out equipment quickly removes old tile, carpet, hardwood, and stubborn adhesives.'
+        "tag": "Why CFS",
+        "title": "Why homeowners and businesses choose CFS Flooring",
+        "description": "Great flooring removal is about more than taking out old material. Clients choose CFS Flooring for clear planning, dependable service, and work that helps set the stage for a better finished result.",
+        "bullets": [
+          "Honest recommendations based on scope, jobsite needs, timelines, and what comes next in the project",
+          "Organized work that keeps the removal process more straightforward and easier to manage",
+          "Project-ready surfaces designed to support a smoother installation, remodel, or renovation phase"
+        ]
       }
     ],
-    processSteps: [
+    "faqs": [
       {
-        step: 1,
-        title: 'Damage Inspection & Diagnostics',
-        description: 'Examine damage extent, subfloor moisture levels, and structural integrity.'
-      },
-      {
-        step: 2,
-        title: 'Selective Board / Section Tear-Out',
-        description: 'Carefully remove damaged tiles, planks, or subflooring without disturbing adjacent areas.'
-      },
-      {
-        step: 3,
-        title: 'Subfloor Leveling & Reinforcement',
-        description: 'Reinforce joists, replace soft plywood subfloor, and level low spots.'
-      },
-      {
-        step: 4,
-        title: 'Precision Board Patch / Weave-In',
-        description: 'Install matching replacement boards or tiles with tight seam tolerances.'
-      },
-      {
-        step: 5,
-        title: 'Finish Matching & Final Inspection',
-        description: 'Sand, stain, or seal replacement area to blend seamlessly into existing floor.'
+        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
+        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
       }
     ],
-    specifications: [
-      { label: 'Repairs Handled', value: 'Hardwood, LVP, Laminate, Tile, Subfloor' },
-      { label: 'Subfloor Work', value: 'Plywood patching, joist repair, squeak fix' },
-      { label: 'Demolition', value: 'Dust-controlled removal of tile, carpet, wood' },
-      { label: 'Response', value: 'Prompt scheduling for urgent water damage repairs' },
-      { label: 'Warranty', value: 'Full Craftsmanship Guarantee' }
-    ],
-    applications: [
-      'Water-Damaged Kitchen & Bathroom Floors',
-      'Cupped or Scratched Hardwood Planks',
-      'Creaking Hallways & Staircases',
-      'Old Tile & Carpet Removal Projects',
-      'Pre-Sale Real Estate Flooring Touch-Ups'
-    ],
-    faqs: [
-      {
-        question: 'Can you replace damaged hardwood boards without replacing the whole floor?',
-        answer: 'Yes! We perform board weave-ins where individual damaged planks are carefully removed and replaced with matching wood species, then sanded and stained to match perfectly.'
-      },
-      {
-        question: 'How do you fix squeaky wood floors?',
-        answer: 'We identify the underlying cause—often loose subfloor plywood or joist friction—and secure the subfloor using specialized screws, shims, or adhesive from below or above.'
-      },
-      {
-        question: 'Do you handle demolition and debris disposal?',
-        answer: 'Yes, our team handles total demolition, adhesive scraping, subfloor preparation, and complete environmental debris disposal.'
-      }
-    ]
+    "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville flooring removal projects",
+    "seoText": "CFS Flooring provides flooring removal services for residential and commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you need old carpet removed before replacement, tile taken out during a remodel, or a full flooring tear-out before new installation, we help define the right scope and prepare the space with care."
   },
   {
-    slug: 'maintenance',
-    title: 'Floor Care & Maintenance Services',
-    shortTitle: 'Floor Maintenance',
-    subtitle: 'Professional Deep Cleaning, Screen & Recoat, and Protective Maintenance',
-    description: 'Extend the life and brilliance of your floors with professional care services. CFS Flooring provides hardwood buff & recoat treatments, deep tile & grout cleaning, commercial strip and wax, and scheduled maintenance for residential and commercial clients.',
-    cardDescription: 'Buff & recoat for hardwood, commercial strip & wax, deep grout cleaning, and protective floor care.',
-    metaTitle: 'Floor Care & Maintenance Services | Lake Oswego & West Linn',
-    metaDescription: 'Keep your floors looking new with buff & recoat, deep tile cleaning, and commercial floor maintenance in Lake Oswego & Portland.',
-    image: imgMaintenance,
-    heroBadge: 'Care & Protection',
-    order: 8,
-    features: [
-      'Hardwood Dustless Screen & Recoat Finish Refresh',
-      'Deep Tile & Grout Steam Cleaning & Sealing',
-      'Commercial VCT Strip, Wax & High-Speed Buffing',
-      'LVP & Laminate Protective Polish & Seal',
-      'Stain & Spill Guard Applications',
-      'Preventative Maintenance Plans for Commercial Properties'
+    "slug": "counters-and-decks",
+    "title": "Countertops & Decks",
+    "shortTitle": "Countertops & Decks",
+    "subtitle": "CFS Flooring provides counters and decks services for homes and businesses looking to upgrade the look, function, and overall finish of their spaces. Whether you are planning a kitchen update, a bathroom refresh, or a surface upgrade for another interior area, we help you choose practical, attractive solutions that fit your space and make the process feel clear from planning to installation.",
+    "description": "Professional Counters & Decks Services Across Lake Oswego, West Linn, Wilsonville & Vancouver.",
+    "cardDescription": "Counter and deck surface solutions that help complete your space with durable materials and practical finishes.",
+    "metaTitle": "Countertops & Decks | CFS Flooring",
+    "metaDescription": "Custom quartz & granite countertop installation and outdoor deck construction across Lake Oswego & West Linn.",
+    "image": imgLVP,
+    "heroBadge": "Countertops • Decks • Woodwork",
+    "order": 8,
+    "features": [
+      "Countertops & Decks",
+      "Residential & Commercial",
+      "Design Guidance • Installation"
     ],
-    detailedFeatures: [
+    "detailedFeatures": [
       {
-        title: 'One-Day Screen & Recoat',
-        description: 'Lightly abrade the top finish layer of hardwood floors and apply a fresh coat of commercial polyurethane—restoring shine in 24 hours without full sanding.'
+        "tag": "Materials",
+        "title": "Direct material guidance for counters and decks",
+        "description": "Choosing the right surface starts with understanding how the space is used, what look you want, and how much maintenance you want to handle. We help guide material choices clearly so the final result fits both the project and the lifestyle.",
+        "bullets": [
+          "Counter materials can include quartz, granite, marble, laminate, butcher block, and solid surface options",
+          "Deck materials can include composite decking, pressure-treated wood, cedar, redwood, and PVC decking systems",
+          "Guidance on color, texture, edge profile, finish level, and overall material appearance",
+          "Recommendations based on moisture exposure, daily wear, style goals, and maintenance expectations"
+        ]
       },
       {
-        title: 'Deep Grout Extraction & Sealing',
-        description: 'Remove ground-in dirt, oil, and bacteria from tile grout lines, then apply penetrating sealers for long-term stain protection.'
+        "tag": "Preparation",
+        "title": "Planning and prep that support a better finished installation",
+        "description": "Great results depend on proper preparation before materials are installed. We review the space carefully so the finished project feels clean, functional, and properly aligned with the surrounding area.",
+        "bullets": [
+          "Review of existing surfaces, dimensions, transitions, support conditions, and project requirements",
+          "Preparation planning for cuts, seams, edges, corners, trim areas, and attachment points",
+          "Layout guidance to support a cleaner fit, better flow, and stronger overall presentation"
+        ]
       },
       {
-        title: 'Commercial Strip & Wax',
-        description: 'Strip away old discolored wax layers on VCT floors and apply multiple coats of high-solids commercial floor finish.'
+        "tag": "Installation",
+        "title": "Professional installation for counters and deck surfaces",
+        "description": "Whether the project is a kitchen counter, bathroom vanity top, workspace surface, or deck upgrade, we install with attention to fit, detail, and the finished look of the overall space.",
+        "bullets": [
+          "Counter and deck installation with careful layout, alignment, and surface finishing",
+          "Attention to seams, edges, trim details, transitions, and attachment points for a more polished result",
+          "Organized project completion with clear communication from planning to final installation"
+        ]
       },
       {
-        title: 'Protective Spill Guards',
-        description: 'Apply high-durability surface sealants that protect wood, tile, and vinyl against moisture absorption and scuff marks.'
+        "tag": "Why CFS",
+        "title": "Why homeowners and businesses choose CFS Flooring",
+        "description": "Great surface projects depend on the material choice and the installation process working together. Clients choose CFS Flooring for clear recommendations, dependable service, and workmanship that respects the space and the finished details.",
+        "bullets": [
+          "Honest recommendations based on quartz, granite, laminate, composite, wood, and other real material options",
+          "Organized work that keeps the project straightforward and easier to manage",
+          "Finished counters and decks designed to look clean, perform well, and support long-term value"
+        ]
       }
     ],
-    processSteps: [
+    "faqs": [
       {
-        step: 1,
-        title: 'Surface Inspection & Chemical Check',
-        description: 'Test floor surface for old wax or silicone buildup before treatment.'
-      },
-      {
-        step: 2,
-        title: 'Deep Extraction Cleaning',
-        description: 'Perform mechanical scrub and extraction to remove heavy soil and grease.'
-      },
-      {
-        step: 3,
-        title: 'Screening / Abrasion',
-        description: 'Buff surface with fine abrasives to prepare top layer for new finish adhesion.'
-      },
-      {
-        step: 4,
-        title: 'Protective Finish Application',
-        description: 'Apply commercial polyurethane or high-solid floor finish uniformly.'
-      },
-      {
-        step: 5,
-        title: 'Curing & Final Inspection',
-        description: 'Allow coat to cure for light foot traffic and perform sheen check.'
+        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
+        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
       }
     ],
-    specifications: [
-      { label: 'Care Services', value: 'Screen & Recoat, Deep Grout Clean, VCT Waxing' },
-      { label: 'Sheen Options', value: 'Matte, Satin, Semi-Gloss, Gloss' },
-      { label: 'Downtime', value: 'Same-day return to light foot traffic' },
-      { label: 'Frequency', value: 'Annual residential / Bi-annual commercial' },
-      { label: 'Warranty', value: '100% Satisfaction Guarantee' }
-    ],
-    applications: [
-      'Residential Hardwood Refreshing',
-      'High-Traffic Commercial Facilities',
-      'Medical & Retail Vinyl Maintenance',
-      'Restaurant & Kitchen Tile Cleaning',
-      'Property Management Turnovers'
-    ],
-    faqs: [
-      {
-        question: 'What is a screen and recoat for hardwood floors?',
-        answer: 'A screen & recoat light-abrades the top protective polyurethane layer without sanding down to raw wood, then applies a fresh topcoat to restore shine and seal minor surface scuffs. It takes just one day!'
-      },
-      {
-        question: 'How often should commercial VCT floors be stripped and waxed?',
-        answer: 'Depending on traffic, high-volume retail or medical spaces benefit from stripping and waxing every 6 to 12 months, with monthly high-speed buffing.'
-      },
-      {
-        question: 'Can dirty tile grout lines be restored?',
-        answer: 'Yes! We use deep extraction cleaning and penetrating color sealers that restore grout to its original color and protect it against future stains.'
-      }
-    ]
+    "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville counters and decks projects",
+    "seoText": "CFS Flooring provides counter and deck services for residential and commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you need quartz or granite counters for an interior space, laminate or butcher block for a practical update, or composite and wood decking materials for an outdoor area, we help define the right scope and complete the project with care."
   }
 ];
-
-export function getServiceBySlug(slug: string): ServiceItem | undefined {
-  return services.find((s) => s.slug === slug);
-}
-
-export function getRelatedServices(currentSlug: string, limit = 3): ServiceItem[] {
-  return services.filter((s) => s.slug !== currentSlug).slice(0, limit);
-}

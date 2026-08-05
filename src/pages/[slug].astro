@@ -3,7 +3,6 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import HeroService from '@/components/sections/HeroService.astro';
 import ServiceDetails from '@/components/services/ServiceDetails.astro';
 import CTABanner from '@/components/sections/CTABanner.astro';
-import FAQ from '@/components/sections/FAQ.astro';
 import LocalBusiness from '@/components/seo/LocalBusiness.astro';
 import ServiceSchema from '@/components/seo/ServiceSchema.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
@@ -36,28 +35,24 @@ const {
   specifications,
   applications,
   faqs,
-  seoTitle,
-  seoText,
 } = service;
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://cfsflooring.com' },
   { name: 'Services', url: 'https://cfsflooring.com/our-services' },
-  { name: title, url: `https://cfsflooring.com/services/${slug}` },
+  { name: title, url: `https://cfsflooring.com/${slug}` },
 ];
 ---
 
 <BaseLayout title={metaTitle} description={metaDescription}>
   <LocalBusiness />
-  <ServiceSchema name={title} description={description} url={`https://cfsflooring.com/services/${slug}`} />
+  <ServiceSchema name={title} description={description} url={`https://cfsflooring.com/${slug}`} />
   <BreadcrumbSchema items={breadcrumbs} />
   {faqs && faqs.length > 0 && <FAQSchema faqs={faqs} />}
 
   <!-- Hero Section -->
   <HeroService
     title={title}
-    heroTitle={description}
-    subtitle={subtitle}
     description={description}
     image={image}
     features={features}
@@ -74,13 +69,8 @@ const breadcrumbs = [
     detailedFeatures={detailedFeatures}
     specifications={specifications}
     applications={applications}
-    seoTitle={seoTitle}
-    seoText={seoText}
   />
 
   <!-- Call to Action Banner -->
   <CTABanner title={`Get a Free Estimate on ${title}`} />
-
-  <!-- FAQ Section -->
-  <FAQ />
 </BaseLayout>

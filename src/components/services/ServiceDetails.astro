@@ -1,128 +1,477 @@
 ---
-import type { ServiceFeature, ServiceSpec } from '@/data/services';
+import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
   subtitle?: string;
-  features: string[];
-  detailedFeatures?: ServiceFeature[];
-  specifications?: ServiceSpec[];
+  image?: any;
+  features?: string[];
+  detailedFeatures?: any[];
+  specifications?: any[];
   applications?: string[];
+  seoTitle?: string;
+  seoText?: string;
 }
 
-const { title, subtitle, features, detailedFeatures = [], specifications = [], applications = [] } = Astro.props;
+const { title, image, detailedFeatures, seoTitle, seoText } = Astro.props;
+
+const defaultCardsData = [
+  {
+    tag: 'Guidance',
+    title: `${title} guidance based on your space and lifestyle`,
+    description: `Choosing the right ${title.toLowerCase()} is about more than color alone. We help you compare styles, textures, and performance levels based on comfort, durability, maintenance, and the overall feel you want for the space.`,
+    bullets: [
+      `Product recommendations based on traffic, pets, kids, comfort preferences, and daily use`,
+      `Guidance on texture, pile height, padding options, and color tones`,
+      `Clear comparisons between practical, soft-touch, and high-performance options`,
+      `Recommendations that balance style goals, comfort, durability, and budget`,
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`,
+  },
+  {
+    tag: 'Preparation',
+    title: `Subfloor prep and planning that support a better ${title.toLowerCase()} finish`,
+    description: `Flooring performs best when the surface beneath it is prepared properly. We review the installation area carefully so the finished result feels smooth, secure, and ready for daily use.`,
+    bullets: [
+      `Review of existing flooring, transitions, room conditions, and installation requirements`,
+      `Preparation of the installation area to support proper fit, padding, and long-term performance`,
+      `Planning for edges, doorway transitions, stairs, and room-to-room flow`,
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17h18v2H3v-2zm2-8h14l-1.5 6h-11L5 9zm3-4h8v2H8V5z"/></svg>`,
+  },
+  {
+    tag: 'Installation',
+    title: `Clean, professional ${title.toLowerCase()} installation for a polished finished floor`,
+    description: `Whether the project is a single room, a full home update, or a commercial space, we install ${title.toLowerCase()} with attention to fit, detail, and overall presentation.`,
+    bullets: [
+      `${title} installation with careful layout, stretching, and finish alignment`,
+      `Attention to seams, transitions, stairs, edges, and trim details for a more polished result`,
+      `Organized project completion with clear communication from start to finish`,
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm3 1h2v6H9V9zm4 0h2v6h-2V9z"/></svg>`,
+  },
+  {
+    tag: 'Why CFS',
+    title: `Why homeowners and businesses choose CFS Flooring`,
+    description: `Great flooring projects depend on the installation process as much as the material itself. Clients choose CFS Flooring for clear guidance, dependable service, and workmanship that respects the space.`,
+    bullets: [
+      `Honest recommendations based on comfort, performance, design goals, and real-world use`,
+      `Organized work that keeps the project straightforward and easier to manage`,
+      `Finished installation designed to look clean, feel comfortable, and support long-term value`,
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 6v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V6l-8-4zm-1 13-3-3 1.4-1.4L11 12.2l4.6-4.6L17 9l-6 6z"/></svg>`,
+  },
+];
+
+const cardIcons: Record<string, string> = {
+  Guidance: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`,
+  Preparation: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17h18v2H3v-2zm2-8h14l-1.5 6h-11L5 9zm3-4h8v2H8V5z"/></svg>`,
+  Installation: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm3 1h2v6H9V9zm4 0h2v6h-2V9z"/></svg>`,
+  'Why CFS': `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 6v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V6l-8-4zm-1 13-3-3 1.4-1.4L11 12.2l4.6-4.6L17 9l-6 6z"/></svg>`,
+  Assessment: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`,
+  Removal: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm3 1h2v6H9V9zm4 0h2v6h-2V9z"/></svg>`,
+  Materials: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`,
+};
+
+const cardsData = detailedFeatures && detailedFeatures.length > 0
+  ? detailedFeatures.map((df) => ({
+      ...df,
+      icon: cardIcons[df.tag] || cardIcons['Guidance'],
+    }))
+  : defaultCardsData;
+
+const localChips = [
+  'Hardwood Flooring',
+  'Laminate Flooring',
+  'LVP Flooring',
+  'Floor Installation',
+  'Residential Flooring',
+  'Commercial Flooring',
+  'Lake Oswego',
+  'West Linn',
+  'Wilsonville',
+];
 ---
 
-<section class="py-16 lg:py-24 bg-bg border-b border-stroke relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Header -->
-    <div class="max-w-3xl mb-16">
-      <span class="inline-block text-xs font-extrabold uppercase tracking-wider text-accent font-title mb-3">
-        Service Capabilities
-      </span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold font-title text-text tracking-tight leading-tight">
-        Why Choose CFS Flooring for {title}?
-      </h2>
-      {subtitle && (
-        <p class="mt-4 text-lg text-muted font-normal leading-relaxed">
-          {subtitle}
-        </p>
-      )}
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-      <!-- Left Column: Detailed Features -->
-      <div class="lg:col-span-7 space-y-8">
-        {detailedFeatures.length > 0 ? (
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {detailedFeatures.map((feat) => (
-              <div class="p-6 rounded-2xl bg-panel border border-stroke shadow-sm hover:border-accent transition-all duration-300">
-                <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 class="text-lg font-bold font-title text-text mb-2">{feat.title}</h3>
-                <p class="text-sm text-muted leading-relaxed">{feat.description}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {features.map((feature) => (
-              <li class="p-4 rounded-2xl bg-panel border border-stroke flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="text-sm font-bold text-text">{feature}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <!-- Applications -->
-        {applications.length > 0 && (
-          <div class="p-6 rounded-2xl bg-panel border border-stroke space-y-4">
-            <h3 class="text-base font-bold font-title uppercase tracking-wider text-text flex items-center gap-2">
-              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0H9" />
-              </svg>
-              Ideal Applications & Spaces
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {applications.map((app) => (
-                <span class="px-3 py-1.5 rounded-lg bg-bg border border-stroke text-xs font-semibold text-text">
-                  {app}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
+<section class="floorDetails" id="floorDetails" aria-label={`${title} Details`}>
+  <div class="floorDetailsWrap">
+    
+    <header class="floorDetailsHead">
+      <div class="floorDetailsKicker">
+        <span class="floorDetailsDot" aria-hidden="true"></span>
+        <span>Service Details</span>
       </div>
+      <h2 class="floorDetailsTitle">
+        {title} solutions designed for comfort, performance, and everyday living.
+      </h2>
+      <p class="floorDetailsDesc">
+        Whether replacing worn flooring in one room or updating an entire property, we provide clear guidance, clean subfloor prep, and precision installation so your space looks and feels incredible.
+      </p>
+    </header>
 
-      <!-- Right Column: Specs Card -->
-      <div class="lg:col-span-5">
-        <div class="sticky top-24 p-8 rounded-3xl bg-panel border border-stroke shadow-xl space-y-6">
-          <div class="border-b border-stroke pb-4">
-            <span class="text-xs font-bold text-accent uppercase tracking-wider font-title">Technical Specifications</span>
-            <h3 class="text-xl font-bold font-title text-text mt-1">Service Highlights</h3>
-          </div>
-
-          {specifications.length > 0 ? (
-            <dl class="space-y-4">
-              {specifications.map((spec) => (
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-2 border-b border-stroke/60 gap-1 sm:gap-4">
-                  <dt class="text-xs font-semibold text-muted uppercase tracking-wide">{spec.label}</dt>
-                  <dd class="text-sm font-bold text-text sm:text-right">{spec.value}</dd>
-                </div>
-              ))}
-            </dl>
-          ) : (
-            <ul class="space-y-3">
-              {features.map((feat) => (
-                <li class="flex items-center gap-2 text-sm text-text font-medium">
-                  <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                  <span>{feat}</span>
+    <div class="floorDetailsGrid">
+      
+      <!-- Left Stack of 4 Cards -->
+      <div class="fdStack">
+        {cardsData.map((card) => (
+          <article class="fdCard">
+            <div class="fdCardTop">
+              <div class="fdTag">{card.tag}</div>
+              <div class="fdIcon" aria-hidden="true" set:html={card.icon} />
+            </div>
+            <h3 class="fdH3">{card.title}</h3>
+            <p class="fdP">{card.description}</p>
+            <ul class="fdList">
+              {card.bullets.map((b: string) => (
+                <li>
+                  <span class="fdBdot" aria-hidden="true"></span>
+                  <span>{b}</span>
                 </li>
               ))}
             </ul>
-          )}
+          </article>
+        ))}
+      </div>
 
-          <div class="pt-4 border-t border-stroke text-center">
-            <button
-              type="button"
-              x-on:click="$dispatch('open-drawer')"
-              class="w-full py-4 px-6 rounded-xl bg-accent text-white font-bold font-title hover:bg-accent/90 transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>Schedule On-Site Consultation</span>
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-            <p class="mt-3 text-xs text-muted">Free estimates across Lake Oswego, West Linn & Vancouver</p>
+      <!-- Right Sidebar Column -->
+      <aside class="fdSide">
+        <div class="fdMedia">
+          {image ? (
+            typeof image === 'string' ? (
+              <img src={image} alt={`${title} by CFS Flooring`} class="fdMediaImg" />
+            ) : (
+              <Image src={image} alt={`${title} by CFS Flooring`} width={700} height={520} class="fdMediaImg" />
+            )
+          ) : (
+            <img src="https://assets.cdn.filesafe.space/HGzfx6jbKe9Um66xPWLa/media/69e6bc0c6da81710db125c80.webp" alt={`${title} by CFS Flooring`} class="fdMediaImg" />
+          )}
+          <div class="fdBadge">
+            <div class="fdBadgeT">{title}</div>
+            <div class="fdBadgeS">Selection • Prep • Installation • Finished Details</div>
           </div>
         </div>
-      </div>
+
+        <div class="fdSeoBox">
+          <h3 class="fdSeoTitle">
+            {seoTitle || `Serving Lake Oswego, West Linn, and Wilsonville flooring projects`}
+          </h3>
+          <p class="fdSeoText">
+            {seoText || `CFS Flooring provides hardwood, laminate, and LVP flooring installation for residential and commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you want a more classic wood look, a practical upgrade for high-traffic rooms, or a floor that balances durability and style, we help define the right scope and install it with care.`}
+          </p>
+
+          <div class="fdChips">
+            {localChips.map((chip) => (
+              <span class="fdChip">
+                <span class="fdChipDot" aria-hidden="true"></span>
+                {chip}
+              </span>
+            ))}
+          </div>
+        </div>
+      </aside>
+
     </div>
+
   </div>
 </section>
+
+<style>
+  #floorDetails,
+  #floorDetails * {
+    box-sizing: border-box;
+  }
+
+  #floorDetails {
+    background: var(--bg, #ffffff);
+    color: var(--text, #221416);
+    font-family: var(--font-body, "DM Sans", sans-serif);
+    padding: clamp(60px, 6.5vw, 110px) 0;
+    border-bottom: 1px solid var(--stroke, rgba(34, 20, 22, 0.14));
+    overflow: hidden;
+  }
+
+  #floorDetails .floorDetailsWrap {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 0 22px;
+    display: grid;
+    gap: 34px;
+  }
+
+  #floorDetails .floorDetailsHead {
+    max-width: 1100px;
+    display: grid;
+    gap: 12px;
+  }
+
+  #floorDetails .floorDetailsKicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--stroke, rgba(34, 20, 22, 0.14));
+    background: var(--panel, #f9f6f2);
+    box-shadow: 0 4px 12px rgba(34, 20, 22, 0.05);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 12px;
+    color: var(--text, #221416);
+  }
+
+  #floorDetails .floorDetailsDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--accent, #b07f49);
+    box-shadow: 0 0 0 4px rgba(176, 127, 73, 0.18);
+    flex: 0 0 auto;
+  }
+
+  #floorDetails .floorDetailsTitle {
+    margin: 0;
+    font-family: var(--font-title, "Lexend Deca", sans-serif);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    font-size: clamp(30px, 3.6vw, 52px);
+    color: var(--text, #221416);
+  }
+
+  #floorDetails .floorDetailsDesc {
+    margin: 0;
+    color: var(--muted, rgba(34, 20, 22, 0.72));
+    line-height: 1.85;
+    font-weight: 600;
+    font-size: clamp(15px, 1.15vw, 18px);
+    max-width: 95ch;
+  }
+
+  #floorDetails .floorDetailsGrid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  #floorDetails .fdStack {
+    display: grid;
+    gap: 18px;
+    align-content: start;
+  }
+
+  #floorDetails .fdCard {
+    border-radius: 22px;
+    border: 1px solid var(--stroke, rgba(34, 20, 22, 0.14));
+    background: var(--bg, #ffffff);
+    box-shadow: 0 10px 30px rgba(34, 20, 22, 0.06);
+    overflow: hidden;
+    padding: 24px;
+  }
+
+  #floorDetails .fdCardTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  #floorDetails .fdTag {
+    font-weight: 900;
+    letter-spacing: .02em;
+    color: var(--text, #221416);
+    background: rgba(176, 127, 73, 0.12);
+    border: 1px solid rgba(176, 127, 73, 0.25);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  #floorDetails .fdIcon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(176, 127, 73, 0.25);
+    background: rgba(176, 127, 73, 0.1);
+    box-shadow: 0 4px 12px rgba(34, 20, 22, 0.05);
+    flex: 0 0 auto;
+  }
+
+  #floorDetails .fdIcon :global(svg) {
+    width: 24px;
+    height: 24px;
+    color: var(--text, #221416);
+  }
+
+  #floorDetails .fdH3 {
+    margin: 0;
+    font-family: var(--font-title, "Lexend Deca", sans-serif);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    font-size: 20px;
+    color: var(--text, #221416);
+  }
+
+  #floorDetails .fdP {
+    margin: 10px 0 0;
+    color: var(--muted, rgba(34, 20, 22, 0.72));
+    line-height: 1.8;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  #floorDetails .fdList {
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+  }
+
+  #floorDetails .fdList li {
+    display: grid;
+    grid-template-columns: 12px 1fr;
+    gap: 10px;
+    align-items: start;
+    color: var(--text, #221416);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  #floorDetails .fdBdot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--accent, #b07f49);
+    margin-top: 7px;
+    box-shadow: 0 0 0 4px rgba(176, 127, 73, 0.14);
+  }
+
+  #floorDetails .fdSide {
+    display: grid;
+    gap: 18px;
+    align-content: start;
+  }
+
+  #floorDetails .fdMedia {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--stroke, rgba(34, 20, 22, 0.14));
+    box-shadow: 0 16px 36px rgba(34, 20, 22, 0.1);
+    background: var(--panel, #f9f6f2);
+    min-height: 480px;
+  }
+
+  #floorDetails .fdMediaImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #floorDetails .fdBadge {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(34, 20, 22, 0.75);
+    backdrop-filter: blur(8px);
+    padding: 14px 16px;
+    max-width: 88%;
+    color: #ffffff;
+  }
+
+  #floorDetails .fdBadgeT {
+    font-weight: 900;
+    font-size: 15px;
+    margin-bottom: 4px;
+    letter-spacing: .02em;
+    font-family: var(--font-title, "Lexend Deca", sans-serif);
+  }
+
+  #floorDetails .fdBadgeS {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+
+  #floorDetails .fdSeoBox {
+    border-radius: 22px;
+    border: 1px solid var(--stroke, rgba(34, 20, 22, 0.14));
+    background: var(--bg, #ffffff);
+    box-shadow: 0 10px 30px rgba(34, 20, 22, 0.06);
+    padding: 24px;
+    display: grid;
+    gap: 12px;
+  }
+
+  #floorDetails .fdSeoTitle {
+    margin: 0;
+    font-family: var(--font-title, "Lexend Deca", sans-serif);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    font-size: 19px;
+    color: var(--text, #221416);
+  }
+
+  #floorDetails .fdSeoText {
+    margin: 0;
+    color: var(--muted, rgba(34, 20, 22, 0.72));
+    line-height: 1.85;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  #floorDetails .fdChips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  #floorDetails .fdChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--stroke, rgba(34, 20, 22, 0.14));
+    background: rgba(176, 127, 73, 0.08);
+    color: var(--text, #221416);
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  #floorDetails .fdChipDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--accent, #b07f49);
+    box-shadow: 0 0 0 4px rgba(176, 127, 73, 0.14);
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 980px) {
+    #floorDetails .floorDetailsGrid {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    #floorDetails .fdMedia {
+      min-height: 340px;
+    }
+  }
+</style>

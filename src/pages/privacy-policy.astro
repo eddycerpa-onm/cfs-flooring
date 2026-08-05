@@ -11,16 +11,18 @@ const breadcrumbs = [
 ];
 
 const sections = [
-  { id: 'introduction', title: '1. Introduction & Controller Information' },
-  { id: 'information-collected', title: '2. Information We Collect' },
-  { id: 'how-we-use-information', title: '3. How We Use Your Information' },
-  { id: 'sharing-and-disclosure', title: '4. Information Sharing & Disclosure' },
-  { id: 'data-security', title: '5. Data Security & Storage' },
-  { id: 'cookies-analytics', title: '6. Cookies & Analytics' },
-  { id: 'sms-communications', title: '7. SMS & Direct Communications' },
-  { id: 'your-rights', title: '8. Your Rights & Choices' },
-  { id: 'policy-updates', title: '9. Updates to Policy' },
-  { id: 'contact-us', title: '10. Contact Us & Privacy Requests' },
+  { id: 'info-collect', num: '01', title: 'Information We Collect' },
+  { id: 'how-we-use', num: '02', title: 'How We Use Your Information' },
+  { id: 'text-consent', num: '03', title: 'Text Messages, Calls, & Consent' },
+  { id: 'how-we-share', num: '04', title: 'How We Share Information' },
+  { id: 'cookies-tracking', num: '05', title: 'Cookies & Tracking Technologies' },
+  { id: 'data-retention', num: '06', title: 'Data Retention' },
+  { id: 'data-security', num: '07', title: 'Data Security' },
+  { id: 'third-party-links', num: '08', title: 'Third-Party Links & Services' },
+  { id: 'childrens-privacy', num: '09', title: 'Children’s Privacy' },
+  { id: 'your-rights', num: '10', title: 'Your Rights & Choices' },
+  { id: 'contact-us', num: '11', title: 'Contact Us' },
+  { id: 'policy-changes', num: '12', title: 'Changes to This Privacy Policy' },
 ];
 ---
 
@@ -33,38 +35,41 @@ const sections = [
   <HeroPage
     eyebrow="Legal Information"
     title="Privacy Policy"
-    subtitle="Effective Date: January 1, 2026 | Last Updated: January 2026"
+    subtitle="Effective Date: January 1, 2026 | Last Updated: April 2026"
     breadcrumbs={breadcrumbs}
   />
 
   <section class="py-16 md:py-20 bg-bg">
-    <div class="cfs-base-container">
+    <div class="cfs-base-container max-w-[1280px] mx-auto px-4 min-[980px]:px-[22px]">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         <!-- Sidebar Navigation (Table of Contents) -->
         <aside class="lg:col-span-4 sticky top-28 hidden lg:block">
-          <div class="bg-panel border border-stroke rounded-2xl p-6 shadow-sm">
-            <h2 class="text-lg font-bold font-title text-text mb-4 pb-3 border-b border-stroke flex items-center gap-2">
-              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
-              </svg>
+          <div class="bg-panel border border-stroke rounded-2xl p-6 shadow-[0_18px_45px_rgba(34,20,22,0.06)]">
+            <h2 class="text-lg font-black font-title text-text mb-4 pb-3 border-b border-stroke flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-accent/15 border border-accent/30 text-accent grid place-items-center shrink-0">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+                </svg>
+              </span>
               Table of Contents
             </h2>
-            <nav class="space-y-2 text-sm font-body">
+            <nav class="space-y-1.5 text-sm font-body">
               {sections.map((sec) => (
                 <a
                   href={`#${sec.id}`}
-                  class="block px-3 py-2 rounded-lg text-muted hover:text-accent hover:bg-bg transition-colors font-medium"
+                  class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-muted hover:text-text hover:bg-bg border border-transparent hover:border-stroke transition-all duration-200 font-semibold"
                 >
-                  {sec.title}
+                  <span class="text-xs font-mono font-bold text-accent shrink-0">{sec.num}</span>
+                  <span class="truncate">{sec.title}</span>
                 </a>
               ))}
             </nav>
 
             <div class="mt-6 pt-6 border-t border-stroke text-xs text-muted space-y-2">
-              <div class="font-bold text-text">Questions about Privacy?</div>
+              <div class="font-bold font-title text-text text-sm">Questions about Privacy?</div>
               <p>Contact our support team directly:</p>
-              <a href={`tel:${company.phoneRaw}`} class="block font-bold text-accent hover:underline">
+              <a href={`tel:${company.phoneRaw}`} class="block font-black font-body text-accent hover:underline text-sm">
                 {company.phone}
               </a>
               <a href={`mailto:${company.email}`} class="block text-muted hover:text-text truncate">
@@ -75,16 +80,40 @@ const sections = [
         </aside>
 
         <!-- Main Content Area -->
-        <main class="lg:col-span-8 space-y-12">
+        <main class="lg:col-span-8 space-y-8">
           
+          <!-- Preamble Card -->
+          <article class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Overview</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Privacy Policy Overview</h2>
+              </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
+              <p>
+                CFS Flooring LLC (“CFS Flooring,” “we,” “us,” or “our”) respects your privacy and is committed to protecting the personal information you share with us.
+                This Privacy Policy explains how we collect, use, disclose, and safeguard information when you visit our website, submit a form, request an estimate,
+                communicate with our team, or otherwise interact with our services. This policy applies to visitors and customers in Oregon and the United States.
+              </p>
+            </div>
+          </article>
+
           <!-- Mobile Quick Index -->
-          <div class="block lg:hidden bg-panel border border-stroke rounded-2xl p-5 mb-8">
+          <div class="block lg:hidden bg-panel border border-stroke rounded-2xl p-5 mb-8 shadow-sm">
             <details class="group">
               <summary class="cursor-pointer font-bold font-title text-text flex items-center justify-between">
-                <span class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
-                  </svg>
+                <span class="flex items-center gap-2.5">
+                  <span class="w-7 h-7 rounded-lg bg-accent/15 text-accent grid place-items-center shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+                    </svg>
+                  </span>
                   Quick Section Jump
                 </span>
                 <svg class="w-5 h-5 text-muted transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -93,211 +122,292 @@ const sections = [
               </summary>
               <div class="mt-4 pt-4 border-t border-stroke grid grid-cols-1 gap-2 text-sm">
                 {sections.map((sec) => (
-                  <a href={`#${sec.id}`} class="text-muted hover:text-accent py-1">
-                    {sec.title}
+                  <a href={`#${sec.id}`} class="text-muted hover:text-accent py-1 font-medium flex items-center gap-2">
+                    <span class="text-xs font-mono text-accent font-bold">{sec.num}</span>
+                    <span>{sec.title}</span>
                   </a>
                 ))}
               </div>
             </details>
           </div>
 
-          <!-- Highlight Box -->
-          <div class="bg-panel border-l-4 border-accent border-stroke border p-6 rounded-r-2xl shadow-sm">
-            <h3 class="font-bold font-title text-text text-lg mb-2 flex items-center gap-2">
-              <svg class="w-5 h-5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              Our Privacy Commitment
-            </h3>
-            <p class="text-muted leading-relaxed text-sm sm:text-base">
-              At {company.legalName}, we respect your personal privacy. We do not sell, rent, or trade your contact details or project information to third-party marketing companies. Any information shared with us is strictly used to process project estimates, deliver professional flooring services, and communicate about your project.
-            </p>
-          </div>
-
           <!-- Section 1 -->
-          <article id="introduction" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              1. Introduction & Controller Information
-            </h2>
-            <div class="prose prose-lg max-w-none text-muted leading-relaxed font-body space-y-4">
-              <p>
-                This Privacy Policy applies to {company.legalName} ("CFS Flooring," "we," "us," or "our"), operating the website <strong class="text-text">cfsflooring.com</strong>. It describes how we collect, use, store, and protect your personal information when you visit our website, submit a project quote request, schedule an in-home estimate, or engage our flooring installation services across Oregon and Washington.
-              </p>
-              <p>
-                By accessing our website or providing information to us, you accept the practices outlined in this Privacy Policy.
-              </p>
-            </div>
-          </article>
-
-          <!-- Section 2 -->
-          <article id="information-collected" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              2. Information We Collect
-            </h2>
-            <div class="text-muted leading-relaxed font-body space-y-4">
-              <p>
-                We collect personal information that you voluntarily provide to us, as well as technical information generated during your visit to our website.
-              </p>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                <div class="bg-panel border border-stroke p-5 rounded-xl">
-                  <h4 class="font-bold text-text font-title text-base mb-2">Direct Information Provided</h4>
-                  <ul class="list-disc list-inside text-sm space-y-1 text-muted">
-                    <li>Full Name and contact details</li>
-                    <li>Email address and phone number</li>
-                    <li>Property address for site estimates</li>
-                    <li>Project scope (LVP, Hardwood, Tile, Carpet, Sand & Refinish)</li>
-                    <li>Square footage estimates & timeline</li>
-                    <li>Uploaded job photos or architectural blueprints</li>
-                  </ul>
-                </div>
-
-                <div class="bg-panel border border-stroke p-5 rounded-xl">
-                  <h4 class="font-bold text-text font-title text-base mb-2">Automated & Technical Data</h4>
-                  <ul class="list-disc list-inside text-sm space-y-1 text-muted">
-                    <li>IP address & approximate location</li>
-                    <li>Browser type & operating system</li>
-                    <li>Referring URLs & pages viewed</li>
-                    <li>Time spent on site and interaction metrics</li>
-                    <li>Device category (Mobile, Tablet, Desktop)</li>
-                  </ul>
-                </div>
+          <article id="info-collect" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 01</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Information We Collect</h2>
               </div>
-            </div>
-          </article>
-
-          <!-- Section 3 -->
-          <article id="how-we-use-information" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              3. How We Use Your Information
-            </h2>
-            <div class="text-muted leading-relaxed font-body space-y-4">
-              <p>We use your information exclusively for legitimate business purposes, including:</p>
-              <ul class="list-disc list-inside space-y-2 pl-2">
-                <li><strong class="text-text">Preparing Estimates:</strong> Calculating material costs, labor hours, and scheduling on-site flooring inspections.</li>
-                <li><strong class="text-text">Project Execution:</strong> Coordinating flooring material deliveries, installer dispatch, subfloor preparation, and job site installation.</li>
-                <li><strong class="text-text">Client Communication:</strong> Sending quote confirmations, project status updates, appointment reminders, and invoicing.</li>
-                <li><strong class="text-text">Licensing & Regulatory Records:</strong> Maintaining business and tax documentation in compliance with Oregon Construction Contractors Board ({company.licenses.oregonCCB}) and Washington Department of Revenue ({company.licenses.washingtonLic}).</li>
-                <li><strong class="text-text">Website Optimization:</strong> Improving website performance, responsiveness, and user experience.</li>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
+              <p>
+                We may collect information you provide directly to us, as well as certain information collected automatically through your use of our website.
+              </p>
+              <ul class="space-y-2 pl-4 list-disc marker:text-accent">
+                <li><strong>Contact information:</strong> name, phone number, email address, and property address if you provide it.</li>
+                <li><strong>Project information:</strong> details about the flooring services you are requesting, including room types, material interests, project timing, budget preferences, and any notes, photos, or files you choose to submit.</li>
+                <li><strong>Website usage information:</strong> IP address, browser type, device information, general location, pages visited, and interactions collected through cookies or similar technologies.</li>
               </ul>
             </div>
           </article>
 
-          <!-- Section 4 -->
-          <article id="sharing-and-disclosure" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              4. Information Sharing & Disclosure
-            </h2>
-            <div class="text-muted leading-relaxed font-body space-y-4">
-              <p>
-                We do <strong class="text-text">NOT</strong> sell, rent, or trade your personal data. We only share information with trusted third parties under strict confidentiality under the following circumstances:
-              </p>
-              <div class="space-y-3">
-                <div class="p-4 rounded-xl border border-stroke bg-panel">
-                  <h4 class="font-bold text-text font-title text-sm">Material Distributors & Suppliers</h4>
-                  <p class="text-xs sm:text-sm text-muted mt-1">To arrange direct job site delivery of hardwood, tile, carpet, or luxury vinyl plank products.</p>
-                </div>
-                <div class="p-4 rounded-xl border border-stroke bg-panel">
-                  <h4 class="font-bold text-text font-title text-sm">Subcontractors & Installation Crew</h4>
-                  <p class="text-xs sm:text-sm text-muted mt-1">Only project-specific details necessary to perform installation, subfloor repair, or refinishing work.</p>
-                </div>
-                <div class="p-4 rounded-xl border border-stroke bg-panel">
-                  <h4 class="font-bold text-text font-title text-sm">Legal & Regulatory Compliance</h4>
-                  <p class="text-xs sm:text-sm text-muted mt-1">When required by state laws, subpoena, court order, or to protect the safety and property of CFS Flooring LLC.</p>
-                </div>
+          <!-- Section 2 -->
+          <article id="how-we-use" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 02</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">How We Use Your Information</h2>
               </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
+              <p>
+                We may use your information for legitimate business purposes, including:
+              </p>
+              <ul class="space-y-2 pl-4 list-disc marker:text-accent">
+                <li>Responding to your inquiries and requests for estimates, consultations, or service information.</li>
+                <li>Providing recommendations, scheduling appointments, confirming visits, and communicating about your project.</li>
+                <li>Improving our website, services, customer communications, and overall user experience.</li>
+                <li>Maintaining website security, preventing fraud, and diagnosing technical issues.</li>
+                <li>Complying with applicable laws, regulations, legal processes, and enforceable requests.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Section 3 -->
+          <article id="text-consent" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 03</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Text Messages, Calls, and Consent</h2>
+              </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
+              <p>
+                If you provide your phone number, you consent to receive calls and/or text messages from us related to your inquiry, estimate request, scheduling,
+                appointment reminders, project updates, and customer service follow-up. Message frequency may vary. Message and data rates may apply based on your carrier plan.
+                You may opt out of non-essential text communications at any time by replying STOP or by contacting us directly.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 4 -->
+          <article id="how-we-share" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 04</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">How We Share Information</h2>
+              </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
+              <p>
+                We do not sell your personal information. We may share information with trusted third-party service providers that help us operate our website,
+                forms, communications, customer relationship management tools, analytics tools, and related business systems, but only as reasonably necessary
+                to provide our services or operate our business. We may also disclose information when required by law or when we reasonably believe disclosure
+                is necessary to protect our rights, property, safety, users, or others.
+              </p>
             </div>
           </article>
 
           <!-- Section 5 -->
-          <article id="data-security" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              5. Data Security & Storage
-            </h2>
-            <div class="text-muted leading-relaxed font-body space-y-4">
+          <article id="cookies-tracking" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 05</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Cookies and Tracking Technologies</h2>
+              </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
               <p>
-                We implement administrative, technical, and physical safeguards designed to protect personal data against unauthorized access, loss, alteration, or disclosure. All form transmissions are encrypted via SSL/TLS protocol.
-              </p>
-              <p>
-                We retain client project records and billing information for as long as necessary to fulfill project warranties, accounting obligations, and legal requirements.
+                Our website may use cookies, pixels, analytics tools, and similar technologies to understand website traffic, improve performance, and enhance user experience.
+                You can control cookies through your browser settings. Disabling cookies may affect the functionality of certain parts of the website.
               </p>
             </div>
           </article>
 
           <!-- Section 6 -->
-          <article id="cookies-analytics" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              6. Cookies & Analytics
-            </h2>
-            <div class="text-muted leading-relaxed font-body space-y-4">
+          <article id="data-retention" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 06</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Data Retention</h2>
+              </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
               <p>
-                Our website uses standard cookies and web analytics technology to evaluate traffic patterns and enhance usability. Cookies are small files stored on your browser. You can manage or disable cookies via your browser settings; however, certain site features may be affected.
+                We retain information for as long as reasonably necessary to fulfill the purposes described in this Privacy Policy, provide requested services,
+                maintain business records, resolve disputes, enforce agreements, and comply with legal obligations.
               </p>
             </div>
           </article>
 
           <!-- Section 7 -->
-          <article id="sms-communications" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              7. SMS & Direct Communications
-            </h2>
-            <div class="text-muted leading-relaxed font-body space-y-4">
+          <article id="data-security" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 07</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Data Security</h2>
+              </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
               <p>
-                By providing your phone number on our quote request forms, you consent to receive text messages (SMS) or phone calls regarding estimate scheduling, project status updates, and service inquiries.
-              </p>
-              <p>
-                Message and data rates may apply. You can opt out of text messages at any time by replying "STOP" or notifying us directly at <a href={`tel:${company.phoneRaw}`} class="text-accent hover:underline font-medium">{company.phone}</a>.
+                We use reasonable administrative, technical, and physical safeguards designed to protect your personal information. However, no website, online form,
+                or electronic transmission method can be guaranteed to be completely secure. For that reason, you should avoid sending highly sensitive information
+                through general website forms unless specifically requested through a secure method.
               </p>
             </div>
           </article>
 
           <!-- Section 8 -->
-          <article id="your-rights" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              8. Your Rights & Choices
-            </h2>
-            <div class="text-muted leading-relaxed font-body space-y-4">
-              <p>Depending on your jurisdiction, you have the following rights regarding your personal information:</p>
-              <ul class="list-disc list-inside space-y-1 pl-2">
-                <li><strong class="text-text">Access:</strong> Request a copy of personal information we hold about you.</li>
-                <li><strong class="text-text">Correction:</strong> Request updates or corrections to inaccurate records.</li>
-                <li><strong class="text-text">Deletion:</strong> Request deletion of your personal data, subject to legal and financial retention requirements.</li>
-                <li><strong class="text-text">Opt-Out:</strong> Unsubscribe from marketing communications at any time.</li>
-              </ul>
+          <article id="third-party-links" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 08</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Third-Party Links and Services</h2>
+              </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
+              <p>
+                Our website may contain links to third-party websites, tools, or services. We are not responsible for the privacy practices, content, or policies
+                of third parties. We encourage you to review their privacy policies separately before submitting information to them.
+              </p>
             </div>
           </article>
 
           <!-- Section 9 -->
-          <article id="policy-updates" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              9. Updates to This Policy
-            </h2>
-            <div class="text-muted leading-relaxed font-body space-y-4">
+          <article id="childrens-privacy" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 09</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Children’s Privacy</h2>
+              </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
               <p>
-                We may update this Privacy Policy periodically to reflect changes in our service practices, technologies, or legal duties. Updates will be posted on this page with a revised "Effective Date" at the top.
+                Our website and services are not directed to children under the age of 13, and we do not knowingly collect personal information from children under 13.
+                If you believe a child has provided us with personal information, please contact us so we can take appropriate action.
               </p>
             </div>
           </article>
 
           <!-- Section 10 -->
-          <article id="contact-us" class="scroll-mt-32 space-y-4">
-            <h2 class="text-2xl font-bold font-title text-text border-b border-stroke pb-3">
-              10. Contact Us & Privacy Requests
-            </h2>
-            <div class="text-muted leading-relaxed font-body space-y-4">
-              <p>
-                If you have questions, concerns, or requests regarding this Privacy Policy or your personal information, please reach out to us:
-              </p>
-              
-              <div class="bg-panel border border-stroke rounded-2xl p-6 space-y-3">
-                <div class="font-bold text-text text-lg font-title">{company.legalName}</div>
-                <div class="text-sm space-y-1 text-muted">
-                  <p><strong class="text-text">Address:</strong> {company.address.street}, {company.address.city}, {company.address.state} {company.address.zip}</p>
-                  <p><strong class="text-text">Phone:</strong> <a href={`tel:${company.phoneRaw}`} class="text-accent hover:underline">{company.phone}</a></p>
-                  <p><strong class="text-text">Email:</strong> <a href={`mailto:${company.email}`} class="text-accent hover:underline">{company.email}</a></p>
-                  <p><strong class="text-text">Licenses:</strong> Oregon CCB #{company.licenseOR} | Washington Lic #{company.licenseWA}</p>
-                </div>
+          <article id="your-rights" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 10</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Your Rights and Choices</h2>
               </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
+              <p>
+                Depending on where you live, you may have the right to request access to, correction of, or deletion of personal information you have provided to us,
+                subject to applicable legal exceptions. You may also opt out of certain communications by contacting us using the information below.
+              </p>
+            </div>
+          </article>
+
+          <!-- Section 11 -->
+          <article id="contact-us" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 11</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Contact Us</h2>
+              </div>
+            </header>
+            <div class="bg-bg border border-stroke rounded-xl p-5 space-y-3 font-body">
+              <p class="font-black font-title text-text text-lg">CFS Flooring LLC</p>
+              <div class="flex flex-col sm:flex-row gap-4 text-sm">
+                <a href={`tel:${company.phoneRaw}`} class="inline-flex items-center gap-2 font-bold text-accent hover:underline">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  {company.phone}
+                </a>
+                <a href="tel:19714198602" class="inline-flex items-center gap-2 font-bold text-accent hover:underline">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  (971) 419-8602
+                </a>
+                <a href={`mailto:${company.email}`} class="inline-flex items-center gap-2 font-bold text-accent hover:underline">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  {company.email}
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 12 -->
+          <article id="policy-changes" class="bg-panel border border-stroke rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent/40 transition-colors shadow-[0_18px_45px_rgba(34,20,22,0.04)]">
+            <header class="flex items-center gap-3.5 border-b border-stroke pb-4">
+              <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 text-accent grid place-items-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </span>
+              <div>
+                <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">Section 12</span>
+                <h2 class="text-xl md:text-2xl font-black font-title text-text">Changes to This Privacy Policy</h2>
+              </div>
+            </header>
+            <div class="prose max-w-none text-muted font-body leading-relaxed space-y-3">
+              <p>
+                We may update this Privacy Policy from time to time to reflect changes in our services, business practices, technology, or legal requirements.
+                Any updates will be posted on this page with a revised effective date.
+              </p>
+              <p class="font-bold text-text pt-1">
+                Last updated: April 2026.
+              </p>
             </div>
           </article>
 

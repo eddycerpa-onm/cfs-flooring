@@ -1,121 +1,375 @@
 ---
-import { Image } from 'astro:assets';
-import { company } from '../../data/company';
-import Button from '../ui/Button.astro';
-import Pill from '../ui/Pill.astro';
-
 interface Props {
   title: string;
   description: string;
+  heroTitle?: string;
+  subtitle?: string;
+  formHint?: string;
   features?: string[];
   slug?: string;
   image?: any;
   heroBadge?: string;
 }
 
-const { title, description, features = [], image, heroBadge = 'Professional Flooring Service' } = Astro.props;
+const { title, description, heroTitle, subtitle, formHint, heroBadge = 'Carpet • Padding • Installation' } = Astro.props;
+const displayH1 = heroTitle || description;
+const displaySub = subtitle || description;
 ---
 
-<section class="bg-dark-bg text-white py-16 lg:py-24 border-b border-white/10 relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Breadcrumbs -->
-    <nav class="flex items-center gap-2 text-xs mb-8 font-medium text-white/70" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-accent-2 transition-colors">Home</a>
-      <span class="text-white/30">/</span>
-      <a href="/our-services" class="hover:text-accent-2 transition-colors">Services</a>
-      <span class="text-white/30">/</span>
-      <span class="text-accent-2 font-bold">{title}</span>
-    </nav>
+<section class="flHero" id="floorHero" aria-label={`${title} Hero`}>
+  <div class="flHero__bg" aria-hidden="true"></div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
-      <!-- Left Column: Content -->
-      <div class="lg:col-span-7 space-y-6">
-        <Pill variant="dark">
-          {heroBadge}
-        </Pill>
-
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black font-title tracking-tight leading-tight text-white">
-          {title}
-        </h1>
-
-        <p class="text-base sm:text-lg text-white/80 leading-relaxed font-normal">
-          {description}
-        </p>
-
-        {
-          features.length > 0 && (
-            <div class="pt-2">
-              <h2 class="text-xs font-bold uppercase tracking-wider text-accent-2 mb-3 font-title">Key Highlights:</h2>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {features.map((feat) => (
-                  <div class="flex items-start gap-2 text-sm text-white/90">
-                    <svg class="w-5 h-5 text-accent-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )
-        }
-
-        <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-          <Button variant="accent" size="lg" isDrawer={true}>
-            Request Free Estimate &rarr;
-          </Button>
-
-          <a
-            href={`tel:${company.phoneRaw}`}
-            class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-white/20 text-white font-bold font-title text-base hover:bg-white/10 transition-colors"
-          >
-            <svg class="w-5 h-5 text-accent-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-            </svg>
-            Call {company.phone}
-          </a>
-        </div>
+  <div class="flHero__inner">
+    <div class="flHero__left">
+      <div class="flHero__crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="flHero__slash">/</span>
+        <span>{title}</span>
       </div>
 
-      <!-- Right Column: Visual Card -->
-      <div class="lg:col-span-5">
-        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 shadow-2xl backdrop-blur-md space-y-6">
-          {image && (
-            <div class="rounded-2xl overflow-hidden mb-4 border border-white/10 aspect-[16/10]">
-              <Image src={image} alt={title} width={800} height={500} class="w-full h-full object-cover" />
-            </div>
-          )}
-          <div class="space-y-2 border-b border-white/10 pb-4">
-            <div class="text-xs font-bold text-accent-2 uppercase tracking-wider font-title">Service Guarantee</div>
-            <div class="text-xl font-bold font-title text-white">Why Choose CFS Flooring?</div>
-          </div>
+      <h1 class="flHero__title">
+        {displayH1}
+      </h1>
 
-          <ul class="space-y-3 text-sm text-white/80">
-            <li class="flex items-center justify-between py-1 border-b border-white/5">
-              <span>Service Area:</span>
-              <span class="font-bold text-white">Lake Oswego, West Linn, WA</span>
-            </li>
-            <li class="flex items-center justify-between py-1 border-b border-white/5">
-              <span>Licensing:</span>
-              <span class="font-bold text-accent-2">{company.licenses.oregonCCB}</span>
-            </li>
-            <li class="flex items-center justify-between py-1 border-b border-white/5">
-              <span>Warranty:</span>
-              <span class="font-bold text-white">Full Craftsmanship Guarantee</span>
-            </li>
-            <li class="flex items-center justify-between py-1 border-b border-white/5">
-              <span>Turnaround:</span>
-              <span class="font-bold text-white">Fast & Reliable On-Time</span>
-            </li>
-          </ul>
+      <p class="flHero__sub">
+        {displaySub}
+      </p>
 
-          <Button variant="primary" size="md" class="w-full" isDrawer={true}>
-            Get Custom Quote
-          </Button>
-        </div>
+      <div class="flHero__chips" aria-label="Service highlights">
+        <span class="chip"><span class="chipDot" aria-hidden="true"></span>{heroBadge}</span>
+        <span class="chip"><span class="chipDot" aria-hidden="true"></span>Residential &amp; Commercial</span>
+        <span class="chip"><span class="chipDot" aria-hidden="true"></span>Design Guidance • Installation</span>
       </div>
-
     </div>
+
+    <aside class="flHero__right" aria-label={`${title} inquiry form`}>
+      <div class="formWrap">
+        <div class="formInner">
+          <p class="formHint">
+            {formHint || `Request your ${title.toLowerCase()} consultation. Fill out the form and our team will reach out shortly.`}
+          </p>
+
+          <form id="heroServiceForm" class="nativeForm">
+            <div class="formGroup">
+              <label for="heroName">Full Name</label>
+              <input type="text" id="heroName" name="name" required placeholder="John Doe" class="formInput" />
+            </div>
+
+            <div class="formGroup">
+              <label for="heroPhone">Phone Number</label>
+              <input type="tel" id="heroPhone" name="phone" required placeholder="(503) 555-0199" class="formInput" />
+            </div>
+
+            <div class="formGroup">
+              <label for="heroEmail">Email Address</label>
+              <input type="email" id="heroEmail" name="email" required placeholder="john@example.com" class="formInput" />
+            </div>
+
+            <div class="formGroup">
+              <label for="heroMessage">Project Details</label>
+              <textarea id="heroMessage" name="message" rows="3" placeholder="Tell us about your room size, timing, or flooring needs..." class="formTextarea"></textarea>
+            </div>
+
+            <button type="submit" class="submitBtn">
+              <span>Request Free Consultation</span>
+            </button>
+            <p id="heroFormStatus" class="formStatus" hidden></p>
+          </form>
+        </div>
+      </div>
+    </aside>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('heroServiceForm') as HTMLFormElement | null;
+  const status = document.getElementById('heroFormStatus');
+
+  if (form && status) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector('.submitBtn') as HTMLButtonElement | null;
+      if (submitBtn) submitBtn.disabled = true;
+
+      status.hidden = false;
+      status.style.color = 'var(--text)';
+      status.textContent = 'Sending your request...';
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (res.ok) {
+          status.style.color = '#10b981';
+          status.textContent = 'Thank you! We will reach out shortly.';
+          form.reset();
+        } else {
+          status.style.color = '#ef4444';
+          status.textContent = 'Something went wrong. Please call us directly.';
+        }
+      } catch (err) {
+        status.style.color = '#ef4444';
+        status.textContent = 'Connection error. Please call us directly.';
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  #floorHero,
+  #floorHero * {
+    box-sizing: border-box;
+  }
+
+  #floorHero {
+    position: relative;
+    background: linear-gradient(180deg, var(--bg), var(--panel));
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow: hidden;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  #floorHero .flHero__bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(880px 520px at 14% 20%, rgba(176,127,73,.12), transparent 64%),
+      radial-gradient(720px 460px at 84% 76%, rgba(247,209,51,.14), transparent 68%),
+      linear-gradient(180deg, rgba(255,255,255,.10), rgba(34,20,22,.04));
+    pointer-events: none;
+  }
+
+  #floorHero .flHero__bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -10%;
+    width: min(42vw, 620px);
+    height: 100%;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0)),
+      linear-gradient(135deg, rgba(176,127,73,.14), rgba(247,209,51,.10));
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+    border-left: 1px solid rgba(34,20,22,.06);
+    opacity: .9;
+  }
+
+  #floorHero .flHero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: clamp(52px, 6vw, 88px) 22px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  #floorHero .flHero__left {
+    max-width: 860px;
+  }
+
+  #floorHero .flHero__crumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--muted);
+  }
+
+  #floorHero .flHero__crumb a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color .18s ease;
+  }
+
+  #floorHero .flHero__crumb a:hover {
+    color: var(--accent);
+  }
+
+  #floorHero .flHero__slash {
+    opacity: .7;
+  }
+
+  #floorHero .flHero__title {
+    margin: 14px 0 0;
+    font-family: var(--font-title);
+    font-weight: 900;
+    letter-spacing: -.03em;
+    line-height: 1.02;
+    font-size: clamp(38px, 4.8vw, 68px);
+    color: var(--text);
+    max-width: 18ch;
+  }
+
+  #floorHero .flHero__sub {
+    margin: 16px 0 0;
+    max-width: 74ch;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 650;
+    font-size: clamp(16px, 1.35vw, 20px);
+  }
+
+  #floorHero .flHero__chips {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  #floorHero .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--stroke);
+    background: rgba(255,255,255,.76);
+    color: var(--text);
+    font-weight: 900;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-size: 11px;
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+  }
+
+  #floorHero .chipDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(176,127,73,.14);
+    flex: 0 0 auto;
+  }
+
+  #floorHero .flHero__right {
+    display: grid;
+    align-content: start;
+    justify-items: end;
+    min-width: 0;
+  }
+
+  #floorHero .formWrap {
+    width: min(540px, 100%);
+    border-radius: 20px;
+    border: 1px solid var(--stroke);
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+    overflow: visible;
+  }
+
+  #floorHero .formInner {
+    padding: 24px;
+  }
+
+  #floorHero .formHint {
+    margin: 0 0 16px;
+    color: var(--text);
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .nativeForm {
+    display: grid;
+    gap: 14px;
+  }
+
+  .formGroup {
+    display: grid;
+    gap: 6px;
+  }
+
+  .formGroup label {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--text);
+  }
+
+  .formInput,
+  .formTextarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--stroke);
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+
+  .formInput:focus,
+  .formTextarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(176, 127, 73, 0.15);
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 14px;
+    border: none;
+    background: var(--accent);
+    color: #ffffff;
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+    box-shadow: var(--shadow);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .submitBtn:hover {
+    background: var(--dark-bg);
+    transform: translateY(-2px);
+  }
+
+  .formStatus {
+    margin: 4px 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  @media (max-width: 980px) {
+    #floorHero .flHero__inner {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 44px 16px;
+    }
+
+    #floorHero .flHero__right {
+      justify-items: start;
+    }
+
+    #floorHero .formWrap {
+      width: 100%;
+    }
+  }
+</style>
