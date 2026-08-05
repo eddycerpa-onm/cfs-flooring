@@ -492,7 +492,7 @@ const servicesList = [
     font-size: 18px;
     line-height: 1.75;
     color: var(--muted);
-    max-width: 74ch;
+    max-width: 68ch;
   }
 
   .rr-services .primary-button {
@@ -533,6 +533,12 @@ const servicesList = [
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
     align-items: stretch;
+  }
+
+  .rr-svc-grid .rr-svc-card {
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 100%;
   }
 
   @media (max-width: 1180px) {
