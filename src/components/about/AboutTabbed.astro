@@ -1,8 +1,8 @@
 ---
 import { Image } from 'astro:assets';
-import whyA from '@/assets/about/why-a.webp';
-import whyB from '@/assets/about/why-b.webp';
-import slide1 from '@/assets/about/slide-1.webp';
+import tabDifferent from '@/assets/about/tab-different.webp';
+import tabMission from '@/assets/about/tab-mission.webp';
+import tabProcess from '@/assets/about/tab-process.webp';
 
 interface Props {
   class?: string;
@@ -51,8 +51,8 @@ const { class: className } = Astro.props;
           
           <div x-show="activeTab === 'different'" x-transition:enter="slide-entering" class="slide-item">
             <Image
-              src={whyA}
-              alt="CFS Flooring craftsmanship and quality floor detail"
+              src={tabDifferent}
+              alt="CFS Flooring project showcase"
               class="slide-img"
               loading="eager"
             />
@@ -60,8 +60,8 @@ const { class: className } = Astro.props;
 
           <div x-show="activeTab === 'mission'" x-transition:enter="slide-entering" class="slide-item">
             <Image
-              src={whyB}
-              alt="CFS Flooring installation mission"
+              src={tabMission}
+              alt="CFS Flooring installation detail"
               class="slide-img"
               loading="eager"
             />
@@ -69,8 +69,8 @@ const { class: className } = Astro.props;
 
           <div x-show="activeTab === 'process'" x-transition:enter="slide-entering" class="slide-item">
             <Image
-              src={slide1}
-              alt="CFS Flooring organized installation process"
+              src={tabProcess}
+              alt="CFS Flooring process and craftsmanship"
               class="slide-img"
               loading="eager"
             />
