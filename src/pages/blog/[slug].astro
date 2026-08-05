@@ -4,24 +4,24 @@ import Pill from '@/components/ui/Pill.astro';
 import CTABanner from '@/components/sections/CTABanner.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
 import LocalBusiness from '@/components/seo/LocalBusiness.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
 const { title, description, pubDate, author, category, metaTitle, metaDescription } = post.data;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://cfsflooring.com' },
   { name: 'Blog', url: 'https://cfsflooring.com/blog' },
-  { name: title, url: `https://cfsflooring.com/blog/${post.slug}` },
+  { name: title, url: `https://cfsflooring.com/blog/${post.id}` },
 ];
 
 const articleSchema = {
@@ -42,7 +42,7 @@ const articleSchema = {
     }
   },
   "datePublished": pubDate.toISOString(),
-  "mainEntityOfPage": `https://cfsflooring.com/blog/${post.slug}`
+  "mainEntityOfPage": `https://cfsflooring.com/blog/${post.id}`
 };
 ---
 

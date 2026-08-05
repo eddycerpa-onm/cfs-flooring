@@ -114,7 +114,8 @@ import { faqsData } from '@/data/faqs';
     gap: 16px;
   }
 
-  .cb-faq-toggle:hover {
+  .cb-faq-toggle:hover,
+  .cb-faq-item.is-open .cb-faq-toggle {
     color: var(--accent);
   }
 
@@ -138,9 +139,10 @@ import { faqsData } from '@/data/faqs';
 
   .cb-faq-answer {
     padding: 0 24px 20px;
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 600;
     line-height: 1.7;
-    color: var(--muted);
+    color: var(--text);
     font-family: var(--font-body);
   }
 

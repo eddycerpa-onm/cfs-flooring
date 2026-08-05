@@ -4,7 +4,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/lexend-deca-latin-400-normal.woff2') format('woff2');
+  src: url('/fonts/lexend-deca-latin-700-normal.woff2') format('woff2');
 }
 
 @font-face {
@@ -28,7 +28,7 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url('/fonts/lexend-deca-latin-900-normal.ttf') format('truetype');
+  src: url('/fonts/lexend-deca-latin-900-normal.woff2') format('woff2');
 }
 
 @font-face {
@@ -52,7 +52,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/fonts/dm-sans-latin-600-normal.ttf') format('truetype');
+  src: url('/fonts/dm-sans-latin-700-normal.woff2') format('woff2');
 }
 
 @font-face {
@@ -60,7 +60,7 @@
   font-style: normal;
   font-weight: 650;
   font-display: swap;
-  src: url('/fonts/dm-sans-latin-700-normal.ttf') format('truetype');
+  src: url('/fonts/dm-sans-latin-700-normal.woff2') format('woff2');
 }
 
 @font-face {
@@ -68,7 +68,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/dm-sans-latin-700-normal.ttf') format('truetype');
+  src: url('/fonts/dm-sans-latin-700-normal.woff2') format('woff2');
 }
 
 @font-face {
@@ -76,7 +76,7 @@
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url('/fonts/dm-sans-latin-800-normal.woff2') format('woff2');
+  src: url('/fonts/dm-sans-latin-700-normal.woff2') format('woff2');
 }
 
 @import "tailwindcss";

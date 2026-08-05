@@ -43,7 +43,7 @@ const displayPosts = blogPosts.slice(0, limit);
       {
         displayPosts.map((post: any) => {
           const pData = post.data || post;
-          const pSlug = post.slug || pData.slug;
+          const pSlug = post.id || post.slug || pData.slug;
           const pubDate = pData.pubDate ? new Date(pData.pubDate) : new Date();
 
           return (

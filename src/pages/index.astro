@@ -8,6 +8,7 @@ import ServicesGrid from '@/components/sections/ServicesGrid.astro';
 import ProcessSection from '@/components/sections/ProcessSection.astro';
 import Testimonials from '@/components/sections/Testimonials.astro';
 import CTABanner from '@/components/sections/CTABanner.astro';
+import FAQ from '@/components/sections/FAQ.astro';
 import BlogPreview from '@/components/sections/BlogPreview.astro';
 import LocalBusiness from '@/components/seo/LocalBusiness.astro';
 import { getCollection } from 'astro:content';
@@ -53,7 +54,8 @@ const recentPosts = allBlogPosts
 	/>
 	<ProcessSection />
 	<Testimonials />
-	<CTABanner />
 	{recentPosts.length > 0 && <BlogPreview posts={recentPosts} />}
+	<CTABanner />
+	<FAQ />
 	<Marquee />
 </BaseLayout>

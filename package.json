@@ -10,14 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.0.0",
-    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/mdx": "^7.0.5",
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource/dm-sans": "^5.1.0",
     "@fontsource/lexend-deca": "^5.1.0",
     "@tailwindcss/vite": "^4.0.0",
     "alpinejs": "^3.14.3",
-    "astro": "^5.1.0",
+    "astro": "^7.1.6",
     "astro-icon": "^1.1.4",
     "astro-seo": "^1.0.1",
     "sharp": "^0.35.3",
