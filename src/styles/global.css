@@ -28,7 +28,7 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url('/fonts/lexend-deca-latin-900-normal.woff2') format('woff2');
+  src: url('/fonts/lexend-deca-latin-900-normal.ttf') format('truetype');
 }
 
 @font-face {
@@ -50,9 +50,25 @@
 @font-face {
   font-family: 'DM Sans';
   font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-600-normal.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 650;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-700-normal.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/dm-sans-latin-700-normal.woff2') format('woff2');
+  src: url('/fonts/dm-sans-latin-700-normal.ttf') format('truetype');
 }
 
 @font-face {
@@ -102,6 +118,9 @@
   --radius-dropdown: 18px;
   --radius-overlap: 16px;
   --radius-hero-video: 28px;
+  --radius-services-card: 18px;
+  --radius-services-img: 16px;
+  --radius-services-arrow: 16px;
 
   /* Espaciados y Paddings Exactos */
   --spacing-header-px: 22px;
@@ -118,6 +137,16 @@
   --spacing-eyebrow-py: 8px;
   --spacing-overlap-px: 14px;
   --spacing-overlap-pt: 10px;
+
+  /* Secciones de Servicios y Tarjetas Exactas */
+  --spacing-services-pt: 10px;
+  --spacing-services-pb: 72px;
+  --spacing-services-title-mb: 10px;
+  --spacing-services-head-mb: 34px;
+  --spacing-services-gap: 16px;
+  --spacing-services-card-p: 18px;
+  --size-services-btn: 46px;
+  --size-services-dot: 10px;
   --spacing-overlap-pb: 12px;
   --spacing-chip-px: 12px;
   --spacing-chip-py: 8px;
@@ -136,6 +165,8 @@
   --width-services-desc: 740px;
   --width-about-desc: 634px;
   --width-proc-desc: 820px;
+  --width-testimonials-title: 880px;
+  --width-testimonials-media: 560px;
 
   --spacing-about-pt: 96px;
   --spacing-about-pb: 180px;
@@ -198,7 +229,33 @@
   --text-h2-cta--line-height: 48.76px;
   --text-h2-cta--letter-spacing: -0.6px;
 
+  /* Tipografía Exacta H2 Testimonials */
+  --text-h2-testi: 42px;
+  --text-h2-testi--line-height: 46.2px;
+  --text-h2-testi--letter-spacing: -0.4px;
+
+  /* Sombras y Halos Exactos */
   --shadow-custom: 0 18px 45px rgba(34, 20, 22, 0.12);
+  --shadow-dot-active: 0 0 0 4px rgba(176, 127, 73, 0.12);
+}
+
+/* Contenedor Base de Secciones (1280px exactos) */
+@utility cfs-base-container {
+  max-width: 1280px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
+
+@utility max-w-testimonials-title {
+  max-width: 880px;
+}
+
+@utility max-w-testimonials-media {
+  max-width: 560px;
 }
 
 /* Header Sticky con Sombra y Borde exactos */

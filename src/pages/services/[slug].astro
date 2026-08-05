@@ -61,18 +61,18 @@ const breadcrumbs = [
     slug={slug}
   />
 
-  <section class="py-16 bg-[var(--bg)] border-b border-[var(--stroke)]">
+  <section class="py-16 bg-bg border-b border-stroke">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-extrabold font-[var(--font-title)] text-[var(--text)] mb-6">
+      <h2 class="text-3xl font-extrabold font-title text-text mb-6">
         Why Choose CFS Flooring for {title}?
       </h2>
       <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
         {features.map((feature) => (
-          <li class="p-4 rounded-2xl bg-[var(--panel)] border border-[var(--stroke)] flex items-start gap-3">
-            <svg class="w-6 h-6 text-[var(--accent)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <li class="p-4 rounded-2xl bg-panel border border-stroke flex items-start gap-3">
+            <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
             </svg>
-            <span class="text-base font-bold text-[var(--text)]">{feature}</span>
+            <span class="text-base font-bold text-text">{feature}</span>
           </li>
         ))}
       </ul>

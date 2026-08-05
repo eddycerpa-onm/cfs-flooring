@@ -4,7 +4,7 @@ import { navLinks, serviceSublinks, legalLinks } from '@/data/navigation';
 import { socialLinks } from '@/data/social';
 ---
 
-<footer class="bg-[var(--bg)] text-[var(--text)] border-t border-[var(--stroke)] pt-16 pb-10">
+<footer class="bg-bg text-text border-t border-stroke pt-16 pb-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-16">
       
@@ -13,14 +13,14 @@ import { socialLinks } from '@/data/social';
         <a href="/" class="inline-block">
           <img src="/src/assets/logo.svg" alt={company.name} class="h-16 w-auto object-contain" />
         </a>
-        <p class="text-sm text-[var(--muted)] leading-relaxed font-[var(--font-body)] max-w-md">
+        <p class="text-sm text-muted leading-relaxed font-body max-w-md">
           Quality flooring installation with honest guidance you can trust. CFS Flooring serves homes and businesses across Lake Oswego, West Linn, and Wilsonville with a focus on craftsmanship, transparency, and clean results.
         </p>
       </div>
 
       <!-- Col 2: Menu Links (lg:col-span-2) -->
       <div class="lg:col-span-2 flex flex-col gap-3">
-        <h3 class="text-sm font-black font-[var(--font-title)] text-[var(--text)] uppercase tracking-wider">
+        <h3 class="text-sm font-black font-title text-text uppercase tracking-wider">
           Menu
         </h3>
         <ul class="flex flex-col gap-2 list-none p-0 m-0">
@@ -28,7 +28,7 @@ import { socialLinks } from '@/data/social';
             <li>
               <a
                 href={link.href}
-                class="inline-flex px-3 py-2 rounded-xl border border-[var(--stroke)] bg-[var(--panel)] text-sm font-bold text-[var(--text)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all"
+                class="inline-flex px-3 py-2 rounded-xl border border-stroke bg-panel text-sm font-bold text-text hover:text-accent hover:border-accent transition-all"
               >
                 {link.label}
               </a>
@@ -39,7 +39,7 @@ import { socialLinks } from '@/data/social';
 
       <!-- Col 3: Services (lg:col-span-3) -->
       <div class="lg:col-span-3 flex flex-col gap-3">
-        <h3 class="text-sm font-black font-[var(--font-title)] text-[var(--text)] uppercase tracking-wider">
+        <h3 class="text-sm font-black font-title text-text uppercase tracking-wider">
           Services
         </h3>
         <ul class="flex flex-col gap-2 list-none p-0 m-0">
@@ -47,7 +47,7 @@ import { socialLinks } from '@/data/social';
             <li>
               <a
                 href={service.href}
-                class="inline-flex px-3.5 py-2 rounded-xl border border-[var(--stroke)] bg-[var(--panel)] text-sm font-bold text-[var(--text)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all"
+                class="inline-flex px-3.5 py-2 rounded-xl border border-stroke bg-panel text-sm font-bold text-text hover:text-accent hover:border-accent transition-all"
               >
                 {service.label}
               </a>
@@ -58,46 +58,46 @@ import { socialLinks } from '@/data/social';
 
       <!-- Col 4: Contact Card (lg:col-span-3) -->
       <div class="lg:col-span-3 flex flex-col gap-4">
-        <h3 class="text-sm font-black font-[var(--font-title)] text-[var(--text)] uppercase tracking-wider">
+        <h3 class="text-sm font-black font-title text-text uppercase tracking-wider">
           Contact
         </h3>
 
-        <div class="p-4 rounded-2xl border border-[var(--stroke)] bg-[var(--panel)] shadow-sm flex flex-col gap-3">
-          <div class="flex items-start gap-3 pb-3 border-b border-[var(--stroke)]">
-            <div class="w-9 h-9 rounded-xl border border-[var(--stroke)] bg-[var(--bg)] flex items-center justify-center text-[var(--accent)] flex-shrink-0">
+        <div class="p-4 rounded-2xl border border-stroke bg-panel shadow-sm flex flex-col gap-3">
+          <div class="flex items-start gap-3 pb-3 border-b border-stroke">
+            <div class="w-9 h-9 rounded-xl border border-stroke bg-bg flex items-center justify-center text-accent flex-shrink-0">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>
               </svg>
             </div>
             <div>
-              <div class="text-xs font-black text-[var(--muted)]">Service Areas</div>
-              <div class="text-xs font-bold text-[var(--text)] leading-tight mt-0.5">
+              <div class="text-xs font-black text-muted">Service Areas</div>
+              <div class="text-xs font-bold text-text leading-tight mt-0.5">
                 Lake Oswego, West Linn, Wilsonville & Vancouver
               </div>
             </div>
           </div>
 
-          <a href={`tel:${company.phone}`} class="flex items-center gap-3 pb-3 border-b border-[var(--stroke)] hover:text-[var(--accent)] transition-colors">
-            <div class="w-9 h-9 rounded-xl border border-[var(--stroke)] bg-[var(--bg)] flex items-center justify-center text-[var(--accent)] flex-shrink-0">
+          <a href={`tel:${company.phone}`} class="flex items-center gap-3 pb-3 border-b border-stroke hover:text-accent transition-colors">
+            <div class="w-9 h-9 rounded-xl border border-stroke bg-bg flex items-center justify-center text-accent flex-shrink-0">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/>
               </svg>
             </div>
             <div>
-              <div class="text-xs font-black text-[var(--muted)]">Phone</div>
-              <div class="text-sm font-extrabold text-[var(--text)]">{company.phone}</div>
+              <div class="text-xs font-black text-muted">Phone</div>
+              <div class="text-sm font-extrabold text-text">{company.phone}</div>
             </div>
           </a>
 
-          <a href={`mailto:${company.email}`} class="flex items-center gap-3 hover:text-[var(--accent)] transition-colors">
-            <div class="w-9 h-9 rounded-xl border border-[var(--stroke)] bg-[var(--bg)] flex items-center justify-center text-[var(--accent)] flex-shrink-0">
+          <a href={`mailto:${company.email}`} class="flex items-center gap-3 hover:text-accent transition-colors">
+            <div class="w-9 h-9 rounded-xl border border-stroke bg-bg flex items-center justify-center text-accent flex-shrink-0">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.24-8 5-8-5V6l8 5 8-5v2.24Z"/>
               </svg>
             </div>
             <div>
-              <div class="text-xs font-black text-[var(--muted)]">Email</div>
-              <div class="text-xs font-bold text-[var(--text)]">{company.email}</div>
+              <div class="text-xs font-black text-muted">Email</div>
+              <div class="text-xs font-bold text-text">{company.email}</div>
             </div>
           </a>
         </div>
@@ -108,10 +108,10 @@ import { socialLinks } from '@/data/social';
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="w-9 h-9 rounded-xl border border-[var(--stroke)] bg-[var(--bg)] flex items-center justify-center text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition-colors"
+              class="w-9 h-9 rounded-xl border border-stroke bg-bg flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-colors"
               aria-label={s.platform}
             >
-              <span class="text-xs font-bold font-[var(--font-title)]">{s.platform[0]}</span>
+              <span class="text-xs font-bold font-title">{s.platform[0]}</span>
             </a>
           ))}
         </div>
@@ -120,11 +120,11 @@ import { socialLinks } from '@/data/social';
     </div>
 
     <!-- Bottom copyright -->
-    <div class="pt-8 border-t border-[var(--stroke)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-[var(--muted)]">
+    <div class="pt-8 border-t border-stroke flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-muted">
       <p>© {new Date().getFullYear()} {company.name}. All rights reserved.</p>
       <div class="flex items-center gap-4">
         {legalLinks.map((link) => (
-          <a href={link.href} class="hover:text-[var(--accent)] hover:underline">
+          <a href={link.href} class="hover:text-accent hover:underline">
             {link.label}
           </a>
         ))}

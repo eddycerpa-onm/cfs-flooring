@@ -53,10 +53,18 @@ export const testimonialsData: Testimonial[] = [
   },
 ];
 
-export const testimonials = testimonialsData.map((t) => ({
-  author: t.author,
-  text: t.content,
-  service: t.serviceUsed,
-  location: `${t.city}, ${t.state}`,
-  rating: t.rating,
-}));
+export const testimonials = testimonialsData.map((t, idx) => {
+  const avatars = [
+    '/images/avatars/jessica.png',
+    '/images/avatars/mark.png',
+    '/images/avatars/danielle.png',
+  ];
+  return {
+    author: t.author,
+    text: t.content,
+    service: t.serviceUsed,
+    location: `${t.city}, ${t.state}`,
+    rating: t.rating,
+    avatar: avatars[idx % avatars.length],
+  };
+});

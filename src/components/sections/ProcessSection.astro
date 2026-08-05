@@ -4,65 +4,242 @@ const steps = [
     num: '01',
     title: 'Consultation & Material Guidance',
     desc: 'We start by understanding your space, goals, budget, and timeline. Then we help you choose the right flooring option, whether that means hardwood, laminate, LVP, carpet, tile, or sheet vinyl.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Consultation and material guidance"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 20h36v20H26l-8 8v-8h-4z"/><path d="M22 27h20"/><path d="M22 33h12"/></g></svg>`,
+    hasArrow: true,
   },
   {
     num: '02',
     title: 'Honest Quote & Clear Plan',
     desc: 'You get a straightforward quote and realistic expectations before work begins. We explain what makes sense for your project, including when a simpler option is the smarter investment.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Honest quote and project plan"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="12" width="28" height="40" rx="6"/><path d="M24 22h16"/><path d="M24 30h16"/><path d="M24 38h10"/><path d="M38 40l3 3 6-7"/></g></svg>`,
+    hasArrow: true,
   },
   {
     num: '03',
     title: 'Installation, Sanding, or Removal',
     desc: 'Once approved, we complete the work with attention to labor quality and clean execution. That includes new flooring installation, hardwood sand and finish, tile work, or flooring removal.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Professional installation or restoration"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="34" width="40" height="12" rx="2"/><path d="M22 34V46"/><path d="M34 34V46"/><path d="M26 16l10 10"/><path d="M22 30l12-12 8 8-12 12"/></g></svg>`,
+    hasArrow: true,
   },
   {
     num: '04',
     title: 'Final Walkthrough & Local Support',
     desc: 'We finish with a walkthrough to make sure the details are right and the result matches the plan. CFS Flooring proudly serves Lake Oswego, West Linn, and Wilsonville with responsive, local service.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Final walkthrough and local support"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 52s14-11.2 14-25a14 14 0 1 0-28 0c0 13.8 14 25 14 25Z"/><circle cx="32" cy="27" r="5"/></g></svg>`,
+    hasArrow: false,
   },
 ];
 ---
 
-<section id="process" class="pt-proc-pt pb-proc-pb bg-bg border-b border-stroke">
-  <div class="cfs-base-container">
-    
-    <div class="max-w-proc mb-8">
-      <div class="flex items-center gap-2 text-accent font-black text-xs uppercase tracking-widest mb-3 font-title">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
-        </svg>
-        <span>Our Process</span>
+<section id="process" class="rr-proc rr-proc--light" aria-label="CFS Flooring process">
+  <div class="rr-proc-inner">
+    <header class="rr-proc-head">
+      <div class="rr-proc-kicker">
+        <span class="rr-proc-kicker-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
+          </svg>
+        </span>
+        <span class="rr-proc-kicker-text">Our Process</span>
       </div>
-      <h2 class="text-h2-proc font-black font-title text-text mb-proc-title-mb">
-        A straightforward flooring process for Lake Oswego, West Linn, Wilsonville and Vancouver.
-      </h2>
-      <p class="max-w-proc-desc text-proc-desc text-muted font-body m-0">
+
+      <h2 class="rr-proc-title">A straightforward flooring process for Lake Oswego, West Linn, Wilsonville and Vancouver.</h2>
+      <p class="rr-proc-sub">
         From the first consultation to the final walkthrough, CFS Flooring keeps the process personal, honest, and focused on the right solution for your home or business.
       </p>
-    </div>
+    </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="rr-proc-grid" id="rrProcGrid">
       {steps.map((step) => (
-        <div class="relative p-8 rounded-2xl bg-bg border border-stroke shadow-md flex flex-col gap-4 text-center items-center">
-          <div class="relative w-20 h-20 rounded-2xl bg-panel border border-stroke flex items-center justify-center text-accent mb-2">
-            <span class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-accent-2 text-dark-bg font-black text-xs flex items-center justify-center shadow-md border-2 border-bg">
-              {step.num}
-            </span>
-            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <article class="rr-proc-card" aria-label={`Step ${step.num}: ${step.title}`}>
+          <div class="rr-proc-iconbox" aria-hidden="true">
+            <span class="rr-proc-badge">{step.num}</span>
+            <Fragment set:html={step.icon} />
           </div>
 
-          <h3 class="text-xl font-bold font-title text-text">
-            {step.title}
-          </h3>
+          <h3 class="rr-proc-card-title">{step.title}</h3>
+          <p class="rr-proc-card-desc">{step.desc}</p>
 
-          <p class="text-sm text-muted leading-relaxed font-body">
-            {step.desc}
-          </p>
-        </div>
+          {step.hasArrow && (
+            <span class="rr-proc-arrow" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="86" height="18" viewBox="0 0 86 18" fill="none">
+                <path d="M1 9h72" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".25"/>
+                <path d="M74 2l10 7-10 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".25"/>
+              </svg>
+            </span>
+          )}
+        </article>
       ))}
     </div>
-
   </div>
 </section>
+
+<style is:global>
+  .rr-proc--light {
+    background: var(--bg);
+    color: var(--text);
+    padding: 92px 0 180px;
+  }
+
+  .rr-proc-inner {
+    max-width: var(--width-base, 1280px);
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .rr-proc-head {
+    max-width: 980px;
+    margin-bottom: 58px;
+  }
+
+  .rr-proc-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .rr-proc-kicker-ico {
+    color: var(--accent);
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .rr-proc-kicker-text {
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .rr-proc-title {
+    margin: 0 0 25px;
+    font-family: var(--font-title);
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    font-size: clamp(34px, 3vw, 52px);
+    line-height: 1.06;
+    color: var(--text);
+  }
+
+  .rr-proc-sub {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 82ch;
+  }
+
+  .rr-proc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+    align-items: stretch;
+  }
+
+  .rr-proc-card {
+    position: relative;
+    background: var(--bg);
+    border: 1px solid var(--stroke);
+    border-radius: 18px;
+    padding: 30px 26px 32px;
+    box-shadow: var(--shadow-custom, 0 18px 45px rgba(34, 20, 22, 0.12));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    box-sizing: border-box;
+  }
+
+  .rr-proc-iconbox {
+    width: 96px;
+    height: 96px;
+    border-radius: 18px;
+    background: var(--panel);
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    position: relative;
+    border: 1px solid var(--stroke);
+  }
+
+  .rr-proc-iconbox svg {
+    width: 76px;
+    height: 76px;
+  }
+
+  .rr-proc-iconbox svg g {
+    stroke-width: 3px;
+  }
+
+  .rr-proc-badge {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: var(--accent-2);
+    color: var(--dark-bg);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    box-shadow: var(--shadow-custom, 0 18px 45px rgba(34, 20, 22, 0.12));
+    border: 2px solid var(--bg);
+  }
+
+  .rr-proc-card-title {
+    margin: 4px 0 0;
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: -0.3px;
+    line-height: 1.12;
+    color: var(--text);
+  }
+
+  .rr-proc-card-desc {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 50ch;
+  }
+
+  .rr-proc-arrow {
+    position: absolute;
+    right: -58px;
+    top: 44px;
+    color: var(--accent);
+    pointer-events: none;
+  }
+
+  @media (max-width: 1200px) {
+    .rr-proc-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rr-proc-arrow {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .rr-proc-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .rr-proc--light {
+      padding: 60px 0 90px;
+    }
+  }
+</style>

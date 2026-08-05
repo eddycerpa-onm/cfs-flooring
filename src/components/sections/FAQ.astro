@@ -1,73 +1,164 @@
 ---
-import SectionHeader from '../ui/SectionHeader.astro';
-import FAQItem from './FAQItem.astro';
-
-interface FAQ {
-  question: string;
-  answer: string;
-}
-
-interface Props {
-  faqs?: FAQ[];
-  title?: string;
-  description?: string;
-  pillText?: string;
-}
-
-const defaultFaqs: FAQ[] = [
-  {
-    question: 'What cities in the Portland metro & SW Washington area do you serve?',
-    answer:
-      'We primarily serve Lake Oswego, West Linn, Wilsonville, Tualatin, Tigard, Beaverton, Portland, and Vancouver WA (including Camas and Ridgefield). If your job site is nearby, contact us to verify scheduling.',
-  },
-  {
-    question: 'How long does a typical hardwood or LVP flooring installation take?',
-    answer:
-      'Most residential projects (1,000 – 2,000 sq ft) take between 2 to 4 business days, including subfloor preparation and baseboard trim installation. Custom tile work or large commercial VCT jobs are scheduled according to exact scope.',
-  },
-  {
-    question: 'Is your hardwood sand & finish system really dust-controlled?',
-    answer:
-      'Yes! We utilize commercial HEPA-filtered dust extraction equipment that captures up to 99% of airborne wood dust during sanding, keeping your HVAC system and home clean.',
-  },
-  {
-    question: 'Do you offer free on-site consultations and estimates?',
-    answer:
-      'Absolutely. We provide 100% free, no-obligation on-site measurements and estimates. We bring sample materials directly to your home or office in Lake Oswego, West Linn, or Vancouver WA.',
-  },
-  {
-    question: 'Are you licensed, bonded, and insured in both Oregon and Washington?',
-    answer:
-      'Yes. CFS Flooring (Custom Flooring Solutions LLC) holds Oregon CCB #234819 and Washington License #CFSFL*812K3 with full general liability and worker compensation insurance.',
-  },
-];
-
-const {
-  faqs = defaultFaqs,
-  title = 'Frequently Asked Questions',
-  description = 'Got questions about materials, timelines, or our installation process in the Pacific Northwest? Find answers below.',
-  pillText = 'Got Questions?',
-} = Astro.props;
+import { faqsData } from '@/data/faqs';
 ---
 
-<section class="py-16 md:py-24 bg-white relative">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <SectionHeader
-      title={title}
-      description={description}
-      pillText={pillText}
-    />
-
-    <div class="space-y-4">
-      {
-        faqs.map((faq, idx) => (
-          <FAQItem
-            question={faq.question}
-            answer={faq.answer}
-            index={idx}
-          />
-        ))
-      }
+<!-- CFS Flooring • FAQ (10 items, 1:1 original site specification) -->
+<section class="cb-faq" id="faq" aria-label="Frequently Asked Questions">
+  <div class="cb-faq-inner">
+    
+    <!-- Header -->
+    <div class="cb-faq-head">
+      <h2 class="cb-faq-title">FAQs About CFS Flooring</h2>
     </div>
+
+    <!-- Accordion List -->
+    <div class="cb-faq-list" x-data="{ openIdx: null }">
+      {faqsData.map((faq, idx) => (
+        <article class="cb-faq-item" :class={`openIdx === ${idx} ? 'is-open' : ''`}>
+          <h3>
+            <button
+              class="cb-faq-toggle"
+              type="button"
+              @click={`openIdx = (openIdx === ${idx}) ? null : ${idx}`}
+              :aria-expanded={`openIdx === ${idx}`}
+              aria-controls={`faq-answer-${idx}`}
+            >
+              <span>{faq.question}</span>
+              <span class="cb-faq-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div
+            id={`faq-answer-${idx}`}
+            class="cb-faq-answer"
+            x-show={`openIdx === ${idx}`}
+            x-cloak
+            x-collapse
+          >
+            <p>{faq.answer}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
   </div>
 </section>
+
+<style is:global>
+  .cb-faq {
+    padding: clamp(90px, 8vw, 130px) 0;
+    background: var(--bg);
+    color: var(--text);
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  .cb-faq-inner {
+    max-width: 980px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .cb-faq-head {
+    margin-bottom: clamp(38px, 4vw, 54px);
+    text-align: center;
+  }
+
+  .cb-faq-title {
+    margin: 0;
+    font-size: clamp(30px, 3.4vw, 44px);
+    font-family: var(--font-title);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.6px;
+    color: var(--text);
+  }
+
+  .cb-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cb-faq-item {
+    border: 1px solid var(--stroke);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--panel);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cb-faq-item.is-open {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-custom, 0 18px 45px rgba(34, 20, 22, 0.06));
+  }
+
+  .cb-faq-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 24px;
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: clamp(16px, 1.3vw, 18px);
+    color: var(--text);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .cb-faq-toggle:hover {
+    color: var(--accent);
+  }
+
+  .cb-faq-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: var(--stroke);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    color: var(--text);
+  }
+
+  .cb-faq-item.is-open .cb-faq-icon {
+    background: var(--accent);
+    color: var(--bg);
+    transform: rotate(45deg);
+  }
+
+  .cb-faq-answer {
+    padding: 0 24px 20px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-family: var(--font-body);
+  }
+
+  .cb-faq-answer p {
+    margin: 0;
+  }
+
+  @media (max-width: 980px) {
+    .cb-faq-inner {
+      padding: 0 18px;
+    }
+
+    .cb-faq-toggle {
+      padding: 16px 18px;
+    }
+
+    .cb-faq-answer {
+      padding: 0 18px 16px;
+    }
+  }
+</style>

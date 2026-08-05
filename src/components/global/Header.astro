@@ -3,7 +3,7 @@ import { company } from '@/data/company';
 import { serviceSublinks } from '@/data/navigation';
 ---
 
-<header class="sticky top-0 z-50 w-full bg-bg border-b border-stroke site-header-shadow">
+<header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 w-full bg-bg border-b border-stroke site-header-shadow transition-transform duration-300 ease-in-out">
   <div class="cfs-base-container h-header flex items-center justify-between">
     
     <!-- Brand Logo (Exact 82px height) -->
@@ -125,3 +125,30 @@ import { serviceSublinks } from '@/data/navigation';
 
   </div>
 </header>
+
+<script>
+  function initHeaderScroll() {
+    const header = document.getElementById("siteHeader");
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        header.classList.add("-translate-y-full");
+      } else {
+        header.classList.remove("-translate-y-full");
+      }
+
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeaderScroll);
+  } else {
+    initHeaderScroll();
+  }
+</script>
