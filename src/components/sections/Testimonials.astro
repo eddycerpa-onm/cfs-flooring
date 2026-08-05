@@ -1,11 +1,16 @@
 ---
 import { testimonials } from '@/data/testimonials';
 import { Image } from 'astro:assets';
+import testimonialMediaImg from '@/assets/testimonials/hero.webp';
 
-import testimonialMediaImg from '@/assets/services/slide-3.webp';
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
 ---
 
-<section id="testimonials" class="py-24 bg-dark-bg text-bg border-b border-stroke overflow-hidden">
+<section id="testimonials" class:list={['py-24 bg-dark-bg text-bg border-b border-stroke overflow-hidden', className]}>
   <div class="cfs-base-container">
     
     <!-- Section Header -->
@@ -17,7 +22,7 @@ import testimonialMediaImg from '@/assets/services/slide-3.webp';
         <span>Testimonials</span>
       </div>
 
-      <h2 class="text-h2-testi font-black font-title text-white max-w-testimonials-title">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black font-title text-white max-w-4xl tracking-tight leading-tight">
         What homeowners and property owners are saying about CFS Flooring
       </h2>
     </div>
@@ -25,10 +30,17 @@ import testimonialMediaImg from '@/assets/services/slide-3.webp';
     <!-- Main Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
-      <!-- Left Media Image (FLUSH LEFT ALIGNED TO TITLE) -->
+      <!-- Left Media Image (Original WebP Image) -->
       <div class="lg:col-span-6">
         <div class="relative aspect-square w-full max-w-testimonials-media rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-panel">
-          <Image src={testimonialMediaImg} alt="CFS Flooring project" class="w-full h-full object-cover" width={560} height={560} />
+          <Image
+            src={testimonialMediaImg}
+            alt="CFS Flooring project quality testimonial"
+            class="w-full h-full object-cover"
+            width={560}
+            height={560}
+            loading="lazy"
+          />
           
           <div class="absolute top-4 right-4 w-14 h-14 rounded-2xl bg-accent-2 text-dark-bg flex items-center justify-center shadow-xl">
             <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
@@ -39,11 +51,21 @@ import testimonialMediaImg from '@/assets/services/slide-3.webp';
         </div>
       </div>
 
-      <!-- Right Testimonial Slider -->
+      <!-- Right Testimonial Slider with Smooth Animation -->
       <div class="lg:col-span-6 flex flex-col justify-between" x-data="{ active: 0 }">
-        <div class="min-h-testimonial-card">
+        <div class="relative min-h-[220px]">
           {testimonials.map((t, idx) => (
-            <div x-show={`active === ${idx}`} x-cloak class="flex flex-col gap-6">
+            <div
+              x-show={`active === ${idx}`}
+              x-cloak
+              x-transition:enter="transition ease-out duration-300 transform"
+              x-transition:enter-start="opacity-0 translate-x-6 scale-98"
+              x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+              x-transition:leave="transition ease-in duration-200 transform absolute inset-0"
+              x-transition:leave-start="opacity-100 translate-x-0 scale-100"
+              x-transition:leave-end="opacity-0 -translate-x-6 scale-98"
+              class="flex flex-col gap-6"
+            >
               <p class="text-xl sm:text-2xl text-white/90 leading-relaxed italic font-body">
                 "{t.text}"
               </p>
@@ -66,7 +88,7 @@ import testimonialMediaImg from '@/assets/services/slide-3.webp';
           <button
             type="button"
             @click={`active = (active === 0) ? ${testimonials.length - 1} : active - 1`}
-            class="w-12 h-12 rounded-2xl bg-accent text-white flex items-center justify-center hover:bg-accent-2 hover:text-dark-bg transition-colors cursor-pointer"
+            class="w-12 h-12 rounded-2xl bg-accent text-white flex items-center justify-center hover:bg-accent-2 hover:text-dark-bg transition-all transform hover:-translate-y-0.5 cursor-pointer shadow-md"
             aria-label="Previous testimonial"
           >
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -76,7 +98,7 @@ import testimonialMediaImg from '@/assets/services/slide-3.webp';
           <button
             type="button"
             @click={`active = (active === ${testimonials.length - 1}) ? 0 : active + 1`}
-            class="w-12 h-12 rounded-2xl bg-accent text-white flex items-center justify-center hover:bg-accent-2 hover:text-dark-bg transition-colors cursor-pointer"
+            class="w-12 h-12 rounded-2xl bg-accent text-white flex items-center justify-center hover:bg-accent-2 hover:text-dark-bg transition-all transform hover:-translate-y-0.5 cursor-pointer shadow-md"
             aria-label="Next testimonial"
           >
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
