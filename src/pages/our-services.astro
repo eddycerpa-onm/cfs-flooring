@@ -4,6 +4,7 @@ import LocalBusiness from '@/components/seo/LocalBusiness.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
 import ServiceCard from '@/components/sections/ServiceCard.astro';
 import Testimonials from '@/components/sections/Testimonials.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
 import { Image } from 'astro:assets';
 
 import heroSlide1 from '@/assets/services/slide-1.webp';
@@ -179,6 +180,9 @@ const servicesList = [
 
   <!-- Testimonials Section -->
   <Testimonials />
+
+  <!-- CTA Banner Section -->
+  <CTABanner />
 </BaseLayout>
 
 <script>
