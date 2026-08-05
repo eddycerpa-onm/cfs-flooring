@@ -1,3 +1,8 @@
+import type { ImageMetadata } from 'astro';
+import jessicaAvatar from '@/assets/avatars/jessica.png';
+import markAvatar from '@/assets/avatars/mark.png';
+import danielleAvatar from '@/assets/avatars/danielle.png';
+
 export interface Testimonial {
   id: string;
   author: string;
@@ -9,6 +14,7 @@ export interface Testimonial {
   content: string;
   date: string;
   verified: boolean;
+  avatar: ImageMetadata;
 }
 
 export const testimonialsData: Testimonial[] = [
@@ -24,6 +30,7 @@ export const testimonialsData: Testimonial[] = [
       'CFS Flooring made the whole process easy from the first consultation to the final walkthrough. Jose took the time to explain the pros and cons of each option, and the finished floors completely changed the look of our home.',
     date: '2026-06-12',
     verified: true,
+    avatar: jessicaAvatar,
   },
   {
     id: 't-2',
@@ -37,6 +44,7 @@ export const testimonialsData: Testimonial[] = [
       'We appreciated the honest advice and attention to detail. Instead of pushing the most expensive option, CFS Flooring recommended what made the most sense for our timeline and budget. The installation was clean, professional, and right on target.',
     date: '2026-05-28',
     verified: true,
+    avatar: markAvatar,
   },
   {
     id: 't-3',
@@ -50,21 +58,15 @@ export const testimonialsData: Testimonial[] = [
       'The communication, workmanship, and final results were excellent. We needed help updating worn flooring before listing our property, and the CFS Flooring team helped us choose the right solution without overcomplicating the project.',
     date: '2026-07-04',
     verified: true,
+    avatar: danielleAvatar,
   },
 ];
 
-export const testimonials = testimonialsData.map((t, idx) => {
-  const avatars = [
-    '/images/avatars/jessica.png',
-    '/images/avatars/mark.png',
-    '/images/avatars/danielle.png',
-  ];
-  return {
-    author: t.author,
-    text: t.content,
-    service: t.serviceUsed,
-    location: `${t.city}, ${t.state}`,
-    rating: t.rating,
-    avatar: avatars[idx % avatars.length],
-  };
-});
+export const testimonials = testimonialsData.map((t) => ({
+  author: t.author,
+  text: t.content,
+  service: t.serviceUsed,
+  location: `${t.city}, ${t.state}`,
+  rating: t.rating,
+  avatar: t.avatar,
+}));

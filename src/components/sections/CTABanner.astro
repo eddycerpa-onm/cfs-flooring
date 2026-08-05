@@ -1,4 +1,5 @@
 ---
+import ctaBg from '@/assets/cta-bg.webp';
 ---
 
 <!-- ============== CTA (CFS FLOORING) ============== -->
@@ -59,7 +60,7 @@
   </div>
 </section>
 
-<style is:global>
+<style is:global define:vars={{ ctaBgUrl: `url(${ctaBg.src})` }}>
   .rr-cta-free,
   .rr-cta-free * {
     box-sizing: border-box;
@@ -80,7 +81,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("/images/cta-bg.webp");
+    background-image: var(--ctaBgUrl);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
