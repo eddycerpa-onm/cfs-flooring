@@ -1,10 +1,14 @@
 import type { ImageMetadata } from 'astro';
 
-import imgSandFinish from '@/assets/services/sand-finish.webp';
-import imgHardwood from '@/assets/services/hardwood-lvp.webp';
-import imgVCT from '@/assets/services/vct.webp';
-import imgTile from '@/assets/services/ceramic-tile.webp';
-import imgCarpet from '@/assets/services/carpet.webp';
+import imgBlogHardwoodLakeOswego from '@/assets/blog/blog-hardwood-lake-oswego.webp';
+import imgBlogWaterproofLVPWestLinn from '@/assets/blog/blog-waterproof-lvp-west-linn.webp';
+import imgBlogCommercialWilsonville from '@/assets/blog/blog-commercial-wilsonville.webp';
+import imgBlogTileLakeOswego from '@/assets/blog/blog-tile-lake-oswego.webp';
+import imgBlogCarpetPortland from '@/assets/blog/blog-carpet-portland.webp';
+import imgBlogLVPFamilyWestLinn from '@/assets/blog/blog-lvp-family-west-linn.webp';
+import imgBlogVCTVancouverWA from '@/assets/blog/blog-vct-vancouver-wa.webp';
+import imgBlogHardwoodGuideLakeOswego from '@/assets/blog/blog-hardwood-guide-lake-oswego.webp';
+import imgBlogSandFinishWilsonville from '@/assets/blog/blog-sand-finish-wilsonville.webp';
 
 export interface BlogArticleSection {
   heading: string;
@@ -50,7 +54,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CFS Flooring Team',
     readTime: '6 min read',
     geoTarget: 'Lake Oswego & West Linn, OR',
-    image: imgSandFinish,
+    image: imgBlogHardwoodLakeOswego,
     imageAlt: 'Craftsman refinishing hardwood floors in a Lake Oswego residence',
     content: {
       intro: 'Lake Oswego is renowned for its historic craftsman homes, lakeside estates, and modern architectural residences in neighborhoods like First Addition, Blue Heron, Uplands, and Lake Grove. Hardwood floors are a defining character feature of these homes, but years of foot traffic, pet paws, and Pacific Northwest humidity fluctuations can dull their luster. Refinishing your hardwood floors restores their natural beauty while protecting your investment for decades to come.',
@@ -112,7 +116,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CFS Flooring Team',
     readTime: '5 min read',
     geoTarget: 'West Linn & Portland Metro, OR',
-    image: imgHardwood,
+    image: imgBlogWaterproofLVPWestLinn,
     imageAlt: 'Waterproof Luxury Vinyl Plank flooring installed in a West Linn open concept kitchen',
     content: {
       intro: 'Living in the Portland metropolitan area—including West Linn, Wilsonville, and Lake Oswego—means dealing with rainy winters, muddy boots, wet dogs, and outdoor activity tracking indoors. For homeowners seeking the elegance of hardwood without the worry of water damage or scratching, Waterproof Luxury Vinyl Plank (LVP) has emerged as the premier choice.',
@@ -170,7 +174,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CFS Flooring Team',
     readTime: '7 min read',
     geoTarget: 'Wilsonville & Portland Metro, OR',
-    image: imgVCT,
+    image: imgBlogCommercialWilsonville,
     imageAlt: 'Resilient commercial VCT tile installed in a Wilsonville commercial building',
     content: {
       intro: 'Commercial facilities in Wilsonville, Tualatin, Portland, and Lake Oswego demand flooring systems built to withstand extreme daily foot traffic, rolling loads, chemical cleansers, and strict safety regulations. CFS Flooring provides comprehensive commercial flooring removal, subfloor remediation, and certified installation tailored to commercial schedules.',
@@ -226,7 +230,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CFS Flooring Team',
     readTime: '6 min read',
     geoTarget: 'Lake Oswego & Wilsonville, OR',
-    image: imgTile,
+    image: imgBlogTileLakeOswego,
     imageAlt: 'Custom ceramic tile installation with modern backsplash in a Lake Oswego residence',
     content: {
       intro: 'Tile is one of the most versatile and permanent surfacing materials available for Pacific Northwest homes. Whether you are updating a primary bathroom suite in Lake Oswego, installing a chef\'s kitchen backsplash in Wilsonville, or tiling a custom outdoor patio deck, professional tile craftsmanship ensures lasting structural integrity and visual distinction.',
@@ -282,7 +286,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CFS Flooring Team',
     readTime: '5 min read',
     geoTarget: 'Portland Metro, Lake Oswego & Vancouver WA',
-    image: imgCarpet,
+    image: imgBlogCarpetPortland,
     imageAlt: 'Textured pattern residential carpet installation in a Portland home',
     content: {
       intro: 'While hard surface flooring like hardwood and Luxury Vinyl Plank dominates kitchens and living halls, carpet installation remains the undisputed favorite for bedrooms, family cozy rooms, staircases, and home theaters across the Portland Metro region.',
@@ -337,7 +341,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CFS Flooring Team',
     readTime: '5 min read',
     geoTarget: 'West Linn & Willamette Valley, OR',
-    image: imgHardwood,
+    image: imgBlogLVPFamilyWestLinn,
     imageAlt: 'Waterproof luxury vinyl plank flooring installed in a West Linn residence',
     content: {
       intro: 'Nestled along the Willamette River, West Linn, Oregon is home to active families, outdoor enthusiasts, and pet lovers. From muddy hiking boots coming off Mary S. Young Park trails to wet dog paws after a morning by the river, West Linn floors take a beating.',
@@ -388,7 +392,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CFS Flooring Team',
     readTime: '6 min read',
     geoTarget: 'Vancouver & Clark County, WA',
-    image: imgVCT,
+    image: imgBlogVCTVancouverWA,
     imageAlt: 'Commercial VCT tile floor installation in a Vancouver WA commercial facility',
     content: {
       intro: 'As Clark County\'s commercial footprint expands rapidly across Vancouver, WA—from the vibrant Waterfront District to East Vancouver tech corridors and Salmon Creek medical complexes—property managers require flooring solutions built for resilience, swift installation, and easy maintenance.',
@@ -444,7 +448,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CFS Flooring Team',
     readTime: '6 min read',
     geoTarget: 'Lake Oswego & Clackamas County, OR',
-    image: imgHardwood,
+    image: imgBlogHardwoodGuideLakeOswego,
     imageAlt: 'Craftsman solid white oak hardwood floor installation in a Lake Oswego home',
     content: {
       intro: 'Lake Oswego, Oregon is renowned for its stunning lakeside estates, mid-century modern architectural gems, and craftsman luxury residences. When investing in interior design for Lake Oswego homes, few materials match the enduring elegance, warmth, and resale value of authentic hardwood flooring.',
@@ -494,7 +498,7 @@ export const blogPosts: BlogPost[] = [
     author: 'CFS Flooring Team',
     readTime: '5 min read',
     geoTarget: 'Wilsonville & Villebois, OR',
-    image: imgSandFinish,
+    image: imgBlogSandFinishWilsonville,
     imageAlt: 'Dustless hardwood sanding and refinishing process in a Wilsonville home',
     content: {
       intro: 'Homeowners in Wilsonville, OR—from established neighborhoods near Memorial Park to modern craftsman homes in Villebois—take immense pride in their interior spaces. Over years of foot traffic and sun exposure, original wood floors can show scuffs and yellowing. Professional Sand & Finish refinishing restores your timber to brand-new brilliance.',

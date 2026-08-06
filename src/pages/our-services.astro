@@ -20,6 +20,7 @@ import imgSheetVinyl from '@/assets/services/sheet-vinyl.webp';
 import imgVct from '@/assets/services/vct.webp';
 import imgFlooringRemoval from '@/assets/services/flooring-removal.webp';
 import imgCountersDecks from '@/assets/services/counters-decks.webp';
+import imgPainting from '@/assets/services/painting.webp';
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://cfsflooring.com' },
@@ -42,31 +43,31 @@ const servicesList = [
   {
     title: 'Sand & Finish',
     slug: 'sand-and-finish',
-    description: 'Restore existing hardwood floors with sanding and finishing services that bring back color, character, and a cleaner overall look.',
+    description: 'Dust-controlled hardwood sanding, custom stain color matching, and refinishing.',
     image: imgSandFinish,
   },
   {
     title: 'Ceramic Tile',
     slug: 'ceramic-tile',
-    description: 'Ceramic tile installation for durable, practical surfaces that work especially well in kitchens, baths, and other high-use areas.',
+    description: 'Precision porcelain, ceramic, and natural stone tile setting for floors and walls.',
     image: imgCeramicTile,
   },
   {
     title: 'Sheet Vinyl',
     slug: 'sheet-vinyl',
-    description: 'Sheet vinyl flooring installed for spaces that need a resilient, cost-conscious, and low-maintenance flooring solution.',
+    description: 'Seamless waterproof sheet vinyl flooring with realistic wood and stone patterns.',
     image: imgSheetVinyl,
   },
   {
     title: 'VCT Flooring',
     slug: 'vct-flooring',
-    description: 'VCT flooring solutions for commercial environments that need dependable performance, easier upkeep, and a clean finished look.',
+    description: 'Heavy-duty VCT tile installation, concrete slab grinding, and commercial prep.',
     image: imgVct,
   },
   {
     title: 'Flooring Removal',
     slug: 'flooring-removal',
-    description: 'Careful removal of existing flooring to prepare your space for a clean new installation and a smoother overall remodel process.',
+    description: 'Dust-controlled tear-out of carpet, tile, hardwood, and old glue/mastic.',
     image: imgFlooringRemoval,
   },
   {
@@ -75,12 +76,18 @@ const servicesList = [
     description: 'Countertop and deck surface solutions that help complete your space with durable materials, practical finishes, and a cleaner overall presentation.',
     image: imgCountersDecks,
   },
+  {
+    title: 'Interior & Exterior Painting',
+    slug: 'interior-and-exterior-painting',
+    description: 'Professional wall, trim, and exterior house painting using premium low-VOC paints and flawless surface preparation.',
+    image: imgPainting,
+  },
 ];
 ---
 
 <BaseLayout
   title="Our Services | CFS Flooring Lake Oswego & West Linn"
-  description="Explore our full directory of 8 specialized flooring services: hardwood, laminate, LVP, tile, carpet, commercial, repair, and maintenance in Lake Oswego & Portland Metro."
+  description="Explore our full directory of 9 specialized services: hardwood, LVP, tile, carpet, painting, countertops, decks, and floor removal in Lake Oswego & Portland Metro."
 >
   <LocalBusiness />
   <BreadcrumbSchema items={breadcrumbs} />

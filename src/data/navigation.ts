@@ -90,6 +90,13 @@ export const navigationData: NavigationConfig = {
       slug: 'counters-and-decks',
       description: 'Custom quartz/granite kitchen countertops and outdoor composite/timber deck building.',
     },
+    {
+      title: 'Interior & Exterior Painting',
+      shortTitle: 'Painting Services',
+      href: '/services/interior-and-exterior-painting',
+      slug: 'interior-and-exterior-painting',
+      description: 'Flawless residential and commercial interior wall, trim, and exterior house painting.',
+    },
   ],
   quickLinks: [
     { label: 'Home', href: '/' },
