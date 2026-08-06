@@ -54,11 +54,11 @@ export const companyData: CompanyInfo = {
     zip: '97035',
   },
   licenses: {
-    oregonCCB: 'OR CCB #234819',
-    washingtonLic: 'WA Lic #CFSFL*812K3',
+    oregonCCB: 'OR CCB #249255',
+    washingtonLic: 'WA UBI #605163188',
   },
-  licenseOR: '234819',
-  licenseWA: 'CFSFL*812K3',
+  licenseOR: '249255',
+  licenseWA: '605163188',
   hours: {
     weekdays: 'Monday – Friday: 7:00 AM – 6:00 PM',
     saturday: 'Saturday: 8:00 AM – 2:00 PM',

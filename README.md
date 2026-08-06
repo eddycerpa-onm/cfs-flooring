@@ -14,7 +14,7 @@ Replicación modular y optimizada en Astro + Tailwind CSS v4 del sitio de **CFS 
 | Route | Purpose |
 |-------|---------|
 | `/` | Homepage (Hero video, Services grid, Testimonials, FAQ, CTABanner) |
-| `/about-us` | About CFS Flooring & Jose |
+| `/about-us` | About CFS Flooring & Team |
 | `/our-services` | Hub de todos los servicios |
 | `/contact-us` | Formulario de contacto y datos |
 | `/services/[slug]` | 8 páginas dinámicas por servicio |

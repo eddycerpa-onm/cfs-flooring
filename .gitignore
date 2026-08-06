@@ -26,6 +26,7 @@ Thumbs.db
 .idea/
 
 # Internal docs & agents
+docs/
 PENDIENTES.md
 HANDOFF.md
 implementation_plan.md

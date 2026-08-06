@@ -27,7 +27,7 @@ export const testimonialsData: Testimonial[] = [
     serviceUsed: 'Hardwood, Laminate & LVP',
     rating: 5,
     content:
-      'CFS Flooring made the whole process easy from the first consultation to the final walkthrough. Jose took the time to explain the pros and cons of each option, and the finished floors completely changed the look of our home.',
+      'CFS Flooring made the whole process easy from the first consultation to the final walkthrough. The CFS Flooring team took the time to explain the pros and cons of each option, and the finished floors completely changed the look of our home.',
     date: '2026-06-12',
     verified: true,
     avatar: jessicaAvatar,

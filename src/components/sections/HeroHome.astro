@@ -10,9 +10,9 @@ const chips = [
 ];
 ---
 
-<section class="home-banner-section cfs-flooring-hero">
-	<div class="cfs-right-bg-banner">
-		<div class="cfs-media-frame">
+<section class="home-banner-section flooring-hero">
+	<div class="hero-right-bg">
+		<div class="hero-media-frame">
 			<video
 				autoplay
 				loop
@@ -20,42 +20,42 @@ const chips = [
 				playsinline
 				preload="metadata"
 				poster={heroPoster.src}
-				class="cfs-banner-video"
+				class="hero-banner-video"
 			>
 				<source src="/videos/hero.mp4" type="video/mp4" />
 			</video>
-			<div class="cfs-media-overlay"></div>
+			<div class="hero-media-overlay"></div>
 		</div>
 	</div>
 
-	<div class="cfs-base-container">
-		<div class="cfs-banner-wrapper">
-			<div class="cfs-banner-left">
-				<div class="cfs-title-wrapper">
-					<div class="cfs-eyebrow">
+	<div class="hero-base-container">
+		<div class="hero-banner-wrapper">
+			<div class="hero-banner-left">
+				<div class="hero-title-wrapper">
+					<div class="hero-eyebrow">
 						{company.name} LLC
 					</div>
 
-					<h1 class="cfs-hero-h1">
+					<h1 class="hero-h1">
 						Quality flooring installation
-						<span class="cfs-overlap-text-h1">
+						<span class="hero-overlap-text-h1">
 							with honest guidance you can trust
 						</span>
 					</h1>
 
-					<p class="cfs-banner-desc">
+					<p class="hero-banner-desc">
 						Professional flooring installation for homes and businesses in Lake
 						Oswego, West Linn, Wilsonville and Vancouver. With over 10 years of
-						experience, Jose helps clients choose the right flooring for their
+						experience, our expert team helps clients choose the right flooring for their
 						space, budget, and long-term goals.
 					</p>
 				</div>
 
-				<div class="cfs-buttons-wrapper">
-					<div class="cfs-left-button-banner">
-						<div class="cfs-badge">
-							<div class="cfs-badge-top">10+ Years Experience</div>
-							<div class="cfs-badge-bottom">
+				<div class="hero-buttons-wrapper">
+					<div class="hero-left-button-banner">
+						<div class="hero-badge">
+							<div class="hero-badge-top">10+ Years Experience</div>
+							<div class="hero-badge-bottom">
 								Quality craftsmanship with personal service
 							</div>
 						</div>
@@ -64,10 +64,10 @@ const chips = [
 					<button
 						type="button"
 						@click="$dispatch('open-drawer')"
-						class="btn-yellow-accent cfs-primary-button cfs-banner-large"
+						class="btn-yellow-accent primary-button hero-banner-large"
 					>
 						<span>Get a Quote</span>
-						<span class="cfs-btn-icon" aria-hidden="true">
+						<span class="btn-icon" aria-hidden="true">
 							<svg viewBox="0 0 24 24" width="18" height="18" fill="none">
 								<path
 									d="M14 3H7a2 2 0 0 0-2 2v14l4-2 4 2 4-2 4 2V9l-7-6Z"
@@ -86,11 +86,11 @@ const chips = [
 					</button>
 				</div>
 
-				<ul class="cfs-trust-row" aria-label="Service highlights">
+				<ul class="hero-trust-row" aria-label="Service highlights">
 					{chips.map((chip) => <li>{chip}</li>)}
 				</ul>
 
-				<div class="cfs-hero-bottom-spacer" aria-hidden="true"></div>
+				<div class="hero-bottom-spacer" aria-hidden="true"></div>
 			</div>
 		</div>
 	</div>

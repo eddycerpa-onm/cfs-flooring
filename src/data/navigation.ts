@@ -30,6 +30,7 @@ export const navigationData: NavigationConfig = {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about-us' },
     { label: 'Services', href: '/our-services' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Contact Us', href: '/contact-us' },
   ],
   servicesNav: [
@@ -112,6 +113,7 @@ export const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about-us' },
   { label: 'Services', href: '/our-services', dropdown: true },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact Us', href: '/contact-us' },
 ];
 

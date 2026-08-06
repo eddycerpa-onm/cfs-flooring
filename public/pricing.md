@@ -6,7 +6,7 @@
 
 - **Price:** $0 (100% Free On-Site Estimate & Material Consultation)
 - **Included:** In-person measurement, moisture testing of subfloors, sample viewing, subfloor condition assessment, itemized proposal covering labor, materials, demolition, and subfloor prep.
-- **Scheduling:** Call or text (503) 989-5629 or submit online at https://cfsflooring.com/contact-us
+- **Scheduling:** Call or text (971) 419-8602 or submit online at https://cfsflooring.com/contact-us
 
 ## Service Categories & Scope
 
@@ -32,11 +32,11 @@
 
 ## Licenses & Insurance
 
-- **Oregon CCB:** #236245 (Licensed, Bonded & Fully Insured)
-- **Washington Lic:** #CFSFLFL78009 (Licensed, Bonded & Fully Insured)
+- **Oregon CCB:** OR CCB #249255 (Licensed, Bonded & Fully Insured)
+- **Washington UBI:** WA UBI #605163188 (Licensed, Bonded & Fully Insured)
 
 ## Contact Information
 
-- **Phone:** (503) 989-5629
+- **Phone:** (971) 419-8602
 - **Email:** cfsflooringllc@outlook.com
 - **Website:** https://cfsflooring.com
