@@ -135,6 +135,20 @@ const services = navigationData.servicesNav;
       ></textarea>
     </div>
 
+    <!-- Required Consent Checkbox -->
+    <div class="flex items-start gap-2.5 pt-1">
+      <input
+        type="checkbox"
+        id="contact-consent"
+        name="consent"
+        required
+        class="mt-1 w-4 h-4 rounded border-stroke text-accent focus:ring-accent accent-accent cursor-pointer shrink-0"
+      />
+      <label for="contact-consent" class="text-xs text-muted leading-relaxed cursor-pointer select-none">
+        I agree to the <a href="/terms-and-conditions" target="_blank" class="font-bold text-text hover:text-accent underline">Terms & Conditions</a> and <a href="/privacy-policy" target="_blank" class="font-bold text-text hover:text-accent underline">Privacy Policy</a>, and consent to receive project communication regarding my estimate inquiry.
+      </label>
+    </div>
+
     <div class="pt-2">
       <Button
         type="submit"
@@ -149,7 +163,7 @@ const services = navigationData.servicesNav;
     </div>
 
     <p class="text-xs text-center text-muted">
-      By submitting, you agree to receive follow-up contact regarding your estimate. We never sell your data.
+      We respect your privacy. Zero spam guarantee.
     </p>
   </form>
 </div>
