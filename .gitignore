@@ -41,6 +41,7 @@ AUDITORIA_CSS.md
 scripts/
 temp_extracted/
 
+scratch/
 scratch_*
 .system_generated/
 

@@ -7,7 +7,6 @@ import FAQ from '@/components/sections/FAQ.astro';
 import LocalBusiness from '@/components/seo/LocalBusiness.astro';
 import ServiceSchema from '@/components/seo/ServiceSchema.astro';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema.astro';
-import FAQSchema from '@/components/seo/FAQSchema.astro';
 import { services, type ServiceItem } from '@/data/services';
 
 export async function getStaticPaths() {
@@ -51,7 +50,6 @@ const breadcrumbs = [
   <LocalBusiness />
   <ServiceSchema name={title} description={description} url={`https://cfsflooring.com/services/${slug}`} />
   <BreadcrumbSchema items={breadcrumbs} />
-  {faqs && faqs.length > 0 && <FAQSchema faqs={faqs} />}
 
   <!-- Hero Section -->
   <HeroService
@@ -82,5 +80,5 @@ const breadcrumbs = [
   <CTABanner title={`Get a Free Estimate on ${title}`} />
 
   <!-- FAQ Section -->
-  <FAQ />
+  <FAQ faqs={faqs} />
 </BaseLayout>

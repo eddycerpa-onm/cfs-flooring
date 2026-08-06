@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "@astrojs/mdx": "^7.0.5",
+    "@astrojs/node": "^11.0.3",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/dm-sans": "^5.1.0",
     "@fontsource/lexend-deca": "^5.1.0",

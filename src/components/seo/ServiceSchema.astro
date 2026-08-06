@@ -18,11 +18,26 @@ const schema = {
   name: name,
   description: description,
   url: targetUrl,
+  image: 'https://cfsflooring.com/og-image.png',
+  brand: {
+    '@type': 'Brand',
+    name: company.name,
+    logo: 'https://cfsflooring.com/favicon.svg',
+  },
   provider: {
     '@type': 'HomeAndConstructionBusiness',
     name: company.name,
     telephone: company.phoneRaw,
+    email: company.email,
     url: 'https://cfsflooring.com',
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    description: 'Free on-site flooring estimate and project consultation',
+    availability: 'https://schema.org/InStock',
+    url: 'https://cfsflooring.com/contact-us',
   },
   areaServed: company.serviceAreas.map((a) => ({
     '@type': 'City',

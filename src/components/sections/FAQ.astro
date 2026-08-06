@@ -1,6 +1,7 @@
 ---
 import { faqsData as defaultFaqs } from '@/data/faqs';
 import type { ServiceFAQ } from '@/data/services';
+import FAQSchema from '@/components/seo/FAQSchema.astro';
 
 interface Props {
   faqs?: ServiceFAQ[] | typeof defaultFaqs;
@@ -12,6 +13,7 @@ const { faqs = defaultFaqs, title = "FAQs About CFS Flooring" } = Astro.props;
 
 <!-- CFS Flooring • FAQ (1:1 original site specification) -->
 <section class="cb-faq" id="faq" aria-label="Frequently Asked Questions">
+  <FAQSchema faqs={faqs} />
   <div class="cb-faq-inner">
     
     <!-- Header -->
