@@ -610,5 +610,67 @@ export const services: ServiceItem[] = [
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville counters and decks projects",
     "seoText": "CFS Flooring provides counter and deck services for residential and commercial properties in Lake Oswego, West Linn, and Wilsonville. Whether you need quartz or granite counters for an interior space, laminate or butcher block for a practical update, or composite and wood decking materials for an outdoor area, we help define the right scope and complete the project with care."
+  },
+  {
+    "slug": "interior-and-exterior-painting",
+    "title": "Interior & Exterior Painting",
+    "shortTitle": "Painting Services",
+    "subtitle": "CFS Flooring provides professional interior and exterior painting services for homes and commercial spaces in Lake Oswego, West Linn, Wilsonville, and Vancouver WA. From wall and ceiling painting to baseboards, trim work, and weather-resistant exterior coatings, we deliver immaculate surface prep and flawless finishes using premium low-VOC paints.",
+    "description": "Professional Interior & Exterior Painting Across Lake Oswego, West Linn, Wilsonville & Vancouver.",
+    "cardDescription": "Flawless interior wall & trim painting and weather-resistant exterior house painting with premium low-VOC paints.",
+    "metaTitle": "Interior & Exterior Painting | CFS Flooring",
+    "metaDescription": "Professional interior and exterior painting services in Lake Oswego, West Linn, Wilsonville & Vancouver WA. Premium low-VOC paints, detailed trim finishing, and exterior power-washing.",
+    "image": imgLVP,
+    "heroBadge": "Interior • Exterior • Painting",
+    "order": 9,
+    "features": [
+      "Interior & Exterior Painting",
+      "Residential & Commercial",
+      "Design Guidance • Painting"
+    ],
+    "detailedFeatures": [
+      {
+        "tag": "Selection",
+        "title": "Paint selection and color guidance for your home or business",
+        "description": "Choosing the right paint finish and color scheme sets the tone for your whole space. We help you select between satin, eggshell, matte, and semi-gloss finishes from Sherwin-Williams and Benjamin Moore for maximum washability and long-term beauty.",
+        "bullets": [
+          "Guidance on sheen levels, color palettes, accent walls, and light-reflecting qualities",
+          "Eco-friendly low-VOC and zero-VOC paint formulas safe for children and pets",
+          "Durable exterior coatings designed to withstand Pacific Northwest rain and UV exposure"
+        ]
+      },
+      {
+        "tag": "Preparation",
+        "title": "Thorough surface prep, drywall repair, and masking",
+        "description": "Flawless painting depends on meticulous surface preparation. We repair drywall imperfections, sand trim, seal gaps, and protect your floors and furniture completely before opening a single paint can.",
+        "bullets": [
+          "Drywall patching, texture matching, nail pop repair, and stain blocking primer",
+          "Baseboard, door casing, and crown molding sanding and caulking for crisp lines",
+          "Exterior power washing, scraping loose paint, and wood surface priming"
+        ]
+      },
+      {
+        "tag": "Execution",
+        "title": "Clean, precise application for sharp trim and even coverage",
+        "description": "Our painting specialists execute every job with razor-sharp lines, uniform coat thickness, and complete daily jobsite cleanup so your routine is uninterrupted.",
+        "bullets": [
+          "Multi-coat application for rich depth of color and seamless coverage",
+          "Coordinated scheduling alongside flooring installation or refinishing",
+          "Thorough final walkthrough and satisfaction guarantee"
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What type of paint do you use for interior residential rooms?",
+        "answer": "We use top-tier, low-VOC and zero-VOC acrylic latex paints from trusted brands like Sherwin-Williams and Benjamin Moore. These paints provide rich coverage, excellent washability, and minimal odor."
+      },
+      {
+        "question": "Can painting be scheduled alongside flooring installation or refinishing?",
+        "answer": "Yes! Coordinating painting with flooring installation or hardwood sand & finish saves time and ensures a seamless renovation. We typically paint walls and trim before final floor finishing."
+      }
+    ],
+    "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville painting projects",
+    "seoText": "CFS Flooring provides residential and commercial interior and exterior painting services across Lake Oswego, West Linn, Wilsonville, and Vancouver WA. Whether updating single rooms or full house exteriors, we deliver high quality finishes with care."
   }
 ];
