@@ -98,12 +98,12 @@
   --spacing-proc-pb: 180px;
   --spacing-proc-title-mb: 25px;
 
-  --text-about-desc: 19px;
-  --text-about-desc--line-height: 36.1px;
-  --text-services-desc: 18px;
-  --text-services-desc--line-height: 31.5px;
-  --text-proc-desc: 18px;
-  --text-proc-desc--line-height: 32.4px;
+  --text-about-desc: 16px;
+  --text-about-desc--line-height: 26.4px;
+  --text-services-desc: 16px;
+  --text-services-desc--line-height: 26.4px;
+  --text-proc-desc: 16px;
+  --text-proc-desc--line-height: 26.4px;
 
   --height-about-frame-min: 480px;
   --height-about-frame-sm-min: 560px;
@@ -120,11 +120,11 @@
   --text-overlap--line-height: 54px;
   --text-overlap--letter-spacing: -1.6px;
 
-  --text-cta-desc: 19px;
-  --text-cta-desc--line-height: 32.3px;
+  --text-cta-desc: 16px;
+  --text-cta-desc--line-height: 26.4px;
 
   --text-hero-desc: 16px;
-  --text-hero-desc--line-height: 27.2px;
+  --text-hero-desc--line-height: 26.4px;
 
   --text-chip: 13px;
 
@@ -681,6 +681,12 @@ h2 {
   line-height: 1.12;
   letter-spacing: -0.6px;
   font-weight: 900;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--muted);
 }
 
 [x-cloak] {
