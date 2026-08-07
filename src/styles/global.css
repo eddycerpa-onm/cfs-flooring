@@ -676,7 +676,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-title);
 }
 
-h2 {
+h2:not([class*="text-"]) {
   font-size: clamp(28px, 4.5vw, 48px);
   line-height: 1.12;
   letter-spacing: -0.6px;
