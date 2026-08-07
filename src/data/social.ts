@@ -30,7 +30,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     platform: 'Google Business Profile',
-    url: 'https://g.page/cfsflooring',
+    url: 'https://share.google/fVsHBLGviW0gVE7Io',
     icon: 'google',
     handle: 'CFS Flooring - Lake Oswego',
     ariaLabel: 'View CFS Flooring on Google Maps',
