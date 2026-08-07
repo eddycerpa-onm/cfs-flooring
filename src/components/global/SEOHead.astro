@@ -67,7 +67,7 @@ const fullLogoUrl = new URL('/favicon.svg', Astro.site || 'https://cfsflooring.c
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<!-- Google Fonts Official Variable Suite (100..1000) matching cfsflooring.com -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+<!-- Local Fonts Preload for Maximum Performance -->
+<link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/lexend-deca-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+
