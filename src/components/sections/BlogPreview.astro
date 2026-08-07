@@ -39,7 +39,7 @@ const displayPosts = blogPosts.slice(0, limit);
       pillText={pillText}
     />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-motion-stagger="true">
       {
         displayPosts.map((post: any) => {
           const pData = post.data || post;
@@ -47,7 +47,7 @@ const displayPosts = blogPosts.slice(0, limit);
           const pubDate = pData.pubDate ? new Date(pData.pubDate) : new Date();
 
           return (
-            <article class="p-6 rounded-2xl bg-white border border-stroke shadow-xs hover:shadow-custom hover:border-accent/40 transition-all duration-300 flex flex-col justify-between h-full group">
+            <article class="p-6 rounded-2xl bg-white border border-stroke shadow-xs hover:shadow-custom hover:border-accent/40 transition-all duration-300 flex flex-col justify-between h-full group" data-motion="fade-up">
               <div class="space-y-4">
                 <!-- Meta Row -->
                 <div class="flex items-center justify-between">

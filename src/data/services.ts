@@ -2,12 +2,14 @@ import type { ImageMetadata } from 'astro';
 
 import imgHardwood from '../assets/services/hardwood-lvp.webp';
 import imgLaminate from '../assets/services/slide-1.webp';
-import imgLVP from '../assets/services/slide-2.webp';
 import imgTile from '../assets/services/ceramic-tile.webp';
 import imgCarpet from '../assets/services/carpet.webp';
 import imgCommercial from '../assets/services/vct.webp';
 import imgRepair from '../assets/services/sand-finish.webp';
 import imgMaintenance from '../assets/services/slide-3.webp';
+import imgCountersDecks from '../assets/services/counters-decks.webp';
+import imgPainting from '../assets/services/painting.webp';
+import imgPaintingExterior from '../assets/services/painting-exterior.webp';
 
 export interface ServiceFAQ {
   question: string;
@@ -42,6 +44,7 @@ export interface ServiceItem {
   metaTitle: string;
   metaDescription: string;
   image: ImageMetadata;
+  exteriorImage?: ImageMetadata;
   heroBadge?: string;
   order: number;
   features: string[];
@@ -551,7 +554,7 @@ export const services: ServiceItem[] = [
     "cardDescription": "Counter and deck surface solutions that help complete your space with durable materials and practical finishes.",
     "metaTitle": "Countertops & Decks | CFS Flooring",
     "metaDescription": "Custom quartz & granite countertop installation and outdoor deck construction across Lake Oswego & West Linn.",
-    "image": imgLVP,
+    "image": imgCountersDecks,
     "heroBadge": "Countertops • Decks • Woodwork",
     "order": 8,
     "features": [
@@ -620,7 +623,8 @@ export const services: ServiceItem[] = [
     "cardDescription": "Flawless interior wall & trim painting and weather-resistant exterior house painting with premium low-VOC paints.",
     "metaTitle": "Interior & Exterior Painting | CFS Flooring",
     "metaDescription": "Professional interior and exterior painting services in Lake Oswego, West Linn, Wilsonville & Vancouver WA. Premium low-VOC paints, detailed trim finishing, and exterior power-washing.",
-    "image": imgLVP,
+    "image": imgPainting,
+    "exteriorImage": imgPaintingExterior,
     "heroBadge": "Interior • Exterior • Painting",
     "order": 9,
     "features": [

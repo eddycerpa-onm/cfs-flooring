@@ -33,17 +33,20 @@ const isCentered = align ? align === 'center' : centered;
 const alignmentClasses = isCentered ? 'text-center mx-auto max-w-3xl' : 'text-left max-w-2xl';
 ---
 
-<div class:list={['space-y-4 mb-12', alignmentClasses, className]}>
+<div class:list={['space-y-4 mb-12', alignmentClasses, className]} data-motion-stagger="true">
   {badgeText && (
-    <Pill variant={dark ? 'dark' : 'accent'}>
-      {badgeText}
-    </Pill>
+    <div data-motion="fade-up">
+      <Pill variant={dark ? 'dark' : 'accent'}>
+        {badgeText}
+      </Pill>
+    </div>
   )}
   <h2
     class:list={[
       'text-3xl sm:text-4xl lg:text-5xl font-black font-title tracking-tight leading-tight',
       dark ? 'text-white' : 'text-text',
     ]}
+    data-motion="fade-up"
   >
     {title}
   </h2>
@@ -54,6 +57,7 @@ const alignmentClasses = isCentered ? 'text-center mx-auto max-w-3xl' : 'text-le
           'text-base sm:text-lg leading-relaxed font-normal',
           dark ? 'text-white/80' : 'text-muted',
         ]}
+        data-motion="fade-up"
       >
         {bodyText}
       </p>

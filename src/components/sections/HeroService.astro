@@ -20,29 +20,29 @@ const displaySub = subtitle || description;
   <div class="flHero__bg" aria-hidden="true"></div>
 
   <div class="flHero__inner">
-    <div class="flHero__left">
-      <div class="flHero__crumb" aria-label="Breadcrumb">
+    <div class="flHero__left" data-motion-stagger="true">
+      <div class="flHero__crumb" aria-label="Breadcrumb" data-motion="fade-up">
         <a href="/">Home</a>
         <span class="flHero__slash">/</span>
         <span>{title}</span>
       </div>
 
-      <h1 class="flHero__title">
+      <h1 class="flHero__title" data-motion="fade-up">
         {displayH1}
       </h1>
 
-      <p class="flHero__sub">
+      <p class="flHero__sub" data-motion="fade-up">
         {displaySub}
       </p>
 
-      <div class="flHero__chips" aria-label="Service highlights">
+      <div class="flHero__chips" aria-label="Service highlights" data-motion="fade-up">
         <span class="chip"><span class="chipDot" aria-hidden="true"></span>{heroBadge}</span>
         <span class="chip"><span class="chipDot" aria-hidden="true"></span>Residential &amp; Commercial</span>
         <span class="chip"><span class="chipDot" aria-hidden="true"></span>Design Guidance • Installation</span>
       </div>
     </div>
 
-    <aside class="flHero__right" aria-label={`${title} inquiry form`}>
+    <aside class="flHero__right" aria-label={`${title} inquiry form`} data-motion="fade-left">
       <div class="formWrap">
         <div class="formInner">
           <p class="formHint">

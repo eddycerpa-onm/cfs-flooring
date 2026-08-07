@@ -4,6 +4,7 @@ import SkipLink from '../components/global/SkipLink.astro';
 import Header from '../components/global/Header.astro';
 import Footer from '../components/global/Footer.astro';
 import QuoteDrawer from '../components/global/QuoteDrawer.astro';
+import GlobalScrollAnimations from '../components/global/GlobalScrollAnimations.astro';
 
 import '../styles/global.css';
 
@@ -58,5 +59,6 @@ const { title, description, image, canonical, type, noindex } = Astro.props;
         }, 15000);
       });
     </script>
+    <GlobalScrollAnimations />
   </body>
 </html>

@@ -64,11 +64,11 @@ const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Article Header -->
-      <header class="flex flex-col items-center text-center gap-4 mb-8">
-        <div class="flex items-center gap-3">
+      <header class="flex flex-col items-center text-center gap-4 mb-8" data-motion-stagger="true">
+        <div class="flex items-center gap-3" data-motion="fade-up">
           <Pill variant="accent">{category}</Pill>
           <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-panel border border-stroke text-accent">
-            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
@@ -76,11 +76,11 @@ const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
           </span>
         </div>
 
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-title text-text tracking-tight leading-tight">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-title text-text tracking-tight leading-tight" data-motion="fade-up">
           {title}
         </h1>
 
-        <div class="flex items-center gap-4 text-xs sm:text-sm text-muted pt-2 font-body">
+        <div class="flex items-center gap-4 text-xs sm:text-sm text-muted pt-2 font-body" data-motion="fade-up">
           <span>By <strong>{author}</strong></span>
           <span>•</span>
           <time datetime={pubDate}>
@@ -92,7 +92,7 @@ const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
       </header>
 
       <!-- Featured Image with Astro <Image /> -->
-      <div class="mb-12 rounded-3xl overflow-hidden shadow-lg border border-stroke bg-panel">
+      <div class="mb-12 rounded-3xl overflow-hidden shadow-lg border border-stroke bg-panel" data-motion="image-blur">
         <Image
           src={image}
           alt={imageAlt}
@@ -106,7 +106,7 @@ const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
       <div class="space-y-8 text-text leading-relaxed font-body">
         
         <!-- Intro Paragraph -->
-        <div class="p-6 md:p-8 rounded-3xl bg-panel border border-stroke shadow-xs">
+        <div class="p-6 md:p-8 rounded-3xl bg-panel border border-stroke shadow-xs" data-motion="fade-up">
           <p class="text-lg md:text-xl font-medium text-text leading-relaxed">
             {content.intro}
           </p>
@@ -114,7 +114,7 @@ const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
 
         <!-- Content Sections -->
         {content.sections.map((section, idx) => (
-          <section class="space-y-4 pt-4">
+          <section class="space-y-4 pt-4" data-motion="fade-up">
             <h2 class="text-2xl md:text-3xl font-bold font-title text-text tracking-tight flex items-center gap-3">
               <span class="text-accent text-lg font-mono font-bold">0{idx + 1}.</span>
               {section.heading}
@@ -141,7 +141,7 @@ const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
 
         <!-- Article FAQ Section if Present -->
         {content.faq && content.faq.length > 0 && (
-          <section class="mt-12 p-8 rounded-3xl bg-panel border border-stroke space-y-6">
+          <section class="mt-12 p-8 rounded-3xl bg-panel border border-stroke space-y-6" data-motion="fade-up">
             <h3 class="text-2xl font-bold font-title text-text">Frequently Asked Questions</h3>
             <div class="space-y-6">
               {content.faq.map((item) => (
@@ -155,7 +155,7 @@ const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
         )}
 
         <!-- Conclusion Box -->
-        <div class="p-8 rounded-3xl bg-dark-bg text-white shadow-xl space-y-4 border border-stroke mt-10">
+        <div class="p-8 rounded-3xl bg-dark-bg text-white shadow-xl space-y-4 border border-stroke mt-10" data-motion="fade-up">
           <h3 class="text-2xl font-bold font-title text-accent-2">Work With Local Portland Metro Experts</h3>
           <p class="text-base text-gray-200 leading-relaxed">
             {content.conclusion}
@@ -184,10 +184,10 @@ const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
       <!-- Related Posts Section -->
       {relatedPosts.length > 0 && (
         <section class="mt-16 pt-12 border-t border-stroke">
-          <h3 class="text-2xl font-bold font-title text-text mb-8">Related Guides & Articles</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h3 class="text-2xl font-bold font-title text-text mb-8" data-motion="fade-up">Related Guides & Articles</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-motion-stagger="true">
             {relatedPosts.map((rPost) => (
-              <article class="p-6 rounded-2xl bg-panel border border-stroke hover:border-accent/40 transition-all flex flex-col justify-between group">
+              <article class="p-6 rounded-2xl bg-panel border border-stroke hover:border-accent/40 transition-all flex flex-col justify-between group" data-motion="fade-up">
                 <div>
                   <span class="text-xs font-bold text-accent">{rPost.category}</span>
                   <h4 class="text-lg font-bold font-title text-text group-hover:text-accent transition-colors mt-2 mb-2">
@@ -197,13 +197,13 @@ const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
                 </div>
                 <div class="pt-4 mt-4 border-t border-stroke/60 flex items-center justify-between text-xs">
                   <span class="inline-flex items-center gap-1 text-muted">
-                    <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     {rPost.geoTarget}
                   </span>
-                  <a href={`/blog/${rPost.slug}`} class="font-bold text-accent group-hover:translate-x-1 transition-transform">
+                  <a href={`/blog/${rPost.slug}`} aria-label={`Read guide: ${rPost.title}`} class="font-bold text-accent group-hover:translate-x-1 transition-transform">
                     Read guide &rarr;
                   </a>
                 </div>

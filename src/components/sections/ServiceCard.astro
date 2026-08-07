@@ -15,7 +15,7 @@ const targetSlug = slug.toLowerCase().replace(/^\/services\//, '').replace(/^\//
 const href = customHref || `/services/${targetSlug}`;
 ---
 
-<a class="rr-svc-card" href={href} aria-label={`View ${title} details`}>
+<a class="rr-svc-card" href={href} aria-label={`View ${title} details`} data-motion="fade-up-light">
   <div class="rr-svc-card-head">
     <h3 class="rr-svc-card-title">{title}</h3>
     <span class="rr-svc-circle" aria-hidden="true">

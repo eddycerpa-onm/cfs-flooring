@@ -31,7 +31,7 @@ const breadcrumbs = [
       />
 
       <!-- Geo Service Tag Badges -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-12" data-motion="fade-up">
         <span class="text-xs font-bold text-muted uppercase tracking-wider mr-2">Serving:</span>
         <span class="px-3 py-1 rounded-full bg-white border border-stroke text-xs font-semibold text-text shadow-xs">Portland, OR</span>
         <span class="px-3 py-1 rounded-full bg-white border border-stroke text-xs font-semibold text-text shadow-xs">Lake Oswego, OR</span>
@@ -42,9 +42,9 @@ const breadcrumbs = [
       <!-- Blog Posts Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {blogPosts.map((post) => (
-          <article class="flex flex-col rounded-3xl bg-bg border border-stroke shadow-md hover:shadow-xl hover:border-accent/40 transition-all duration-300 overflow-hidden group">
+          <article class="flex flex-col rounded-3xl bg-bg border border-stroke shadow-md hover:shadow-xl hover:border-accent/40 transition-all duration-300 overflow-hidden group" data-motion="fade-up">
             <!-- Article Image -->
-            <a href={`/blog/${post.slug}`} class="block relative aspect-video overflow-hidden bg-panel">
+            <a href={`/blog/${post.slug}`} aria-label={`Read article: ${post.title}`} class="block relative aspect-video overflow-hidden bg-panel">
               <Image
                 src={post.image}
                 alt={post.imageAlt}
@@ -53,7 +53,7 @@ const breadcrumbs = [
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                <Pill variant="accent">{post.category}</Pill>
+                <Pill variant="overlay">{post.category}</Pill>
               </div>
             </a>
 
@@ -62,7 +62,7 @@ const breadcrumbs = [
               <div>
                 <div class="flex items-center justify-between text-xs text-muted font-medium mb-3">
                   <span class="inline-flex items-center gap-1.5 text-accent font-semibold">
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
@@ -83,9 +83,9 @@ const breadcrumbs = [
               <!-- Footer meta -->
               <div class="pt-4 border-t border-stroke flex items-center justify-between text-xs font-body">
                 <span class="text-muted font-medium">By {post.author}</span>
-                <a href={`/blog/${post.slug}`} class="font-bold font-title text-accent hover:underline inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <a href={`/blog/${post.slug}`} aria-label={`Read article: ${post.title}`} class="font-bold font-title text-accent hover:underline inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                   <span>Read Article</span>
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>

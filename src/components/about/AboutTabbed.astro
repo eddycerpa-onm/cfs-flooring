@@ -15,30 +15,30 @@ const { class: className } = Astro.props;
   <div class="about-wrap">
     
     <!-- Header -->
-    <header class="about-head">
-      <div class="about-kicker" aria-label="Section label">
+    <header class="about-head" data-motion-stagger="true">
+      <div class="about-kicker" aria-label="Section label" data-motion="fade-up">
         <span class="pill-light">About CFS Flooring</span>
         <span class="kicker-text">Washington • Oregon • Residential & Commercial Flooring</span>
       </div>
 
-      <h2 class="about-h2">
+      <h2 class="about-h2" data-motion="fade-up">
         Flooring expertise built on honest guidance, quality craftsmanship, and a smoother process.
       </h2>
 
-      <p class="about-sub">
+      <p class="about-sub" data-motion="fade-up">
         CFS Flooring helps homeowners and businesses upgrade, restore, and improve their spaces with dependable flooring solutions. We focus on clear communication, practical recommendations, and quality results that look great and hold up over time.
       </p>
 
-      <div class="about-cta">
-        <button class="btn-primary" type="button" @click="$dispatch('open-drawer')">
+      <div class="about-cta" data-motion="fade-up">
+        <a class="btn-primary" href="/contact-us" aria-label="Get a free quote on Contact Us page">
           <span>Get a Quote</span>
           <span class="btn-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" focusable="false">
               <path d="M14 3H7a2 2 0 0 0-2 2v14l4-2 4 2 4-2 4 2V9l-7-6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
               <path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </span>
-        </button>
+        </a>
       </div>
     </header>
 
@@ -46,7 +46,7 @@ const { class: className } = Astro.props;
     <div class="about-grid" x-data="{ activeTab: 'different', openAcc: 0, isSwapping: false }">
       
       <!-- LEFT: Animated Tabbed Image Slider -->
-      <aside class="about-media" aria-label="About images">
+      <aside class="about-media" aria-label="About images" data-motion="fade-right">
         <div class="about-slider" :class="{ 'is-swapping': isSwapping }">
           
           <div x-show="activeTab === 'different'" x-transition:enter="slide-entering" class="slide-item">
@@ -82,7 +82,7 @@ const { class: className } = Astro.props;
       </aside>
 
       <!-- RIGHT: Tabbed Content Container -->
-      <div class="about-panels-box" aria-label="About content sections">
+      <div class="about-panels-box" aria-label="About content sections" data-motion="fade-left">
         
         <!-- Tab Bar -->
         <div class="tabbar" role="tablist" aria-label="About tabs">

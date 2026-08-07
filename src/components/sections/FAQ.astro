@@ -17,14 +17,14 @@ const { faqs = defaultFaqs, title = "FAQs About CFS Flooring" } = Astro.props;
   <div class="cb-faq-inner">
     
     <!-- Header -->
-    <div class="cb-faq-head">
+    <div class="cb-faq-head" data-motion="fade-up">
       <h2 class="cb-faq-title">{title}</h2>
     </div>
 
     <!-- Accordion List -->
-    <div class="cb-faq-list" x-data="{ openIdx: null }">
+    <div class="cb-faq-list" x-data="{ openIdx: null }" data-motion-stagger="true">
       {faqs.map((faq, idx) => (
-        <article class="cb-faq-item" :class={`openIdx === ${idx} ? 'is-open' : ''`}>
+        <article class="cb-faq-item" :class={`openIdx === ${idx} ? 'is-open' : ''`} data-motion="fade-up">
           <h3>
             <button
               class="cb-faq-toggle"
@@ -43,12 +43,14 @@ const { faqs = defaultFaqs, title = "FAQs About CFS Flooring" } = Astro.props;
           </h3>
           <div
             id={`faq-answer-${idx}`}
-            class="cb-faq-answer"
-            x-show={`openIdx === ${idx}`}
-            x-cloak
-            x-collapse
+            class="cb-faq-answer-wrapper"
+            :class={`openIdx === ${idx} ? 'is-open' : ''`}
           >
-            <p>{faq.answer}</p>
+            <div class="cb-faq-answer-inner">
+              <div class="cb-faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </div>
           </div>
         </article>
       ))}
@@ -166,6 +168,22 @@ const { faqs = defaultFaqs, title = "FAQs About CFS Flooring" } = Astro.props;
     background: var(--accent);
     color: var(--bg);
     transform: rotate(45deg);
+  }
+
+  .cb-faq-answer-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  }
+
+  .cb-faq-answer-wrapper.is-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .cb-faq-answer-inner {
+    overflow: hidden;
   }
 
   .cb-faq-answer {

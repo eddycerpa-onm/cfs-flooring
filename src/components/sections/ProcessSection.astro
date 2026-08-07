@@ -34,7 +34,7 @@ const steps = [
 <section id="process" class="rr-proc rr-proc--light" aria-label="CFS Flooring process">
   <div class="rr-proc-inner">
     <header class="rr-proc-head">
-      <div class="rr-proc-kicker">
+      <div class="rr-proc-kicker" data-motion="fade-up">
         <span class="rr-proc-kicker-ico" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
             <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
@@ -43,15 +43,15 @@ const steps = [
         <span class="rr-proc-kicker-text">Our Process</span>
       </div>
 
-      <h2 class="rr-proc-title">A straightforward flooring process for Lake Oswego, West Linn, Wilsonville and Vancouver.</h2>
-      <p class="rr-proc-sub">
+      <h2 class="rr-proc-title" data-motion="fade-up">A straightforward flooring process for Lake Oswego, West Linn, Wilsonville and Vancouver.</h2>
+      <p class="rr-proc-sub" data-motion="fade-up">
         From the first consultation to the final walkthrough, CFS Flooring keeps the process personal, honest, and focused on the right solution for your home or business.
       </p>
     </header>
 
-    <div class="rr-proc-grid" id="rrProcGrid">
+    <div class="rr-proc-grid" id="rrProcGrid" data-motion-stagger="true">
       {steps.map((step) => (
-        <article class="rr-proc-card" aria-label={`Step ${step.num}: ${step.title}`}>
+        <article class="rr-proc-card" data-motion="fade-up" aria-label={`Step ${step.num}: ${step.title}`}>
           <div class="rr-proc-iconbox" aria-hidden="true">
             <span class="rr-proc-badge">{step.num}</span>
             <Fragment set:html={step.icon} />

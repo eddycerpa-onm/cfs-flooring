@@ -16,6 +16,7 @@ const variantClasses: Record<string, string> = {
   outline: 'border border-accent text-accent bg-transparent',
   dark: 'bg-dark-bg text-white border border-white/10',
   light: 'bg-white text-text shadow-sm border border-stroke',
+  overlay: 'bg-dark-bg/90 backdrop-blur-md text-accent-2 border border-white/20 shadow-md font-black',
 };
 
 const activeVariant = variantClasses[variant] || variantClasses.accent;

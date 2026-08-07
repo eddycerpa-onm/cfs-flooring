@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import defaultFallbackImg from '@/assets/services/hardwood-lvp.webp';
 
 interface Props {
   title: string;
@@ -96,15 +97,15 @@ const localChips = [
 <section class="floorDetails" id="floorDetails" aria-label={`${title} Details`}>
   <div class="floorDetailsWrap">
     
-    <header class="floorDetailsHead">
-      <div class="floorDetailsKicker">
+    <header class="floorDetailsHead" data-motion-stagger="true">
+      <div class="floorDetailsKicker" data-motion="fade-up">
         <span class="floorDetailsDot" aria-hidden="true"></span>
         <span>Service Details</span>
       </div>
-      <h2 class="floorDetailsTitle">
+      <h2 class="floorDetailsTitle" data-motion="fade-up">
         {title} solutions designed for comfort, performance, and everyday living.
       </h2>
-      <p class="floorDetailsDesc">
+      <p class="floorDetailsDesc" data-motion="fade-up">
         Whether replacing worn flooring in one room or updating an entire property, we provide clear guidance, clean subfloor prep, and precision installation so your space looks and feels incredible.
       </p>
     </header>
@@ -112,9 +113,9 @@ const localChips = [
     <div class="floorDetailsGrid">
       
       <!-- Left Stack of 4 Cards -->
-      <div class="fdStack">
+      <div class="fdStack" data-motion-stagger="true">
         {cardsData.map((card) => (
-          <article class="fdCard">
+          <article class="fdCard" data-motion="fade-up">
             <div class="fdCardTop">
               <div class="fdTag">{card.tag}</div>
               <div class="fdIcon" aria-hidden="true" set:html={card.icon} />
@@ -135,15 +136,15 @@ const localChips = [
 
       <!-- Right Sidebar Column -->
       <aside class="fdSide">
-        <div class="fdMedia">
+        <div class="fdMedia" data-motion="fade-left">
           {image ? (
             typeof image === 'string' ? (
-              <img src={image} alt={`${title} by CFS Flooring`} class="fdMediaImg" />
+              <img src={image} alt={`${title} by CFS Flooring`} width="700" height="520" class="fdMediaImg" loading="lazy" decoding="async" />
             ) : (
-              <Image src={image} alt={`${title} by CFS Flooring`} width={700} height={520} class="fdMediaImg" />
+              <Image src={image} alt={`${title} by CFS Flooring`} width={700} height={520} class="fdMediaImg" loading="lazy" decoding="async" />
             )
           ) : (
-            <img src="https://assets.cdn.filesafe.space/HGzfx6jbKe9Um66xPWLa/media/69e6bc0c6da81710db125c80.webp" alt={`${title} by CFS Flooring`} class="fdMediaImg" />
+            <Image src={defaultFallbackImg} alt={`${title} by CFS Flooring`} width={700} height={520} class="fdMediaImg" loading="lazy" decoding="async" />
           )}
           <div class="fdBadge">
             <div class="fdBadgeT">{title}</div>
@@ -151,7 +152,7 @@ const localChips = [
           </div>
         </div>
 
-        <div class="fdSeoBox">
+        <div class="fdSeoBox" data-motion="fade-left">
           <h3 class="fdSeoTitle">
             {seoTitle || `Serving Lake Oswego, West Linn, and Wilsonville flooring projects`}
           </h3>

@@ -1,0 +1,105 @@
+---
+// GlobalScrollAnimations.astro
+---
+
+<style is:global>
+  @media (prefers-reduced-motion: no-preference) {
+    /* Estado inicial para evitar FOUC antes de que JS actúe */
+    html:not(.no-js) [data-motion] {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  import { inView, animate } from 'motion';
+
+  const getAnimations = () => ({
+    'fade-up': { opacity: [0, 1], y: [15, 0] },
+    'fade-down': { opacity: [0, 1], y: [-15, 0] },
+    'fade-left': { opacity: [0, 1], x: [15, 0] },
+    'fade-right': { opacity: [0, 1], x: [-15, 0] },
+    'fade': { opacity: [0, 1] },
+    'fade-up-light': { opacity: [0, 1], y: [10, 0] },
+    'scale-up': { opacity: [0, 1], scale: [0.96, 1] },
+    'image-blur': { opacity: [0, 1], filter: ['blur(4px)', 'blur(0px)'] },
+    'image-up': { opacity: [0, 1], y: [20, 0], filter: ['blur(4px)', 'blur(0px)'] },
+    'hero-video': { 
+      opacity: [0, 1], 
+      x: window.innerWidth > 980 ? [30, 0] : [0, 0],
+      filter: ['blur(4px)', 'blur(0px)']
+    },
+  });
+
+  const DEFAULT_DURATION = 0.6;
+  const DEFAULT_EASING = [0.17, 0.55, 0.55, 1]; // Smooth spring-like ease
+
+  function initAnimations() {
+    // 1. Elementos con STAGGER (Cascada)
+    const staggerContainers = document.querySelectorAll('[data-motion-stagger="true"]');
+    
+    staggerContainers.forEach(container => {
+      inView(container, (element) => {
+        // Encontrar descendientes con data-motion
+        const allMotionChildren = Array.from(element.querySelectorAll('[data-motion]'));
+        
+        // Obtener solo aquellos cuyo stagger contenedor más cercano sea ESTE contenedor
+        // y que no estén anidados dentro de otro [data-motion] DENTRO de este contenedor
+        const targetChildren = allMotionChildren.filter(child => {
+          const closestStagger = child.closest('[data-motion-stagger="true"]');
+          if (closestStagger !== element) return false;
+          
+          const parentMotion = child.parentElement?.closest('[data-motion]');
+          return !parentMotion || !element.contains(parentMotion) || parentMotion === element;
+        });
+
+        if (targetChildren.length > 0) {
+          targetChildren.forEach((child, index) => {
+            const animations = getAnimations();
+            const type = (child.getAttribute('data-motion') || 'fade-up') as keyof typeof animations;
+            const keyframes = animations[type] || animations['fade-up'];
+            
+            animate(
+              child,
+              keyframes as any,
+              { 
+                duration: DEFAULT_DURATION,
+                ease: DEFAULT_EASING as any,
+                delay: index * 0.12 // Cascading stagger offset
+              }
+            );
+          });
+        }
+      }, { margin: "-5% 0px" });
+    });
+
+    // 2. Elementos INDIVIDUALES (Sin Stagger parent)
+    const individualElements = Array.from(document.querySelectorAll('[data-motion]')).filter(el => {
+      return !el.closest('[data-motion-stagger="true"]');
+    });
+
+    individualElements.forEach(el => {
+      inView(el, (element) => {
+        const animations = getAnimations();
+        const type = (element.getAttribute('data-motion') || 'fade-up') as keyof typeof animations;
+        const keyframes = animations[type] || animations['fade-up'];
+
+        animate(
+          element,
+          keyframes as any,
+          { 
+            duration: DEFAULT_DURATION,
+            ease: DEFAULT_EASING as any,
+            delay: 0.05
+          }
+        );
+      }, { margin: "-5% 0px" });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations);
+  } else {
+    initAnimations();
+  }
+</script>

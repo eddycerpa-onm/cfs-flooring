@@ -15,14 +15,14 @@ const { class: className } = Astro.props;
     
     <!-- Section Header -->
     <div class="mb-12">
-      <div class="flex items-center gap-2 text-accent-2 font-black text-xs uppercase tracking-widest mb-3 font-title">
+      <div class="flex items-center gap-2 text-accent-2 font-black text-xs uppercase tracking-widest mb-3 font-title" data-motion="fade-up">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
           <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
         </svg>
         <span>Testimonials</span>
       </div>
 
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black font-title text-white max-w-4xl tracking-tight leading-tight">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black font-title text-white max-w-4xl tracking-tight leading-tight" data-motion="fade-up">
         What homeowners and property owners are saying about CFS Flooring
       </h2>
     </div>
@@ -31,7 +31,7 @@ const { class: className } = Astro.props;
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
       <!-- Left Media Image (Original WebP Image) -->
-      <div class="lg:col-span-6">
+      <div class="lg:col-span-6" data-motion="fade-right">
         <div class="relative aspect-square w-full max-w-testimonials-media rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-panel">
           <Image
             src={testimonialMediaImg}
@@ -52,7 +52,7 @@ const { class: className } = Astro.props;
       </div>
 
       <!-- Right Testimonial Slider with Smooth Animation -->
-      <div class="lg:col-span-6 flex flex-col justify-between" x-data="{ active: 0 }">
+      <div class="lg:col-span-6 flex flex-col justify-between" x-data="{ active: 0 }" data-motion="fade-left">
         <div class="relative min-h-[220px]">
           {testimonials.map((t, idx) => (
             <div

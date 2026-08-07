@@ -16,7 +16,7 @@ const slides = [
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
       <!-- Col 1: Media Slider Frame with Alpine.js -->
-      <div class="lg:col-span-6 relative" x-data="{ activeSlide: 0 }">
+      <div class="lg:col-span-6 relative" x-data="{ activeSlide: 0 }" data-motion="fade-right">
         <div class="relative min-h-about-frame-min sm:min-h-about-frame-sm-min rounded-3xl overflow-hidden bg-panel border border-stroke shadow-2xl">
           {slides.map((slide, idx) => (
             <div
@@ -50,7 +50,7 @@ const slides = [
       </div>
 
       <!-- Col 2: Copy & List -->
-      <div class="lg:col-span-6 flex flex-col justify-center">
+      <div class="lg:col-span-6 flex flex-col justify-center" data-motion="fade-left">
         
         <div class="flex items-center gap-2 text-accent font-black text-xs uppercase tracking-widest mb-4 font-title">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
@@ -85,21 +85,21 @@ const slides = [
         <div class="flex flex-wrap items-center gap-4">
           <a
             href="/about-us"
-            class="px-6 py-3.5 rounded-2xl border border-stroke bg-transparent text-text font-extrabold text-base hover:bg-panel hover:border-accent hover:text-accent transition-all"
+            class="px-6 py-3.5 rounded-2xl border border-stroke bg-transparent text-text font-extrabold text-base hover:bg-panel hover:border-accent hover:text-accent transition-colors"
           >
             Learn More
           </a>
 
-          <button
-            type="button"
-            @click="$dispatch('open-drawer')"
-            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-accent-2 text-dark-bg font-extrabold text-base shadow-md hover:bg-accent hover:text-white transition-all"
+          <a
+            href="/contact-us"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-accent-2 text-dark-bg font-extrabold text-base shadow-md hover:bg-accent hover:text-white transition-colors"
+            aria-label="Get a free quote on Contact Us page"
           >
             <span>Get a Quote</span>
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3H7a2 2 0 0 0-2 2v14l4-2 4 2 4-2 4 2V9l-7-6Z" />
             </svg>
-          </button>
+          </a>
         </div>
 
       </div>
@@ -107,24 +107,24 @@ const slides = [
     </div>
 
     <!-- Stats Row Below -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-20">
-      <div class="p-8 rounded-2xl bg-bg border border-stroke shadow-md text-center">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-20" data-motion-stagger="true">
+      <div data-motion="fade-up" class="p-8 rounded-2xl bg-bg border border-stroke shadow-md text-center">
         <div class="text-4xl sm:text-5xl font-black font-title text-accent">
-          10<span class="text-accent-2">+</span>
+          <span data-counter="10">0</span><span class="text-accent-2">+</span>
         </div>
         <div class="text-sm font-extrabold text-muted mt-2">Years Experience</div>
       </div>
 
-      <div class="p-8 rounded-2xl bg-bg border border-stroke shadow-md text-center">
+      <div data-motion="fade-up" class="p-8 rounded-2xl bg-bg border border-stroke shadow-md text-center">
         <div class="text-4xl sm:text-5xl font-black font-title text-accent">
-          8
+          <span data-counter="9">0</span>
         </div>
-        <div class="text-sm font-extrabold text-muted mt-2">Core Flooring Services</div>
+        <div class="text-sm font-extrabold text-muted mt-2">Core Services</div>
       </div>
 
-      <div class="p-8 rounded-2xl bg-bg border border-stroke shadow-md text-center">
+      <div data-motion="fade-up" class="p-8 rounded-2xl bg-bg border border-stroke shadow-md text-center">
         <div class="text-4xl sm:text-5xl font-black font-title text-accent">
-          4
+          <span data-counter="4">0</span>
         </div>
         <div class="text-sm font-extrabold text-muted mt-2">Primary Service Areas</div>
       </div>
@@ -132,3 +132,41 @@ const slides = [
 
   </div>
 </section>
+
+<script>
+  function initCounters() {
+    const counterEls = document.querySelectorAll('[data-counter]');
+    if (counterEls.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const finalVal = parseInt(target.getAttribute('data-counter') || '0', 10);
+          let currentVal = 0;
+          const duration = 1200;
+          const stepTime = Math.max(Math.floor(duration / finalVal), 50);
+
+          const timer = setInterval(() => {
+            currentVal += 1;
+            target.innerText = String(currentVal);
+            if (currentVal >= finalVal) {
+              target.innerText = String(finalVal);
+              clearInterval(timer);
+            }
+          }, stepTime);
+
+          observer.unobserve(target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    counterEls.forEach(el => observer.observe(el));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCounters);
+  } else {
+    initCounters();
+  }
+</script>

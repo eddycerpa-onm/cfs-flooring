@@ -28,9 +28,9 @@ const socialLinks = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_0.9fr_0.95fr_1.2fr] gap-[18px] items-start">
       
       <!-- Col 1: Brand Logo & Desc -->
-      <div class="flex flex-col">
+      <div class="flex flex-col" data-motion="fade-right">
         <a href="/" class="inline-flex items-center mb-[14px]" aria-label="Home">
-          <Image src={logo} alt={company.name} class="h-[78px] w-auto object-contain" />
+          <Image src={logo} alt={company.name} width={240} height={78} class="h-[78px] w-auto object-contain" loading="lazy" decoding="async" />
         </a>
         <p class="text-[14px] text-muted leading-[1.65] font-body max-w-[58ch] m-0">
           Quality flooring installation with honest guidance you can trust. CFS Flooring serves homes and businesses across Lake Oswego, West Linn, and Wilsonville with a focus on craftsmanship, transparency, and clean results.
@@ -38,13 +38,13 @@ const socialLinks = [
       </div>
 
       <!-- Col 2: Menu Links -->
-      <nav class="flex flex-col" aria-label="Footer menu">
-        <h3 class="text-[14px] font-black font-title text-text mt-[6px] mb-[12px]">
+      <nav class="flex flex-col" aria-label="Footer menu" data-motion-stagger="true">
+        <h3 class="text-[14px] font-black font-title text-text mt-[6px] mb-[12px]" data-motion="fade-up">
           Menu
         </h3>
         <ul class="flex flex-col gap-[8px] list-none p-0 m-0" role="list">
           {navigationData.quickLinks.map((link) => (
-            <li>
+            <li data-motion="fade-up">
               <a
                 href={link.href}
                 class="inline-flex items-center h-[40px] px-[12px] rounded-[14px] border border-stroke bg-panel text-[14px] font-bold text-text hover:text-accent hover:border-accent transition-all w-fit max-[980px]:w-full max-[980px]:justify-between"
@@ -57,13 +57,13 @@ const socialLinks = [
       </nav>
 
       <!-- Col 3: Services Links -->
-      <nav class="flex flex-col" aria-label="Footer services">
-        <h3 class="text-[14px] font-black font-title text-text mt-[6px] mb-[12px]">
+      <nav class="flex flex-col" aria-label="Footer services" data-motion-stagger="true">
+        <h3 class="text-[14px] font-black font-title text-text mt-[6px] mb-[12px]" data-motion="fade-up">
           Services
         </h3>
         <ul class="flex flex-col gap-[8px] list-none p-0 m-0" role="list">
           {serviceSublinks.map((service) => (
-            <li>
+            <li data-motion="fade-up">
               <a
                 href={service.href}
                 class="inline-flex items-center h-[40px] px-[12px] rounded-[14px] border border-stroke bg-panel text-[14px] font-bold text-text hover:text-accent hover:border-accent transition-all w-fit max-[980px]:w-full max-[980px]:justify-between"
@@ -76,7 +76,7 @@ const socialLinks = [
       </nav>
 
       <!-- Col 4: Contact Card & Social -->
-      <div class="flex flex-col">
+      <div class="flex flex-col" data-motion="fade-left">
         <h3 class="text-[14px] font-black font-title text-text mt-[6px] mb-[12px]">
           Contact
         </h3>
@@ -145,7 +145,7 @@ const socialLinks = [
     </div>
 
     <!-- Bottom copyright -->
-    <div class="mt-[18px] pt-[14px] border-t border-stroke flex flex-wrap items-center justify-between gap-[10px]">
+    <div class="mt-[18px] pt-[14px] border-t border-stroke flex flex-wrap items-center justify-between gap-[10px]" data-motion="fade-up">
       <p class="m-0 text-[13px] font-extrabold text-muted">
         © {new Date().getFullYear()} {company.legalName}. All rights reserved.
       </p>

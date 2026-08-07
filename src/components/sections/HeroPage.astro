@@ -1,5 +1,6 @@
 ---
 import Pill from '../ui/Pill.astro';
+import { Image } from 'astro:assets';
 
 interface Breadcrumb {
   label?: string;
@@ -33,21 +34,39 @@ const {
   eyebrow,
   breadcrumbs = [],
   dark = false,
+  image,
   stats = [],
 } = Astro.props;
 
 const badgeText = pillText || eyebrow;
 const bodyText = description || subtitle;
+const hasBgImage = Boolean(image);
 ---
 
-<section class:list={['py-16 md:py-20 border-b border-stroke relative overflow-hidden', dark ? 'bg-dark-bg text-white' : 'bg-panel text-text']}>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<section class:list={[
+  'py-16 md:py-24 border-b border-stroke relative overflow-hidden',
+  hasBgImage ? 'text-white' : dark ? 'bg-dark-bg text-white' : 'bg-panel text-text'
+]}>
+  {hasBgImage && (
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      {typeof image === 'string' ? (
+        <img src={image} alt={title} width="1600" height="700" class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high" />
+      ) : (
+        <Image src={image} alt={title} width={1600} height={700} class="w-full h-full object-cover" loading="eager" decoding="async" fetchpriority="high" />
+      )}
+      <!-- Dark Overlay Gradient for 100% Text Legibility -->
+      <div class="absolute inset-0 bg-gradient-to-r from-dark-bg/95 via-dark-bg/85 to-dark-bg/60 z-1"></div>
+      <div class="absolute inset-0 bg-dark-bg/40 z-1"></div>
+    </div>
+  )}
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" data-motion-stagger="true">
     
     <!-- Breadcrumbs -->
     {
       breadcrumbs.length > 0 && (
-        <nav class="flex items-center gap-2 text-xs mb-6 font-medium" aria-label="Breadcrumb">
-          <a href="/" class:list={['hover:underline transition-colors', dark ? 'text-white/70 hover:text-accent-2' : 'text-muted hover:text-accent']}>
+        <nav class="flex items-center gap-2 text-xs mb-6 font-medium" aria-label="Breadcrumb" data-motion="fade-up">
+          <a href="/" class:list={['hover:underline transition-colors', (hasBgImage || dark) ? 'text-white/70 hover:text-accent-2' : 'text-muted hover:text-accent']}>
             Home
           </a>
           {breadcrumbs.map((crumb) => {
@@ -55,16 +74,16 @@ const bodyText = description || subtitle;
             const targetUrl = crumb.href || crumb.url;
             return (
               <div class="flex items-center gap-2">
-                <span class={dark ? 'text-white/30' : 'text-stroke'}>/</span>
+                <span class={(hasBgImage || dark) ? 'text-white/40' : 'text-stroke'}>/</span>
                 {targetUrl ? (
                   <a
                     href={targetUrl}
-                    class:list={['hover:underline transition-colors', dark ? 'text-white/70 hover:text-accent-2' : 'text-muted hover:text-accent']}
+                    class:list={['hover:underline transition-colors', (hasBgImage || dark) ? 'text-white/70 hover:text-accent-2' : 'text-muted hover:text-accent']}
                   >
                     {labelText}
                   </a>
                 ) : (
-                  <span class:list={['font-bold', dark ? 'text-accent-2' : 'text-accent']}>
+                  <span class:list={['font-bold', (hasBgImage || dark) ? 'text-accent-2' : 'text-accent']}>
                     {labelText}
                   </span>
                 )}
@@ -76,15 +95,19 @@ const bodyText = description || subtitle;
     }
 
     <div class="max-w-3xl space-y-4">
-      {badgeText && <Pill variant={dark ? 'dark' : 'accent'}>{badgeText}</Pill>}
+      {badgeText && (
+        <div data-motion="fade-up">
+          <Pill variant={hasBgImage ? 'overlay' : dark ? 'dark' : 'accent'}>{badgeText}</Pill>
+        </div>
+      )}
       
-      <h1 class:list={['text-3xl sm:text-4xl lg:text-5xl font-black font-title tracking-tight leading-tight', dark ? 'text-white' : 'text-text']}>
+      <h1 class:list={['text-3xl sm:text-4xl lg:text-5xl font-black font-title tracking-tight leading-tight', (hasBgImage || dark) ? 'text-white drop-shadow-md' : 'text-text']} data-motion="fade-up">
         {title}
       </h1>
 
       {
         bodyText && (
-          <p class:list={['text-base sm:text-lg leading-relaxed font-normal', dark ? 'text-white/80' : 'text-muted']}>
+          <p class:list={['text-base sm:text-lg leading-relaxed font-normal', (hasBgImage || dark) ? 'text-white/90 drop-shadow-xs' : 'text-muted']} data-motion="fade-up">
             {bodyText}
           </p>
         )
@@ -94,7 +117,7 @@ const bodyText = description || subtitle;
         stats.length > 0 && (
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6">
             {stats.map((st) => (
-              <div class="p-4 rounded-xl bg-white/10 border border-white/10">
+              <div class="p-4 rounded-xl bg-white/10 border border-white/10 backdrop-blur-xs">
                 <div class="text-2xl font-bold font-title text-accent-2">{st.value}</div>
                 <div class="text-xs text-white/70">{st.kicker}</div>
               </div>
