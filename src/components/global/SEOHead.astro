@@ -12,38 +12,30 @@ interface Props {
 }
 
 const {
-  title = `${company.name} | Flooring in Lake Oswego & West Linn`,
+  title = `${company.name} | Flooring & Painting in Lake Oswego, West Linn & Portland Metro`,
   description = company.description,
   image = '/og-image.png',
-  canonical,
+  canonical = Astro.url.href,
   type = 'website',
   noindex = false,
 } = Astro.props;
 
 const siteName = company.name;
-const fullImageUrl = new URL(typeof image === 'string' ? image : (image as any)?.src || '/og-image.png', Astro.site || 'https://cfsflooring.com').href;
-const fullLogoUrl = new URL('/og-image.png', Astro.site || 'https://cfsflooring.com').href;
-
-// Clean canonical URL stripping index.html
-const rawPathname = Astro.url.pathname.replace(/\/index\.html$/, '/');
-const cleanCanonical = canonical || new URL(rawPathname, Astro.site || 'https://cfsflooring.com').href;
+const fullImageUrl = new URL(image, Astro.site || 'https://cfsflooring.com').href;
+const fullLogoUrl = new URL('/favicon.svg', Astro.site || 'https://cfsflooring.com').href;
 ---
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#221416" />
 
 <SEO
   title={title}
   description={description}
-  canonical={cleanCanonical}
+  canonical={canonical}
   noindex={noindex}
   openGraph={{
     basic: {
       title,
       type,
       image: fullImageUrl,
-      url: cleanCanonical,
+      url: canonical,
     },
     optional: {
       siteName,
@@ -70,10 +62,8 @@ const cleanCanonical = canonical || new URL(rawPathname, Astro.site || 'https://
 <meta property="og:image:secure_url" content={fullImageUrl} />
 <meta property="og:logo" content={fullLogoUrl} />
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="icon" href="/favicon.ico" sizes="any" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="manifest" href="/site.webmanifest" />
 

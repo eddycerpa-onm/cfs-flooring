@@ -3,16 +3,6 @@
   "short_name": "CFS Flooring",
   "icons": [
     {
-      "src": "/favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
@@ -20,6 +10,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fdfbf7",
-  "theme_color": "#221416"
+  "background_color": "#ffffff",
+  "theme_color": "#b07f49"
 }
