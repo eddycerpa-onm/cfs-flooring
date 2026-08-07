@@ -128,29 +128,29 @@
 
   --text-chip: 13px;
 
-  /* Tipografía Exacta H2 About */
-  --text-h2-about: 50px;
-  --text-h2-about--line-height: 52.5px;
+  /* Tipografía Flotante H2 Responsive (Global & Clamped) */
+  --text-h2-about: clamp(28px, 4.5vw, 50px);
+  --text-h2-about--line-height: 1.12;
   --text-h2-about--letter-spacing: -0.8px;
 
   /* Tipografía Exacta H2 Process */
-  --text-h2-proc: 52px;
-  --text-h2-proc--line-height: 55.12px;
+  --text-h2-proc: clamp(28px, 4.5vw, 52px);
+  --text-h2-proc--line-height: 1.12;
   --text-h2-proc--letter-spacing: -0.8px;
 
   /* Tipografía Exacta H2 Services */
-  --text-h2-service: 48px;
-  --text-h2-service--line-height: 50.88px;
+  --text-h2-service: clamp(26px, 4.2vw, 48px);
+  --text-h2-service--line-height: 1.12;
   --text-h2-service--letter-spacing: -0.8px;
 
   /* Tipografía Exacta CTA */
-  --text-h2-cta: 46px;
-  --text-h2-cta--line-height: 48.76px;
+  --text-h2-cta: clamp(26px, 4vw, 46px);
+  --text-h2-cta--line-height: 1.12;
   --text-h2-cta--letter-spacing: -0.6px;
 
   /* Tipografía Exacta H2 Testimonials */
-  --text-h2-testi: 42px;
-  --text-h2-testi--line-height: 46.2px;
+  --text-h2-testi: clamp(24px, 3.8vw, 42px);
+  --text-h2-testi--line-height: 1.15;
   --text-h2-testi--letter-spacing: -0.4px;
 
   /* Sombras y Halos Exactos */
@@ -674,6 +674,13 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-title);
+}
+
+h2 {
+  font-size: clamp(28px, 4.5vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -0.6px;
+  font-weight: 900;
 }
 
 [x-cloak] {
