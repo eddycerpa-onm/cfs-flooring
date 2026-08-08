@@ -1,4 +1,4 @@
-import { defineConfig, passthroughImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
@@ -6,9 +6,7 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   site: 'https://cfsflooring.com',
   trailingSlash: 'never',
-  image: {
-    service: passthroughImageService(),
-  },
+
   redirects: {
     // Old HighLevel root URLs -> New /services/ URLs
     '/Carpet-Installation': '/services/carpet-installation',

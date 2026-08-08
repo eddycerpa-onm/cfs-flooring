@@ -12,10 +12,10 @@ interface Props {
 }
 
 const {
-  title = `${company.name} | Flooring & Painting in Lake Oswego, West Linn & Portland Metro`,
+  title,
   description = company.description,
   image = '/og-image.png',
-  canonical = Astro.url.href,
+  canonical,
   type = 'website',
   noindex = false,
 } = Astro.props;
@@ -23,19 +23,27 @@ const {
 const siteName = company.name;
 const fullImageUrl = new URL(image, Astro.site || 'https://cfsflooring.com').href;
 const fullLogoUrl = new URL('/favicon.svg', Astro.site || 'https://cfsflooring.com').href;
+
+const rawCanonical = canonical || Astro.url.href;
+const cleanCanonical = rawCanonical.replace(/\/index\.html$/, '');
+
+const defaultTitle = `${company.name} | Flooring Experts in Lake Oswego & West Linn`;
+const activeTitle = title && title.includes('| Professional Flooring Installation')
+  ? `${company.name} | Flooring Experts in Lake Oswego & West Linn`
+  : (title || defaultTitle);
 ---
 
 <SEO
-  title={title}
+  title={activeTitle}
   description={description}
-  canonical={canonical}
+  canonical={cleanCanonical}
   noindex={noindex}
   openGraph={{
     basic: {
-      title,
+      title: activeTitle,
       type,
       image: fullImageUrl,
-      url: canonical,
+      url: cleanCanonical,
     },
     optional: {
       siteName,
@@ -43,7 +51,7 @@ const fullLogoUrl = new URL('/favicon.svg', Astro.site || 'https://cfsflooring.c
       locale: 'en_US',
     },
     image: {
-      alt: title,
+      alt: activeTitle,
       type: 'image/png',
       width: 1200,
       height: 630,
@@ -52,20 +60,25 @@ const fullLogoUrl = new URL('/favicon.svg', Astro.site || 'https://cfsflooring.c
   twitter={{
     card: 'summary_large_image',
     site: '@cfsflooring',
-    title,
+    title: activeTitle,
     description,
     image: fullImageUrl,
-    imageAlt: title,
+    imageAlt: activeTitle,
   }}
 />
 
 <meta property="og:image:secure_url" content={fullImageUrl} />
 <meta property="og:logo" content={fullLogoUrl} />
 
+<meta name="theme-color" content="#221416" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="manifest" href="/site.webmanifest" />
 
 <!-- Local Fonts Preload for Maximum Performance -->
 <link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/lexend-deca-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+
 
