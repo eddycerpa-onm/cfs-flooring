@@ -26,6 +26,9 @@ export default defineConfig({
     '/services/commercial-flooring': '/services/vct-flooring',
     '/services/flooring-repair': '/services/sand-and-finish',
     '/services/maintenance': '/services/counters-and-decks',
+
+    // Sitemap alias for Google Search Console
+    '/sitemap.xml': '/sitemap-0.xml',
   },
   build: {
     format: 'file'
