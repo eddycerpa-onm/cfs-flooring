@@ -435,7 +435,7 @@
   border-radius: 999px;
   background-color: var(--panel);
   border: 1px solid var(--stroke);
-  color: var(--accent);
+  color: var(--text);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.14em;
