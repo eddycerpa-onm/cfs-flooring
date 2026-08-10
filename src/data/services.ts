@@ -124,8 +124,20 @@ export const services: ServiceItem[] = [
     ],
     "faqs": [
       {
-        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
-        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
+            "question": "What is the difference between solid hardwood and Luxury Vinyl Plank (LVP)?",
+            "answer": "Solid hardwood is natural timber that can be sanded and refinished multiple times over decades, while LVP is an engineered waterproof flooring with a durable wear layer that replicates real wood, making it ideal for moisture-prone areas like basements and kitchens."
+      },
+      {
+            "question": "How do you handle moisture issues common in Oregon and Washington homes?",
+            "answer": "We test subfloor moisture levels before every installation and apply vapor retarders or moisture mitigation membranes when needed to protect your hardwood or LVP from warping and cupping."
+      },
+      {
+            "question": "Can LVP or laminate be installed over existing flooring?",
+            "answer": "In many cases, yes. Floating LVP or laminate can be installed over existing sheet vinyl or tile, provided the subfloor is flat, sound, and properly prepared."
+      },
+      {
+            "question": "How long does a typical hardwood or LVP installation take?",
+            "answer": "Most residential hardwood or LVP installations take between 1 to 3 days depending on square footage, room layout, subfloor prep, and trim details."
       }
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville flooring projects",
@@ -193,8 +205,20 @@ export const services: ServiceItem[] = [
     ],
     "faqs": [
       {
-        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
-        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
+            "question": "Why is power-stretching necessary during carpet installation?",
+            "answer": "Power-stretching uses hydraulic leverage to pull the carpet taut across the room before securing it to tack strips. This prevents future buckling, unsightly ripples, and premature carpet wear, extending the lifespan of your flooring."
+      },
+      {
+            "question": "Are carpet tiles better than broadloom carpet for commercial spaces?",
+            "answer": "Carpet tiles offer superior flexibility for commercial offices in Vancouver and Portland. Damaged or stained tiles can be replaced individually without removing carpet across the entire office floor, and installation requires less downtime."
+      },
+      {
+            "question": "What cushion padding density do you recommend for residential homes?",
+            "answer": "We recommend high-density 8lb memory-foam or rubberized carpet padding (3/8 to 7/16 inch thickness). Premium padding absorbs foot traffic impact, enhances foot comfort, improves thermal insulation, and extends carpet durability."
+      },
+      {
+            "question": "Do you offer eco-friendly or low-allergen carpet choices?",
+            "answer": "Yes! We offer CRI Green Label Plus certified carpets and hypoallergenic recycled pads that feature zero-VOC emission ratings, ideal for families with pets or respiratory sensitivities."
       }
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville carpet projects",
@@ -262,8 +286,20 @@ export const services: ServiceItem[] = [
     ],
     "faqs": [
       {
-        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
-        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
+            "question": "How dust-free is your hardwood sanding process?",
+            "answer": "We utilize commercial dust-containment sanding systems attached to high-efficiency vacuum units that capture over 95% of airborne wood dust, keeping your home clean and protecting indoor air quality."
+      },
+      {
+            "question": "How many times can my hardwood floors be sanded and refinished?",
+            "answer": "Solid 3/4-inch hardwood floors can typically be sanded and refinished 4 to 6 times over their lifetime. Engineered hardwood with a real wood wear layer can usually be refinished 1 to 3 times depending on wear layer thickness."
+      },
+      {
+            "question": "What is the difference between water-based and oil-based finishes?",
+            "answer": "Water-based polyurethane cures faster (ready for foot traffic in 24 hours), stays clear without ambering over time, and emits low VOC odors. Oil-based polyurethane delivers a warm amber glow, takes longer to dry, and has a stronger initial odor."
+      },
+      {
+            "question": "How long after refinishing can we walk on the floors and move furniture back?",
+            "answer": "With water-based finishes, light socks-only foot traffic is allowed after 24 hours. Full cure and furniture replacement typically occur within 3 to 7 days, using felt protective pads under table and chair legs."
       }
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville sand and finish projects",
@@ -331,8 +367,20 @@ export const services: ServiceItem[] = [
     ],
     "faqs": [
       {
-        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
-        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
+            "question": "Why do you use uncoupling membranes (like Schluter-Ditra) under tile?",
+            "answer": "Uncoupling membranes isolate the tile layer from subfloor expansion and contraction, preventing cracked tiles or fractured grout lines caused by natural building movement or moisture shifts in Oregon homes."
+      },
+      {
+            "question": "Are porcelain tiles better than ceramic tiles for moisture areas?",
+            "answer": "Yes. Porcelain tile has an extremely low water absorption rate (<0.5%), making it superior for bathrooms, walk-in showers, entryways, and outdoor spaces exposed to heavy moisture and frost."
+      },
+      {
+            "question": "Can you install radiant floor heating beneath tile?",
+            "answer": "Absolutely! We frequently integrate electric radiant floor heating cables or mats beneath bathroom and kitchen tile installations for warm, luxurious floors year-round."
+      },
+      {
+            "question": "Do you offer stain-resistant grout options?",
+            "answer": "We install high-performance epoxy and urethane grouts that are inherently stain-resistant, waterproof, and do not require periodic resealing like traditional cementitious grouts."
       }
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville ceramic tile projects",
@@ -400,8 +448,20 @@ export const services: ServiceItem[] = [
     ],
     "faqs": [
       {
-        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
-        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
+            "question": "What are the key benefits of sheet vinyl compared to individual vinyl tiles?",
+            "answer": "Sheet vinyl provides a seamless, 100% waterproof surface with zero grout joints or plank seams, preventing water from reaching the subfloor. It is ideal for healthcare settings, commercial kitchens, laundries, and bathrooms."
+      },
+      {
+            "question": "What is flash coving in commercial sheet vinyl installation?",
+            "answer": "Flash coving extends sheet vinyl 4 to 6 inches up the wall with a cove stick and cap strip, creating a continuous hygienic basin that prevents liquid pooling and makes sanitation effortless."
+      },
+      {
+            "question": "How durable is modern sheet vinyl against wear and heavy foot traffic?",
+            "answer": "Commercial-grade sheet vinyl features fiberglass reinforcement and heavy polyurethane wear layers designed to withstand rolling carts, heavy foot traffic, and frequent chemical cleaning."
+      },
+      {
+            "question": "Can sheet vinyl be installed over existing subfloors?",
+            "answer": "Yes, as long as the subfloor is smooth, dry, and flat. We often apply self-leveling underlayment or quarter-inch mahogany underlayment panels to ensure a flawless finish."
       }
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville sheet vinyl projects",
@@ -469,8 +529,20 @@ export const services: ServiceItem[] = [
     ],
     "faqs": [
       {
-        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
-        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
+            "question": "Why is VCT the industry standard for high-traffic commercial spaces?",
+            "answer": "Vinyl Composition Tile (VCT) is extremely economical, durable, and repairable. Individual tiles can be replaced easily, and regular maintenance maintains a clean, professional shine for decades."
+      },
+      {
+            "question": "How often should VCT flooring be stripped, sealed, and waxed?",
+            "answer": "High-traffic commercial VCT floors should be burnished regularly, with professional stripping and re-waxing performed every 6 to 12 months depending on foot traffic levels."
+      },
+      {
+            "question": "Can VCT be installed over concrete slabs with high moisture?",
+            "answer": "We conduct Calcium Chloride and relative humidity (RH) tests prior to installation. If moisture levels exceed manufacturer thresholds, we apply specialized moisture mitigation epoxy primers."
+      },
+      {
+            "question": "Do you offer layout design patterns with VCT tiles?",
+            "answer": "Yes! VCT is available in dozens of colors, allowing custom borders, accent patterns, checkerboard layouts, and directional pathways for school, retail, and office environments."
       }
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville VCT flooring projects",
@@ -538,8 +610,20 @@ export const services: ServiceItem[] = [
     ],
     "faqs": [
       {
-        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
-        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
+            "question": "How do you control dust during heavy tile or mortar demolition?",
+            "answer": "We use industrial HEPA-filtered air scrubbers, sealed containment barriers, and vacuum-assisted electric scrapers to minimize airborne dust and keep adjacent living areas clean."
+      },
+      {
+            "question": "Can you flatten uneven concrete or sagged wood subfloors before new floor installation?",
+            "answer": "Yes. After removing old flooring, we grind concrete high spots, patch low areas with polymer-modified self-leveling underlayment, and reinforce wood joists or subfloor sheathing."
+      },
+      {
+            "question": "What happens to the old flooring debris after removal?",
+            "answer": "We handle complete haul-away and disposal of all old carpet, tile, hardwood, adhesive residue, and underlayment, leaving your site vacuumed and ready for immediate new floor installation."
+      },
+      {
+            "question": "How long does floor removal take for an average home?",
+            "answer": "Most residential carpet or floating LVP tear-outs take less than 1 day. Tile, glued-down hardwood, or thick mortar bed removals typically take 1 to 2 days."
       }
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville flooring removal projects",
@@ -607,8 +691,20 @@ export const services: ServiceItem[] = [
     ],
     "faqs": [
       {
-        "question": "Do you offer professional flooring services in Lake Oswego, West Linn, Wilsonville & Vancouver?",
-        "answer": "Yes, CFS Flooring provides full-service installation, sanding, removal, ceramic tile, sheet vinyl, VCT, counters and decks for homes and businesses across Lake Oswego, West Linn, Wilsonville, and Vancouver."
+            "question": "Which countertop material is best for low-maintenance kitchens?",
+            "answer": "Engineered quartz is the top choice for low-maintenance kitchens. It is non-porous, highly stain-resistant, scratch-resistant, and requires no periodic sealing unlike natural granite or marble."
+      },
+      {
+            "question": "Why is composite decking ideal for Pacific Northwest weather?",
+            "answer": "Composite decking (like Trex or TimberTech) resists moisture absorption, rot, mold, and insect damage caused by wet Oregon winters, eliminating the annual sanding, staining, and sealing required for wood decks."
+      },
+      {
+            "question": "Can you replace countertops without replacing lower kitchen cabinets?",
+            "answer": "Yes! As long as your existing lower cabinets are structurally sound and level, we can template, fabricate, and install new quartz or solid surface countertops directly onto existing cabinetry."
+      },
+      {
+            "question": "Do you build custom railings and stairs for outdoor decks?",
+            "answer": "Yes, we construct complete deck additions including custom stairs, aluminum or steel cable railings, composite top rails, and integrated LED stair lighting."
       }
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville counters and decks projects",
@@ -666,12 +762,20 @@ export const services: ServiceItem[] = [
     ],
     "faqs": [
       {
-        "question": "What type of paint do you use for interior residential rooms?",
-        "answer": "We use top-tier, low-VOC and zero-VOC acrylic latex paints from trusted brands like Sherwin-Williams and Benjamin Moore. These paints provide rich coverage, excellent washability, and minimal odor."
+            "question": "What type of paint do you use for interior residential rooms?",
+            "answer": "We use premium low-VOC and zero-VOC interior paints (like Sherwin-Williams Emerald or Benjamin Moore Regal Select) that deliver excellent coverage, durability, and washable finishes while protecting indoor air quality."
       },
       {
-        "question": "Can painting be scheduled alongside flooring installation or refinishing?",
-        "answer": "Yes! Coordinating painting with flooring installation or hardwood sand & finish saves time and ensures a seamless renovation. We typically paint walls and trim before final floor finishing."
+            "question": "How do you prepare exterior surfaces before applying paint?",
+            "answer": "Exterior prep includes full pressure washing to remove dirt and mildew, scraping loose paint, sanding rough edges, caulking gaps around windows and trim, and applying high-adhesion exterior primer."
+      },
+      {
+            "question": "Can painting be scheduled alongside flooring installation or refinishing?",
+            "answer": "Yes! We coordinate painting before new floor installation or after hardwood sanding so your walls and trim remain protected and spotless."
+      },
+      {
+            "question": "Do you handle drywall repairs and trim touch-ups before painting?",
+            "answer": "Absolutely. We patch nail holes, repair drywall cracks, fix water-damaged spots, and sand baseboards or door casings prior to applying finish coats."
       }
     ],
     "seoTitle": "Serving Lake Oswego, West Linn, and Wilsonville painting projects",
