@@ -548,9 +548,22 @@
 @media (max-width: 991px) {
   .flooring-hero {
     min-height: auto;
-    padding-top: 72px;
+    padding-top: 64px;
     padding-bottom: 48px;
     display: block;
+  }
+
+  .flooring-hero .hero-banner-wrapper {
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+  }
+
+  .flooring-hero .hero-banner-left {
+    width: 100%;
+    min-width: 0;
+    padding-right: 0;
+    transform: none;
   }
 
   .flooring-hero .hero-right-bg {
@@ -560,7 +573,7 @@
     width: 100%;
     height: auto;
     display: block;
-    padding: 0 24px;
+    padding: 0;
     margin-top: 24px;
   }
 
@@ -581,12 +594,6 @@
   .flooring-hero .hero-base-container {
     padding-left: 24px;
     padding-right: 24px;
-  }
-
-  .flooring-hero .hero-banner-left {
-    width: 100%;
-    padding-right: 0;
-    transform: none;
   }
 
   .flooring-hero .hero-bottom-spacer {
