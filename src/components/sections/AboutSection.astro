@@ -28,14 +28,14 @@ const slides = [
             >
               <Image src={slide.img} alt={slide.alt} class="w-full h-full object-cover" width={600} height={580} />
               
-              <div class="absolute bottom-5 left-5 z-10 px-4 py-2.5 rounded-full bg-accent-2 text-dark-bg text-sm font-black shadow-lg font-body">
+              <div class="absolute top-4 left-4 sm:top-auto sm:bottom-5 sm:left-5 z-10 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full bg-accent-2 text-dark-bg text-xs sm:text-sm font-black shadow-lg font-body">
                 {slide.badge}
               </div>
             </div>
           ))}
 
           <!-- Slider Dots Navigation -->
-          <div class="absolute bottom-5 right-5 z-20 flex items-center gap-2 bg-dark-bg/60 backdrop-blur-md px-3 py-1.5 rounded-full">
+          <div class="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 z-20 flex items-center gap-1.5 sm:gap-2 bg-dark-bg/70 backdrop-blur-md px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full">
             {slides.map((_, idx) => (
               <button
                 type="button"
