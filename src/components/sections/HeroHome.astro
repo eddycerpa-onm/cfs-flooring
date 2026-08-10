@@ -11,26 +11,6 @@ const chips = [
 ---
 
 <section class="home-banner-section flooring-hero">
-	<div class="hero-right-bg">
-		<div class="hero-media-frame" data-motion="hero-video">
-			<video
-				autoplay
-				loop
-				muted
-				playsinline
-				preload="metadata"
-				poster={heroPoster.src}
-				class="hero-banner-video"
-				aria-label="CFS Flooring craftsmanship showcase video"
-				title="CFS Flooring craftsmanship showcase video"
-			>
-				<source src="/videos/hero.webm" type="video/webm" />
-				<source src="/videos/hero.mp4" type="video/mp4" />
-			</video>
-			<div class="hero-media-overlay"></div>
-		</div>
-	</div>
-
 	<div class="hero-base-container">
 		<div class="hero-banner-wrapper">
 			<div class="hero-banner-left" data-motion-stagger="true">
@@ -94,6 +74,26 @@ const chips = [
 				</ul>
 
 				<div class="hero-bottom-spacer" aria-hidden="true"></div>
+			</div>
+
+			<div class="hero-right-bg">
+				<div class="hero-media-frame" data-motion="hero-video">
+					<video
+						autoplay
+						loop
+						muted
+						playsinline
+						preload="metadata"
+						poster={heroPoster.src}
+						class="hero-banner-video"
+						aria-label="CFS Flooring craftsmanship showcase video"
+						title="CFS Flooring craftsmanship showcase video"
+					>
+						<source src="/videos/hero.webm" type="video/webm" />
+						<source src="/videos/hero.mp4" type="video/mp4" />
+					</video>
+					<div class="hero-media-overlay"></div>
+				</div>
 			</div>
 		</div>
 	</div>
